@@ -1,0 +1,38 @@
+{
+  "name": "chirp-data",
+  "version": "1.0.0",
+  "description": "CHIRP Radio Content Management System",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "generate:types": "payload generate:types",
+    "seed": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts tsx src/seed/import-data.ts"
+  },
+  "dependencies": {
+    "@payloadcms/db-sqlite": "^3.61.0",
+    "@payloadcms/next": "^3.61.0",
+    "@payloadcms/richtext-lexical": "^3.61.0",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.44.7",
+    "express": "^4.19.2",
+    "next": "^16.0.0",
+    "payload": "^3.61.0",
+    "postgres": "^3.4.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sharp": "^0.34.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.19",
+    "@types/react": "^19.2.2",
+    "cross-env": "^7.0.3",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.6",
+    "typescript": "^5.3.3"
+  }
+}
