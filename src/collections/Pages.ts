@@ -20,8 +20,12 @@ export const Pages: CollectionConfig = {
   fields: [
     {
       name: 'title',
+      label: 'Page Title',
       type: 'text',
       required: true,
+      admin: {
+        description: 'The title displayed in browser tabs and search results (SEO)',
+      },
     },
     {
       name: 'slug',
@@ -36,7 +40,7 @@ export const Pages: CollectionConfig = {
       name: 'excerpt',
       type: 'textarea',
       admin: {
-        description: 'Short description for SEO/previews',
+        description: 'Brief page summary used for SEO meta description and social media previews (recommended 150-160 characters)',
       },
     },
     {
@@ -70,7 +74,7 @@ export const Pages: CollectionConfig = {
             },
             {
               name: 'content',
-              type: 'textarea',
+              type: 'richText',
               required: true,
             },
             {
@@ -128,20 +132,45 @@ export const Pages: CollectionConfig = {
       ],
     },
     {
-      name: 'showInNav',
-      type: 'checkbox',
-      defaultValue: false,
+      name: 'sidebarAnnouncement',
+      type: 'relationship',
+      relationTo: 'announcements',
       admin: {
         position: 'sidebar',
-        description: 'Display this page in navigation menus',
+        description: 'Optional announcement to display in sidebar',
+        condition: (data) => {
+          return !['about', 'terms-of-service', 'privacy-policy'].includes(data.slug)
+        },
       },
     },
     {
-      name: 'navOrder',
-      type: 'number',
+      name: 'sidebarContentType',
+      type: 'select',
+      options: [
+        { label: 'None', value: 'none' },
+        { label: 'Articles', value: 'articles' },
+        { label: 'Events', value: 'events' },
+        { label: 'Podcasts', value: 'podcasts' },
+      ],
+      defaultValue: 'none',
       admin: {
         position: 'sidebar',
-        description: 'Order in navigation (lower numbers first)',
+        description: 'Type of content to display in sidebar cards',
+        condition: (data) => {
+          return !['about', 'terms-of-service', 'privacy-policy'].includes(data.slug)
+        },
+      },
+    },
+    {
+      name: 'sidebarAdvertisement',
+      type: 'relationship',
+      relationTo: 'advertisements',
+      admin: {
+        position: 'sidebar',
+        description: 'Advertisement to display in sidebar',
+        condition: (data) => {
+          return !['about', 'terms-of-service', 'privacy-policy'].includes(data.slug)
+        },
       },
     },
   ],

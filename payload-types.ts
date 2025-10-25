@@ -67,30 +67,38 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    users: User;
+    ageGate: AgeGate;
+    listeners: Listener;
+    venues: Venue;
+    categories: Category;
     articles: Article;
     events: Event;
     pages: Page;
     podcasts: Podcast;
     announcements: Announcement;
+    advertisements: Advertisement;
     djs: Dj;
     media: Media;
-    venues: Venue;
-    users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
+    ageGate: AgeGateSelect<false> | AgeGateSelect<true>;
+    listeners: ListenersSelect<false> | ListenersSelect<true>;
+    venues: VenuesSelect<false> | VenuesSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     podcasts: PodcastsSelect<false> | PodcastsSelect<true>;
     announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
+    advertisements: AdvertisementsSelect<false> | AdvertisementsSelect<true>;
     djs: DjsSelect<false> | DjsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    venues: VenuesSelect<false> | VenuesSelect<true>;
-    users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -129,22 +137,95 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ageGate".
+ */
+export interface AgeGate {
+  id: number;
+  age: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listeners".
+ */
+export interface Listener {
+  id: number;
+  name: string;
+  email?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues".
+ */
+export interface Venue {
+  id: number;
+  name: string;
+  address?: string | null;
+  city?: string | null;
+  state?: string | null;
+  zip?: string | null;
+  phone?: string | null;
+  website?: string | null;
+  mapUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles".
  */
 export interface Article {
   id: number;
+  category: number | Category;
   title: string;
   slug: string;
-  author: {
-    name: string;
-    id: string;
-    profileImage?: string | null;
-  };
+  author: string;
   featuredImage?: (number | null) | Media;
   /**
    * Or provide external URL
    */
   featuredImageUrl?: string | null;
+  /**
+   * Brief summary (max 200 characters)
+   */
   excerpt: string;
   content: {
     root: {
@@ -161,22 +242,11 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  videoTitle?: string | null;
   /**
-   * YouTube video ID (optional)
+   * YouTube video ID or full URL (e.g., rXeaPSu1JFY or https://www.youtube.com/watch?v=rXeaPSu1JFY)
    */
   youtubeVideoId?: string | null;
-  videoTitle?: string | null;
-  category:
-    | 'Music Scene'
-    | 'Interview'
-    | 'Album Reviews'
-    | 'Vinyl Culture'
-    | 'Venue Guide'
-    | 'Community Guide'
-    | 'Behind the Scenes'
-    | 'CHIRP History'
-    | 'News'
-    | 'Feature';
   tags?:
     | {
         tag?: string | null;
@@ -184,12 +254,6 @@ export interface Article {
       }[]
     | null;
   publishedDate: string;
-  updatedDate?: string | null;
-  featured?: boolean | null;
-  /**
-   * Estimated read time in minutes
-   */
-  readTime?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -244,10 +308,16 @@ export interface Media {
  */
 export interface Event {
   id: number;
+  /**
+   * Select a category for this event
+   */
+  category: number | Category;
   title: string;
   slug: string;
-  description: string;
-  excerpt?: string | null;
+  /**
+   * Brief summary (max 200 characters)
+   */
+  excerpt: string;
   content?: {
     root: {
       type: string;
@@ -269,43 +339,24 @@ export interface Event {
    */
   featuredImageUrl?: string | null;
   /**
+   * Display photo credit on the event page
+   */
+  showPhotoCredit?: boolean | null;
+  /**
+   * Name of the photographer
+   */
+  photographerName?: string | null;
+  /**
    * Select a venue from the list
    */
   venue: number | Venue;
   date: string;
   endDate?: string | null;
-  category: 'Fundraiser' | 'Community Event' | 'Concert' | 'Workshop' | 'Festival' | 'Live Session';
-  ticketPrice?: number | null;
-  ticketUrl?: string | null;
-  isFree?: boolean | null;
-  /**
-   * e.g., "21+", "All ages"
-   */
-  ageRestriction?: string | null;
   featured?: boolean | null;
-  performers?:
-    | {
-        performer?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "venues".
- */
-export interface Venue {
-  id: number;
-  name: string;
-  address?: string | null;
-  city?: string | null;
-  state?: string | null;
-  zip?: string | null;
-  phone?: string | null;
-  website?: string | null;
-  mapUrl?: string | null;
+  /**
+   * Select age restriction if applicable
+   */
+  ageRestriction?: (number | null) | AgeGate;
   updatedAt: string;
   createdAt: string;
 }
@@ -315,10 +366,13 @@ export interface Venue {
  */
 export interface Page {
   id: number;
+  /**
+   * The title displayed in browser tabs and search results (SEO)
+   */
   title: string;
   slug: string;
   /**
-   * Short description for SEO/previews
+   * Brief page summary used for SEO meta description and social media previews (recommended 150-160 characters)
    */
   excerpt?: string | null;
   layout?:
@@ -330,7 +384,21 @@ export interface Page {
             preheader?: string | null;
             title: string;
             titleTag?: ('h1' | 'h2' | 'h3' | 'h4') | null;
-            content: string;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
             imagePosition?: ('none' | 'left' | 'right') | null;
             backgroundImage?: (number | null) | Media;
             /**
@@ -357,75 +425,17 @@ export interface Page {
       )[]
     | null;
   /**
-   * Display this page in navigation menus
+   * Optional announcement to display in sidebar
    */
-  showInNav?: boolean | null;
+  sidebarAnnouncement?: (number | null) | Announcement;
   /**
-   * Order in navigation (lower numbers first)
+   * Type of content to display in sidebar cards
    */
-  navOrder?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "podcasts".
- */
-export interface Podcast {
-  id: number;
-  title: string;
-  slug: string;
-  description: string;
-  excerpt: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  host: string;
-  category:
-    | 'Music Interview'
-    | 'Local Music'
-    | 'Record Talk'
-    | 'Album Discussion'
-    | 'Tour Stories'
-    | 'Experimental'
-    | 'Hip-Hop'
-    | 'Production'
-    | 'Live Performance'
-    | 'Genre Exploration'
-    | 'Music Business'
-    | 'Performance';
-  coverArt?: (number | null) | Media;
+  sidebarContentType?: ('none' | 'articles' | 'events' | 'podcasts') | null;
   /**
-   * Or provide external URL
+   * Advertisement to display in sidebar
    */
-  coverArtUrl?: string | null;
-  /**
-   * SoundCloud embed URL
-   */
-  soundCloudEmbedUrl?: string | null;
-  pullQuote?: string | null;
-  pullQuoteAttribution?: string | null;
-  additionalInfo?: string | null;
-  transcriptUrl?: string | null;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  isActive?: boolean | null;
+  sidebarAdvertisement?: (number | null) | Advertisement;
   updatedAt: string;
   createdAt: string;
 }
@@ -483,6 +493,133 @@ export interface Announcement {
    * CSS class for background color (e.g., cr-bg-natural-a500)
    */
   backgroundColor?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "advertisements".
+ */
+export interface Advertisement {
+  id: number;
+  /**
+   * Internal name for this advertisement
+   */
+  name: string;
+  /**
+   * Whether this ad is currently active
+   */
+  isActive?: boolean | null;
+  /**
+   * Standard ad size or custom dimensions
+   */
+  size: 'large-rectangle' | 'leaderboard' | 'medium-rectangle' | 'mobile-banner' | 'wide-skyscraper' | 'custom';
+  /**
+   * Custom width in pixels (only used if size is "custom")
+   */
+  customWidth?: number | null;
+  /**
+   * Custom height in pixels (only used if size is "custom")
+   */
+  customHeight?: number | null;
+  /**
+   * Type of advertisement content
+   */
+  contentType: 'image' | 'video' | 'html' | 'embed';
+  /**
+   * Upload an image for the advertisement
+   */
+  image?: (number | null) | Media;
+  /**
+   * Or provide an external image URL
+   */
+  imageUrl?: string | null;
+  /**
+   * Alt text for the image/ad
+   */
+  alt?: string | null;
+  /**
+   * Upload a video file
+   */
+  video?: (number | null) | Media;
+  /**
+   * Or provide an external video URL
+   */
+  videoUrl?: string | null;
+  /**
+   * Raw HTML content for the advertisement
+   */
+  htmlContent?: string | null;
+  /**
+   * Third-party embed code (e.g., Google Ads, AdSense)
+   */
+  embedCode?: string | null;
+  /**
+   * URL to navigate to when ad is clicked
+   */
+  href?: string | null;
+  /**
+   * How to open the link
+   */
+  target?: ('_blank' | '_self') | null;
+  /**
+   * Show ad size label in placeholder
+   */
+  showLabel?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "podcasts".
+ */
+export interface Podcast {
+  id: number;
+  /**
+   * Select a category for this podcast
+   */
+  category: number | Category;
+  title: string;
+  slug: string;
+  /**
+   * Brief summary (max 200 characters)
+   */
+  excerpt: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  host: string;
+  coverArt?: (number | null) | Media;
+  /**
+   * Or provide external URL
+   */
+  coverArtUrl?: string | null;
+  /**
+   * SoundCloud embed URL
+   */
+  soundCloudEmbedUrl?: string | null;
+  pullQuote?: string | null;
+  pullQuoteAttribution?: string | null;
+  additionalInfo?: string | null;
+  transcriptUrl?: string | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -631,35 +768,31 @@ export interface Dj {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: number;
   document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'ageGate';
+        value: number | AgeGate;
+      } | null)
+    | ({
+        relationTo: 'listeners';
+        value: number | Listener;
+      } | null)
+    | ({
+        relationTo: 'venues';
+        value: number | Venue;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
     | ({
         relationTo: 'articles';
         value: number | Article;
@@ -681,20 +814,16 @@ export interface PayloadLockedDocument {
         value: number | Announcement;
       } | null)
     | ({
+        relationTo: 'advertisements';
+        value: number | Advertisement;
+      } | null)
+    | ({
         relationTo: 'djs';
         value: number | Dj;
       } | null)
     | ({
         relationTo: 'media';
         value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'venues';
-        value: number | Venue;
-      } | null)
-    | ({
-        relationTo: 'users';
-        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -740,25 +869,86 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ageGate_select".
+ */
+export interface AgeGateSelect<T extends boolean = true> {
+  age?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listeners_select".
+ */
+export interface ListenersSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues_select".
+ */
+export interface VenuesSelect<T extends boolean = true> {
+  name?: T;
+  address?: T;
+  city?: T;
+  state?: T;
+  zip?: T;
+  phone?: T;
+  website?: T;
+  mapUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles_select".
  */
 export interface ArticlesSelect<T extends boolean = true> {
+  category?: T;
   title?: T;
   slug?: T;
-  author?:
-    | T
-    | {
-        name?: T;
-        id?: T;
-        profileImage?: T;
-      };
+  author?: T;
   featuredImage?: T;
   featuredImageUrl?: T;
   excerpt?: T;
   content?: T;
-  youtubeVideoId?: T;
   videoTitle?: T;
-  category?: T;
+  youtubeVideoId?: T;
   tags?:
     | T
     | {
@@ -766,9 +956,6 @@ export interface ArticlesSelect<T extends boolean = true> {
         id?: T;
       };
   publishedDate?: T;
-  updatedDate?: T;
-  featured?: T;
-  readTime?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -777,28 +964,20 @@ export interface ArticlesSelect<T extends boolean = true> {
  * via the `definition` "events_select".
  */
 export interface EventsSelect<T extends boolean = true> {
+  category?: T;
   title?: T;
   slug?: T;
-  description?: T;
   excerpt?: T;
   content?: T;
   featuredImage?: T;
   featuredImageUrl?: T;
+  showPhotoCredit?: T;
+  photographerName?: T;
   venue?: T;
   date?: T;
   endDate?: T;
-  category?: T;
-  ticketPrice?: T;
-  ticketUrl?: T;
-  isFree?: T;
-  ageRestriction?: T;
   featured?: T;
-  performers?:
-    | T
-    | {
-        performer?: T;
-        id?: T;
-      };
+  ageRestriction?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -841,8 +1020,9 @@ export interface PagesSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  showInNav?: T;
-  navOrder?: T;
+  sidebarAnnouncement?: T;
+  sidebarContentType?: T;
+  sidebarAdvertisement?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -851,13 +1031,12 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "podcasts_select".
  */
 export interface PodcastsSelect<T extends boolean = true> {
+  category?: T;
   title?: T;
   slug?: T;
-  description?: T;
   excerpt?: T;
   content?: T;
   host?: T;
-  category?: T;
   coverArt?: T;
   coverArtUrl?: T;
   soundCloudEmbedUrl?: T;
@@ -871,7 +1050,6 @@ export interface PodcastsSelect<T extends boolean = true> {
         tag?: T;
         id?: T;
       };
-  isActive?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -894,6 +1072,30 @@ export interface AnnouncementsSelect<T extends boolean = true> {
   featuredOnLanding?: T;
   showDonationBar?: T;
   backgroundColor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "advertisements_select".
+ */
+export interface AdvertisementsSelect<T extends boolean = true> {
+  name?: T;
+  isActive?: T;
+  size?: T;
+  customWidth?: T;
+  customHeight?: T;
+  contentType?: T;
+  image?: T;
+  imageUrl?: T;
+  alt?: T;
+  video?: T;
+  videoUrl?: T;
+  htmlContent?: T;
+  embedCode?: T;
+  href?: T;
+  target?: T;
+  showLabel?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1009,44 +1211,6 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
-      };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "venues_select".
- */
-export interface VenuesSelect<T extends boolean = true> {
-  name?: T;
-  address?: T;
-  city?: T;
-  state?: T;
-  zip?: T;
-  phone?: T;
-  website?: T;
-  mapUrl?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
       };
 }
 /**

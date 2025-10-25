@@ -13,7 +13,11 @@ import { Venues } from './src/collections/Venues'
 import { Pages } from './src/collections/Pages'
 import { Podcasts } from './src/collections/Podcasts'
 import { Announcements } from './src/collections/Announcements'
+import { Advertisements } from './src/collections/Advertisements'
 import { Users } from './src/collections/Users'
+import { AgeGate } from './src/collections/AgeGate'
+import { Listeners } from './src/collections/Listeners'
+import { Categories } from './src/collections/Categories'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -22,14 +26,18 @@ export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
   collections: [
     Users,
+    AgeGate,
+    Listeners,
+    Venues,
+    Categories,
     Articles,
     Events,
     Pages,
     Podcasts,
     Announcements,
+    Advertisements,
     DJs,
     Media,
-    Venues,
   ],
   secret: process.env.PAYLOAD_SECRET || 'your-secret-key-here-change-in-production',
   typescript: {
@@ -42,4 +50,14 @@ export default buildConfig({
   }),
   editor: lexicalEditor({}),
   sharp,
+  cors: [
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+    'http://localhost:5173',
+    'http://localhost:3001',
+  ].filter(Boolean),
+  csrf: [
+    process.env.FRONTEND_URL || 'http://localhost:5173',
+    'http://localhost:5173',
+    'http://localhost:3001',
+  ].filter(Boolean),
 })

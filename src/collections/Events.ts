@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types'
+import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
 
 export const Events: CollectionConfig = {
   slug: 'events',
@@ -10,14 +11,26 @@ export const Events: CollectionConfig = {
     useAsTitle: 'title',
     defaultColumns: ['title', 'date', 'venue', 'category', 'featured'],
     group: 'Content',
-    preview: (doc) => {
-      return `http://localhost:5173/events/${doc.slug}`
+    livePreview: {
+      url: ({ data }) => `http://localhost:5173/events/${data.slug}`,
     },
   },
   access: {
     read: () => true,
+    create: () => true,
+    update: () => true,
+    delete: () => true,
   },
   fields: [
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+      required: true,
+      admin: {
+        description: 'Select a category for this event',
+      },
+    },
     {
       name: 'title',
       type: 'text',
@@ -33,19 +46,26 @@ export const Events: CollectionConfig = {
       },
     },
     {
-      name: 'description',
-      type: 'textarea',
-      required: true,
-    },
-    {
       name: 'excerpt',
       type: 'textarea',
-      required: false,
+      required: true,
+      maxLength: 200,
+      admin: {
+        description: 'Brief summary (max 200 characters)',
+      },
     },
     {
       name: 'content',
       type: 'richText',
       required: false,
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          LinkFeature({
+            enabledCollections: [],
+          }),
+        ],
+      }),
     },
     {
       name: 'featuredImage',
@@ -57,6 +77,22 @@ export const Events: CollectionConfig = {
       type: 'text',
       admin: {
         description: 'Or provide external URL',
+      },
+    },
+    {
+      name: 'showPhotoCredit',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description: 'Display photo credit on the event page',
+      },
+    },
+    {
+      name: 'photographerName',
+      type: 'text',
+      admin: {
+        description: 'Name of the photographer',
+        condition: (data) => data.showPhotoCredit === true,
       },
     },
     {
@@ -88,44 +124,6 @@ export const Events: CollectionConfig = {
       },
     },
     {
-      name: 'category',
-      type: 'select',
-      options: [
-        { label: 'Fundraiser', value: 'Fundraiser' },
-        { label: 'Community Event', value: 'Community Event' },
-        { label: 'Concert', value: 'Concert' },
-        { label: 'Workshop', value: 'Workshop' },
-        { label: 'Festival', value: 'Festival' },
-        { label: 'Live Session', value: 'Live Session' },
-      ],
-      required: true,
-    },
-    {
-      name: 'ticketPrice',
-      type: 'number',
-      defaultValue: 0,
-    },
-    {
-      name: 'ticketUrl',
-      type: 'text',
-    },
-    {
-      name: 'isFree',
-      type: 'checkbox',
-      defaultValue: false,
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'ageRestriction',
-      type: 'text',
-      admin: {
-        description: 'e.g., "21+", "All ages"',
-        position: 'sidebar',
-      },
-    },
-    {
       name: 'featured',
       type: 'checkbox',
       defaultValue: false,
@@ -134,14 +132,13 @@ export const Events: CollectionConfig = {
       },
     },
     {
-      name: 'performers',
-      type: 'array',
-      fields: [
-        {
-          name: 'performer',
-          type: 'text',
-        },
-      ],
+      name: 'ageRestriction',
+      type: 'relationship',
+      relationTo: 'ageGate',
+      admin: {
+        position: 'sidebar',
+        description: 'Select age restriction if applicable',
+      },
     },
   ],
 }

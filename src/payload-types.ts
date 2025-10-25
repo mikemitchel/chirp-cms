@@ -67,6 +67,10 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    users: User;
+    ageGate: AgeGate;
+    listeners: Listener;
+    venues: Venue;
     articles: Article;
     events: Event;
     pages: Page;
@@ -74,14 +78,16 @@ export interface Config {
     announcements: Announcement;
     djs: Dj;
     media: Media;
-    venues: Venue;
-    users: User;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
+    users: UsersSelect<false> | UsersSelect<true>;
+    ageGate: AgeGateSelect<false> | AgeGateSelect<true>;
+    listeners: ListenersSelect<false> | ListenersSelect<true>;
+    venues: VenuesSelect<false> | VenuesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
@@ -89,8 +95,6 @@ export interface Config {
     announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
     djs: DjsSelect<false> | DjsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    venues: VenuesSelect<false> | VenuesSelect<true>;
-    users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -129,17 +133,87 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ageGate".
+ */
+export interface AgeGate {
+  id: number;
+  age: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listeners".
+ */
+export interface Listener {
+  id: number;
+  name: string;
+  email?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues".
+ */
+export interface Venue {
+  id: number;
+  name: string;
+  address?: string | null;
+  city?: string | null;
+  state?: string | null;
+  zip?: string | null;
+  phone?: string | null;
+  website?: string | null;
+  mapUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles".
  */
 export interface Article {
   id: number;
+  category:
+    | 'Music Scene'
+    | 'Interview'
+    | 'Album Reviews'
+    | 'Vinyl Culture'
+    | 'Venue Guide'
+    | 'Community Guide'
+    | 'Behind the Scenes'
+    | 'CHIRP History'
+    | 'News'
+    | 'Feature';
   title: string;
   slug: string;
-  author: {
-    name: string;
-    id: string;
-    profileImage?: string | null;
-  };
+  author: string;
   featuredImage?: (number | null) | Media;
   /**
    * Or provide external URL
@@ -161,22 +235,11 @@ export interface Article {
     };
     [k: string]: unknown;
   };
+  videoTitle?: string | null;
   /**
-   * YouTube video ID (optional)
+   * YouTube video ID or full URL (e.g., rXeaPSu1JFY or https://www.youtube.com/watch?v=rXeaPSu1JFY)
    */
   youtubeVideoId?: string | null;
-  videoTitle?: string | null;
-  category:
-    | 'Music Scene'
-    | 'Interview'
-    | 'Album Reviews'
-    | 'Vinyl Culture'
-    | 'Venue Guide'
-    | 'Community Guide'
-    | 'Behind the Scenes'
-    | 'CHIRP History'
-    | 'News'
-    | 'Feature';
   tags?:
     | {
         tag?: string | null;
@@ -184,12 +247,6 @@ export interface Article {
       }[]
     | null;
   publishedDate: string;
-  updatedDate?: string | null;
-  featured?: boolean | null;
-  /**
-   * Estimated read time in minutes
-   */
-  readTime?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -247,7 +304,6 @@ export interface Event {
   title: string;
   slug: string;
   description: string;
-  excerpt?: string | null;
   content?: {
     root: {
       type: string;
@@ -269,43 +325,25 @@ export interface Event {
    */
   featuredImageUrl?: string | null;
   /**
+   * Display photo credit on the event page
+   */
+  showPhotoCredit?: boolean | null;
+  /**
+   * Name of the photographer
+   */
+  photographerName?: string | null;
+  /**
    * Select a venue from the list
    */
   venue: number | Venue;
   date: string;
   endDate?: string | null;
   category: 'Fundraiser' | 'Community Event' | 'Concert' | 'Workshop' | 'Festival' | 'Live Session';
-  ticketPrice?: number | null;
-  ticketUrl?: string | null;
-  isFree?: boolean | null;
-  /**
-   * e.g., "21+", "All ages"
-   */
-  ageRestriction?: string | null;
   featured?: boolean | null;
-  performers?:
-    | {
-        performer?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "venues".
- */
-export interface Venue {
-  id: number;
-  name: string;
-  address?: string | null;
-  city?: string | null;
-  state?: string | null;
-  zip?: string | null;
-  phone?: string | null;
-  website?: string | null;
-  mapUrl?: string | null;
+  /**
+   * Select age restriction if applicable
+   */
+  ageRestriction?: (number | null) | AgeGate;
   updatedAt: string;
   createdAt: string;
 }
@@ -631,35 +669,27 @@ export interface Dj {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
- */
-export interface User {
-  id: number;
-  updatedAt: string;
-  createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: number;
   document?:
+    | ({
+        relationTo: 'users';
+        value: number | User;
+      } | null)
+    | ({
+        relationTo: 'ageGate';
+        value: number | AgeGate;
+      } | null)
+    | ({
+        relationTo: 'listeners';
+        value: number | Listener;
+      } | null)
+    | ({
+        relationTo: 'venues';
+        value: number | Venue;
+      } | null)
     | ({
         relationTo: 'articles';
         value: number | Article;
@@ -687,14 +717,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'venues';
-        value: number | Venue;
-      } | null)
-    | ({
-        relationTo: 'users';
-        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -740,25 +762,77 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users_select".
+ */
+export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ageGate_select".
+ */
+export interface AgeGateSelect<T extends boolean = true> {
+  age?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "listeners_select".
+ */
+export interface ListenersSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "venues_select".
+ */
+export interface VenuesSelect<T extends boolean = true> {
+  name?: T;
+  address?: T;
+  city?: T;
+  state?: T;
+  zip?: T;
+  phone?: T;
+  website?: T;
+  mapUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles_select".
  */
 export interface ArticlesSelect<T extends boolean = true> {
+  category?: T;
   title?: T;
   slug?: T;
-  author?:
-    | T
-    | {
-        name?: T;
-        id?: T;
-        profileImage?: T;
-      };
+  author?: T;
   featuredImage?: T;
   featuredImageUrl?: T;
   excerpt?: T;
   content?: T;
-  youtubeVideoId?: T;
   videoTitle?: T;
-  category?: T;
+  youtubeVideoId?: T;
   tags?:
     | T
     | {
@@ -766,9 +840,6 @@ export interface ArticlesSelect<T extends boolean = true> {
         id?: T;
       };
   publishedDate?: T;
-  updatedDate?: T;
-  featured?: T;
-  readTime?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -780,25 +851,17 @@ export interface EventsSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   description?: T;
-  excerpt?: T;
   content?: T;
   featuredImage?: T;
   featuredImageUrl?: T;
+  showPhotoCredit?: T;
+  photographerName?: T;
   venue?: T;
   date?: T;
   endDate?: T;
   category?: T;
-  ticketPrice?: T;
-  ticketUrl?: T;
-  isFree?: T;
-  ageRestriction?: T;
   featured?: T;
-  performers?:
-    | T
-    | {
-        performer?: T;
-        id?: T;
-      };
+  ageRestriction?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1009,44 +1072,6 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
-      };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "venues_select".
- */
-export interface VenuesSelect<T extends boolean = true> {
-  name?: T;
-  address?: T;
-  city?: T;
-  state?: T;
-  zip?: T;
-  phone?: T;
-  website?: T;
-  mapUrl?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
- */
-export interface UsersSelect<T extends boolean = true> {
-  updatedAt?: T;
-  createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
-    | T
-    | {
-        id?: T;
-        createdAt?: T;
-        expiresAt?: T;
       };
 }
 /**

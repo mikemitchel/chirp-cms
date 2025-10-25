@@ -1,9 +1,12 @@
 import { getPayload } from 'payload'
-import config from '@payload-config'
+import config from '../../payload.config'
 import dotenv from 'dotenv'
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
+import { seedAdvertisements } from './seed-advertisements'
+import { seedAnnouncements } from './seed-announcements'
+import { seedPages } from './seed-pages'
 
 dotenv.config()
 
@@ -13,9 +16,64 @@ const __dirname = path.dirname(__filename)
 const importData = async () => {
   const payload = await getPayload({ config })
 
+  console.log('🔍 Available collections:', Object.keys(payload.collections).join(', '))
   console.log('🌱 Starting data import...')
 
   try {
+    // Create default admin user
+    console.log('👤 Creating default admin user...')
+    const { docs: existingUsers } = await payload.find({ collection: 'users', limit: 1 })
+    if (existingUsers.length === 0) {
+      await payload.create({
+        collection: 'users',
+        data: {
+          email: 'admin@chirpradio.org',
+          password: 'admin123',
+        },
+      })
+      console.log('✓ Default admin user created (email: admin@chirpradio.org, password: admin123)\n')
+    } else {
+      console.log('✓ Admin user already exists, skipping creation\n')
+    }
+
+    // Create Categories
+    console.log('📂 Creating categories...')
+    const categoryNames = [
+      'Music Scene',
+      'Interview',
+      'Album Reviews',
+      'Vinyl Culture',
+      'Venue Guide',
+      'Community Guide',
+      'Behind the Scenes',
+      'CHIRP History',
+      'News',
+      'Feature',
+      'Events',
+      'Music',
+    ]
+
+    const categoryMap: Record<string, string> = {}
+
+    for (const categoryName of categoryNames) {
+      const { docs: existing } = await payload.find({
+        collection: 'categories',
+        where: { name: { equals: categoryName } },
+        limit: 1,
+      })
+
+      if (existing.length > 0) {
+        categoryMap[categoryName] = existing[0].id
+      } else {
+        const category = await payload.create({
+          collection: 'categories',
+          data: { name: categoryName },
+        })
+        categoryMap[categoryName] = category.id
+      }
+    }
+    console.log(`✓ ${categoryNames.length} categories created\n`)
+
     // Clear existing data
     console.log('🗑️  Clearing existing data...')
     const { docs: existingArticles } = await payload.find({ collection: 'articles', limit: 1000 })
@@ -65,9 +123,6 @@ const importData = async () => {
     const podcastsData = JSON.parse(
       fs.readFileSync(path.join(dataDir, 'podcasts.json'), 'utf-8')
     )
-    const announcementsData = JSON.parse(
-      fs.readFileSync(path.join(dataDir, 'announcements.json'), 'utf-8')
-    )
 
     // Import Articles
     console.log(`📰 Importing ${articlesData.articles.length} articles...`)
@@ -76,26 +131,30 @@ const importData = async () => {
         collection: 'articles',
         data: {
           ...article,
+          // Convert category string to category ID
+          category: categoryMap[article.category] || categoryMap['News'],
+          // Convert author.name to just author
+          author: article.author?.name || article.author,
           // Handle image URLs - if it's an external URL, use featuredImageUrl
-          featuredImageUrl: article.featuredImage,
+          featuredImageUrl: article.featuredImageUrl || article.featuredImage,
           featuredImage: undefined, // Will be null unless we upload actual files
           // Transform tags array from strings to objects
           tags: article.tags?.map((tag: string) => ({ tag })) || [],
-          // Convert content to Lexical editor format
+          // Convert content to Lexical editor format - split paragraphs by double newline
           content: {
             root: {
               type: 'root',
-              children: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      type: 'text',
-                      text: article.content,
-                    },
-                  ],
-                },
-              ],
+              children: article.content
+                ? article.content.split('\n\n').map((para: string) => ({
+                    type: 'paragraph',
+                    children: [
+                      {
+                        type: 'text',
+                        text: para.trim(),
+                      },
+                    ],
+                  }))
+                : [],
               direction: 'ltr',
               format: '',
               indent: 0,
@@ -105,6 +164,22 @@ const importData = async () => {
         },
       })
       console.log(`  ✓ ${article.title}`)
+    }
+
+    // Import AgeGate (extract unique age restrictions from events)
+    console.log('🔞 Importing age restrictions...')
+    const ageGateMap = new Map()
+    for (const event of eventsData.events) {
+      if (event.ageRestriction && !ageGateMap.has(event.ageRestriction)) {
+        const ageGateDoc = await payload.create({
+          collection: 'ageGate',
+          data: {
+            age: event.ageRestriction,
+          },
+        })
+        ageGateMap.set(event.ageRestriction, ageGateDoc.id)
+        console.log(`  ✓ ${event.ageRestriction}`)
+      }
     }
 
     // Import Venues (extract unique venues from events)
@@ -131,16 +206,37 @@ const importData = async () => {
 
     // Import Events
     console.log(`\n🎉 Importing ${eventsData.events.length} events...`)
+
+    // Map event category strings to category IDs
+    const eventCategoryMapping: Record<string, string> = {
+      'Fundraiser': 'Events',
+      'Community Event': 'Events',
+      'Concert': 'Music',
+      'Workshop': 'Events',
+      'Festival': 'Events',
+      'Live Session': 'Music',
+    }
+
     for (const event of eventsData.events) {
       const venueId = venueMap.get(event.venue?.name)
+      const ageRestrictionId = ageGateMap.get(event.ageRestriction)
+
+      // Map event category string to category ID
+      const categoryName = eventCategoryMapping[event.category] || 'Events'
+      const categoryId = categoryMap[categoryName]
+
       await payload.create({
         collection: 'events',
         data: {
           ...event,
+          // Convert category string to category ID
+          category: categoryId,
           // Link to venue by ID
           venue: venueId,
+          // Link to age restriction by ID
+          ageRestriction: ageRestrictionId,
           // Handle image URLs
-          featuredImageUrl: event.featuredImage,
+          featuredImageUrl: event.featuredImageUrl || event.featuredImage,
           featuredImage: undefined,
           // Transform performers array from strings to objects
           performers: event.performers?.map((performer: string) => ({ performer })) || [],
@@ -187,545 +283,40 @@ const importData = async () => {
     }
 
     // Import Pages
-    console.log(`\n📄 Importing pages...`)
-
-    const pages = [
-      {
-        title: 'Privacy Policy',
-        slug: 'privacy-policy',
-        excerpt: 'Learn about how CHIRP Radio collects, uses, and protects your personal information.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'LEGAL',
-            title: 'Privacy Policy',
-            titleTag: 'h1',
-            content: 'The Chicago Independent Radio Project, a non-profit, registered 501(C)(3) organization ("CHIRP"), takes the confidentiality and protection of the information we collect seriously. As such, CHIRP has created this privacy policy (the "Policy") to provide you with information about our privacy practices so that you will understand when and how we collect information about you as you interact with the CHIRP website, located at http://www.chirpradio.org (the "Site") and mobile app (the "App"), and how that information is used, disclosed and protected.\n\nBy accessing our Site or App and submitting information to us, you consent to the privacy practices described in this Policy and the Terms of Service located at /terms-of-service, as modified from time to time by us. We reserve the right to modify any portion of the Policy at any time, and without notice to you. Your continued use of the Site following any modification of the Policy signifies your consent to the modification.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Information CHIRP Collects',
-            titleTag: 'h2',
-            content: 'When you access the Site or App, CHIRP may collect both personally identifiable information such as your name, e-mail address, customer support inquiries, or non-personally identifiable information about your activities while interacting with Site.\n\nInformation You Give Us:\n\n• Registration Information: Portions of the Site or App may require you to register and log in and provide personal information before you can access the area of the Site or App or post information.\n• Donation Information: When you make a donation to CHIRP, we may collect various kinds of information about you, including your name, e-mail address, home or business addresses, home and business phone numbers, or demographic information.\n• Public Forums: The Site may allow you to participate in or submit content to online chat rooms, discussion boards, forums, blogs and other interactive features.\n• Support: If you contact us with questions or issues regarding your use of the Site, we will collect information about you in order to provide necessary support to you.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Automatically Collected Information',
-            titleTag: 'h2',
-            content: 'We automatically receive certain types of information whenever you interact with the Site. For example, when you visit the Site, we automatically collect your IP address, exit and entry information, browsing behavior, the type of browser you use, podcasts accessed, pages viewed, impressions, and similar types of information. This information may be automatically collected through the use of "cookies" or "clickstream" which are discussed in more detail below.\n\nWe also use Cookies and navigational data like Uniform Resource Locators (URL) to gather information regarding the date and time of your visit and the information you searched for and viewed, or on which of the advertisements displayed on the CHIRP site you clicked. This type of information is collected to make the CHIRP site and tools more useful to you and to tailor the CHIRP experience to meet your special interests and needs.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Use of "Cookies"',
-            titleTag: 'h2',
-            content: 'Cookies are small text files placed on your hard drive by a website when you visit that website. These files identify your computer and record your preferences and other data about your visit so that, when you return to the site, the site recognizes you and can personalize your visit. In general, we use cookies to collect information so that we can determine how to improve the Site by seeing which areas, features, and products are most popular, to personalize the Site, to make recommendations based on content you have liked in the past, to improve the overall site experience, and to complete transactions you have requested.\n\nMost browsers automatically accept cookies as the default setting. You should be able to modify the setting of your browser to reject cookies or to prompt you before accepting a cookie from the websites you visit by editing your browser options. If you decide not to accept our cookies, you will still be able to access those parts of our Site available to the general public, but you may not be able to use some of the Site\'s features or services and you may have a less satisfactory experience.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Use & Disclosure of Information',
-            titleTag: 'h2',
-            content: 'In general, we use personal information internally to serve you and to enhance and extend our relationship with our users. We use personal information for donation purposes, to complete transactions you have requested, to anticipate and resolve problems with our Site or App, to respond to support inquiries, to create and inform you of upcoming events and CHIRP related news, and to inform you of new products or services.\n\nWe disclose personal information only when we have your consent to do so, as necessary to complete a transaction you have requested, when required by law, or when permitted to protect our rights or property. CHIRP does not share, sell, or trade user or donor information with any other entities.\n\nProtection of CHIRP and Others: We may release personal information when we believe release is appropriate to comply with the law (e.g., a lawful subpoena, warrant or court order); to enforce or apply our policies; to initiate, render, bill, and collect for amounts owed to us; to protect our rights or property; to protect you from fraudulent, abusive, or unlawful use of our Site; or if we reasonably believe that an emergency involving immediate danger of death or serious physical injury to any person requires disclosure of communications or justifies disclosure of records without delay.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Third-Party Sites & Security',
-            titleTag: 'h2',
-            content: 'Please be aware that we may provide links to third-party websites from the Site and App. We may also enable third-party advertising networks, advertisers and ad servers to promote third-party products and/or services by placing advertisements on the CHIRP website. CHIRP is not responsible for the content or information collection practices of third party websites.\n\nCHIRP has in place what we believe to be appropriate physical, electronic, and managerial procedures to safeguard and secure the information we collect online. While we have taken efforts to guard your personal information, we cannot guarantee that your information is secure and will not be disclosed or accessed by accidental circumstances or by the unauthorized acts of others.\n\nCHIRP does not share, trade or sell member lists with third parties.\n\nPlease contact us at chirp@chirpradio.org to (a) correct or update any personal information in the CHIRP database that you state is erroneous, (b) opt-out of future communications from CHIRP, or (c) request CHIRP to make reasonable efforts to remove your personal information from our database.\n\nIf you have any questions, comments or concerns about this Policy, or wish to change your information please contact chirp@chirpradio.org or send mail to: CHIRP Radio, 4045 N. Rockwell, Chicago, IL 60618.',
-            imagePosition: 'none',
-          },
-        ],
-        showInNav: true,
-        navOrder: 100
-      },
-      {
-        title: 'Terms of Service',
-        slug: 'terms-of-service',
-        excerpt: 'Terms and conditions for using the CHIRP Radio website and services.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'LEGAL',
-            title: 'Terms of Service',
-            titleTag: 'h1',
-            content: 'Chicago Independent Radio Project, a non-profit, registered 501(C)(3) organization ("CHIRP"), has created these Terms of Use (the "Terms") to provide you with information about how you may or may not use the CHIRP website located at www.chirpradio.org. Please read these Terms of Use before accessing http://www.chirpradio.org or any features of our website, including, but not limited to, the CHIRP Volunteer Site, the CHIRP Record Fair Site, CHIRP\'s First Time Reading Series Site, CHIRP\'s Record Store Day Event Site, the CHIRP Store, or CHIRP Podcasts (collectively, the "Website"). By using the Website, you agree to be bound by these Terms. If you do not agree to these Terms, please exit the Website.\n\nWe reserve the right, at our discretion, to modify, add or delete portions of these terms at any time by posting updated Terms on the Website. Please check these Terms frequently for updates. Any modifications, additions or deletions to these Terms shall be effective immediately upon posting of updated Terms. Your continued use of the Website following the posting of updated Terms will mean that you agree to those changes.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Copyrights & Trademarks',
-            titleTag: 'h2',
-            content: 'The Website and all content made available through the Website are protected by U.S. and international copyright laws and are the intellectual property of CHIRP or its licensors. You may not reproduce, distribute, transmit, display, prepare derivative works, or perform any copyrighted material which is made available through Website without the prior written consent of CHIRP, except as provided in this section: (a) You may copy and print a limited amount of content for non-commercial use, (b) if you would like to link to articles or other publications available on the Website, you may copy up to three (3) paragraphs or 50% of the content, whichever is greater, then you must provide a link to the original Website page on the website where the publication is located.\n\nCHIRP, Chicago Independent Radio Project, CHIRP program names, button icons, trade dress and any other logo or trademark located on the Website are the trademarks or registered trademarks of CHIRP or CHIRP\'s sponsors. All rights are reserved to CHIRP or its sponsors. You may not use any of the trademarks, service marks, logos or graphics located at Website without the prior written consent of the applicable trademark owner.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Links to and from CHIRP Website',
-            titleTag: 'h2',
-            content: 'CHIRP encourages and permits links to content on the Website, provided such links conform to these Terms. However, because we are a registered 501(C)(3) nonprofit organization the linking should not: (a) suggest that CHIRP promotes or endorses any third party\'s causes, ideas, websites, products or services, without CHIRP\'s prior consent or (b) use CHIRP content for inappropriate commercial purposes. We reserve the right to withdraw permission for any link.\n\nCHIRP has provided links to Internet sites maintained by third parties, over which CHIRP has no control. CHIRP does not endorse the content, operators, products or services of such sites, and CHIRP is not responsible or liable for the content, operators, availability, accuracy, quality, advertising, products, services or other materials on or available from such sites.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'CHIRP Podcasts',
-            titleTag: 'h2',
-            content: 'CHIRP may provide you with access to podcasts consisting of selected audio content from CHIRP and other content providers, which may be downloaded and played from a user\'s computer or transferred to a portable listening device (the "Podcasts"). Podcasts are protected by U.S. and international copyright laws. All rights in and to the Podcasts are reserved to CHIRP or the content provider. Podcasts are made available to you for personal, noncommercial use only. You may download, copy and/or transfer a Podcast to a portable listening device the Podcasts for your personal, noncommercial use only, provided that you do not modify the content or make it publically available. You also may link to Podcasts from your website, blog or similar application, as long as the linking does not: (a) suggest that CHIRP promotes or endorses any third party\'s causes, ideas, websites, products or services, or (b) use CHIRP content for inappropriate commercial purposes. CHIRP reserves the right to discontinue providing Podcasts and to require that you cease accessing or using the Podcasts, or any content contained in the Podcasts, at any time for any reason.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Use of the Website & Rules for Posting Content',
-            titleTag: 'h2',
-            content: 'When using the Website, You must abide by the following rules:\n\n• you may not post, upload or transmit any material or links to material that is libelous, defamatory, false, obscene, indecent, lewd, pornographic, violent, abusive, threatening, harassing, discriminatory, in violation of the law or that constitutes hate speech\n• you may only post, upload or transmit materials, including but not limited to photographs, artwork, or publications, for which you have the necessary rights to post, upload or transmit via the Website\n• you are solely responsible for the content you submit; You may not violate, plagiarize, or infringe on the rights of third parties, including copyright, trademark, trade secret, privacy, personal, publicity, moral or proprietary rights\n• the Website may only be used for noncommercial purposes\n• you may not post, upload or transmit any software or other material which contains a virus or other harmful code or device\n• you may not use the Website to distribute chain letters, mass mailings or "spam" or to gather e-mail addresses for the purpose of sending "spam" to others\n• persons under the age of eighteen (18) MUST obtain parental permission before registering, uploading or transmitting material on or through the Website\n• you are not allowed to mirror or frame the Website\n\nCHIRP reserves the right to edit and or remove posts deemed off-topic, abusive or not in conformance with CHIRP\'s Privacy Policy or Terms. CHIRP further reserves the right to deny a user from making further posts by blocking their registration and access to the Website, should the user show repeated disregard for these Terms.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Your Content; Grant of Rights to CHIRP',
-            titleTag: 'h2',
-            content: 'By posting, uploading or transmitting any content or material on or through the Website, you hereby grant CHIRP a non-exclusive, perpetual, royalty-free, worldwide license to use, copy, sublicense, modify, transmit, publicly perform or display the content or material, and your name and location (city, state and/or country), if you provide that information to us, in connection with that content or material, in all media, whether or not now known.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Disclaimer & Limitation of Liability',
-            titleTag: 'h2',
-            content: 'THE WEBSITE AND ANY PRODUCTS SOLD ON OR THROUGH THE WEBSITE ARE AVAILABLE ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF TITLE OR IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. CHIRP DOES NOT WARRANT THAT THE WEBSITE WILL BE UNINTERRUPTED OR ERROR-FREE. USE OF THIS WEBSITE IS ENTIRELY AT YOUR OWN RISK.\n\nIN NO EVENT WILL CHIRP, ITS DIRECTORS, OFFICERS, EMPLOYEES, MEMBERS, SUPPLIERS, LICENSORS, OR OTHER THIRD PARTIES MENTIONED AT THIS WEBSITE BE LIABLE TO YOU IN ANY AMOUNT FOR ANY DAMAGES WHATSOEVER INCLUDING, WITHOUT LIMITATION, DIRECT, INDIRECT, CONSEQUENTIAL, SPECIAL, INCIDENTAL OR PUNITIVE DAMAGES, ARISING OUT OF THE USE OR INABILITY TO USE THE WEBSITE OR RELATING TO ANY PRODUCTS SOLD ON OR THROUGH THE WEBSITE.\n\nYou agree to defend, indemnify and hold harmless CHIRP, its affiliate and its respective officers, directors, principals, employees, contractors, sponsors, agents and affiliates harmless from and against any and all demands, claims, damages, losses, costs and expenses, including, without limitation, reasonable attorneys\' fees and costs of suit, arising or resulting from your use or misuse of the Websites (or any associated services), or materials, comments or content you submit.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Digital Millennium Copyright Act',
-            titleTag: 'h2',
-            content: 'CHIRP respects the intellectual property rights of others. If you believe that your work has been copied in a way that constitutes copyright infringement, please contact us via email at CHIRP@chirpradio.org and send us a proper Digital Millennium Copyright Act ("DMCA") takedown notice. Upon determination that your DMCA takedown notice has been properly executed we will remove the specified infringing content.\n\nIf you wish to send your DMCA takedown notice by mail, please send it to: CHIRP Radio, 4045 N. Rockwell, Chicago, IL 60618',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Miscellaneous',
-            titleTag: 'h2',
-            content: 'The Website is controlled and operated in Chicago, Illinois, United States. CHIRP makes no representation that content, materials or products available on or through the Website are appropriate or available for use outside of the United States.\n\nThese terms of use shall be governed by and construed under State of Illinois law without regard to its choice of law rules, and, where applicable, the laws of the United States. To the extent permissible by law, any disputes under these terms of use or relating to the Website shall be litigated in the local or Federal courts located, and you hereby consent to personal jurisdiction and venue, in the State of Illinois.\n\nIf you have any questions about the terms of use, please contact us.',
-            imagePosition: 'none',
-          },
-        ],
-        showInNav: true,
-        navOrder: 101
-      },
-      {
-        title: 'About CHIRP',
-        slug: 'about',
-        excerpt: 'Learn about CHIRP Radio - Chicago\'s independent, volunteer-driven community radio station.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'ABOUT CHIRP',
-            title: 'About CHIRP Radio',
-            titleTag: 'h1',
-            content: 'CHIRP is a radio station that is all about its community. CHIRP Radio - 107.1FM is a volunteer-driven, community radio station that focuses on music, arts, and culture. We are live and local every day of the year from 6am-midnight from our studios in Chicago\'s North Center neighborhood, and the city we live in is a key part of everything we do.\n\nCHIRP plays a wide mix of local, independent, lesser-heard music, and just generally good music from a variety of genres and eras. CHIRP DJs are true music fans who love to share their discoveries, new and old, with listeners. CHIRP DJs broadcast live from our studios in Chicago\'s North Center neighborhood, curating their own shows and interacting with listeners. CHIRP emphasizes local and independent music and embraces radio\'s traditional strength of creating meaningful connections with listeners. CHIRP also features conversations with artists, activists, and other people doing interesting work, and our award-winning features department produces pieces highlighting Chicago\'s diverse voices and stories.',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'The CHIRP Story',
-            titleTag: 'h2',
-            content: 'The Chicago Independent Radio Project (CHIRP) is a volunteer driven, listener supported radio station built and run by independent-minded music and arts fans. CHIRP is always live and local, connecting Chicago\'s diverse creative communities through its programming and events.\n\nThe Chicago Independent Radio Project was founded in 2007 to bring a new community radio station to Chicago, and to expand low power FM opportunities into urban areas. CHIRP worked with national partners to successfully pass a bill through Congress, the Local Community Radio Act, that has allowed more than 1,000 new stations across the country to go on the air.\n\nCHIRP launched its station online at chirpradio.org in 2010, and hit the terrestrial airwaves at 107.1FM in late 2017. During that time, CHIRP has grown from a small organization into a well-loved, community-focused radio station with one staff member and more than 250 volunteers.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'imageRow',
-            images: [],
-          },
-          {
-            blockType: 'contentCard',
-            preheader: 'Founder & General Manager',
-            title: 'Shawn Campbell',
-            titleTag: 'h2',
-            content: 'Shawn Campbell has three decades of broadcast experience, including eight years as program director at Chicago\'s WLUW, and a stint as a producer and reporter at WBEZ. She\'s also been a news writer and anchor, a DJ, a music director, and a news director. The only thing she wanted to do from the time she was ten years old was to be on the radio.\n\nPrior to becoming CHIRP\'s first employee in March of 2012, Campbell served as President of the Board of Directors for nearly five years. During that time, she and then-Vice President Jennifer Lizak led a White House meeting on the low-power FM broadcast issue with President Obama\'s technology team. In addition to her General Manager duties, she currently hosts a CHIRP show on Saturdays from 12-2pm.',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=800&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Staffing',
-            titleTag: 'h2',
-            content: 'CHIRP is staffed by a General Manager and a volunteer group of roughly 240. CHIRP volunteers head up all station departments, handle DJ and producer duties, manage the technical aspects of the station, plan events and raise funds, create marketing campaigns and build partnerships, and take part in everything else required to run the station. No prior radio experience is required to be a part of CHIRP. New volunteer orientations are held three times each year.\n\nYou can find out more about what you can do to help on our Volunteers Website.\n\nYou can find a list of CHIRP staff and members of the organization\'s Board of Directors here.',
-            imagePosition: 'none',
-          },
-          {
-            blockType: 'imageRow',
-            images: [],
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Our History',
-            titleTag: 'h2',
-            content: 'The Chicago Independent Radio Project, or CHIRP, was formed in the summer of 2007 to bring a truly independent music- and arts-focused community radio station to Chicago.\n\nAt a time when corporate-owned radio grows ever more bland, repetitious, and commercialized, community radio is more important than ever. The volunteers and staff at CHIRP are true believers in radio that is diverse, exciting, live, and locally-based. Community radio is non-commercial, and is created by regular people from all walks of life, not just broadcast professionals. It is committed to playing music the big stations won\'t touch, and to focusing on the vibrant culture of a community that often flies under the radar.\n\nCHIRP launched its station online at CHIRPradio.org in January of 2010. From the time the organization was founded, its members also worked to convince Congress and the Federal Communications Commission to allow new LPFM stations in big cities. CHIRP volunteers and supporters called their legislators and filed public comments with the FCC. In 2010, the bill CHIRP had worked to support, the Local Community Radio Act, was signed into law by President Obama and handed to the Federal Communications Commission to implement.\n\nIn October 2013, the FCC opened its first low-power FM application window in thirteen years, and for the first time made room for urban applicants. CHIRP submitted its broadcast license application in November 2013, and almost exactly one year later, was awarded a broadcast license for 107.1FM.\n\nCHIRP launched its terrestrial broadcast on October 21, 2017 at 107.1FM on the north side of Chicago. Meanwhile, thanks to the bill we helped pass, 700 other new community stations are on the air across the country.',
-            imagePosition: 'none',
-          },
-        ],
-        showInNav: true,
-        navOrder: 1
-      },
-      {
-        title: 'Ways to Give',
-        slug: 'ways-to-give',
-        excerpt: 'Support CHIRP Radio through donations, vehicle donations, record donations, and more.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'DONATE TO CHIRP',
-            title: 'Other Ways to Give',
-            titleTag: 'h1',
-            content: 'Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non ipsum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor ligula. Cras mattis consectetur purus sit amet fermentum.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis.',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Support CHIRP When You Shop',
-            titleTag: 'h2',
-            content: 'Bookmark the following links and use them all year long when you shop. A portion of your sale price will be donated directly to CHIRP!\n\n• eBay\n• Paypal Giving Fund\n• Amazon (While Amazon has discontinued their Smile charitable giving program, their affiliate program remains active. Click this link and shop and CHIRP may receive as much as 8% of your purchase through Amazon Associates from the Amazon home page. There will not be a mention of CHIRP.)',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Wishlist / In-Kind Donations',
-            titleTag: 'h2',
-            content: 'CHIRP can always use donations of the following items:\n\n• white paper\n• printer cartridges\n• padded mailing envelopes in various sizes (unused)\n• packing tape\n• office/office supplies\n• cleaning supplies (paper towels, wax, windex, etc.)\n• coffee\n• monetary gifts or gift cards\n\nContact us for information about specific needs. Thanks so much.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Donate Your Records, CDs, DVDs',
-            titleTag: 'h2',
-            content: 'Have you been thinking of getting rid of your collection of old records, CDs, or DVDs? We have a solution! You can donate your unwanted music and movies to CHIRP Radio for up some space and support your favorite radio station! We can even arrange a pick-up. If you would like to donate your vinyl or other collection to CHIRP, please email our Record Fair team.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Donate Your Vehicle',
-            titleTag: 'h2',
-            content: 'Have an old car, truck, boat, or motorcycle sitting around in your garage? Why not donate it to CHIRP? It doesn\'t even have to run, and you can get a tax deduction! Towing and title transfer is all taken care of for you. Find out more about donating your vehicle to CHIRP.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Donate Bitcoin / Cryptocurrencies',
-            titleTag: 'h2',
-            content: '1. Go to crypto.chirpradio.us\n2. Pick Chicago Independent Radio Project (CHIRP Radio) from the list.\n3. Donate crypto and get a tax receipt!\n\nDonations of appreciated cryptocurrency don\'t trigger capital gains taxes, and may be tax-deductible for the full value.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Join the Vinyl Circle',
-            titleTag: 'h2',
-            content: 'Become a member of our major donor program, CHIRP\'s Vinyl Circle, with a tax-deductible donation and you\'ll join a network of people who are committed to keeping volunteer-driven, local radio a vibrant part of our community. You can find a list of giving levels and benefits here.',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?w=800&h=800&fit=crop',
-          },
-        ],
-        showInNav: true,
-        navOrder: 2
-      },
-      {
-        title: 'Become a Volunteer',
-        slug: 'volunteer',
-        excerpt: 'Join the CHIRP Radio volunteer team and become part of Chicago\'s independent radio community.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'JOIN OUR TEAM',
-            title: 'Become a CHIRP Volunteer',
-            titleTag: 'h1',
-            content: 'CHIRP Radio is powered entirely by passionate volunteers who share a love for independent music and community radio. Whether you dream of being on the airwaves, working behind the scenes, or helping spread the word about great music, there\'s a place for you at CHIRP.\n\nSince 2008, hundreds of volunteers have joined our community to learn new skills, meet fellow music enthusiasts, and contribute to Chicago\'s vibrant independent radio scene. No prior experience necessary — just bring your passion for music and willingness to learn!',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1200&h=800&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Ready to Get Started?',
-            titleTag: 'h2',
-            content: 'To become a CHIRP Radio volunteer, fill out the volunteer form and attend a future volunteer orientation meeting to learn about the station, its departments, and ask any questions you may have.\n\nOrientation meetings are held monthly. After submitting your form, you\'ll receive information about upcoming session dates.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Become a DJ',
-            titleTag: 'h2',
-            content: 'Ever dreamed of being on the radio? CHIRP DJs curate and host their own shows, sharing their musical discoveries with Chicago listeners. All DJs start as volunteers in other departments to learn about the station, then attend DJ orientation, submit an application, and complete training and audition process. CHIRP DJs play a wide array of music from various genres and eras — no specialty shows focused on a single style.\n\nWhat you\'ll do:\n• Curate weekly radio shows\n• Discover and share new music\n• Interview artists and bands\n• Engage with the Chicago music community',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Music Department',
-            titleTag: 'h2',
-            content: 'Help decide what music gets played on CHIRP! The Music Department reviews submissions from artists and labels, manages our music library, creates specialty charts, and ensures DJs have access to the best independent music. Perfect for music enthusiasts who love discovering new artists and organizing collections.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Events Team',
-            titleTag: 'h2',
-            content: 'Plan and execute CHIRP\'s legendary events including concerts, the annual Record Fair, DJ nights, and community gatherings. Work with venues, book talent, manage logistics, and create memorable experiences for music fans across Chicago. Great for people-oriented volunteers who love live music.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Tech Department',
-            titleTag: 'h2',
-            content: 'Keep CHIRP on the air and online! Our Tech team maintains broadcasting equipment, manages our website and streaming infrastructure, develops digital tools, and ensures listeners can tune in anywhere. Perfect for volunteers with technical skills or those wanting to learn about broadcast technology and web development.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Marketing & Social Media',
-            titleTag: 'h2',
-            content: 'Spread the word about CHIRP! Create social media content, design graphics, write newsletters, manage community outreach, and help grow our audience. Ideal for creative volunteers interested in digital marketing, copywriting, graphic design, and building online communities.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Production',
-            titleTag: 'h2',
-            content: 'Create audio content for CHIRP including promos, station IDs, podcast editing, and special features. Learn audio production skills, work with professional software, and help maintain CHIRP\'s unique on-air sound. Great for volunteers interested in audio engineering and creative sound design.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Fundraising',
-            titleTag: 'h2',
-            content: 'Help keep CHIRP on the air! Support fundraising campaigns, coordinate donor outreach, plan fundraising events, and develop sponsorship opportunities. Work with a passionate team to ensure CHIRP remains independent and community-supported.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Partnerships',
-            titleTag: 'h2',
-            content: 'Build relationships with local businesses, venues, and organizations. Develop sponsorship packages, coordinate cross-promotions, and create mutually beneficial partnerships that support both CHIRP and Chicago\'s creative community.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Why Volunteer with CHIRP?',
-            titleTag: 'h2',
-            content: 'Joining CHIRP means more than just volunteering — it means becoming part of a vibrant community of music lovers and creative professionals.\n\n• Learn valuable skills in broadcasting, production, marketing, and more\n• Access to exclusive music industry events and concerts\n• Network with musicians, industry professionals, and fellow music enthusiasts\n• Contribute to Chicago\'s independent music scene\n• Flexible commitment — work around your schedule\n• Potential pathway to becoming an on-air DJ\n• Make lifelong friendships with people who share your passion\n• See direct impact of your work in the community',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'What\'s the Commitment?',
-            titleTag: 'h2',
-            content: 'CHIRP volunteers meet monthly on the third Thursday at 7:30pm for general meetings where we discuss station business, plan events, and socialize. Beyond meetings, volunteers serve in at least one department and contribute according to their availability and interests. Some departments meet regularly while others work remotely. The time commitment varies by department and role, but flexibility is key — we work with your schedule!',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop',
-          },
-        ],
-        showInNav: true,
-        navOrder: 3
-      },
-      {
-        title: 'Contact Us',
-        slug: 'contact',
-        excerpt: 'Get in touch with CHIRP Radio for music submissions, volunteer opportunities, partnerships, and more.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'GET IN TOUCH',
-            title: 'Contact CHIRP Radio',
-            titleTag: 'h1',
-            content: 'We\'d love to hear from you! Whether you have questions, feedback, or want to get involved with CHIRP Radio, we\'re here to help. As a volunteer-driven community radio station, CHIRP thrives on the passion and participation of music lovers like you.\n\nSince 2008, we\'ve been bringing independent music to Chicago\'s airwaves at 107.1 FM, and we couldn\'t do it without our dedicated community of listeners, volunteers, and supporters. Whether you\'re an artist looking to share your music, a music fan wanting to get involved, or a business interested in partnership opportunities, there\'s a place for you at CHIRP.\n\nUse the contact form or reach out using the information below. Our volunteer teams work hard to respond to all inquiries, though response times may vary depending on the department and volume of messages. Thank you for your interest in CHIRP Radio — Chicago\'s independent voice for music discovery!',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1584541728894-dbcae08f94ac?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Submitting Your Music to CHIRP Radio',
-            titleTag: 'h2',
-            content: 'If you\'re an artist or label who would like to submit music to CHIRP Radio for possible airplay, you can contact our music department using the contact form or send it by mail to the address below.\n\nIMPORTANT:\n\n• If you use the contact form, you must select "music submissions" in the dropdown. Submissions sent to any other addresses will be deleted!\n• Please include a brief band bio, your BandCamp or Soundcloud link and a download code.\n• We can only consider submissions with downloadable files! Music submitted via Spotify or YouTube links will NOT be considered because they cannot be used for airplay.\n• Please be aware that due to the volume of mail that we receive, we cannot respond to questions about submission status. However, we do make every effort to listen to all music submitted to CHIRP.\n\nMailing Address:\nCHIRP Radio * attn: Music Department * 4045 N. Rockwell * Chicago, IL 60618',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Proposing an Interview with a Musical Artist',
-            titleTag: 'h2',
-            content: 'CHIRP does regular interviews with local and touring artists, which we offer as podcasts. If you\'re interested in being interviewed for a CHIRP podcast, send a bio and links to music samples using the contact form.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Volunteering for CHIRP',
-            titleTag: 'h2',
-            content: 'CHIRP is a volunteer-driven organization. Volunteers meet monthly to work on issues and events, chart progress, and socialize. Meetings take place on the third Thursday of the month at 7:30pm. CHIRP has many active departments that meet at different times or work remotely. CHIRP\'s departments include Music, Events, Partnerships, Tech, Features, Fundraising, Marketing, Outreach, Volunteer Management, Promotions, Production, and Record Fair. Volunteers can serve in whichever departments match their skills and interests, but all are asked to serve in at least one department.\n\nIf you\'re interested in volunteering with CHIRP, your required first step is to attend a new volunteer meeting. To find the date of the next meeting, please visit our Volunteers website.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Becoming a DJ',
-            titleTag: 'h2',
-            content: 'Anyone hoping to DJ for CHIRP must first attend a new volunteer meeting. From there, volunteers will be expected to participate in other areas and demonstrate their commitment to the organization overall. All potential DJs must attend a CHIRP DJ orientation (offered several times per year), then submit an application and go through a training and audition process. All CHIRP DJs are expected to play a wide array of music from a mix of genres and eras — CHIRP does not feature specialty shows that focus on a single style of music or time period.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Proposing A Ticket Giveaway',
-            titleTag: 'h2',
-            content: 'If you\'d like to propose a ticket giveaway, please contact our promotions department using the contact form.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Proposing A Partnership',
-            titleTag: 'h2',
-            content: 'If you have a business or organization and you\'d like to propose a partnership with CHIRP, please contact our partnerships department using the contact form.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'CHIRP Radio Studio',
-            titleTag: 'h2',
-            content: '4045 N. Rockwell St.\nChicago, IL 60618\n\nPlease note: Our studio is not open to the public. For studio tours or in-person visits, please email us in advance to schedule an appointment.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Connect With Us',
-            titleTag: 'h2',
-            content: 'Follow CHIRP Radio on social media for the latest updates, show announcements, playlists, and behind-the-scenes content.\n\nInstagram: @chirpradio\nFacebook: facebook.com/chirpradio\nTwitter: @chirpradio\nYouTube: CHIRP Radio',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop',
-          },
-        ],
-        showInNav: true,
-        navOrder: 4
-      },
-      {
-        title: 'Ways to Listen',
-        slug: 'ways-to-listen',
-        excerpt: 'Tune in to CHIRP Radio on FM, online streaming, mobile apps, smart speakers, and more.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            preheader: 'LISTEN TO CHIRP',
-            title: 'Other Ways to Listen',
-            titleTag: 'h1',
-            content: 'CHIRP Radio is available across multiple platforms so you can tune in wherever you are. Whether you prefer traditional FM radio, streaming online, or listening on your favorite smart device, we\'ve got you covered.\n\nDiscover all the ways to connect with CHIRP and never miss your favorite shows, DJs, and the best independent music Chicago has to offer.',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1584541728894-dbcae08f94ac?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'FM Radio',
-            titleTag: 'h2',
-            content: 'The classic way to listen to CHIRP:\n\n• 107.1 FM in Chicago and surrounding areas\n• Broadcast 24/7 with no commercials\n• Crystal clear signal covering the entire Chicago metro area',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1606928155414-bb8f56e3e261?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Online Streaming',
-            titleTag: 'h2',
-            content: 'Listen from anywhere in the world:\n\n• Stream directly from chirpradio.org\n• High-quality audio stream\n• Access our complete playlist and show archives\n• Compatible with all modern browsers\n\nOur web player makes it easy to listen from any computer or mobile device.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Smart Speakers & Voice Assistants',
-            titleTag: 'h2',
-            content: 'Listen to CHIRP Radio on your smart speaker! Simply say "Alexa, play CHIRP Radio" or "Hey Google, play CHIRP Radio" and start listening. CHIRP is also available on Apple HomePod and other voice-activated devices.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1543512214-318c7553f230?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Mobile Apps',
-            titleTag: 'h2',
-            content: 'Take CHIRP with you wherever you go! Download the CHIRP Radio app for iOS or Android. Access live streams, view current playlists, discover new music, and get notifications when your favorite DJs are on air.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'Radio Apps & Aggregators',
-            titleTag: 'h2',
-            content: 'Find CHIRP on popular radio apps:\n\n• TuneIn Radio\n• Radio.com\n• iHeartRadio\n• Simple Radio\n\nSearch for "CHIRP Radio Chicago" in your favorite radio app and add us to your favorites for easy access.',
-            imagePosition: 'none',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&h=600&fit=crop',
-          },
-          {
-            blockType: 'contentCard',
-            title: 'CHIRP Podcasts',
-            titleTag: 'h2',
-            content: 'Can\'t catch your favorite show live? No problem! Subscribe to CHIRP\'s podcasts and listen to select shows on demand. Available on Apple Podcasts, Spotify, Google Podcasts, and all major podcast platforms. Never miss an episode of your favorite CHIRP programs.',
-            imagePosition: 'right',
-            backgroundImageUrl: 'https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&h=800&fit=crop',
-          },
-        ],
-        showInNav: true,
-        navOrder: 5
-      },
-      {
-        title: 'CHIRP Vinyl Circle',
-        slug: 'vinyl-circle',
-        excerpt: 'Join CHIRP\'s major donor program and support independent community radio in Chicago.',
-        layout: [
-          {
-            blockType: 'contentCard',
-            title: 'CHIRP Vinyl Circle',
-            titleTag: 'h1',
-            content: 'Become a member of our major donor program, CHIRP\'s Vinyl Circle, with a tax-deductible donation and you\'ll join a network of people who are committed to keeping volunteer-driven, local radio a vibrant part of our community.',
-            imagePosition: 'none',
-          }
-        ],
-        showInNav: false,
-        navOrder: 50
-      }
-    ]
-
-    for (const page of pages) {
-      await payload.create({
-        collection: 'pages',
-        data: page,
-      })
-      console.log(`  ✓ ${page.title}`)
-    }
+    await seedPages(payload)
 
     // Import Podcasts
     console.log(`\n🎙️  Importing ${podcastsData.podcasts.length} podcasts...`)
+
+    // Map podcast category strings to category IDs
+    const podcastCategoryMapping: Record<string, string> = {
+      'Music Interview': 'Music',
+      'Local Music': 'Music',
+      'Record Talk': 'Music',
+      'Album Discussion': 'Music',
+      'Tour Stories': 'Music',
+      'Experimental': 'Music',
+      'Hip-Hop': 'Music',
+      'Production': 'Music',
+      'Live Performance': 'Music',
+      'Genre Exploration': 'Music',
+      'Music Business': 'Music',
+      'Performance': 'Music',
+    }
+
     for (const podcast of podcastsData.podcasts) {
+      // Map podcast category string to category ID
+      const categoryName = podcastCategoryMapping[podcast.category] || 'Music'
+      const categoryId = categoryMap[categoryName]
+
       await payload.create({
         collection: 'podcasts',
         data: {
           ...podcast,
+          // Convert category string to category ID
+          category: categoryId,
           // Handle image URLs
-          coverArtUrl: podcast.coverArt,
+          coverArtUrl: podcast.coverArtUrl || podcast.coverArt,
           coverArt: undefined,
           // Transform tags array from strings to objects
           tags: podcast.tags?.map((tag: string) => ({ tag })) || [],
@@ -756,29 +347,10 @@ const importData = async () => {
     }
 
     // Import Announcements
-    console.log(`\n📣 Importing ${announcementsData.announcements.length} announcements...`)
-    for (const announcement of announcementsData.announcements) {
-      await payload.create({
-        collection: 'announcements',
-        data: {
-          title: announcement.title,
-          message: announcement.message,
-          type: announcement.type,
-          priority: announcement.priority,
-          displayOn: announcement.featuredOnLanding ? ['landing'] : [],
-          startDate: announcement.startDate,
-          endDate: announcement.endDate,
-          isActive: announcement.isActive,
-          ctaText: announcement.ctaText,
-          ctaUrl: announcement.ctaUrl,
-          dismissible: announcement.dismissible,
-          featuredOnLanding: announcement.featuredOnLanding,
-          showDonationBar: announcement.showDonationBar,
-          backgroundColor: announcement.backgroundColor,
-        },
-      })
-      console.log(`  ✓ ${announcement.title}`)
-    }
+    await seedAnnouncements(payload)
+
+    // Import Advertisements
+    await seedAdvertisements(payload)
 
     console.log('✨ Data import completed successfully!')
     process.exit(0)

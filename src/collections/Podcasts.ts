@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types'
+import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
 
 export const Podcasts: CollectionConfig = {
   slug: 'podcasts',
@@ -8,16 +9,25 @@ export const Podcasts: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'host', 'category', 'isActive'],
+    defaultColumns: ['title', 'host', 'category'],
     group: 'Content',
-    preview: (doc) => {
-      return `http://localhost:5173/podcasts/${doc.slug}`
+    livePreview: {
+      url: ({ data }) => `http://localhost:5173/podcasts/${data.slug}`,
     },
   },
   access: {
     read: () => true,
   },
   fields: [
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+      required: true,
+      admin: {
+        description: 'Select a category for this podcast',
+      },
+    },
     {
       name: 'title',
       type: 'text',
@@ -33,42 +43,30 @@ export const Podcasts: CollectionConfig = {
       },
     },
     {
-      name: 'description',
-      type: 'textarea',
-      required: true,
-    },
-    {
       name: 'excerpt',
       type: 'textarea',
       required: true,
+      maxLength: 200,
+      admin: {
+        description: 'Brief summary (max 200 characters)',
+      },
     },
     {
       name: 'content',
       type: 'richText',
       required: true,
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          LinkFeature({
+            enabledCollections: [],
+          }),
+        ],
+      }),
     },
     {
       name: 'host',
       type: 'text',
-      required: true,
-    },
-    {
-      name: 'category',
-      type: 'select',
-      options: [
-        { label: 'Music Interview', value: 'Music Interview' },
-        { label: 'Local Music', value: 'Local Music' },
-        { label: 'Record Talk', value: 'Record Talk' },
-        { label: 'Album Discussion', value: 'Album Discussion' },
-        { label: 'Tour Stories', value: 'Tour Stories' },
-        { label: 'Experimental', value: 'Experimental' },
-        { label: 'Hip-Hop', value: 'Hip-Hop' },
-        { label: 'Production', value: 'Production' },
-        { label: 'Live Performance', value: 'Live Performance' },
-        { label: 'Genre Exploration', value: 'Genre Exploration' },
-        { label: 'Music Business', value: 'Music Business' },
-        { label: 'Performance', value: 'Performance' },
-      ],
       required: true,
     },
     {
@@ -115,14 +113,6 @@ export const Podcasts: CollectionConfig = {
           type: 'text',
         },
       ],
-    },
-    {
-      name: 'isActive',
-      type: 'checkbox',
-      defaultValue: true,
-      admin: {
-        position: 'sidebar',
-      },
     },
   ],
 }
