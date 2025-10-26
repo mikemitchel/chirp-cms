@@ -9,7 +9,7 @@ export const Venues: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'city', 'state'],
-    group: 'Settings',
+    group: 'Site Assets',
   },
   access: {
     read: () => true,

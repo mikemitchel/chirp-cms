@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload/types'
+import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
 
 export const Articles: CollectionConfig = {
   slug: 'articles',
@@ -8,16 +9,22 @@ export const Articles: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'author', 'category', 'publishedDate', 'featured'],
+    defaultColumns: ['title', 'author', 'category', 'publishedDate'],
     group: 'Content',
-    preview: (doc) => {
-      return `http://localhost:5173/articles/${doc.slug}`
+    livePreview: {
+      url: ({ data }) => `http://localhost:5173/articles/${data.slug}`,
     },
   },
   access: {
     read: () => true,
   },
   fields: [
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+      required: true,
+    },
     {
       name: 'title',
       type: 'text',
@@ -34,23 +41,9 @@ export const Articles: CollectionConfig = {
     },
     {
       name: 'author',
-      type: 'group',
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'id',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'profileImage',
-          type: 'text',
-        },
-      ],
+      label: 'Author',
+      type: 'text',
+      required: true,
     },
     {
       name: 'featuredImage',
@@ -69,39 +62,56 @@ export const Articles: CollectionConfig = {
       name: 'excerpt',
       type: 'textarea',
       required: true,
+      maxLength: 200,
+      admin: {
+        description: 'Brief summary (max 200 characters)',
+      },
     },
     {
       name: 'content',
       type: 'richText',
       required: true,
-    },
-    {
-      name: 'youtubeVideoId',
-      type: 'text',
-      admin: {
-        description: 'YouTube video ID (optional)',
-      },
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures,
+          LinkFeature({
+            enabledCollections: [],
+          }),
+        ],
+      }),
     },
     {
       name: 'videoTitle',
       type: 'text',
     },
     {
-      name: 'category',
-      type: 'select',
-      options: [
-        { label: 'Music Scene', value: 'Music Scene' },
-        { label: 'Interview', value: 'Interview' },
-        { label: 'Album Reviews', value: 'Album Reviews' },
-        { label: 'Vinyl Culture', value: 'Vinyl Culture' },
-        { label: 'Venue Guide', value: 'Venue Guide' },
-        { label: 'Community Guide', value: 'Community Guide' },
-        { label: 'Behind the Scenes', value: 'Behind the Scenes' },
-        { label: 'CHIRP History', value: 'CHIRP History' },
-        { label: 'News', value: 'News' },
-        { label: 'Feature', value: 'Feature' },
-      ],
-      required: true,
+      name: 'youtubeVideoId',
+      type: 'text',
+      admin: {
+        description: 'YouTube video ID or full URL (e.g., rXeaPSu1JFY or https://www.youtube.com/watch?v=rXeaPSu1JFY)',
+      },
+      hooks: {
+        beforeChange: [
+          ({ value }) => {
+            if (!value) return value
+
+            // Extract video ID from various YouTube URL formats
+            const patterns = [
+              /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\s?]+)/,
+              /^([a-zA-Z0-9_-]{11})$/ // Direct video ID format
+            ]
+
+            for (const pattern of patterns) {
+              const match = value.match(pattern)
+              if (match) {
+                return match[1]
+              }
+            }
+
+            return value
+          }
+        ]
+      }
     },
     {
       name: 'tags',
@@ -121,32 +131,6 @@ export const Articles: CollectionConfig = {
         date: {
           pickerAppearance: 'dayAndTime',
         },
-      },
-    },
-    {
-      name: 'updatedDate',
-      type: 'date',
-      admin: {
-        date: {
-          pickerAppearance: 'dayAndTime',
-        },
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'featured',
-      type: 'checkbox',
-      defaultValue: false,
-      admin: {
-        position: 'sidebar',
-      },
-    },
-    {
-      name: 'readTime',
-      type: 'number',
-      admin: {
-        description: 'Estimated read time in minutes',
-        position: 'sidebar',
       },
     },
   ],
