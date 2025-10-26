@@ -19,6 +19,7 @@ Content Management System for CHIRP Radio built with Payload CMS.
 ### Installation
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
@@ -26,6 +27,7 @@ Content Management System for CHIRP Radio built with Payload CMS.
 2. **Set up MongoDB:**
 
    **Option A: Local MongoDB**
+
    ```bash
    # Install MongoDB (macOS)
    brew tap mongodb/brew
@@ -40,6 +42,7 @@ Content Management System for CHIRP Radio built with Payload CMS.
    - Update `.env` with your connection string
 
 3. **Configure environment variables:**
+
    ```bash
    # Edit .env file
    DATABASE_URI=mongodb://localhost/chirp-cms  # or your Atlas connection string
@@ -48,6 +51,7 @@ Content Management System for CHIRP Radio built with Payload CMS.
    ```
 
 4. **Start development server:**
+
    ```bash
    npm run dev
    ```
@@ -65,20 +69,24 @@ Content Management System for CHIRP Radio built with Payload CMS.
 ## API Endpoints
 
 ### Articles
+
 - `GET /api/articles` - List all articles
 - `GET /api/articles/:id` - Get single article
 - `GET /api/articles?where[featured][equals]=true` - Get featured articles
 
 ### Events
+
 - `GET /api/events` - List all events
 - `GET /api/events/:id` - Get single event
 - `GET /api/events?where[date][greater_than_equal]=2025-01-01` - Get upcoming events
 
 ### DJs
+
 - `GET /api/djs` - List all DJs
 - `GET /api/djs/:id` - Get single DJ profile
 
 ### Media
+
 - `GET /api/media` - List all media
 - `GET /api/media/:id` - Get single media item
 
@@ -87,6 +95,7 @@ Content Management System for CHIRP Radio built with Payload CMS.
 All API responses match the frontend's expected JSON structure:
 
 **Article Example:**
+
 ```json
 {
   "id": "article-001",
@@ -111,16 +120,19 @@ All API responses match the frontend's expected JSON structure:
 ## Deployment
 
 ### Build for production:
+
 ```bash
 npm run build
 ```
 
 ### Run production server:
+
 ```bash
 npm run serve
 ```
 
 ### Deploy to EC2 (or similar):
+
 1. Copy project to server
 2. Install dependencies: `npm install`
 3. Build: `npm run build`
@@ -148,11 +160,37 @@ chirp-data/
 
 ## Scripts
 
+### Development
+
 - `npm run dev` - Start development server
+- `npm run typecheck` - Run TypeScript type checking
+- `npm run lint` - Check for linting issues
+- `npm run lint:fix` - Auto-fix linting issues
+- `npm run format` - Format all files with Prettier
+- `npm run format:check` - Check code formatting
+
+### Production
+
 - `npm run build` - Build for production
-- `npm run serve` - Run production server
+- `npm run start` - Run production server
+
+### Data & Types
+
 - `npm run seed` - Import data from JSON files
-- `npm run generate:types` - Generate TypeScript types
+- `npm run generate:types` - Generate TypeScript types from Payload schema
+
+## Development Workflow
+
+### Pre-commit Checks
+
+Git hooks are automatically set up via Husky when you run `npm install`.
+
+Before each commit, the following checks run automatically:
+
+- **ESLint** - Checks code quality and auto-fixes issues
+- **Prettier** - Formats code consistently
+
+This ensures consistent code quality and formatting across the team.
 
 ## Notes
 
