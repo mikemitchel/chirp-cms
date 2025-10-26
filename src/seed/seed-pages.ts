@@ -2653,7 +2653,7 @@ export async function seedPages(payload: any) {
   },
   {
     "title": "Ways to Listen",
-    "slug": "ways-to-listen",
+    "slug": "other-ways-to-listen",
     "excerpt": "Tune in to CHIRP Radio on FM, online streaming, mobile apps, smart speakers, and more.",
     "layout": [
       {
@@ -4063,16 +4063,1965 @@ export async function seedPages(payload: any) {
     "sidebarAnnouncementId": 3,
     "sidebarContentType": "events",
     "sidebarAdvertisementId": 6
+  },
+  {
+    "title": "Websites to Remember",
+    "slug": "websites-to-remember",
+    "excerpt": "Essential links and resources for CHIRP volunteers, including general information, mailing lists, and DJ-specific tools.",
+    "layout": [
+      {
+        "blockType": "contentCard",
+        "title": "Websites to Remember",
+        "titleTag": "h1",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Welcome to your volunteer resource hub! This page contains essential links and tools you'll need as a CHIRP volunteer. From logging your hours to booking the production studio, accessing DJ resources, and joining mailing lists — everything you need is organized here for easy reference. Bookmark this page and check back regularly for updates.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "General Links",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Essential resources for all CHIRP volunteers.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP Passport",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - New to CHIRP? Check out this guide to the many ways you can get involved, and earn a free t-shirt!",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Log your hours",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Log in to Volunteer Impact to log your hours.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Past Hell Yeah Award Winners",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Each month, we recognize a volunteer who has gone above and beyond expectations in support of CHIRP. Here is a list of past winners!",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Production Studio calendar",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Use this calendar to book the production studio for a DJ audition, for Production work, or for Features work. Book multiple consecutive events for time over 60 minutes.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Review Tracker App",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Sign up for albums to review here.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Setting Up the CHIRP Tent",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Here's a short video to show you the basic setup for the CHIRP tent. You can just reverse engineer it to take it down. This video will show you about attaching the back wall, but it's pretty self explanatory with the velcro connectors that attach to the frame. Please be gentle when setting up or taking down the tent -- never force anything!",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Social Media Post Request Form",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - When you'd like something posted on one (or more) of CHIRP's social media assets (Facebook, Twitter, Instagram) or in the newsletter, use this form to submit the details. Be sure to give plenty of notice.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Staff Ticket Sign-up",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Sign up here for available CHIRP staff tickets to upcoming shows. Remember to limit sign-ups to one per 30 days!",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Mailing Lists",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Here are links to all of the CHIRP Radio Mailing Lists.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP DJ list",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is the list for all active CHIRP DJs, weekly and sub.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP Features list",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is the list for volunteers interested in conducting and producing artist interviews.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP Marketing and Outreach list",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is the list for volunteers interested in working on marketing, design, and outreach projects.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP Production list",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is a group for volunteers interested in producing, mixing, voicing, or recording projects, including station promos, podcasts, and special features.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP Record Fair list",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is the list for volunteers interested in working on the CHIRP Record Fairs.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Main Volunteer Mailing List",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - The mailing list for all general CHIRP news and station business.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "DJ Items",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "These links relate to DJ training sessions, helpful resources, and collaborative Spotify playlists.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP DJ 202 - engineering, on-air presentation, and programming your show",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is the general discussion portion of the DJ202 session, covering topics relating to engineering, on-air presentation, and programming your show.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP DJ202 - Advanced Techniques with Spotify, Traktor, and the DJDB",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - This is a run-through of advanced techniques for playing single tracks, building collaborative playlists, searching and identifying label information in Spotify, setting cue points and searching in Traktor, and using filters in the DJDB.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "How to cue in Traktor when something is playing on the other deck",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Here's a video from Mike Nikolich made to show how to cue something in Traktor when you've already got a track playing on the other deck. Thanks, Mike!",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Show resources",
+                    "format": 1,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": " - Upcoming show listings, local news, events, and music reviews, weather, and general info to help enhance your show.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      }
+    ],
+    "sidebarContentType": "none"
+  },
+  {
+    "title": "Volunteer Downloads",
+    "slug": "volunteer-downloads",
+    "excerpt": "Access essential documents, forms, guides, and resources for CHIRP volunteers including production guides, marketing materials, and DJ forms.",
+    "layout": [
+      {
+        "blockType": "contentCard",
+        "title": "Volunteer Downloads",
+        "titleTag": "h1",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Access essential documents, forms, guides, and resources for CHIRP volunteers. From production guides to marketing materials, DJ forms to legal documents — everything you need to support your volunteer work is here.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Production processes, instructions, and tips",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Instructions, tips, and guides relating to production-related tasks",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Field Recorder checkout process",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Field recorder use with built-in mics",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Field recorder use with shotgun mic",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Field recorder use with standard mic",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 4
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "First Time event-recording procedures",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 5
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Why You're Doing Audio Levels Wrong, and Why It Really Does Matter (Current.org)",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 6
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Marketing, Partnerships, and Sponsorships",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Media kit, partnership and DJ services info, sponsorship packages, etc.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Street Team Tips",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Tabling for CHIRP: Everything You Need To Know",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Skills and Tips",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Articles on improving your skills and other interesting topics.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Getting Over the Fear of Asking for Donations (from grassrootsfundraising.org)",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Great DJ Tips",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Interview Questions to Avoid - wisdom from Brendan Kelly of the Lawrence Arms",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 3
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Tabling for CHIRP: Everything You Need To Know",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 4
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Ways to Promote via Social Media (from airmedia.org)",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                "indent": 0,
+                    "version": 1,
+                    "value": 5
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "HR Documents",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Policy manuals and other documents",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP Policy Manual",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Volunteer Files",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Files for new volunteers to learn about how CHIRP works.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP Guidelines for Photography",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP Script Standards",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP Talking Points",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 3
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Fundraising Information and Donation Forms",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Here, you'll find forms for people who want to donate items to CHIRP, or who would like to make monetary donations offline.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Getting Over the Fear of Asking for Donations (from grassrootsfundraising.org)",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "In-Kind Donation Form & Instructions",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Legal Documents",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Important legal documents and agreements for CHIRP volunteers.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Flyers/Postcards",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "We'll keep an updated list of files you can download and print out to help promote CHIRP events.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "DJ Forms",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Shift applications and more...",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP New DJ Application",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "DJ Rig Operating Instructions",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Logos",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "These are various logos for CHIRP Radio and the Chicago Independent Radio Project.",
+                    "format": 0,
+                    "detail": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP horizontal broadcast logo PDF",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 1
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "CHIRP Record Album Logo PDF",
+                        "format": 0,
+                        "detail": 0,
+                        "mode": "normal",
+                        "style": "",
+                        "version": 1
+                      }
+                    ],
+                    "direction": "ltr",
+                    "format": "",
+                    "indent": 0,
+                    "version": 1,
+                    "value": 2
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none"
+      }
+    ],
+    "sidebarContentType": "none"
+  },
+  {
+    "title": "Other Ways to Give",
+    "slug": "other-ways-to-give",
+    "excerpt": "Discover various ways to support CHIRP Radio beyond direct donations.",
+    "layout": [
+      {
+        "blockType": "contentCard",
+        "preheader": "DONATE TO CHIRP",
+        "title": "Other Ways to Give",
+        "titleTag": "h1",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Nulla vitae elit libero, a pharetra augue. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non ipsum. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Curabitur blandit tempus porttitor ligula. Cras mattis consectetur purus sit amet fermentum."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Integer posuere erat a ante venenatis."
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "right",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Support Chirp When You Shop",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Bookmark the following links and use them all year long when you shop. A portion of your sale price will be donated directly to CHIRP!"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "eBay"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Paypal Giving Fund"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "Amazon (While Amazon has discontinued their Smile charitable giving program, their affiliate program remains active. Click this link and shop and CHIRP may receive as much as 8% of your purchase through Amazon Associates from the Amazon home page. There will not be a mention of CHIRP.)"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&h=600&fit=crop"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Wishlist / In-Kind Donations",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "CHIRP can always use donations of the following items:"
+                  }
+                ]
+              },
+              {
+                "type": "list",
+                "listType": "bullet",
+                "start": 1,
+                "tag": "ul",
+                "children": [
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "white paper"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "printer cartridges"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "padded mailing envelopes in various sizes (unused)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "packing tape"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "office/office supplies"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "cleaning supplies (paper towels, wax, windex, etc.)"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "coffee"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "listitem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "monetary gifts or gift cards"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Contact us for information about specific needs. Thanks so much."
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Donate Your Records, CDs, DVDs",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Have you been thinking of getting rid of your collection of old records, CDs, or DVDs? We have a solution! You can donate your unwanted music and movies to CHIRP Radio for up some space and support your favorite radio station! We can even arrange a pick-up. If you would like to donate your vinyl or other collection to CHIRP, please email our Record Fair team."
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1512733596533-7b00ccf8ebaf?w=800&h=600&fit=crop"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Donate Your Vehicle",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Have an old car, truck, boat, or motorcycle sitting around in your garage? Why not donate it to CHIRP? It doesn't even have to run, and you can get a tax deduction! Towing and title transfer is all taken care of for you. Find out more about donating your vehicle to CHIRP."
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&h=600&fit=crop"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Donate Bitcoin / Cryptocurrencies",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "1. Go to crypto.chirpradio.us"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "2. Pick Chicago Independent Radio Project (CHIRP Radio) from the list."
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "3. Donate crypto and get a tax receipt!"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Donations of appreciated cryptocurrency don't trigger capital gains taxes, and may be tax-deductible for the full value."
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "none",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=800&h=600&fit=crop"
+      },
+      {
+        "blockType": "contentCard",
+        "title": "Join the Vinyl Circle",
+        "titleTag": "h2",
+        "content": {
+          "root": {
+            "type": "root",
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "text": "Become a member of our major donor program, CHIRP's Vinyl Circle, with a tax-deductible donation and you'll join a network of people who are committed to keeping volunteer-driven, local radio a vibrant part of our community. You can find a list of giving levels and benefits here."
+                  }
+                ]
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "version": 1
+          }
+        },
+        "imagePosition": "right",
+        "backgroundImageUrl": "https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?w=800&h=800&fit=crop"
+      }
+    ],
+    "sidebarAnnouncementId": 6,
+    "sidebarContentType": "events",
+    "sidebarAdvertisementId": 4
+  },
+  {
+    "title": "Volunteer Calendar",
+    "slug": "volunteer-calendar",
+    "excerpt": "Stay up to date with CHIRP volunteer events, training sessions, and community gatherings.",
+    "layout": [],
+    "sidebarAnnouncementId": 1,
+    "sidebarContentType": "events",
+    "sidebarAdvertisementId": 4
   }
 ]
 
+  // Get all announcements and advertisements once (sorted by creation order)
+  const { docs: allAnnouncements } = await payload.find({
+    collection: 'announcements',
+    limit: 100,
+    sort: 'createdAt',
+  })
+  const { docs: allAdvertisements } = await payload.find({
+    collection: 'advertisements',
+    limit: 100,
+    sort: 'createdAt',
+  })
+
   for (const page of pages) {
-    // Remove the sidebar IDs - these will be set up later if needed
+    // Extract sidebar IDs from the page data
     const { sidebarAnnouncementId, sidebarAdvertisementId, ...pageData } = page
-    
+
+    // Map the numeric IDs to actual document IDs
+    const sidebarAnnouncement = sidebarAnnouncementId ? allAnnouncements[sidebarAnnouncementId - 1]?.id : undefined
+    const sidebarAdvertisement = sidebarAdvertisementId ? allAdvertisements[sidebarAdvertisementId - 1]?.id : undefined
+
     await payload.create({
       collection: 'pages',
-      data: pageData,
+      data: {
+        ...pageData,
+        sidebarAnnouncement,
+        sidebarAdvertisement,
+      },
     })
     console.log(`  ✓ ${page.title}`)
   }

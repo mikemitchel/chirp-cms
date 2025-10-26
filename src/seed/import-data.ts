@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url'
 import { seedAdvertisements } from './seed-advertisements'
 import { seedAnnouncements } from './seed-announcements'
 import { seedPages } from './seed-pages'
+import { volunteerCalendarEvents } from './seed-volunteer-calendar'
+import { seedSiteSettings } from './seed-site-settings'
 
 dotenv.config()
 
@@ -103,6 +105,10 @@ const importData = async () => {
     const { docs: existingAnnouncements } = await payload.find({ collection: 'announcements', limit: 1000 })
     for (const announcement of existingAnnouncements) {
       await payload.delete({ collection: 'announcements', id: announcement.id })
+    }
+    const { docs: existingVolunteerCalendar } = await payload.find({ collection: 'volunteerCalendar', limit: 1000 })
+    for (const volunteerEvent of existingVolunteerCalendar) {
+      await payload.delete({ collection: 'volunteerCalendar', id: volunteerEvent.id })
     }
     console.log('✓ Existing data cleared\n')
 
@@ -282,6 +288,10 @@ const importData = async () => {
       }
     }
 
+    // Import Announcements and Advertisements first (needed for page sidebar references)
+    await seedAnnouncements(payload)
+    await seedAdvertisements(payload)
+
     // Import Pages
     await seedPages(payload)
 
@@ -346,11 +356,18 @@ const importData = async () => {
       console.log(`  ✓ ${podcast.title}`)
     }
 
-    // Import Announcements
-    await seedAnnouncements(payload)
+    // Import Volunteer Calendar
+    console.log('📅 Importing volunteer calendar events...')
+    for (const event of volunteerCalendarEvents) {
+      await payload.create({
+        collection: 'volunteerCalendar',
+        data: event,
+      })
+      console.log(`  ✓ ${event.name}`)
+    }
 
-    // Import Advertisements
-    await seedAdvertisements(payload)
+    // Seed Site Settings
+    await seedSiteSettings(payload)
 
     console.log('✨ Data import completed successfully!')
     process.exit(0)

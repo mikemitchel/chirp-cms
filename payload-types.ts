@@ -74,10 +74,13 @@ export interface Config {
     categories: Category;
     articles: Article;
     events: Event;
+    volunteerCalendar: VolunteerCalendar;
+    weeklyCharts: WeeklyChart;
     pages: Page;
     podcasts: Podcast;
     announcements: Announcement;
     advertisements: Advertisement;
+    shopItems: ShopItem;
     djs: Dj;
     media: Media;
     'payload-locked-documents': PayloadLockedDocument;
@@ -93,10 +96,13 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
+    volunteerCalendar: VolunteerCalendarSelect<false> | VolunteerCalendarSelect<true>;
+    weeklyCharts: WeeklyChartsSelect<false> | WeeklyChartsSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     podcasts: PodcastsSelect<false> | PodcastsSelect<true>;
     announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
     advertisements: AdvertisementsSelect<false> | AdvertisementsSelect<true>;
+    shopItems: ShopItemsSelect<false> | ShopItemsSelect<true>;
     djs: DjsSelect<false> | DjsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -106,8 +112,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    siteSettings: SiteSetting;
+  };
+  globalsSelect: {
+    siteSettings: SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -362,6 +372,110 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerCalendar".
+ */
+export interface VolunteerCalendar {
+  id: number;
+  name: string;
+  startDate: string;
+  /**
+   * Optional - leave blank if same as start date
+   */
+  endDate?: string | null;
+  /**
+   * Human-readable date and time (e.g., "Wednesday, October 15, 2025 at 6:00 PM")
+   */
+  dateTime: string;
+  /**
+   * Brief description of the event
+   */
+  description: string;
+  /**
+   * Full address or virtual meeting info
+   */
+  location: string;
+  /**
+   * Bullet points with additional event details
+   */
+  eventDetails?:
+    | {
+        detail: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional link for more information
+   */
+  moreInfoUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weeklyCharts".
+ */
+export interface WeeklyChart {
+  id: number;
+  /**
+   * Auto-generated from list type and week, e.g. "Top 50 for the week of October 20, 2025"
+   */
+  title: string;
+  /**
+   * Type of chart/list
+   */
+  listType: 'Top 50' | "This Week's Adds" | 'Top 10 Favorites';
+  /**
+   * Monday of the week this chart represents
+   */
+  weekOf: string;
+  /**
+   * Upload a CSV file (format: Position,Artist,Track,Label). Click "Create New" to select and upload a file.
+   */
+  csvFile?: (number | null) | Media;
+  /**
+   * Or paste CSV data here (format: Position,Artist,Track,Label). Each line should be one track. This will populate the tracks below when you save.
+   */
+  csvImport?: string | null;
+  /**
+   * Tracks for this chart. Format: Artist – Track (Label)
+   */
+  tracks: {
+    /**
+     * Chart position (auto-numbered based on order, or manually set)
+     */
+    position?: number | null;
+    artist: string;
+    /**
+     * Track/album title
+     */
+    trackName: string;
+    /**
+     * Record label (use "self-released" if independent)
+     */
+    label: string;
+    id?: string | null;
+  }[];
+  /**
+   * Mark this as the current week's chart to display on the Listen page
+   */
+  isCurrentWeek?: boolean | null;
+  /**
+   * Optional notes or highlights for this week
+   */
+  notes?: string | null;
+  /**
+   * Position of the featured/highlighted track (optional)
+   */
+  featuredTrack?: number | null;
+  /**
+   * Publish status
+   */
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
@@ -445,54 +559,193 @@ export interface Page {
  */
 export interface Announcement {
   id: number;
-  title: string;
-  message: string;
-  type: 'fundraiser' | 'event' | 'content' | 'technical' | 'alert' | 'volunteer' | 'schedule';
-  priority: 'high' | 'medium' | 'low';
   /**
-   * Select which pages this announcement should appear on
+   * Main headline for the announcement
    */
-  displayOn?:
+  headlineText: string;
+  /**
+   * Body content (supports rich text)
+   */
+  bodyText: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Display style of the announcement
+   */
+  variant: 'donation' | 'motivation';
+  textureBackground:
+    | 'cr-bg-natural-a500'
+    | 'cr-bg-natural-s100'
+    | 'cr-bg-natural-s900'
+    | 'cr-bg-natural-d100'
+    | 'cr-bg-natural-d900';
+  showLink?: boolean | null;
+  /**
+   * Link text (e.g., "Donate Today!")
+   */
+  linkText?: string | null;
+  /**
+   * Link URL
+   */
+  linkUrl?: string | null;
+  /**
+   * Number of action buttons to display
+   */
+  buttonCount?: ('none' | 'one' | 'two') | null;
+  /**
+   * First button text
+   */
+  button1Text?: string | null;
+  /**
+   * First button icon
+   */
+  button1Icon?:
     | (
-        | 'landing'
-        | 'articles'
-        | 'events'
-        | 'podcasts'
-        | 'djs'
-        | 'about'
-        | 'volunteer'
-        | 'contact'
-        | 'ways-to-give'
-        | 'ways-to-listen'
-      )[]
+        | 'PiArrowRight'
+        | 'PiArrowSquareUp'
+        | 'PiCaretLeft'
+        | 'PiCaretRight'
+        | 'PiCaretUp'
+        | 'PiCaretDown'
+        | 'PiCaretUpDown'
+        | 'PiX'
+        | 'PiXBold'
+        | 'PiMagnifyingGlass'
+        | 'PiDotsThreeOutlineVerticalFill'
+        | 'PiPlus'
+        | 'PiMinus'
+        | 'PiCalendarBlank'
+        | 'PiCalendarDot'
+        | 'PiCalendarDots'
+        | 'PiCalendarPlus'
+        | 'PiTicket'
+        | 'PiVinylRecord'
+        | 'PiMusicNote'
+        | 'PiMusicNotes'
+        | 'PiPlaylist'
+        | 'PiPlayFill'
+        | 'PiPauseFill'
+        | 'PiHeadphones'
+        | 'PiMicrophone'
+        | 'PiHeart'
+        | 'PiHeartFill'
+        | 'PiHandHeart'
+        | 'PiHandHeartLight'
+        | 'PiUser'
+        | 'PiUserCircle'
+        | 'PiChatCircleText'
+        | 'PiChatCircleTextLight'
+        | 'PiSignIn'
+        | 'PiReadCvLogo'
+        | 'PiNotepad'
+        | 'PiPaperclip'
+        | 'PiNewspaper'
+        | 'PiMapTrifold'
+        | 'PiPaperPlaneRight'
+        | 'PiPaperPlaneTilt'
+        | 'PiGear'
+        | 'PiFloppyDisk'
+        | 'PiPencilSimple'
+        | 'PiUploadSimple'
+        | 'PiShoppingBag'
+        | 'PiEye'
+        | 'PiEyeSlash'
+        | 'PiDownload'
+        | 'PiDownloadSimple'
+        | 'PiExport'
+        | 'PiPlusCircle'
+        | 'PiPlusSquare'
+        | 'speaker'
+        | 'mobile'
+      )
     | null;
-  startDate: string;
-  endDate: string;
-  isActive?: boolean | null;
   /**
-   * Call-to-action button text (optional)
+   * Second button text
    */
-  ctaText?: string | null;
+  button2Text?: string | null;
   /**
-   * Call-to-action button URL (optional)
+   * Second button icon
    */
-  ctaUrl?: string | null;
+  button2Icon?:
+    | (
+        | 'PiArrowRight'
+        | 'PiArrowSquareUp'
+        | 'PiCaretLeft'
+        | 'PiCaretRight'
+        | 'PiCaretUp'
+        | 'PiCaretDown'
+        | 'PiCaretUpDown'
+        | 'PiX'
+        | 'PiXBold'
+        | 'PiMagnifyingGlass'
+        | 'PiDotsThreeOutlineVerticalFill'
+        | 'PiPlus'
+        | 'PiMinus'
+        | 'PiCalendarBlank'
+        | 'PiCalendarDot'
+        | 'PiCalendarDots'
+        | 'PiCalendarPlus'
+        | 'PiTicket'
+        | 'PiVinylRecord'
+        | 'PiMusicNote'
+        | 'PiMusicNotes'
+        | 'PiPlaylist'
+        | 'PiPlayFill'
+        | 'PiPauseFill'
+        | 'PiHeadphones'
+        | 'PiMicrophone'
+        | 'PiHeart'
+        | 'PiHeartFill'
+        | 'PiHandHeart'
+        | 'PiHandHeartLight'
+        | 'PiUser'
+        | 'PiUserCircle'
+        | 'PiChatCircleText'
+        | 'PiChatCircleTextLight'
+        | 'PiSignIn'
+        | 'PiReadCvLogo'
+        | 'PiNotepad'
+        | 'PiPaperclip'
+        | 'PiNewspaper'
+        | 'PiMapTrifold'
+        | 'PiPaperPlaneRight'
+        | 'PiPaperPlaneTilt'
+        | 'PiGear'
+        | 'PiFloppyDisk'
+        | 'PiPencilSimple'
+        | 'PiUploadSimple'
+        | 'PiShoppingBag'
+        | 'PiEye'
+        | 'PiEyeSlash'
+        | 'PiDownload'
+        | 'PiDownloadSimple'
+        | 'PiExport'
+        | 'PiPlusCircle'
+        | 'PiPlusSquare'
+        | 'speaker'
+        | 'mobile'
+      )
+    | null;
   /**
-   * Can users dismiss this announcement?
+   * Current donation amount
    */
-  dismissible?: boolean | null;
+  currentAmount?: number | null;
   /**
-   * Show prominently on landing page
+   * Target donation goal
    */
-  featuredOnLanding?: boolean | null;
-  /**
-   * Show donation progress bar
-   */
-  showDonationBar?: boolean | null;
-  /**
-   * CSS class for background color (e.g., cr-bg-natural-a500)
-   */
-  backgroundColor?: string | null;
+  targetAmount?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -620,6 +873,121 @@ export interface Podcast {
         id?: string | null;
       }[]
     | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shopItems".
+ */
+export interface ShopItem {
+  id: number;
+  /**
+   * Product name
+   */
+  name: string;
+  /**
+   * URL-friendly identifier (auto-generated from name)
+   */
+  slug: string;
+  /**
+   * Product description
+   */
+  description: string;
+  /**
+   * Display type (e.g., Apparel, Poster, Merchandise)
+   */
+  itemType?: string | null;
+  /**
+   * Product category
+   */
+  category: 'apparel' | 'accessories' | 'merchandise' | 'music' | 'other';
+  /**
+   * Price in USD
+   */
+  price: number;
+  /**
+   * Product images (first image is the main image)
+   */
+  images?:
+    | {
+        image: number | Media;
+        /**
+         * Alt text for accessibility
+         */
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * External image URL (if not using uploaded image)
+   */
+  imageUrl?: string | null;
+  /**
+   * Additional product images (external URLs)
+   */
+  additionalImageUrls?:
+    | {
+        /**
+         * Additional image URL
+         */
+        url: string;
+        /**
+         * Alt text for accessibility
+         */
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Is this item currently in stock?
+   */
+  inStock?: boolean | null;
+  /**
+   * Available sizes (e.g., S, M, L, XL)
+   */
+  sizes?:
+    | {
+        size: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Product variants (colors, styles, etc.)
+   */
+  variants?:
+    | {
+        /**
+         * Variant name (e.g., Color, Style)
+         */
+        name: string;
+        options: {
+          option: string;
+          id?: string | null;
+        }[];
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * External purchase URL (if sold on another platform)
+   */
+  externalUrl?: string | null;
+  /**
+   * Feature this item on the shop homepage
+   */
+  featured?: boolean | null;
+  /**
+   * Mark as sold out
+   */
+  soldOut?: boolean | null;
+  /**
+   * Mark as limited edition
+   */
+  limitedEdition?: boolean | null;
+  /**
+   * Display order (lower numbers appear first)
+   */
+  displayOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -802,6 +1170,14 @@ export interface PayloadLockedDocument {
         value: number | Event;
       } | null)
     | ({
+        relationTo: 'volunteerCalendar';
+        value: number | VolunteerCalendar;
+      } | null)
+    | ({
+        relationTo: 'weeklyCharts';
+        value: number | WeeklyChart;
+      } | null)
+    | ({
         relationTo: 'pages';
         value: number | Page;
       } | null)
@@ -816,6 +1192,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'advertisements';
         value: number | Advertisement;
+      } | null)
+    | ({
+        relationTo: 'shopItems';
+        value: number | ShopItem;
       } | null)
     | ({
         relationTo: 'djs';
@@ -983,6 +1363,53 @@ export interface EventsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerCalendar_select".
+ */
+export interface VolunteerCalendarSelect<T extends boolean = true> {
+  name?: T;
+  startDate?: T;
+  endDate?: T;
+  dateTime?: T;
+  description?: T;
+  location?: T;
+  eventDetails?:
+    | T
+    | {
+        detail?: T;
+        id?: T;
+      };
+  moreInfoUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weeklyCharts_select".
+ */
+export interface WeeklyChartsSelect<T extends boolean = true> {
+  title?: T;
+  listType?: T;
+  weekOf?: T;
+  csvFile?: T;
+  csvImport?: T;
+  tracks?:
+    | T
+    | {
+        position?: T;
+        artist?: T;
+        trackName?: T;
+        label?: T;
+        id?: T;
+      };
+  isCurrentWeek?: T;
+  notes?: T;
+  featuredTrack?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages_select".
  */
 export interface PagesSelect<T extends boolean = true> {
@@ -1058,20 +1485,20 @@ export interface PodcastsSelect<T extends boolean = true> {
  * via the `definition` "announcements_select".
  */
 export interface AnnouncementsSelect<T extends boolean = true> {
-  title?: T;
-  message?: T;
-  type?: T;
-  priority?: T;
-  displayOn?: T;
-  startDate?: T;
-  endDate?: T;
-  isActive?: T;
-  ctaText?: T;
-  ctaUrl?: T;
-  dismissible?: T;
-  featuredOnLanding?: T;
-  showDonationBar?: T;
-  backgroundColor?: T;
+  headlineText?: T;
+  bodyText?: T;
+  variant?: T;
+  textureBackground?: T;
+  showLink?: T;
+  linkText?: T;
+  linkUrl?: T;
+  buttonCount?: T;
+  button1Text?: T;
+  button1Icon?: T;
+  button2Text?: T;
+  button2Icon?: T;
+  currentAmount?: T;
+  targetAmount?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1096,6 +1523,59 @@ export interface AdvertisementsSelect<T extends boolean = true> {
   href?: T;
   target?: T;
   showLabel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shopItems_select".
+ */
+export interface ShopItemsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  description?: T;
+  itemType?: T;
+  category?: T;
+  price?: T;
+  images?:
+    | T
+    | {
+        image?: T;
+        alt?: T;
+        id?: T;
+      };
+  imageUrl?: T;
+  additionalImageUrls?:
+    | T
+    | {
+        url?: T;
+        alt?: T;
+        id?: T;
+      };
+  inStock?: T;
+  sizes?:
+    | T
+    | {
+        size?: T;
+        id?: T;
+      };
+  variants?:
+    | T
+    | {
+        name?: T;
+        options?:
+          | T
+          | {
+              option?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  externalUrl?: T;
+  featured?: T;
+  soldOut?: T;
+  limitedEdition?: T;
+  displayOrder?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1244,6 +1724,263 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "siteSettings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * Show announcement banner at top of landing page
+   */
+  showTopAnnouncement?: boolean | null;
+  /**
+   * Select which announcement to display at top of landing page
+   */
+  topAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which announcement to display in sidebar
+   */
+  sidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  sidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Show 3 random songs from logged-in user's saved collection (if they have any)
+   */
+  showUserCollection?: boolean | null;
+  /**
+   * Select which Weekly Chart list to display in sidebar
+   */
+  listenSidebarWeeklyChart?: (number | null) | WeeklyChart;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  listenSidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Select announcement for full-width section (e.g., "DJ Applications Now Open")
+   */
+  fullWidthAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which Weekly Chart list to display on the left
+   */
+  leftWeeklyChart?: (number | null) | WeeklyChart;
+  /**
+   * Select which Weekly Chart list to display on the right
+   */
+  rightWeeklyChart?: (number | null) | WeeklyChart;
+  /**
+   * Select which announcement to display in sidebar
+   */
+  eventsSidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which content type to display in sidebar
+   */
+  eventsSidebarContentType?: ('articles' | 'podcasts' | 'events' | 'none') | null;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  eventsSidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Select announcement for full-width section (e.g., "Stream Quality Upgrade")
+   */
+  eventsFullWidthAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which announcement to display in sidebar
+   */
+  articlesSidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which content type to display in sidebar
+   */
+  articlesSidebarContentType?: ('articles' | 'podcasts' | 'events' | 'none') | null;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  articlesSidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Select announcement for full-width section
+   */
+  articlesFullWidthAnnouncement?: (number | null) | Announcement;
+  /**
+   * Content for the support section above the footer
+   */
+  supportContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Show DCase logo in support section
+   */
+  showDCaseLogo?: boolean | null;
+  /**
+   * DCase logo image
+   */
+  dCaseLogo?: (number | null) | Media;
+  /**
+   * URL when DCase logo is clicked
+   */
+  dCaseLogoUrl?: string | null;
+  /**
+   * Show Illinois Arts Council logo in support section
+   */
+  showIlArtsCouncilLogo?: boolean | null;
+  /**
+   * Illinois Arts Council logo image
+   */
+  ilArtsCouncilLogo?: (number | null) | Media;
+  /**
+   * URL when Illinois Arts Council logo is clicked
+   */
+  ilArtsCouncilLogoUrl?: string | null;
+  /**
+   * Additional support logos (up to 3)
+   */
+  additionalLogos?:
+    | {
+        /**
+         * Logo image
+         */
+        logo?: (number | null) | Media;
+        /**
+         * URL when logo is clicked (optional)
+         */
+        logoUrl?: string | null;
+        /**
+         * Alt text for logo
+         */
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Advertisement to show in support section
+   */
+  supportAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Copyright text. Use {year} as placeholder for current year.
+   */
+  copyrightText?: string | null;
+  /**
+   * Social media links for footer
+   */
+  socialLinks?:
+    | {
+        platform:
+          | 'facebook'
+          | 'twitter'
+          | 'instagram'
+          | 'bluesky'
+          | 'youtube'
+          | 'tiktok'
+          | 'linkedin'
+          | 'spotify'
+          | 'apple-music'
+          | 'other';
+        url: string;
+        /**
+         * Optional custom label (defaults to platform name)
+         */
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Show CHIRP Radio Film Fest logo in footer
+   */
+  showChirpFilmFestLogo?: boolean | null;
+  /**
+   * CHIRP Radio Film Fest logo image
+   */
+  chirpFilmFestLogo?: (number | null) | Media;
+  /**
+   * URL when Film Fest logo is clicked
+   */
+  chirpFilmFestLogoUrl?: string | null;
+  /**
+   * Show First Time logo in footer
+   */
+  showFirstTimeLogo?: boolean | null;
+  /**
+   * First Time logo image
+   */
+  firstTimeLogo?: (number | null) | Media;
+  /**
+   * URL when First Time logo is clicked
+   */
+  firstTimeLogoUrl?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "siteSettings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  showTopAnnouncement?: T;
+  topAnnouncement?: T;
+  sidebarAnnouncement?: T;
+  sidebarAdvertisement?: T;
+  showUserCollection?: T;
+  listenSidebarWeeklyChart?: T;
+  listenSidebarAdvertisement?: T;
+  fullWidthAnnouncement?: T;
+  leftWeeklyChart?: T;
+  rightWeeklyChart?: T;
+  eventsSidebarAnnouncement?: T;
+  eventsSidebarContentType?: T;
+  eventsSidebarAdvertisement?: T;
+  eventsFullWidthAnnouncement?: T;
+  articlesSidebarAnnouncement?: T;
+  articlesSidebarContentType?: T;
+  articlesSidebarAdvertisement?: T;
+  articlesFullWidthAnnouncement?: T;
+  supportContent?: T;
+  showDCaseLogo?: T;
+  dCaseLogo?: T;
+  dCaseLogoUrl?: T;
+  showIlArtsCouncilLogo?: T;
+  ilArtsCouncilLogo?: T;
+  ilArtsCouncilLogoUrl?: T;
+  additionalLogos?:
+    | T
+    | {
+        logo?: T;
+        logoUrl?: T;
+        alt?: T;
+        id?: T;
+      };
+  supportAdvertisement?: T;
+  copyrightText?: T;
+  socialLinks?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        label?: T;
+        id?: T;
+      };
+  showChirpFilmFestLogo?: T;
+  chirpFilmFestLogo?: T;
+  chirpFilmFestLogoUrl?: T;
+  showFirstTimeLogo?: T;
+  firstTimeLogo?: T;
+  firstTimeLogoUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
