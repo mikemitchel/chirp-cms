@@ -9,7 +9,7 @@ export const Announcements: CollectionConfig = {
   admin: {
     useAsTitle: 'headlineText',
     defaultColumns: ['headlineText', 'variant'],
-    group: 'Content',
+    group: 'Content Assets',
   },
   access: {
     read: () => true,

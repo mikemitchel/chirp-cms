@@ -9,7 +9,7 @@ export const AgeGate: CollectionConfig = {
   admin: {
     useAsTitle: 'age',
     defaultColumns: ['age'],
-    group: 'Site Assets',
+    group: 'Content Assets',
   },
   access: {
     read: () => true,

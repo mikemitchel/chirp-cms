@@ -31,27 +31,45 @@ const __dirname = path.dirname(__filename)
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
   collections: [
+    // CMS Settings
     Users,
-    AgeGate,
+
+    // Media
+    Media,
+
+    // People
+    DJs,
     Listeners,
-    Venues,
+
+    // Content Assets
     Categories,
-    Articles,
-    Events,
-    VolunteerCalendar,
-    WeeklyCharts,
-    Pages,
-    Podcasts,
+    Venues,
     Announcements,
     Advertisements,
+
+    // Collections
+    Articles,
+    Events,
+    Podcasts,
     ShopItems,
-    DJs,
-    Media,
+    WeeklyCharts,
+    VolunteerCalendar,
+
+    // Mobile App
     MobilePageContent,
+
+    // Website
+    Pages,
+
+    // Other
+    AgeGate,
   ],
   globals: [
-    SiteSettings,
+    // Mobile App
     MobileAppSettings,
+
+    // Website
+    SiteSettings,
   ],
   secret: process.env.PAYLOAD_SECRET || 'your-secret-key-here-change-in-production',
   typescript: {

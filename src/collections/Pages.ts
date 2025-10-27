@@ -3,13 +3,13 @@ import { CollectionConfig } from 'payload/types'
 export const Pages: CollectionConfig = {
   slug: 'pages',
   labels: {
-    singular: 'Page',
-    plural: 'Pages',
+    singular: 'Website Page',
+    plural: 'Website Pages',
   },
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'slug', 'updatedAt'],
-    group: 'Pages',
+    group: 'Website',
     preview: (doc) => {
       return `http://localhost:5173/${doc.slug}`
     },

@@ -2,7 +2,10 @@ import { GlobalConfig } from 'payload/types'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'siteSettings',
-  label: 'Site Settings',
+  label: 'Website Settings',
+  admin: {
+    group: 'Website',
+  },
   access: {
     read: () => true,
   },
@@ -56,6 +59,46 @@ export const SiteSettings: GlobalConfig = {
           defaultValue: true,
           admin: {
             description: 'Show 3 random songs from logged-in user\'s saved collection (if they have any)',
+          },
+        },
+        {
+          name: 'listenPageTitle',
+          type: 'text',
+          defaultValue: 'Listen',
+          admin: {
+            description: 'Main page title for Listen page',
+          },
+        },
+        {
+          name: 'listenCurrentPlaylistTitle',
+          type: 'text',
+          defaultValue: 'Current Playlist',
+          admin: {
+            description: 'Title for current playlist section',
+          },
+        },
+        {
+          name: 'listenPreviousPlaysButtonText',
+          type: 'text',
+          defaultValue: 'Previous Plays',
+          admin: {
+            description: 'Button text to navigate to full playlist page',
+          },
+        },
+        {
+          name: 'listenUserCollectionTitle',
+          type: 'text',
+          defaultValue: 'A Few from Your Collection',
+          admin: {
+            description: 'Title for user collection sidebar section',
+          },
+        },
+        {
+          name: 'listenYourCollectionButtonText',
+          type: 'text',
+          defaultValue: 'Your Collection',
+          admin: {
+            description: 'Button text to navigate to full collection page',
           },
         },
         {

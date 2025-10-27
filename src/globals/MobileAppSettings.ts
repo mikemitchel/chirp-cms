@@ -60,6 +60,27 @@ export const MobileAppSettings: GlobalConfig = {
             },
           ],
         },
+        {
+          label: 'Account Benefits',
+          fields: [
+            {
+              name: 'accountBenefitsTitle',
+              type: 'text',
+              defaultValue: 'Benefits of Creating an Account',
+              admin: {
+                description: 'Heading for benefits section',
+              },
+            },
+            {
+              name: 'accountBenefitsContent',
+              type: 'richText',
+              label: 'Benefits Content',
+              admin: {
+                description: 'Content explaining benefits of creating an account (use bullet list format)',
+              },
+            },
+          ],
+        },
       ],
     },
   ],
