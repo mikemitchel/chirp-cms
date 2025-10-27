@@ -1164,7 +1164,7 @@ export interface MobilePageContent {
    */
   pageTitle?: string | null;
   /**
-   * Optional subheading below the title
+   * Text shown above the form (e.g., "Request a song for the DJ to play during their show")
    */
   pageSubtitle?: string | null;
   /**
@@ -1208,11 +1208,11 @@ export interface MobilePageContent {
     [k: string]: unknown;
   } | null;
   /**
-   * Does this page require the user to be logged in?
+   * Does this page require the user to be logged in? (Not currently used - login requirements are defined by the app code)
    */
   isLoginRequired?: boolean | null;
   /**
-   * Enable/disable this page content
+   * Uncheck to temporarily hide this page without deleting it. The page will not be shown in the app when inactive.
    */
   isActive?: boolean | null;
   updatedAt: string;
