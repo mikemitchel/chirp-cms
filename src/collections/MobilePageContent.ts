@@ -63,6 +63,16 @@ export const MobilePageContent: CollectionConfig = {
       },
     },
     {
+      name: 'announcement',
+      type: 'relationship',
+      relationTo: 'announcements',
+      admin: {
+        description: 'Select announcement to display on this page (optional)',
+        condition: (data) =>
+          data.pageIdentifier === 'recently-played' || data.pageIdentifier === 'my-collection',
+      },
+    },
+    {
       name: 'customNotLoggedInMessage',
       type: 'richText',
       admin: {
