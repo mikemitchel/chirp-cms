@@ -21,7 +21,9 @@ import { Users } from './src/collections/Users'
 import { AgeGate } from './src/collections/AgeGate'
 import { Listeners } from './src/collections/Listeners'
 import { Categories } from './src/collections/Categories'
+import { MobilePageContent } from './src/collections/MobilePageContent'
 import { SiteSettings } from './src/globals/SiteSettings'
+import { MobileAppSettings } from './src/globals/MobileAppSettings'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -45,9 +47,11 @@ export default buildConfig({
     ShopItems,
     DJs,
     Media,
+    MobilePageContent,
   ],
   globals: [
     SiteSettings,
+    MobileAppSettings,
   ],
   secret: process.env.PAYLOAD_SECRET || 'your-secret-key-here-change-in-production',
   typescript: {
