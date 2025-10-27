@@ -15,6 +15,7 @@
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,md}\"",
     "generate:types": "payload generate:types",
     "seed": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx src/seed/import-data.ts",
+    "seed:mobile": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/seed-mobile-content.ts",
     "prepare": "husky"
   },
   "dependencies": {
