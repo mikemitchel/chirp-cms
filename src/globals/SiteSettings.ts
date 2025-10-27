@@ -7,11 +7,11 @@ export const SiteSettings: GlobalConfig = {
     read: () => true,
   },
   fields: [
-
-    // Landing Page Settings
     {
-      type: 'collapsible',
-      label: 'Landing Page Settings',
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Landing Page',
       fields: [
         {
           name: 'showTopAnnouncement',
@@ -46,12 +46,9 @@ export const SiteSettings: GlobalConfig = {
           },
         },
       ],
-    },
-
-    // Listen Page Settings
-    {
-      type: 'collapsible',
-      label: 'Listen Page Settings',
+        },
+        {
+          label: 'Listen Page',
       fields: [
         {
           name: 'showUserCollection',
@@ -102,12 +99,9 @@ export const SiteSettings: GlobalConfig = {
           },
         },
       ],
-    },
-
-    // Events Page Settings
-    {
-      type: 'collapsible',
-      label: 'Events Page Settings',
+        },
+        {
+          label: 'Events Page',
       fields: [
         {
           name: 'eventsSidebarAnnouncement',
@@ -148,12 +142,9 @@ export const SiteSettings: GlobalConfig = {
           },
         },
       ],
-    },
-
-    // Articles Page Settings
-    {
-      type: 'collapsible',
-      label: 'Articles Page Settings',
+        },
+        {
+          label: 'Articles Page',
       fields: [
         {
           name: 'articlesSidebarAnnouncement',
@@ -194,12 +185,9 @@ export const SiteSettings: GlobalConfig = {
           },
         },
       ],
-    },
-
-    // Footer Support Section (CrSupportWithAds)
-    {
-      type: 'collapsible',
-      label: 'Footer Support Section',
+        },
+        {
+          label: 'Footer Support',
       fields: [
         {
           name: 'supportContent',
@@ -298,12 +286,9 @@ export const SiteSettings: GlobalConfig = {
           },
         },
       ],
-    },
-
-    // Footer Settings (CrFooter)
-    {
-      type: 'collapsible',
-      label: 'Footer Settings',
+        },
+        {
+          label: 'Footer',
       fields: [
         {
           name: 'copyrightText',
@@ -398,6 +383,8 @@ export const SiteSettings: GlobalConfig = {
           admin: {
             description: 'URL when First Time logo is clicked',
           },
+        },
+      ],
         },
       ],
     },
