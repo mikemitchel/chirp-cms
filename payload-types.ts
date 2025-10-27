@@ -83,6 +83,7 @@ export interface Config {
     shopItems: ShopItem;
     djs: Dj;
     media: Media;
+    mobilePageContent: MobilePageContent;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -105,6 +106,7 @@ export interface Config {
     shopItems: ShopItemsSelect<false> | ShopItemsSelect<true>;
     djs: DjsSelect<false> | DjsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    mobilePageContent: MobilePageContentSelect<false> | MobilePageContentSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -114,9 +116,11 @@ export interface Config {
   };
   globals: {
     siteSettings: SiteSetting;
+    mobileAppSettings: MobileAppSetting;
   };
   globalsSelect: {
     siteSettings: SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    mobileAppSettings: MobileAppSettingsSelect<false> | MobileAppSettingsSelect<true>;
   };
   locale: null;
   user: User & {
@@ -417,42 +421,45 @@ export interface VolunteerCalendar {
 export interface WeeklyChart {
   id: number;
   /**
-   * Auto-generated from list type and week, e.g. "Top 50 for the week of October 20, 2025"
+   * Eyebrow text shown above the chart title on the Listen page (e.g., "Week of October 19, 2025" or "Chicago Local Artists")
+   */
+  preheader?: string | null;
+  /**
+   * Chart title (e.g., "Top 50", "Most Added", "This Week's Adds")
    */
   title: string;
   /**
-   * Type of chart/list
+   * URL-friendly identifier (e.g., "top-50", "most-added"). Auto-generated from title if left blank.
    */
-  listType: 'Top 50' | "This Week's Adds" | 'Top 10 Favorites';
+  slug?: string | null;
   /**
-   * Monday of the week this chart represents
+   * Legacy field - no longer used
    */
-  weekOf: string;
+  listType?: string | null;
   /**
    * Upload a CSV file (format: Position,Artist,Track,Label). Click "Create New" to select and upload a file.
    */
   csvFile?: (number | null) | Media;
   /**
-   * Or paste CSV data here (format: Position,Artist,Track,Label). Each line should be one track. This will populate the tracks below when you save.
+   * Paste CSV data here (format: Song,Artist,Label). Each line should be one item. This will populate the items below when you save.
    */
   csvImport?: string | null;
   /**
-   * Tracks for this chart. Format: Artist – Track (Label)
+   * Items for this list. Format: Song Name – Artist Name (Record Company)
    */
   tracks: {
     /**
-     * Chart position (auto-numbered based on order, or manually set)
+     * Song/track/album title
      */
-    position?: number | null;
-    artist: string;
+    songName: string;
     /**
-     * Track/album title
+     * Artist name
      */
-    trackName: string;
+    artistName: string;
     /**
-     * Record label (use "self-released" if independent)
+     * Record label/company (use "self-released" if independent)
      */
-    label: string;
+    recordCompany: string;
     id?: string | null;
   }[];
   /**
@@ -1135,6 +1142,83 @@ export interface Dj {
   createdAt: string;
 }
 /**
+ * Manage page-specific content for mobile app screens
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mobilePageContent".
+ */
+export interface MobilePageContent {
+  id: number;
+  /**
+   * Which mobile screen this content is for (one entry per page)
+   */
+  pageIdentifier:
+    | 'make-request'
+    | 'now-playing'
+    | 'recently-played'
+    | 'my-collection'
+    | 'account-settings'
+    | 'android-auto';
+  /**
+   * Page heading (e.g., "Make a Song Request")
+   */
+  pageTitle?: string | null;
+  /**
+   * Optional subheading below the title
+   */
+  pageSubtitle?: string | null;
+  /**
+   * Content shown at the top of the page (before main content)
+   */
+  introContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Hint text for forms (e.g., "Keep it friendly and respectful")
+   */
+  formHintText?: string | null;
+  /**
+   * Override the global not-logged-in message for this specific page (optional)
+   */
+  customNotLoggedInMessage?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Does this page require the user to be logged in?
+   */
+  isLoginRequired?: boolean | null;
+  /**
+   * Enable/disable this page content
+   */
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
@@ -1204,6 +1288,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'mobilePageContent';
+        value: number | MobilePageContent;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1387,18 +1475,18 @@ export interface VolunteerCalendarSelect<T extends boolean = true> {
  * via the `definition` "weeklyCharts_select".
  */
 export interface WeeklyChartsSelect<T extends boolean = true> {
+  preheader?: T;
   title?: T;
+  slug?: T;
   listType?: T;
-  weekOf?: T;
   csvFile?: T;
   csvImport?: T;
   tracks?:
     | T
     | {
-        position?: T;
-        artist?: T;
-        trackName?: T;
-        label?: T;
+        songName?: T;
+        artistName?: T;
+        recordCompany?: T;
         id?: T;
       };
   isCurrentWeek?: T;
@@ -1695,6 +1783,22 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mobilePageContent_select".
+ */
+export interface MobilePageContentSelect<T extends boolean = true> {
+  pageIdentifier?: T;
+  pageTitle?: T;
+  pageSubtitle?: T;
+  introContent?: T;
+  formHintText?: T;
+  customNotLoggedInMessage?: T;
+  isLoginRequired?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -1925,6 +2029,154 @@ export interface SiteSetting {
   createdAt?: string | null;
 }
 /**
+ * Global settings and shared content for the mobile app
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mobileAppSettings".
+ */
+export interface MobileAppSetting {
+  id: number;
+  /**
+   * Default message shown on pages that require login (used across all pages unless overridden)
+   */
+  notLoggedInMessage?: {
+    /**
+     * Heading for not-logged-in state
+     */
+    title?: string | null;
+    /**
+     * Explanation of why login is required
+     */
+    message?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Text for login button
+     */
+    loginButtonText?: string | null;
+    /**
+     * Text for signup button
+     */
+    signupButtonText?: string | null;
+  };
+  /**
+   * Content shown when user first opens the app
+   */
+  firstLaunchWelcome?: {
+    isEnabled?: boolean | null;
+    /**
+     * Welcome screen title
+     */
+    title?: string | null;
+    /**
+     * Optional subtitle
+     */
+    subtitle?: string | null;
+    /**
+     * Welcome message content
+     */
+    content?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Hero image for welcome screen
+     */
+    heroImage?: (number | null) | Media;
+    /**
+     * Call-to-action button text
+     */
+    ctaButtonText?: string | null;
+  };
+  /**
+   * Terms and conditions that users must accept
+   */
+  termsAcceptance?: {
+    isRequired?: boolean | null;
+    title?: string | null;
+    /**
+     * Full terms and conditions text
+     */
+    content?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Checkbox label text
+     */
+    acceptanceText?: string | null;
+    /**
+     * Optional: Link to full terms page
+     */
+    termsUrl?: string | null;
+    /**
+     * Optional: Link to privacy policy
+     */
+    privacyPolicyUrl?: string | null;
+  };
+  /**
+   * Standard error messages used throughout the app
+   */
+  errorMessages?: {
+    /**
+     * Message when network request fails
+     */
+    networkError?: string | null;
+    /**
+     * Message for server/API errors
+     */
+    serverError?: string | null;
+    /**
+     * Message when authentication fails
+     */
+    authenticationError?: string | null;
+    /**
+     * Message when requested content doesn't exist
+     */
+    notFoundError?: string | null;
+    /**
+     * Message when user lacks required permissions
+     */
+    permissionError?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "siteSettings_select".
  */
@@ -1978,6 +2230,52 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   showFirstTimeLogo?: T;
   firstTimeLogo?: T;
   firstTimeLogoUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mobileAppSettings_select".
+ */
+export interface MobileAppSettingsSelect<T extends boolean = true> {
+  notLoggedInMessage?:
+    | T
+    | {
+        title?: T;
+        message?: T;
+        loginButtonText?: T;
+        signupButtonText?: T;
+      };
+  firstLaunchWelcome?:
+    | T
+    | {
+        isEnabled?: T;
+        title?: T;
+        subtitle?: T;
+        content?: T;
+        heroImage?: T;
+        ctaButtonText?: T;
+      };
+  termsAcceptance?:
+    | T
+    | {
+        isRequired?: T;
+        title?: T;
+        content?: T;
+        acceptanceText?: T;
+        termsUrl?: T;
+        privacyPolicyUrl?: T;
+      };
+  errorMessages?:
+    | T
+    | {
+        networkError?: T;
+        serverError?: T;
+        authenticationError?: T;
+        notFoundError?: T;
+        permissionError?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

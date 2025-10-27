@@ -58,7 +58,7 @@ export const Announcements: CollectionConfig = {
       ],
       admin: {
         components: {
-          Field: '@/src/components/TextureBackgroundField#TextureBackgroundField',
+          Field: '@/components/TextureBackgroundField#TextureBackgroundField',
         },
       },
     },
