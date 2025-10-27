@@ -44,7 +44,7 @@ export const MobilePageContent: CollectionConfig = {
       name: 'pageSubtitle',
       type: 'text',
       admin: {
-        description: 'Optional subheading below the title',
+        description: 'Text shown above the form (e.g., "Request a song for the DJ to play during their show")',
       },
     },
     {
@@ -63,6 +63,16 @@ export const MobilePageContent: CollectionConfig = {
       },
     },
     {
+      name: 'announcement',
+      type: 'relationship',
+      relationTo: 'announcements',
+      admin: {
+        description: 'Select announcement to display on this page (optional)',
+        condition: (data) =>
+          data.pageIdentifier === 'recently-played' || data.pageIdentifier === 'my-collection',
+      },
+    },
+    {
       name: 'customNotLoggedInMessage',
       type: 'richText',
       admin: {
@@ -74,7 +84,8 @@ export const MobilePageContent: CollectionConfig = {
       type: 'checkbox',
       defaultValue: false,
       admin: {
-        description: 'Does this page require the user to be logged in?',
+        hidden: true,
+        description: 'Does this page require the user to be logged in? (Not currently used - login requirements are defined by the app code)',
       },
     },
     {
@@ -82,7 +93,7 @@ export const MobilePageContent: CollectionConfig = {
       type: 'checkbox',
       defaultValue: true,
       admin: {
-        description: 'Enable/disable this page content',
+        description: 'Uncheck to temporarily hide this page without deleting it. The page will not be shown in the app when inactive.',
       },
     },
   ],

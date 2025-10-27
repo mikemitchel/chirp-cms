@@ -9,7 +9,7 @@ export const Advertisements: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'size', 'contentType', 'isActive', 'updatedAt'],
-    group: 'Site Assets',
+    group: 'Content Assets',
     livePreview: {
       url: ({ data }) => `http://localhost:5173/preview/advertisement/${data.id}`,
     },
