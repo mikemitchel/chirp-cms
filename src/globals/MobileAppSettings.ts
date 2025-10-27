@@ -58,6 +58,65 @@ export const MobileAppSettings: GlobalConfig = {
                 },
               ],
             },
+            {
+              name: 'loginModal',
+              type: 'group',
+              label: 'Login/Signup Modal Messages',
+              admin: {
+                description: 'Messages shown in the login/signup modal',
+              },
+              fields: [
+                {
+                  name: 'loginMessage',
+                  type: 'richText',
+                  label: 'Login Message',
+                  admin: {
+                    description: 'Message shown when user clicks "Log In"',
+                  },
+                },
+                {
+                  name: 'signupMessage',
+                  type: 'richText',
+                  label: 'Sign Up Message',
+                  admin: {
+                    description: 'Message shown when user clicks "Sign Up"',
+                  },
+                },
+              ],
+            },
+            {
+              name: 'accountBenefits',
+              type: 'group',
+              label: 'Account Benefits',
+              admin: {
+                description: 'List of benefits shown on not-logged-in pages',
+              },
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  defaultValue: 'Benefits of Creating an Account:',
+                  admin: {
+                    description: 'Heading above benefits list',
+                  },
+                },
+                {
+                  name: 'benefits',
+                  type: 'array',
+                  label: 'Benefits List',
+                  admin: {
+                    description: 'Individual benefit items',
+                  },
+                  fields: [
+                    {
+                      name: 'benefit',
+                      type: 'text',
+                      required: true,
+                    },
+                  ],
+                },
+              ],
+            },
           ],
         },
         {
