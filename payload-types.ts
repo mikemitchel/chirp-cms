@@ -1164,7 +1164,7 @@ export interface MobilePageContent {
    */
   pageTitle?: string | null;
   /**
-   * Optional subheading below the title
+   * Text shown above the form (e.g., "Request a song for the DJ to play during their show")
    */
   pageSubtitle?: string | null;
   /**
@@ -1208,11 +1208,11 @@ export interface MobilePageContent {
     [k: string]: unknown;
   } | null;
   /**
-   * Does this page require the user to be logged in?
+   * Does this page require the user to be logged in? (Not currently used - login requirements are defined by the app code)
    */
   isLoginRequired?: boolean | null;
   /**
-   * Enable/disable this page content
+   * Uncheck to temporarily hide this page without deleting it. The page will not be shown in the app when inactive.
    */
   isActive?: boolean | null;
   updatedAt: string;
@@ -2071,108 +2071,6 @@ export interface MobileAppSetting {
      */
     signupButtonText?: string | null;
   };
-  /**
-   * Content shown when user first opens the app
-   */
-  firstLaunchWelcome?: {
-    isEnabled?: boolean | null;
-    /**
-     * Welcome screen title
-     */
-    title?: string | null;
-    /**
-     * Optional subtitle
-     */
-    subtitle?: string | null;
-    /**
-     * Welcome message content
-     */
-    content?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    /**
-     * Hero image for welcome screen
-     */
-    heroImage?: (number | null) | Media;
-    /**
-     * Call-to-action button text
-     */
-    ctaButtonText?: string | null;
-  };
-  /**
-   * Terms and conditions that users must accept
-   */
-  termsAcceptance?: {
-    isRequired?: boolean | null;
-    title?: string | null;
-    /**
-     * Full terms and conditions text
-     */
-    content?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    /**
-     * Checkbox label text
-     */
-    acceptanceText?: string | null;
-    /**
-     * Optional: Link to full terms page
-     */
-    termsUrl?: string | null;
-    /**
-     * Optional: Link to privacy policy
-     */
-    privacyPolicyUrl?: string | null;
-  };
-  /**
-   * Standard error messages used throughout the app
-   */
-  errorMessages?: {
-    /**
-     * Message when network request fails
-     */
-    networkError?: string | null;
-    /**
-     * Message for server/API errors
-     */
-    serverError?: string | null;
-    /**
-     * Message when authentication fails
-     */
-    authenticationError?: string | null;
-    /**
-     * Message when requested content doesn't exist
-     */
-    notFoundError?: string | null;
-    /**
-     * Message when user lacks required permissions
-     */
-    permissionError?: string | null;
-  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2246,35 +2144,6 @@ export interface MobileAppSettingsSelect<T extends boolean = true> {
         message?: T;
         loginButtonText?: T;
         signupButtonText?: T;
-      };
-  firstLaunchWelcome?:
-    | T
-    | {
-        isEnabled?: T;
-        title?: T;
-        subtitle?: T;
-        content?: T;
-        heroImage?: T;
-        ctaButtonText?: T;
-      };
-  termsAcceptance?:
-    | T
-    | {
-        isRequired?: T;
-        title?: T;
-        content?: T;
-        acceptanceText?: T;
-        termsUrl?: T;
-        privacyPolicyUrl?: T;
-      };
-  errorMessages?:
-    | T
-    | {
-        networkError?: T;
-        serverError?: T;
-        authenticationError?: T;
-        notFoundError?: T;
-        permissionError?: T;
       };
   updatedAt?: T;
   createdAt?: T;
