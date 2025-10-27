@@ -8,7 +8,7 @@ export const WeeklyCharts: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'listType', 'weekOf', 'isCurrentWeek', 'updatedAt'],
+    defaultColumns: ['title', 'preheader', 'isCurrentWeek', 'updatedAt'],
     group: 'Content',
   },
   access: {
@@ -16,51 +16,49 @@ export const WeeklyCharts: CollectionConfig = {
   },
   fields: [
     {
+      name: 'preheader',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'Eyebrow text shown above the chart title on the Listen page (e.g., "Week of October 19, 2025" or "Chicago Local Artists")',
+      },
+    },
+    {
       name: 'title',
       type: 'text',
       required: true,
       admin: {
-        description: 'Auto-generated from list type and week, e.g. "Top 50 for the week of October 20, 2025"',
+        description: 'Chart title (e.g., "Top 50", "Most Added", "This Week\'s Adds")',
+      },
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: false,
+      admin: {
+        description: 'URL-friendly identifier (e.g., "top-50", "most-added"). Auto-generated from title if left blank.',
       },
       hooks: {
         beforeChange: [
-          ({ data }) => {
-            if (data.listType && data.weekOf) {
-              const date = new Date(data.weekOf)
-              const formattedDate = date.toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })
-              return `${data.listType} for the week of ${formattedDate}`
+          ({ data, value }) => {
+            if (value) return value
+            if (data.title) {
+              return data.title
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '')
             }
-            return data.title
+            return value
           },
         ],
       },
     },
     {
       name: 'listType',
-      type: 'select',
-      required: true,
-      options: [
-        { label: 'Top 50', value: 'Top 50' },
-        { label: "This Week's Adds", value: "This Week's Adds" },
-        { label: 'Top 10 Favorites', value: 'Top 10 Favorites' },
-      ],
+      type: 'text',
       admin: {
-        description: 'Type of chart/list',
-      },
-    },
-    {
-      name: 'weekOf',
-      type: 'date',
-      required: true,
-      admin: {
-        description: 'Monday of the week this chart represents',
-        date: {
-          pickerAppearance: 'dayOnly',
-        },
+        description: 'Legacy field - no longer used',
+        hidden: true,
       },
     },
     {
@@ -77,23 +75,22 @@ export const WeeklyCharts: CollectionConfig = {
       type: 'textarea',
       label: 'Import CSV Data',
       admin: {
-        description: 'Or paste CSV data here (format: Position,Artist,Track,Label). Each line should be one track. This will populate the tracks below when you save.',
+        description: 'Paste CSV data here (format: Song,Artist,Label). Each line should be one item. This will populate the items below when you save.',
       },
       hooks: {
         beforeChange: [
           ({ data, value }) => {
             if (value && value.trim()) {
               const lines = value.trim().split('\n')
-              const tracks = lines.map((line, index) => {
+              const tracks = lines.map((line) => {
                 const parts = line.split(',').map(p => p.trim())
 
-                // Handle different formats
-                if (parts.length >= 3) {
+                // Format: Song,Artist,Label
+                if (parts.length >= 2) {
                   return {
-                    position: parts[0] ? parseInt(parts[0]) : index + 1,
-                    artist: parts[1] || '',
-                    trackName: parts[2] || '',
-                    label: parts[3] || '',
+                    songName: parts[0] || '',
+                    artistName: parts[1] || '',
+                    recordCompany: parts[2] || '',
                   }
                 }
                 return null
@@ -111,40 +108,37 @@ export const WeeklyCharts: CollectionConfig = {
     {
       name: 'tracks',
       type: 'array',
+      label: 'Items',
       required: true,
       minRows: 1,
       fields: [
         {
-          name: 'position',
-          type: 'number',
+          name: 'songName',
+          type: 'text',
+          required: true,
           admin: {
-            description: 'Chart position (auto-numbered based on order, or manually set)',
+            description: 'Song/track/album title',
           },
         },
         {
-          name: 'artist',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'trackName',
+          name: 'artistName',
           type: 'text',
           required: true,
           admin: {
-            description: 'Track/album title',
+            description: 'Artist name',
           },
         },
         {
-          name: 'label',
+          name: 'recordCompany',
           type: 'text',
           required: true,
           admin: {
-            description: 'Record label (use "self-released" if independent)',
+            description: 'Record label/company (use "self-released" if independent)',
           },
         },
       ],
       admin: {
-        description: 'Tracks for this chart. Format: Artist – Track (Label)',
+        description: 'Items for this list. Format: Song Name – Artist Name (Record Company)',
       },
     },
     {
