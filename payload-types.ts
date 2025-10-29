@@ -2076,6 +2076,62 @@ export interface SiteSetting {
    */
   podcastsFullWidthAnnouncement?: (number | null) | Announcement;
   /**
+   * 404 error page heading
+   */
+  notFoundPageHeading?: string | null;
+  /**
+   * 404 error page message
+   */
+  notFoundPageMessage?: string | null;
+  /**
+   * 403 forbidden page heading
+   */
+  forbiddenPageHeading?: string | null;
+  /**
+   * 403 forbidden page message
+   */
+  forbiddenPageMessage?: string | null;
+  /**
+   * 403 message for logged-out users
+   */
+  forbiddenPageMessageLoggedIn?: string | null;
+  /**
+   * 500 server error page heading
+   */
+  serverErrorPageHeading?: string | null;
+  /**
+   * 500 server error page message
+   */
+  serverErrorPageMessage?: string | null;
+  /**
+   * Toast message shown after successful login
+   */
+  loginSuccessMessage?: string | null;
+  /**
+   * Toast message shown after successful logout
+   */
+  logoutSuccessMessage?: string | null;
+  /**
+   * Toast message shown after successful signup
+   */
+  signupSuccessMessage?: string | null;
+  /**
+   * Toast message shown after profile update
+   */
+  profileUpdateSuccessMessage?: string | null;
+  /**
+   * Toast message shown when profile update fails
+   */
+  profileUpdateErrorMessage?: string | null;
+  /**
+   * Toast message shown when track added to collection
+   */
+  addToCollectionSuccessMessage?: string | null;
+  /**
+   * Toast message shown when track removed from collection
+   */
+  removeFromCollectionSuccessMessage?: string | null;
+  /**
    * Content for the support section above the footer
    */
   supportContent?: {
@@ -2264,6 +2320,20 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   podcastsSidebarAnnouncement?: T;
   podcastsSidebarAdvertisement?: T;
   podcastsFullWidthAnnouncement?: T;
+  notFoundPageHeading?: T;
+  notFoundPageMessage?: T;
+  forbiddenPageHeading?: T;
+  forbiddenPageMessage?: T;
+  forbiddenPageMessageLoggedIn?: T;
+  serverErrorPageHeading?: T;
+  serverErrorPageMessage?: T;
+  loginSuccessMessage?: T;
+  logoutSuccessMessage?: T;
+  signupSuccessMessage?: T;
+  profileUpdateSuccessMessage?: T;
+  profileUpdateErrorMessage?: T;
+  addToCollectionSuccessMessage?: T;
+  removeFromCollectionSuccessMessage?: T;
   supportContent?: T;
   showDCaseLogo?: T;
   dCaseLogo?: T;

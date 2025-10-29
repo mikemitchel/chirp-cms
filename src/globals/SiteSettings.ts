@@ -267,6 +267,128 @@ export const SiteSettings: GlobalConfig = {
       ],
         },
         {
+          label: 'Error Pages',
+      fields: [
+        {
+          name: 'notFoundPageHeading',
+          type: 'text',
+          defaultValue: 'Page Not Found',
+          admin: {
+            description: '404 error page heading',
+          },
+        },
+        {
+          name: 'notFoundPageMessage',
+          type: 'textarea',
+          defaultValue: "Sorry, we couldn't find the page you're looking for. It may have been moved or deleted.",
+          admin: {
+            description: '404 error page message',
+          },
+        },
+        {
+          name: 'forbiddenPageHeading',
+          type: 'text',
+          defaultValue: 'Access Denied',
+          admin: {
+            description: '403 forbidden page heading',
+          },
+        },
+        {
+          name: 'forbiddenPageMessage',
+          type: 'textarea',
+          defaultValue: "Sorry, you don't have permission to access this page. Please log in or contact us if you believe this is an error.",
+          admin: {
+            description: '403 forbidden page message',
+          },
+        },
+        {
+          name: 'forbiddenPageMessageLoggedIn',
+          type: 'textarea',
+          defaultValue: "You need to be logged in to access this page. Please sign in to continue.",
+          admin: {
+            description: '403 message for logged-out users',
+          },
+        },
+        {
+          name: 'serverErrorPageHeading',
+          type: 'text',
+          defaultValue: 'Internal Server Error',
+          admin: {
+            description: '500 server error page heading',
+          },
+        },
+        {
+          name: 'serverErrorPageMessage',
+          type: 'textarea',
+          defaultValue: "Oops! Something went wrong on our end. We're working to fix the issue. Please try again later.",
+          admin: {
+            description: '500 server error page message',
+          },
+        },
+      ],
+        },
+        {
+          label: 'Toast Messages',
+      fields: [
+        {
+          name: 'loginSuccessMessage',
+          type: 'text',
+          defaultValue: 'Successfully logged in',
+          admin: {
+            description: 'Toast message shown after successful login',
+          },
+        },
+        {
+          name: 'logoutSuccessMessage',
+          type: 'text',
+          defaultValue: 'Successfully logged out',
+          admin: {
+            description: 'Toast message shown after successful logout',
+          },
+        },
+        {
+          name: 'signupSuccessMessage',
+          type: 'text',
+          defaultValue: 'Account created successfully',
+          admin: {
+            description: 'Toast message shown after successful signup',
+          },
+        },
+        {
+          name: 'profileUpdateSuccessMessage',
+          type: 'text',
+          defaultValue: 'Profile updated successfully',
+          admin: {
+            description: 'Toast message shown after profile update',
+          },
+        },
+        {
+          name: 'profileUpdateErrorMessage',
+          type: 'text',
+          defaultValue: 'Failed to save profile. Please try again.',
+          admin: {
+            description: 'Toast message shown when profile update fails',
+          },
+        },
+        {
+          name: 'addToCollectionSuccessMessage',
+          type: 'text',
+          defaultValue: 'Added to your collection',
+          admin: {
+            description: 'Toast message shown when track added to collection',
+          },
+        },
+        {
+          name: 'removeFromCollectionSuccessMessage',
+          type: 'text',
+          defaultValue: 'Removed from your collection',
+          admin: {
+            description: 'Toast message shown when track removed from collection',
+          },
+        },
+      ],
+        },
+        {
           label: 'Footer Support',
       fields: [
         {
