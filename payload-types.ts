@@ -2108,7 +2108,7 @@ export interface SiteSetting {
    */
   loginSuccessMessage?: string | null;
   /**
-   * Toast message shown after successful logout
+   * Toast message shown after successful sign out
    */
   logoutSuccessMessage?: string | null;
   /**

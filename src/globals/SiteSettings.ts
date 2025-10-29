@@ -304,7 +304,7 @@ export const SiteSettings: GlobalConfig = {
         {
           name: 'forbiddenPageMessageLoggedIn',
           type: 'textarea',
-          defaultValue: "You need to be logged in to access this page. Please sign in to continue.",
+          defaultValue: "You need to be signed in to access this page. Please sign in to continue.",
           admin: {
             description: '403 message for logged-out users',
           },
@@ -341,9 +341,9 @@ export const SiteSettings: GlobalConfig = {
         {
           name: 'logoutSuccessMessage',
           type: 'text',
-          defaultValue: 'Successfully logged out',
+          defaultValue: 'Successfully signed out',
           admin: {
-            description: 'Toast message shown after successful logout',
+            description: 'Toast message shown after successful sign out',
           },
         },
         {
