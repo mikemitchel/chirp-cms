@@ -1878,6 +1878,65 @@ export interface MobileAppSetting {
     signupButtonText?: string | null;
   };
   /**
+   * Messages shown in the login/signup modal
+   */
+  loginModal?: {
+    /**
+     * Message shown when user clicks "Log In"
+     */
+    loginMessage?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+    /**
+     * Message shown when user clicks "Sign Up"
+     */
+    signupMessage?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
+  };
+  /**
+   * List of benefits shown on not-logged-in pages
+   */
+  accountBenefits?: {
+    /**
+     * Heading above benefits list
+     */
+    title?: string | null;
+    /**
+     * Individual benefit items
+     */
+    benefits?:
+      | {
+          benefit: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
    * Heading for benefits section
    */
   accountBenefitsTitle?: string | null;
@@ -2000,6 +2059,22 @@ export interface SiteSetting {
    * Select announcement for full-width section
    */
   articlesFullWidthAnnouncement?: (number | null) | Announcement;
+  /**
+   * Main page title for Podcasts page
+   */
+  podcastsPageTitle?: string | null;
+  /**
+   * Select which announcement to display in sidebar
+   */
+  podcastsSidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  podcastsSidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Select announcement for full-width section
+   */
+  podcastsFullWidthAnnouncement?: (number | null) | Announcement;
   /**
    * Content for the support section above the footer
    */
@@ -2134,6 +2209,23 @@ export interface MobileAppSettingsSelect<T extends boolean = true> {
         loginButtonText?: T;
         signupButtonText?: T;
       };
+  loginModal?:
+    | T
+    | {
+        loginMessage?: T;
+        signupMessage?: T;
+      };
+  accountBenefits?:
+    | T
+    | {
+        title?: T;
+        benefits?:
+          | T
+          | {
+              benefit?: T;
+              id?: T;
+            };
+      };
   accountBenefitsTitle?: T;
   accountBenefitsContent?: T;
   updatedAt?: T;
@@ -2168,6 +2260,10 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   articlesSidebarContentType?: T;
   articlesSidebarAdvertisement?: T;
   articlesFullWidthAnnouncement?: T;
+  podcastsPageTitle?: T;
+  podcastsSidebarAnnouncement?: T;
+  podcastsSidebarAdvertisement?: T;
+  podcastsFullWidthAnnouncement?: T;
   supportContent?: T;
   showDCaseLogo?: T;
   dCaseLogo?: T;
