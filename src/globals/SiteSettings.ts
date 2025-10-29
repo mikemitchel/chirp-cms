@@ -230,6 +230,43 @@ export const SiteSettings: GlobalConfig = {
       ],
         },
         {
+          label: 'Podcasts Page',
+      fields: [
+        {
+          name: 'podcastsPageTitle',
+          type: 'text',
+          defaultValue: 'Podcasts',
+          admin: {
+            description: 'Main page title for Podcasts page',
+          },
+        },
+        {
+          name: 'podcastsSidebarAnnouncement',
+          type: 'relationship',
+          relationTo: 'announcements',
+          admin: {
+            description: 'Select which announcement to display in sidebar',
+          },
+        },
+        {
+          name: 'podcastsSidebarAdvertisement',
+          type: 'relationship',
+          relationTo: 'advertisements',
+          admin: {
+            description: 'Select which advertisement to display in sidebar',
+          },
+        },
+        {
+          name: 'podcastsFullWidthAnnouncement',
+          type: 'relationship',
+          relationTo: 'announcements',
+          admin: {
+            description: 'Select announcement for full-width section',
+          },
+        },
+      ],
+        },
+        {
           label: 'Footer Support',
       fields: [
         {
