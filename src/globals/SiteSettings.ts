@@ -268,7 +268,7 @@ export const SiteSettings: GlobalConfig = {
         },
         {
           label: 'Error Pages',
-      fields: [
+          fields: [
         {
           name: 'notFoundPageHeading',
           type: 'text',
@@ -329,7 +329,7 @@ export const SiteSettings: GlobalConfig = {
         },
         {
           label: 'Toast Messages',
-      fields: [
+          fields: [
         {
           name: 'loginSuccessMessage',
           type: 'text',
