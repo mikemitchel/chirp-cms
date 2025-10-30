@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'player-fallback-images': PlayerFallbackImage;
     djs: Dj;
     listeners: Listener;
     categories: Category;
@@ -92,6 +93,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'player-fallback-images': PlayerFallbackImagesSelect<false> | PlayerFallbackImagesSelect<true>;
     djs: DjsSelect<false> | DjsSelect<true>;
     listeners: ListenersSelect<false> | ListenersSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
@@ -210,6 +212,52 @@ export interface Media {
       filename?: string | null;
     };
     large?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * Fallback images displayed in the music player when album art is unavailable. These images are randomly selected to provide visual variety.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "player-fallback-images".
+ */
+export interface PlayerFallbackImage {
+  id: number;
+  /**
+   * Descriptive name for this fallback image (e.g., "Abstract Pattern 1")
+   */
+  alt: string;
+  /**
+   * Uncheck to temporarily disable this image from the random pool
+   */
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    player?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -1238,6 +1286,10 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
+        relationTo: 'player-fallback-images';
+        value: number | PlayerFallbackImage;
+      } | null)
+    | ({
         relationTo: 'djs';
         value: number | Dj;
       } | null)
@@ -1403,6 +1455,49 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
         large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "player-fallback-images_select".
+ */
+export interface PlayerFallbackImagesSelect<T extends boolean = true> {
+  alt?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        player?:
           | T
           | {
               url?: T;

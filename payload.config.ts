@@ -11,6 +11,7 @@ import { VolunteerCalendar } from './src/collections/VolunteerCalendar'
 import { WeeklyCharts } from './src/collections/WeeklyCharts'
 import { DJs } from './src/collections/DJs'
 import { Media } from './src/collections/Media'
+import { PlayerFallbackImages } from './src/collections/PlayerFallbackImages'
 import { Venues } from './src/collections/Venues'
 import { Pages } from './src/collections/Pages'
 import { Podcasts } from './src/collections/Podcasts'
@@ -36,6 +37,7 @@ export default buildConfig({
 
     // Media
     Media,
+    PlayerFallbackImages,
 
     // People
     DJs,
