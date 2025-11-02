@@ -268,8 +268,6 @@ export interface PlayerFallbackImage {
   };
 }
 /**
- * Search by email, first name, last name, or DJ name
- *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "listeners".
  */
@@ -402,6 +400,9 @@ export interface Listener {
         id?: string | null;
       }[]
     | null;
+  /**
+   * DJs this substitute can fill in for
+   */
   canSubstituteFor?:
     | {
         djId?: string | null;

@@ -8,15 +8,14 @@ export const Members: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'email',
-    defaultColumns: ['email', 'firstName', 'lastName', 'roles'],
+    defaultColumns: ['firstName', 'lastName', 'email', 'roles'],
     group: 'Community',
-    description: 'Search by email, first name, last name, or DJ name',
     pagination: {
       defaultLimit: 50,
     },
   },
   search: {
-    fields: ['email', 'firstName', 'lastName', 'djName'],
+    fields: ['firstName', 'lastName', 'email', 'djName'],
   },
   access: {
     read: () => true,
@@ -169,8 +168,16 @@ export const Members: CollectionConfig = {
       name: 'favoriteDJs',
       type: 'array',
       label: 'Favorite DJs',
+      labels: {
+        singular: 'Favorite DJ',
+        plural: 'Favorite DJs',
+      },
       fields: [
-        { name: 'djId', type: 'text' }
+        {
+          name: 'djId',
+          type: 'text',
+          label: 'DJ ID'
+        }
       ]
     },
     {
@@ -272,10 +279,16 @@ export const Members: CollectionConfig = {
     {
       name: 'wantsToDJ',
       type: 'text',
+      label: 'Wants To DJ',
     },
     {
       name: 'djAvailability',
       type: 'array',
+      label: 'DJ Availability',
+      labels: {
+        singular: 'Time Slot',
+        plural: 'Time Slots',
+      },
       fields: [
         { name: 'time', type: 'text' }
       ]
@@ -307,9 +320,20 @@ export const Members: CollectionConfig = {
     {
       name: 'canSubstituteFor',
       type: 'array',
+      labels: {
+        singular: 'DJ',
+        plural: 'DJs',
+      },
       fields: [
-        { name: 'djId', type: 'text' }
-      ]
+        {
+          name: 'djId',
+          type: 'text',
+          label: 'DJ ID'
+        }
+      ],
+      admin: {
+        description: 'DJs this substitute can fill in for'
+      }
     },
 
     // Board Member Fields
