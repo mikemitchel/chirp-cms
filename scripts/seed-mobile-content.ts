@@ -139,7 +139,7 @@ async function seedMobileContent() {
     for (const page of mobilePages) {
       const created = await payload.create({
         collection: 'mobilePageContent',
-        data: page,
+        data: page as any,
       })
       console.log(`  ✅ Created: ${created.pageTitle} (${created.pageIdentifier})`)
     }

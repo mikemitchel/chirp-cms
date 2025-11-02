@@ -218,7 +218,7 @@ const importShopImages = async () => {
                 data: {
                   images: [
                     {
-                      image: mediaId,
+                      image: typeof mediaId === 'number' ? mediaId : undefined,
                       alt: originalData.name,
                     },
                   ],

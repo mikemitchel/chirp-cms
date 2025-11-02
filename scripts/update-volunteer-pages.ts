@@ -27,7 +27,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Websites to Remember',
-          titleTag: 'h1',
+          titleTag: 'h1' as const,
           content: {
             root: {
               type: 'root',
@@ -49,7 +49,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'General Links',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -66,7 +66,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Mailing Lists',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -83,7 +83,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'DJ Items',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -103,7 +103,7 @@ const updateVolunteerPages = async () => {
     await payload.update({
       collection: 'pages',
       id: page.id,
-      data: websitesContent,
+      data: websitesContent as any,
     })
 
     console.log('✓ Updated Websites to Remember page')
@@ -127,7 +127,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Volunteer Downloads',
-          titleTag: 'h1',
+          titleTag: 'h1' as const,
           content: {
             root: {
               type: 'root',
@@ -149,7 +149,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Production processes, instructions, and tips',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -166,7 +166,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Marketing, Partnerships, and Sponsorships',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -183,7 +183,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Skills and Tips',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -200,7 +200,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'HR Documents',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -217,7 +217,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Volunteer Files',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -234,7 +234,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Fundraising Information and Donation Forms',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -251,7 +251,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Legal Documents',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -268,7 +268,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Flyers/Postcards',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -285,7 +285,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'DJ Forms',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -302,7 +302,7 @@ const updateVolunteerPages = async () => {
         {
           blockType: 'contentCard',
           title: 'Logos',
-          titleTag: 'h2',
+          titleTag: 'h2' as const,
           content: {
             root: {
               type: 'root',
@@ -322,7 +322,7 @@ const updateVolunteerPages = async () => {
     await payload.update({
       collection: 'pages',
       id: page.id,
-      data: downloadsContent,
+      data: downloadsContent as any,
     })
 
     console.log('✓ Updated Volunteer Downloads page')

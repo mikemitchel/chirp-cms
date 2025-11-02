@@ -34,7 +34,7 @@ const updateVolunteerPages = async () => {
       {
         blockType: 'contentCard',
         title: 'Websites to Remember',
-        titleTag: 'h1',
+        titleTag: 'h1' as const,
         content: {
           root: {
             type: 'root',
@@ -49,7 +49,7 @@ const updateVolunteerPages = async () => {
       {
         blockType: 'contentCard',
         title: 'General Links',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 ${createLinkHTML('CHIRP Passport', '#', 'New to CHIRP? Check out this guide to the many ways you can get involved, and earn a free t-shirt!')}
@@ -65,7 +65,7 @@ ${createLinkHTML('Staff Ticket Sign-up', '#', 'Sign up here for available CHIRP 
       {
         blockType: 'contentCard',
         title: 'Mailing Lists',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Here are links to all of the CHIRP Radio Mailing Lists</p>
 ${createLinkHTML('CHIRP DJ list', '#', 'This is the list for all active CHIRP DJs, weekly and sub')}
@@ -79,7 +79,7 @@ ${createLinkHTML('Main Volunteer Mailing List', '#', 'The mailing list for all g
       {
         blockType: 'contentCard',
         title: 'DJ Items',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>These links relate to DJ training sessions, helpful resources, and collaborative Spotify playlists</p>
 ${createLinkHTML('CHIRP DJ 202 - engineering, on-air presentation, and programming your show', '#', 'This is the general discussion portion of the DJ202 session, covering topics relating to engineering, on-air presentation, and programming your show')}
@@ -100,7 +100,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Volunteer Downloads',
-        titleTag: 'h1',
+        titleTag: 'h1' as const,
         content: {
           root: {
             type: 'root',
@@ -115,7 +115,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Production processes, instructions, and tips',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Instructions, tips, and guides relating to production-related tasks</p>
 <ul>
@@ -131,7 +131,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Marketing, Partnerships, and Sponsorships',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Media kit, partnership and DJ services info, sponsorship packages, etc.</p>
 <ul>
@@ -143,7 +143,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Skills and Tips',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Articles on improving your skills and other interesting topics.</p>
 <ul>
@@ -158,7 +158,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'HR Documents',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Policy manuals and other documents</p>
 <ul>
@@ -169,7 +169,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Volunteer Files',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Files for new volunteers to learn about how CHIRP works.</p>
 <ul>
@@ -182,7 +182,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Fundraising Information and Donation Forms',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Here, you will find forms for people who want to donate items to CHIRP, or who would like to make monetary donations offline.</p>
 <ul>
@@ -194,7 +194,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Legal Documents',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: '<p>Aenean lacinia bibendum nulla sed consectetur.</p>',
         imagePosition: 'none',
@@ -202,7 +202,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Flyers/Postcards',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: "<p>We'll keep an updated list of files you can download and print out to help promote CHIRP events.</p>",
         imagePosition: 'none',
@@ -210,7 +210,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'DJ Forms',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>Shift applications and more...</p>
 <ul>
@@ -222,7 +222,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
       {
         blockType: 'contentCard',
         title: 'Logos',
-        titleTag: 'h2',
+        titleTag: 'h2' as const,
         content: emptyLexicalContent,
         htmlContent: `<p>These are various logos for CHIRP Radio and the Chicago Independent Radio Project.</p>
 <ul>
@@ -245,7 +245,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
     await payload.update({
       collection: 'pages',
       id: websitesPages[0].id,
-      data: websitesContent,
+      data: websitesContent as any,
     })
     console.log('✓ Updated Websites to Remember page with full content')
   }
@@ -261,7 +261,7 @@ ${createLinkHTML('Show resources', '#', 'Upcoming show listings, local news, eve
     await payload.update({
       collection: 'pages',
       id: downloadsPages[0].id,
-      data: downloadsContent,
+      data: downloadsContent as any,
     })
     console.log('✓ Updated Volunteer Downloads page with full content')
   }

@@ -25,7 +25,7 @@ const importDemoUsers = async () => {
       preferences: {
         emailNotifications: true,
         showNotifications: true,
-        darkMode: 'light',
+        darkMode: 'light' as const,
         autoPlay: true
       }
     },
@@ -105,7 +105,7 @@ const importDemoUsers = async () => {
     try {
       const created = await payload.create({
         collection: 'listeners',
-        data: user,
+        data: user as any,
       })
 
       console.log(`  ✓ ${user.firstName} ${user.lastName} (${user.email}) - ID: ${created.id}`)

@@ -40,7 +40,7 @@ const exportShopItems = async () => {
           itemType: item.itemType,
           category: item.category,
           description: item.description,
-          details: item.details || `${item.name} from CHIRP Radio's official store.`,
+          details: (item as any).details || `${item.name} from CHIRP Radio's official store.`,
           sizes: (item.sizes as Array<{ size: string }>)?.map((s) => s.size) || [],
           inStock: item.inStock,
         }
@@ -54,10 +54,10 @@ const exportShopItems = async () => {
     console.log(`\n✨ Exported ${seedData.shopItems.length} shop items to ${outputPath}`)
 
     // Show items with multiple images
-    const multiImageItems = seedData.shopItems.filter((item) => item.additionalImages)
+    const multiImageItems = seedData.shopItems.filter((item: any) => item.additionalImages)
     if (multiImageItems.length > 0) {
       console.log(`\n📸 Items with multiple images:`)
-      multiImageItems.forEach((item) => {
+      multiImageItems.forEach((item: any) => {
         console.log(`  - ${item.name}: ${(item.additionalImages?.length || 0) + 1} images`)
       })
     }
