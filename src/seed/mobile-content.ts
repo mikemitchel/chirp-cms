@@ -113,6 +113,7 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
           customNotLoggedInMessage: {
             root: {
               type: 'root',
+              version: 1,
               children: [
                 {
                   type: 'paragraph',
@@ -158,6 +159,7 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
           customNotLoggedInMessage: {
             root: {
               type: 'root',
+              version: 1,
               children: [
                 {
                   type: 'paragraph',
