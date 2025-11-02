@@ -42,8 +42,8 @@ export const WeeklyCharts: CollectionConfig = {
         beforeChange: [
           ({ data, value }) => {
             if (value) return value
-            if (data.title) {
-              return data.title
+            if (data?.title) {
+              return data?.title
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-+|-+$/g, '')
@@ -82,8 +82,8 @@ export const WeeklyCharts: CollectionConfig = {
           ({ data, value }) => {
             if (value && value.trim()) {
               const lines = value.trim().split('\n')
-              const tracks = lines.map((line) => {
-                const parts = line.split(',').map(p => p.trim())
+              const tracks = lines.map((line: string) => {
+                const parts = line.split(',').map((p: string) => p.trim())
 
                 // Format: Song,Artist,Label
                 if (parts.length >= 2) {
@@ -96,7 +96,7 @@ export const WeeklyCharts: CollectionConfig = {
                 return null
               }).filter(Boolean)
 
-              if (tracks.length > 0) {
+              if (tracks.length > 0 && data) {
                 data.tracks = tracks
               }
             }

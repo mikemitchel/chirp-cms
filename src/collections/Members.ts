@@ -14,9 +14,6 @@ export const Members: CollectionConfig = {
       defaultLimit: 50,
     },
   },
-  search: {
-    fields: ['firstName', 'lastName', 'email', 'djName'],
-  },
   access: {
     read: () => true,
     create: () => true,
