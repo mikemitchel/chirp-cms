@@ -1,0 +1,76 @@
+{
+  "categories": [
+    {
+      "id": 12,
+      "name": "Music",
+      "updatedAt": "2025-10-26T01:11:56.369Z",
+      "createdAt": "2025-10-26T01:11:56.369Z"
+    },
+    {
+      "id": 11,
+      "name": "Events",
+      "updatedAt": "2025-10-26T01:11:56.368Z",
+      "createdAt": "2025-10-26T01:11:56.368Z"
+    },
+    {
+      "id": 10,
+      "name": "Feature",
+      "updatedAt": "2025-10-26T01:11:56.368Z",
+      "createdAt": "2025-10-26T01:11:56.368Z"
+    },
+    {
+      "id": 9,
+      "name": "News",
+      "updatedAt": "2025-10-26T01:11:56.367Z",
+      "createdAt": "2025-10-26T01:11:56.367Z"
+    },
+    {
+      "id": 8,
+      "name": "CHIRP History",
+      "updatedAt": "2025-10-26T01:11:56.365Z",
+      "createdAt": "2025-10-26T01:11:56.365Z"
+    },
+    {
+      "id": 7,
+      "name": "Behind the Scenes",
+      "updatedAt": "2025-10-26T01:11:56.363Z",
+      "createdAt": "2025-10-26T01:11:56.363Z"
+    },
+    {
+      "id": 6,
+      "name": "Community Guide",
+      "updatedAt": "2025-10-26T01:11:56.361Z",
+      "createdAt": "2025-10-26T01:11:56.361Z"
+    },
+    {
+      "id": 5,
+      "name": "Venue Guide",
+      "updatedAt": "2025-10-26T01:11:56.359Z",
+      "createdAt": "2025-10-26T01:11:56.359Z"
+    },
+    {
+      "id": 4,
+      "name": "Vinyl Culture",
+      "updatedAt": "2025-10-26T01:11:56.358Z",
+      "createdAt": "2025-10-26T01:11:56.358Z"
+    },
+    {
+      "id": 3,
+      "name": "Album Reviews",
+      "updatedAt": "2025-10-26T01:11:56.356Z",
+      "createdAt": "2025-10-26T01:11:56.356Z"
+    },
+    {
+      "id": 2,
+      "name": "Interview",
+      "updatedAt": "2025-10-26T01:11:56.355Z",
+      "createdAt": "2025-10-26T01:11:56.355Z"
+    },
+    {
+      "id": 1,
+      "name": "Music Scene",
+      "updatedAt": "2025-10-26T01:11:56.352Z",
+      "createdAt": "2025-10-26T01:11:56.352Z"
+    }
+  ]
+}

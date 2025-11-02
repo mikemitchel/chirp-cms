@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": null,
+      "updatedAt": "2025-10-26T01:11:56.346Z",
+      "createdAt": "2025-10-26T01:11:56.345Z",
+      "email": "admin@chirpradio.org",
+      "sessions": [
+        {
+          "id": "0711613b-3e23-4847-8378-1267c3be85dc",
+          "createdAt": "2025-10-31T13:42:18.012Z",
+          "expiresAt": "2025-10-31T15:42:18.012Z"
+        }
+      ]
+    }
+  ]
+}

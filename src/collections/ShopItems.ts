@@ -71,6 +71,7 @@ export const ShopItems: CollectionConfig = {
       options: [
         { label: 'Apparel', value: 'apparel' },
         { label: 'Accessories', value: 'accessories' },
+        { label: 'Poster', value: 'poster' },
         { label: 'Merchandise', value: 'merchandise' },
         { label: 'Music', value: 'music' },
         { label: 'Other', value: 'other' },
@@ -92,6 +93,7 @@ export const ShopItems: CollectionConfig = {
     {
       name: 'images',
       type: 'array',
+      defaultValue: [],
       fields: [
         {
           name: 'image',

@@ -1,0 +1,308 @@
+{
+  "announcements": [
+    {
+      "id": 8,
+      "headlineText": "Mobile App Beta",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Be among the first to try our new mobile app! Sign up for the beta test program."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-d900",
+      "showLink": true,
+      "linkText": "Join Beta",
+      "linkUrl": "#beta-signup",
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.963Z",
+      "createdAt": "2025-10-26T04:20:30.963Z"
+    },
+    {
+      "id": 7,
+      "headlineText": "Holiday Schedule Changes",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Special holiday programming begins December 24th. Check the schedule page for updated show times."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-d100",
+      "showLink": true,
+      "linkText": "View Schedule",
+      "linkUrl": "/schedule",
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.962Z",
+      "createdAt": "2025-10-26T04:20:30.962Z"
+    },
+    {
+      "id": 6,
+      "headlineText": "DJ Applications Now Open",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Think you've got what it takes to be a CHIRP DJ? Applications for our Spring 2025 class are now open."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-s900",
+      "showLink": true,
+      "linkText": "Apply Now",
+      "linkUrl": "/volunteer",
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.961Z",
+      "createdAt": "2025-10-26T04:20:30.961Z"
+    },
+    {
+      "id": 5,
+      "headlineText": "Emergency Broadcast Test",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "We'll be conducting an emergency broadcast system test on December 10th at 2pm CST. Expect a brief interruption."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-s100",
+      "showLink": false,
+      "linkText": null,
+      "linkUrl": null,
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.960Z",
+      "createdAt": "2025-10-26T04:20:30.960Z"
+    },
+    {
+      "id": 4,
+      "headlineText": "Stream Quality Upgrade",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "We've upgraded our streaming infrastructure! Enjoy higher quality audio with fewer interruptions."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-d900",
+      "showLink": false,
+      "linkText": null,
+      "linkUrl": null,
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.959Z",
+      "createdAt": "2025-10-26T04:20:30.959Z"
+    },
+    {
+      "id": 3,
+      "headlineText": "The CHIRP Record Club",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Join us each month as we deep dive into classic albums. First episode featuring OK Computer out now!"
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-d100",
+      "showLink": true,
+      "linkText": "Listen Now",
+      "linkUrl": "/podcasts/chirp-record-club",
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.958Z",
+      "createdAt": "2025-10-26T04:20:30.958Z"
+    },
+    {
+      "id": 2,
+      "headlineText": "Record Store Day This Saturday",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "CHIRP DJs will be spinning at record stores across Chicago. Check the events page for locations and times."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "motivation",
+      "textureBackground": "cr-bg-natural-s100",
+      "showLink": true,
+      "linkText": "View Events",
+      "linkUrl": "/events",
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": null,
+      "targetAmount": null,
+      "updatedAt": "2025-10-26T04:20:30.956Z",
+      "createdAt": "2025-10-26T04:20:30.956Z"
+    },
+    {
+      "id": 1,
+      "headlineText": "Winter Membership Drive",
+      "bodyText": {
+        "root": {
+          "type": "root",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "text": "Help us reach our goal of 500 new members this December! Your support keeps independent radio alive."
+                }
+              ]
+            }
+          ],
+          "direction": "ltr",
+          "format": "",
+          "indent": 0,
+          "version": 1
+        }
+      },
+      "variant": "donation",
+      "textureBackground": "cr-bg-natural-a500",
+      "showLink": true,
+      "linkText": "Become a Sustaining Member",
+      "linkUrl": "/other-ways-to-give",
+      "buttonCount": "none",
+      "button1Text": null,
+      "button1Icon": null,
+      "button2Text": null,
+      "button2Icon": null,
+      "currentAmount": 12500,
+      "targetAmount": 50000,
+      "updatedAt": "2025-10-26T04:46:51.032Z",
+      "createdAt": "2025-10-26T04:20:30.955Z"
+    }
+  ]
+}

@@ -1,26 +1,47 @@
-# CMS Utility Scripts
+# CMS Database Seeding
 
-## fix-duplicate-indexes.sh
+This directory contains scripts for backing up and restoring CMS data.
 
-**Problem:** When database schema changes occur, Drizzle may try to create indexes that already exist in the database, causing errors like:
+## Files
 
-```
-SQLITE_ERROR: index site_settings_top_announcement_idx already exists
-```
+- `export.cjs` - Script to export all CMS data to `seed-data.json`
+- `seed.cjs` - Script to import data from `seed-data.json` into the CMS
+- `../seed-data.json` - Current backup of all CMS collections
 
-**Solution:** This script drops duplicate indexes so Drizzle can recreate them properly.
+## Current Seed Data
 
-**Usage:**
+- **listeners** (59 members) - All members including DJs, volunteers, board members
+- **shopItems** (9 items) - All shop/store items with images
+- **announcements** (8 items) - Site announcements
+- **articles** (8 items) - Blog articles
+- **events** (11 items) - Event listings
+- **podcasts** (12 items) - Podcast episodes
+- **media** (3 items) - Uploaded media files
+
+## Usage
+
+### Export Database to Seed File
+
 ```bash
-./scripts/fix-duplicate-indexes.sh
+cd /Users/ryanwilson/Documents/Clients/CHIRP/chirp-cms
+node scripts/export.cjs
 ```
 
-Then restart the CMS server:
+### Restore Database from Seed
+
 ```bash
-npm run dev
+node scripts/seed.cjs
 ```
 
-**When to use:**
-- After pulling schema changes from main
-- When you see "index already exists" errors in the CMS logs
-- After merging branches with database schema modifications
+### Clear and Restore (⚠️ WARNING: Deletes all data first)
+
+```bash
+node scripts/seed.cjs --clear
+```
+
+## Notes
+
+- The seed script automatically removes internal fields before importing
+- Use `--clear` flag with caution - it will delete ALL existing data
+- Make sure the CMS is running on http://localhost:3000 before running seed scripts
+- Last updated: $(date +%Y-%m-%d)
