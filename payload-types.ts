@@ -79,6 +79,7 @@ export interface Config {
     events: Event;
     podcasts: Podcast;
     shopItems: ShopItem;
+    showSchedules: ShowSchedule;
     weeklyCharts: WeeklyChart;
     volunteerCalendar: VolunteerCalendar;
     mobilePageContent: MobilePageContent;
@@ -102,6 +103,7 @@ export interface Config {
     events: EventsSelect<false> | EventsSelect<true>;
     podcasts: PodcastsSelect<false> | PodcastsSelect<true>;
     shopItems: ShopItemsSelect<false> | ShopItemsSelect<true>;
+    showSchedules: ShowSchedulesSelect<false> | ShowSchedulesSelect<true>;
     weeklyCharts: WeeklyChartsSelect<false> | WeeklyChartsSelect<true>;
     volunteerCalendar: VolunteerCalendarSelect<false> | VolunteerCalendarSelect<true>;
     mobilePageContent: MobilePageContentSelect<false> | MobilePageContentSelect<true>;
@@ -266,6 +268,8 @@ export interface PlayerFallbackImage {
   };
 }
 /**
+ * Search by email, first name, last name, or DJ name
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "listeners".
  */
@@ -297,7 +301,7 @@ export interface Listener {
    */
   showName?: string | null;
   /**
-   * Show time slot (e.g., "Mon 6am - 9am")
+   * Show time slot - auto-populated from Show Schedules assignments
    */
   showTime?: string | null;
   /**
@@ -994,6 +998,55 @@ export interface ShopItem {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "showSchedules".
+ */
+export interface ShowSchedule {
+  id: number;
+  /**
+   * Auto-generated title for this schedule slot
+   */
+  title?: string | null;
+  /**
+   * Day of the week for this show
+   */
+  dayOfWeek: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
+  /**
+   * Start time (e.g., "6:00 AM", "11:00 PM")
+   */
+  startTime: string;
+  /**
+   * End time (e.g., "9:00 AM", "1:00 AM")
+   */
+  endTime: string;
+  /**
+   * Check this for automated Music Mix slots (no DJ assignment needed)
+   */
+  isMusicMix?: boolean | null;
+  /**
+   * DJ assigned to this time slot (not required for Music Mix)
+   */
+  dj?: (number | null) | Listener;
+  /**
+   * Show name (optional - will use DJ's show name if not provided)
+   */
+  showName?: string | null;
+  /**
+   * Whether this show is currently active
+   */
+  isActive?: boolean | null;
+  /**
+   * Internal notes about this show slot
+   */
+  notes?: string | null;
+  /**
+   * Order in which to display (lower numbers appear first)
+   */
+  displayOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "weeklyCharts".
  */
 export interface WeeklyChart {
@@ -1313,6 +1366,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'shopItems';
         value: number | ShopItem;
+      } | null)
+    | ({
+        relationTo: 'showSchedules';
+        value: number | ShowSchedule;
       } | null)
     | ({
         relationTo: 'weeklyCharts';
@@ -1809,6 +1866,24 @@ export interface ShopItemsSelect<T extends boolean = true> {
   featured?: T;
   soldOut?: T;
   limitedEdition?: T;
+  displayOrder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "showSchedules_select".
+ */
+export interface ShowSchedulesSelect<T extends boolean = true> {
+  title?: T;
+  dayOfWeek?: T;
+  startTime?: T;
+  endTime?: T;
+  isMusicMix?: T;
+  dj?: T;
+  showName?: T;
+  isActive?: T;
+  notes?: T;
   displayOrder?: T;
   updatedAt?: T;
   createdAt?: T;

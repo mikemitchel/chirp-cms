@@ -18,6 +18,7 @@
     "seed:mobile": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/seed-mobile-content.ts",
     "create:admin": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/create-admin.ts",
     "import:shop-images": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/import-shop-images.ts",
+    "import:shop-images-from-urls": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/import-shop-images-from-urls.ts",
     "import:members": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/import-members.ts",
     "fix:shop-images": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/fix-shop-image-references.ts",
     "fix:shop-items": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/fix-shop-items-images.ts",
@@ -25,6 +26,7 @@
     "export": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/export-data.ts",
     "export:shop-items": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/export-shop-items.ts",
     "restore": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/restore-data.ts",
+    "restore:media": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/restore-media-from-backup.ts",
     "prepare": "husky"
   },
   "dependencies": {

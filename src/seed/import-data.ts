@@ -10,6 +10,10 @@ import { seedPages } from './seed-pages'
 import { volunteerCalendarEvents } from './seed-volunteer-calendar'
 import { seedSiteSettings } from './seed-site-settings'
 import { seedMembers } from './seed-members'
+import { seedShowSchedules } from './seed-show-schedules'
+import { seedMedia } from './seed-media'
+import { seedPlayerFallbackImages } from './seed-player-fallback-images'
+import { seedWeeklyCharts } from './seed-weekly-charts'
 
 dotenv.config()
 
@@ -107,12 +111,9 @@ const importData = async () => {
     for (const volunteerEvent of existingVolunteerCalendar) {
       await payload.delete({ collection: 'volunteerCalendar', id: volunteerEvent.id })
     }
-    const { docs: existingShopItems } = await payload.find({ collection: 'shopItems', limit: 1000 })
-    for (const shopItem of existingShopItems) {
-      await payload.delete({ collection: 'shopItems', id: shopItem.id })
-    }
+    // NOTE: We do NOT delete shop items - manually uploaded images are preserved
     // NOTE: We do NOT delete listeners/members - they are preserved
-    console.log('✓ Existing data cleared (Members preserved)\n')
+    console.log('✓ Existing data cleared (Members and Shop Items preserved)\n')
 
     // Read JSON files
     const dataDir = path.resolve(__dirname, '../../../chirp-radio/src/data')
@@ -341,7 +342,7 @@ const importData = async () => {
       console.log(`  ✓ ${event.name}`)
     }
 
-    // Import Shop Items
+    // Import Shop Items (skip if already exists to preserve manually uploaded images)
     console.log(`\n🛍️  Importing ${shopItemsData.shopItems.length} shop items...`)
 
     // Map shop item categories to valid select values
@@ -353,6 +354,18 @@ const importData = async () => {
 
     for (const item of shopItemsData.shopItems) {
       const { id, category, sizes, ...itemData } = item
+
+      // Check if shop item already exists by name
+      const { docs: existing } = await payload.find({
+        collection: 'shopItems',
+        where: { name: { equals: item.name } },
+        limit: 1,
+      })
+
+      if (existing.length > 0) {
+        console.log(`  ⊘ ${item.name} (already exists, skipping)`)
+        continue
+      }
 
       // Map itemType to category select value
       const shopCategory = shopCategoryMapping[item.itemType] || 'merchandise'
@@ -373,8 +386,16 @@ const importData = async () => {
     // Seed Members
     await seedMembers(payload)
 
+    // Seed Show Schedules (after Members so DJs exist)
+    await seedShowSchedules(payload)
+
     // Seed Site Settings
     await seedSiteSettings(payload)
+
+    // Seed Media, Player Fallback Images, and Weekly Charts
+    await seedMedia(payload)
+    await seedPlayerFallbackImages(payload)
+    await seedWeeklyCharts(payload)
 
     console.log('✨ Data import completed successfully!')
     process.exit(0)

@@ -26,7 +26,7 @@ const exportData = async () => {
     const backupDir = path.join(exportDir, `backup-${timestamp}`)
     fs.mkdirSync(backupDir, { recursive: true })
 
-    // Export all collections
+    // Export all collections (using correct slugs from collection definitions)
     const collections = [
       'users',
       'categories',
@@ -36,14 +36,14 @@ const exportData = async () => {
       'articles',
       'events',
       'podcasts',
-      'djs',
-      'listeners',
-      'shop-items',
-      'weekly-charts',
-      'volunteer-calendar',
-      'mobile-page-content',
+      'listeners', // Members collection uses 'listeners' slug
+      'shopItems',
+      'weeklyCharts',
+      'volunteerCalendar',
+      'mobilePageContent',
+      'showSchedules',
       'pages',
-      'age-gate',
+      'ageGate',
       'media',
       'player-fallback-images',
     ]
@@ -67,8 +67,8 @@ const exportData = async () => {
       }
     }
 
-    // Export globals
-    const globals = ['site-settings', 'mobile-app-settings']
+    // Export globals (using correct slugs from global definitions)
+    const globals = ['siteSettings', 'mobileAppSettings']
 
     console.log('\n📥 Exporting globals...')
     for (const global of globals) {

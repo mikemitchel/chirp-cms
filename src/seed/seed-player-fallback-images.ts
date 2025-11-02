@@ -1,35 +1,60 @@
 import type { Payload } from 'payload'
 import path from 'path'
 import fs from 'fs'
+import type { FileData } from 'payload'
+import { fileURLToPath } from 'url'
 
-export async function seedPlayerFallbackImages(payload: Payload, dataDir?: string) {
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+export async function seedPlayerFallbackImages(payload: Payload) {
   console.log('🎨 Seeding Player Fallback Images...')
 
   try {
-    // Check if we have exported data
-    if (dataDir && fs.existsSync(path.join(dataDir, 'player-fallback-images.json'))) {
-      const fallbackImagesData = JSON.parse(
-        fs.readFileSync(path.join(dataDir, 'player-fallback-images.json'), 'utf-8')
-      )
+    // Path to the seed data
+    const seedDataPath = path.resolve(__dirname, 'player-fallback-images.json')
 
-      for (const image of fallbackImagesData['player-fallback-images'] || []) {
-        const { id, createdAt, updatedAt, ...imageData } = image
+    if (!fs.existsSync(seedDataPath)) {
+      console.log('✓ No player fallback images to seed (file not found)')
+      return
+    }
 
-        // Note: For media/upload collections, we can't easily restore the actual files
-        // This will restore the metadata, but files would need to be manually uploaded
-        // or copied from the media directory
-        await payload.create({
-          collection: 'player-fallback-images',
-          data: imageData,
-        })
-        console.log(`  ✓ ${image.alt || image.filename}`)
+    const fallbackImagesData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'))
+
+    for (const image of fallbackImagesData['player-fallback-images'] || []) {
+      // Check if file exists in media directory
+      const mediaFilePath = path.resolve(__dirname, '../../media', image.filename)
+      if (!fs.existsSync(mediaFilePath)) {
+        console.log(`  ⚠️  File not found: ${image.filename}, skipping...`)
+        continue
       }
 
-      console.log(`✓ ${fallbackImagesData['player-fallback-images']?.length || 0} Player Fallback Images seeded successfully`)
-      console.log('  ⚠️  Note: Media files need to be restored separately from the media/ directory')
-    } else {
-      console.log('✓ No player fallback images to seed (collection empty)')
+      try {
+        // Read the file and create a File-like object
+        const fileBuffer = fs.readFileSync(mediaFilePath)
+        const file: FileData = {
+          data: fileBuffer,
+          mimetype: image.mimeType,
+          name: image.filename,
+          size: image.filesize,
+        }
+
+        // Upload the file through Payload's API
+        await payload.create({
+          collection: 'player-fallback-images',
+          data: {
+            alt: image.alt || '',
+            isActive: image.isActive || false,
+          },
+          file,
+        })
+        console.log(`  ✓ ${image.filename}`)
+      } catch (error) {
+        console.log(`  ⚠️  Could not restore ${image.filename}:`, (error as Error).message)
+      }
     }
+
+    console.log(`✓ Player Fallback Images seeded successfully`)
   } catch (error) {
     console.error('Error seeding Player Fallback Images:', error)
   }

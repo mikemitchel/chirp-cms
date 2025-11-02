@@ -17,6 +17,7 @@ import { Podcasts } from './src/collections/Podcasts'
 import { Announcements } from './src/collections/Announcements'
 import { Advertisements } from './src/collections/Advertisements'
 import { ShopItems } from './src/collections/ShopItems'
+import { ShowSchedules } from './src/collections/ShowSchedules'
 import { Users } from './src/collections/Users'
 import { AgeGate } from './src/collections/AgeGate'
 import { Members } from './src/collections/Members'
@@ -52,6 +53,7 @@ export default buildConfig({
     Events,
     Podcasts,
     ShopItems,
+    ShowSchedules,
     WeeklyCharts,
     VolunteerCalendar,
 
