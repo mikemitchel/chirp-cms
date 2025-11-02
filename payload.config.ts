@@ -9,7 +9,6 @@ import { Articles } from './src/collections/Articles'
 import { Events } from './src/collections/Events'
 import { VolunteerCalendar } from './src/collections/VolunteerCalendar'
 import { WeeklyCharts } from './src/collections/WeeklyCharts'
-import { DJs } from './src/collections/DJs'
 import { Media } from './src/collections/Media'
 import { PlayerFallbackImages } from './src/collections/PlayerFallbackImages'
 import { Venues } from './src/collections/Venues'
@@ -20,7 +19,7 @@ import { Advertisements } from './src/collections/Advertisements'
 import { ShopItems } from './src/collections/ShopItems'
 import { Users } from './src/collections/Users'
 import { AgeGate } from './src/collections/AgeGate'
-import { Listeners } from './src/collections/Listeners'
+import { Members } from './src/collections/Members'
 import { Categories } from './src/collections/Categories'
 import { MobilePageContent } from './src/collections/MobilePageContent'
 import { SiteSettings } from './src/globals/SiteSettings'
@@ -40,8 +39,7 @@ export default buildConfig({
     PlayerFallbackImages,
 
     // People
-    DJs,
-    Listeners,
+    Members,
 
     // Content Assets
     Categories,

@@ -1,0 +1,250 @@
+{
+  "media": [
+    {
+      "id": 6,
+      "alt": "Banner for the Chirp Music Film Festival. White text on a gray background with 'FILM' highlighted in red paint. Filmstrip border adds a cinematic feel.",
+      "updatedAt": "2025-10-31T13:58:38.668Z",
+      "createdAt": "2025-10-31T13:58:38.668Z",
+      "url": "http://localhost:3000/api/media/file/chirp-film-fest.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chirp-film-fest-400x300.jpg",
+      "filename": "chirp-film-fest.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 63690,
+      "width": 1080,
+      "height": 356,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17428,
+          "filename": "chirp-film-fest-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36298,
+          "filename": "chirp-film-fest-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 5,
+      "alt": "Dark background image with bold, distressed text reading \"THE FIRST TIME\" in large letters. The text evokes a mysterious and dramatic tone.",
+      "updatedAt": "2025-10-31T13:54:05.746Z",
+      "createdAt": "2025-10-31T13:54:05.746Z",
+      "url": "http://localhost:3000/api/media/file/FirstTimeLogo-1.png",
+      "thumbnailURL": "http://localhost:3000/api/media/file/FirstTimeLogo-1-400x300.png",
+      "filename": "FirstTimeLogo-1.png",
+      "mimeType": "image/png",
+      "filesize": 30839,
+      "width": 481,
+      "height": 246,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/FirstTimeLogo-1-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 89116,
+          "filename": "FirstTimeLogo-1-400x300.png"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "alt": "Dark background image with bold, distressed text reading \"THE FIRST TIME\" in large letters. The text evokes a mysterious and dramatic tone.",
+      "updatedAt": "2025-10-31T13:53:54.011Z",
+      "createdAt": "2025-10-31T13:53:54.011Z",
+      "url": "http://localhost:3000/api/media/file/FirstTimeLogo.png",
+      "thumbnailURL": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+      "filename": "FirstTimeLogo.png",
+      "mimeType": "image/png",
+      "filesize": 30839,
+      "width": 481,
+      "height": 246,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 89116,
+          "filename": "FirstTimeLogo-400x300.png"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "alt": "Logo with the words \"Illinois ARTS Council,\" with \"ARTS\" in large green letters and the other words in black.",
+      "updatedAt": "2025-10-31T13:51:24.255Z",
+      "createdAt": "2025-10-31T13:51:24.255Z",
+      "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green.png",
+      "thumbnailURL": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+      "filename": "NEW IAC LOGO_Black_Green.png",
+      "mimeType": "image/png",
+      "filesize": 31576,
+      "width": 1024,
+      "height": 607,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 41388,
+          "filename": "NEW IAC LOGO_Black_Green-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 84448,
+          "filename": "NEW IAC LOGO_Black_Green-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 2,
+      "alt": "Logo for Chicago’s Department of Cultural Affairs and Special Events, showing a blue square, a red six-pointed star, and the text “DCASE” with the full department name below.",
+      "updatedAt": "2025-10-31T13:48:52.677Z",
+      "createdAt": "2025-10-31T13:48:52.677Z",
+      "url": "http://localhost:3000/api/media/file/dcase.png",
+      "thumbnailURL": "http://localhost:3000/api/media/file/dcase-400x300.png",
+      "filename": "dcase.png",
+      "mimeType": "image/png",
+      "filesize": 25800,
+      "width": 1100,
+      "height": 342,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/dcase-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 58934,
+          "filename": "dcase-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/dcase-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 112874,
+          "filename": "dcase-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 1,
+      "alt": null,
+      "updatedAt": "2025-10-26T03:32:59.392Z",
+      "createdAt": "2025-10-26T03:32:59.392Z",
+      "url": "http://localhost:3000/api/media/file/logoipsum-329.svg",
+      "thumbnailURL": null,
+      "filename": "logoipsum-329.svg",
+      "mimeType": "image/svg+xml",
+      "filesize": 1039,
+      "width": 54,
+      "height": 41,
+      "focalX": null,
+      "focalY": null,
+      "sizes": {
+        "thumbnail": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    }
+  ]
+}

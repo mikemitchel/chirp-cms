@@ -9,6 +9,7 @@ import { seedAnnouncements } from './seed-announcements'
 import { seedPages } from './seed-pages'
 import { volunteerCalendarEvents } from './seed-volunteer-calendar'
 import { seedSiteSettings } from './seed-site-settings'
+import { seedMembers } from './seed-members'
 
 dotenv.config()
 
@@ -76,8 +77,8 @@ const importData = async () => {
     }
     console.log(`✓ ${categoryNames.length} categories created\n`)
 
-    // Clear existing data
-    console.log('🗑️  Clearing existing data...')
+    // Clear existing data (preserving Members/Listeners)
+    console.log('🗑️  Clearing existing data (preserving Members)...')
     const { docs: existingArticles } = await payload.find({ collection: 'articles', limit: 1000 })
     for (const article of existingArticles) {
       await payload.delete({ collection: 'articles', id: article.id })
@@ -85,10 +86,6 @@ const importData = async () => {
     const { docs: existingEvents } = await payload.find({ collection: 'events', limit: 1000 })
     for (const event of existingEvents) {
       await payload.delete({ collection: 'events', id: event.id })
-    }
-    const { docs: existingDJs } = await payload.find({ collection: 'djs', limit: 1000 })
-    for (const dj of existingDJs) {
-      await payload.delete({ collection: 'djs', id: dj.id })
     }
     const { docs: existingVenues } = await payload.find({ collection: 'venues', limit: 1000 })
     for (const venue of existingVenues) {
@@ -110,7 +107,12 @@ const importData = async () => {
     for (const volunteerEvent of existingVolunteerCalendar) {
       await payload.delete({ collection: 'volunteerCalendar', id: volunteerEvent.id })
     }
-    console.log('✓ Existing data cleared\n')
+    const { docs: existingShopItems } = await payload.find({ collection: 'shopItems', limit: 1000 })
+    for (const shopItem of existingShopItems) {
+      await payload.delete({ collection: 'shopItems', id: shopItem.id })
+    }
+    // NOTE: We do NOT delete listeners/members - they are preserved
+    console.log('✓ Existing data cleared (Members preserved)\n')
 
     // Read JSON files
     const dataDir = path.resolve(__dirname, '../../../chirp-radio/src/data')
@@ -128,6 +130,9 @@ const importData = async () => {
     )
     const podcastsData = JSON.parse(
       fs.readFileSync(path.join(dataDir, 'podcasts.json'), 'utf-8')
+    )
+    const shopItemsData = JSON.parse(
+      fs.readFileSync(path.join(dataDir, 'shopItems.json'), 'utf-8')
     )
 
     // Import Articles
@@ -176,15 +181,22 @@ const importData = async () => {
     console.log('🔞 Importing age restrictions...')
     const ageGateMap = new Map()
     for (const event of eventsData.events) {
-      if (event.ageRestriction && !ageGateMap.has(event.ageRestriction)) {
-        const ageGateDoc = await payload.create({
-          collection: 'ageGate',
-          data: {
-            age: event.ageRestriction,
-          },
-        })
-        ageGateMap.set(event.ageRestriction, ageGateDoc.id)
-        console.log(`  ✓ ${event.ageRestriction}`)
+      if (event.ageRestriction) {
+        // Handle both string and object formats
+        const ageValue = typeof event.ageRestriction === 'string'
+          ? event.ageRestriction
+          : event.ageRestriction.age || String(event.ageRestriction.id)
+
+        if (ageValue && !ageGateMap.has(ageValue)) {
+          const ageGateDoc = await payload.create({
+            collection: 'ageGate',
+            data: {
+              age: ageValue,
+            },
+          })
+          ageGateMap.set(ageValue, ageGateDoc.id)
+          console.log(`  ✓ ${ageValue}`)
+        }
       }
     }
 
@@ -249,43 +261,6 @@ const importData = async () => {
         },
       })
       console.log(`  ✓ ${event.title}`)
-    }
-
-    // Import DJs
-    console.log(`🎧 Importing ${usersData.users.length} DJs...`)
-    const importedEmails = new Set()
-    for (const user of usersData.users) {
-      // Only import users who are DJs (have djName)
-      if (user.djName) {
-        // Skip if email already imported (handle duplicates in source data)
-        if (importedEmails.has(user.email)) {
-          console.log(`  ⚠️  Skipping duplicate email: ${user.email} (${user.djName})`)
-          continue
-        }
-
-        await payload.create({
-          collection: 'djs',
-          data: {
-            ...user,
-            // Handle image URLs
-            profileImageUrl: user.profileImage,
-            profileImage: undefined,
-            // Fix empty phone type values (set to undefined instead of empty string)
-            secondaryPhoneType: user.secondaryPhoneType || undefined,
-            primaryPhoneType: user.primaryPhoneType || undefined,
-            // Transform age values from em-dash to regular hyphen
-            age: user.age?.replace('–', '-').replace('+', 'plus') || undefined,
-            // Transform arrays to match schema
-            tags: user.tags?.map((tag: string) => ({ tag })) || [],
-            specialSkills: user.specialSkills?.map((skill: string) => ({ skill })) || [],
-            interests: user.interests?.map((interest: string) => ({ interest })) || [],
-            volunteerOrgs: user.volunteerOrgs?.map((org: string) => ({ org })) || [],
-            djAvailability: user.djAvailability?.map((time: string) => ({ time })) || [],
-          },
-        })
-        importedEmails.add(user.email)
-        console.log(`  ✓ ${user.djName}`)
-      }
     }
 
     // Import Announcements and Advertisements first (needed for page sidebar references)
@@ -365,6 +340,38 @@ const importData = async () => {
       })
       console.log(`  ✓ ${event.name}`)
     }
+
+    // Import Shop Items
+    console.log(`\n🛍️  Importing ${shopItemsData.shopItems.length} shop items...`)
+
+    // Map shop item categories to valid select values
+    const shopCategoryMapping: Record<string, string> = {
+      'Apparel': 'apparel',
+      'Poster': 'poster',
+      'Accessory': 'accessories',
+    }
+
+    for (const item of shopItemsData.shopItems) {
+      const { id, category, sizes, ...itemData } = item
+
+      // Map itemType to category select value
+      const shopCategory = shopCategoryMapping[item.itemType] || 'merchandise'
+
+      await payload.create({
+        collection: 'shopItems',
+        data: {
+          ...itemData,
+          category: shopCategory,
+          imageUrl: item.image,
+          // Transform sizes array from strings to objects
+          sizes: sizes && sizes.length > 0 ? sizes.map((size: string) => ({ size })) : [],
+        },
+      })
+      console.log(`  ✓ ${item.name}`)
+    }
+
+    // Seed Members
+    await seedMembers(payload)
 
     // Seed Site Settings
     await seedSiteSettings(payload)

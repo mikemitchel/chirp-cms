@@ -70,7 +70,6 @@ export interface Config {
     users: User;
     media: Media;
     'player-fallback-images': PlayerFallbackImage;
-    djs: Dj;
     listeners: Listener;
     categories: Category;
     venues: Venue;
@@ -94,7 +93,6 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'player-fallback-images': PlayerFallbackImagesSelect<false> | PlayerFallbackImagesSelect<true>;
-    djs: DjsSelect<false> | DjsSelect<true>;
     listeners: ListenersSelect<false> | ListenersSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     venues: VenuesSelect<false> | VenuesSelect<true>;
@@ -269,155 +267,146 @@ export interface PlayerFallbackImage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "djs".
+ * via the `definition` "listeners".
  */
-export interface Dj {
+export interface Listener {
   id: number;
   email: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  djName: string;
-  showName?: string | null;
+  username?: string | null;
+  firstName?: string | null;
+  lastName?: string | null;
+  memberSince?: string | null;
   /**
-   * e.g., "Fri 11pm - 1am"
+   * User roles - multiple roles can be selected
    */
-  showTime?: string | null;
-  role?:
-    | (
-        | 'Regular DJ'
-        | 'Substitute DJ'
-        | 'Board Member'
-        | 'President'
-        | 'Vice President'
-        | 'Treasurer'
-        | 'Content Publisher'
-        | 'General'
-      )
-    | null;
-  profileImage?: (number | null) | Media;
+  roles: ('Listener' | 'Volunteer' | 'Regular DJ' | 'Substitute DJ' | 'Board Member')[];
+  profileImage?: string | null;
+  fullProfileImage?: string | null;
+  profileImageOrientation?: ('square' | 'landscape' | 'portrait') | null;
   /**
-   * Or provide external URL
-   */
-  profileImageUrl?: string | null;
-  /**
-   * Short bio for cards/lists
+   * General bio for all member types (shown on member profiles and directory listings)
    */
   bio?: string | null;
+  location?: string | null;
+  /**
+   * DJ on-air name (only for members with DJ role)
+   */
+  djName?: string | null;
+  /**
+   * Name of their radio show
+   */
+  showName?: string | null;
+  /**
+   * Show time slot (e.g., "Mon 6am - 9am")
+   */
+  showTime?: string | null;
+  /**
+   * Short description for DJ cards and listings (1-2 sentences)
+   */
   djExcerpt?: string | null;
   /**
-   * Full DJ biography
+   * Full DJ biography shown on detailed DJ profile page (can be longer and more detailed than general bio)
    */
-  djBio?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  primaryPhoneType?: ('mobile' | 'home' | 'work') | null;
+  djBio?: string | null;
+  /**
+   * Optional donation link for the DJ
+   */
+  djDonationLink?: string | null;
+  /**
+   * User's saved music collection
+   */
+  collection?:
+    | {
+        id: string;
+        trackName: string;
+        artistName: string;
+        albumName?: string | null;
+        labelName?: string | null;
+        albumArt?: string | null;
+        albumArtAlt?: string | null;
+        isLocal?: boolean | null;
+        dateAdded: string;
+      }[]
+    | null;
+  favoriteDJs?:
+    | {
+        djId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  preferences?: {
+    emailNotifications?: boolean | null;
+    showNotifications?: boolean | null;
+    darkMode?: ('light' | 'dark' | 'device') | null;
+    autoPlay?: boolean | null;
+  };
+  primaryPhoneType?: string | null;
   primaryPhone?: string | null;
-  secondaryPhoneType?: ('mobile' | 'home' | 'work') | null;
+  secondaryPhoneType?: string | null;
   secondaryPhone?: string | null;
   address?: string | null;
   city?: string | null;
   state?: string | null;
   zipCode?: string | null;
-  /**
-   * Display location (e.g., "Chicago, IL")
-   */
-  location?: string | null;
+  age?: string | null;
   education?: string | null;
   employer?: string | null;
-  memberSince?: string | null;
-  hasRadioExperience?: ('yes' | 'no') | null;
-  /**
-   * Previous radio experience
-   */
-  radioStations?: string | null;
-  specialSkills?:
-    | {
-        skill?:
-          | (
-              | 'DJ'
-              | 'Audio production'
-              | 'Community outreach'
-              | 'Content writing'
-              | 'Event planning'
-              | 'Fundraising'
-              | 'Journalism'
-              | 'Marketing'
-              | 'Music education'
-              | 'Photography'
-              | 'Sales'
-              | 'Other'
-            )
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  interests?:
-    | {
-        interest?:
-          | (
-              | 'DJ'
-              | 'Community radio'
-              | 'Content writing'
-              | 'Event planning'
-              | 'Event working'
-              | 'Fundraising'
-              | 'Interviews'
-              | 'Marketing'
-            )
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   volunteerOrgs?:
     | {
         org?: string | null;
         id?: string | null;
       }[]
     | null;
-  wantsToDJ?: ('yes' | 'no') | null;
-  djAvailability?:
+  hasRadioExperience?: string | null;
+  radioStations?: string | null;
+  specialSkills?:
     | {
-        time?:
-          | (
-              | 'Weekday mornings'
-              | 'Weekday day'
-              | 'Weekday evening'
-              | 'Weekday night'
-              | 'Weekend mornings'
-              | 'Weekend day'
-              | 'Weekend evening'
-              | 'Weekend night'
-            )
-          | null;
+        skill?: string | null;
         id?: string | null;
       }[]
     | null;
-  donorLevel?: ('Listener' | 'Supporter' | 'Vinyl Circle') | null;
-  age?: ('18-24' | '25-34' | '35-44' | '45-54' | '55-64' | '65plus') | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "listeners".
- */
-export interface Listener {
-  id: number;
-  name: string;
-  email?: string | null;
+  hearAboutChirp?:
+    | {
+        source?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  interests?:
+    | {
+        interest?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  wantsToDJ?: string | null;
+  djAvailability?:
+    | {
+        time?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  donorLevel?: string | null;
+  socialLinks?: {
+    facebook?: string | null;
+    instagram?: string | null;
+    twitter?: string | null;
+    bluesky?: string | null;
+    linkedin?: string | null;
+  };
+  substituteAvailability?:
+    | {
+        time?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  canSubstituteFor?:
+    | {
+        djId?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  boardPosition?: string | null;
+  boardSince?: string | null;
+  boardTermEnd?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -913,7 +902,7 @@ export interface ShopItem {
   /**
    * Product category
    */
-  category: 'apparel' | 'accessories' | 'merchandise' | 'music' | 'other';
+  category: 'apparel' | 'accessories' | 'poster' | 'merchandise' | 'music' | 'other';
   /**
    * Price in USD
    */
@@ -1290,10 +1279,6 @@ export interface PayloadLockedDocument {
         value: number | PlayerFallbackImage;
       } | null)
     | ({
-        relationTo: 'djs';
-        value: number | Dj;
-      } | null)
-    | ({
         relationTo: 'listeners';
         value: number | Listener;
       } | null)
@@ -1511,22 +1496,53 @@ export interface PlayerFallbackImagesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "djs_select".
+ * via the `definition` "listeners_select".
  */
-export interface DjsSelect<T extends boolean = true> {
+export interface ListenersSelect<T extends boolean = true> {
   email?: T;
   username?: T;
   firstName?: T;
   lastName?: T;
+  memberSince?: T;
+  roles?: T;
+  profileImage?: T;
+  fullProfileImage?: T;
+  profileImageOrientation?: T;
+  bio?: T;
+  location?: T;
   djName?: T;
   showName?: T;
   showTime?: T;
-  role?: T;
-  profileImage?: T;
-  profileImageUrl?: T;
-  bio?: T;
   djExcerpt?: T;
   djBio?: T;
+  djDonationLink?: T;
+  collection?:
+    | T
+    | {
+        id?: T;
+        trackName?: T;
+        artistName?: T;
+        albumName?: T;
+        labelName?: T;
+        albumArt?: T;
+        albumArtAlt?: T;
+        isLocal?: T;
+        dateAdded?: T;
+      };
+  favoriteDJs?:
+    | T
+    | {
+        djId?: T;
+        id?: T;
+      };
+  preferences?:
+    | T
+    | {
+        emailNotifications?: T;
+        showNotifications?: T;
+        darkMode?: T;
+        autoPlay?: T;
+      };
   primaryPhoneType?: T;
   primaryPhone?: T;
   secondaryPhoneType?: T;
@@ -1535,10 +1551,15 @@ export interface DjsSelect<T extends boolean = true> {
   city?: T;
   state?: T;
   zipCode?: T;
-  location?: T;
+  age?: T;
   education?: T;
   employer?: T;
-  memberSince?: T;
+  volunteerOrgs?:
+    | T
+    | {
+        org?: T;
+        id?: T;
+      };
   hasRadioExperience?: T;
   radioStations?: T;
   specialSkills?:
@@ -1547,16 +1568,16 @@ export interface DjsSelect<T extends boolean = true> {
         skill?: T;
         id?: T;
       };
+  hearAboutChirp?:
+    | T
+    | {
+        source?: T;
+        id?: T;
+      };
   interests?:
     | T
     | {
         interest?: T;
-        id?: T;
-      };
-  volunteerOrgs?:
-    | T
-    | {
-        org?: T;
         id?: T;
       };
   wantsToDJ?: T;
@@ -1567,17 +1588,30 @@ export interface DjsSelect<T extends boolean = true> {
         id?: T;
       };
   donorLevel?: T;
-  age?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "listeners_select".
- */
-export interface ListenersSelect<T extends boolean = true> {
-  name?: T;
-  email?: T;
+  socialLinks?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+        twitter?: T;
+        bluesky?: T;
+        linkedin?: T;
+      };
+  substituteAvailability?:
+    | T
+    | {
+        time?: T;
+        id?: T;
+      };
+  canSubstituteFor?:
+    | T
+    | {
+        djId?: T;
+        id?: T;
+      };
+  boardPosition?: T;
+  boardSince?: T;
+  boardTermEnd?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2131,6 +2165,10 @@ export interface SiteSetting {
    */
   eventsSidebarContentType?: ('articles' | 'podcasts' | 'events' | 'none') | null;
   /**
+   * Number of content items to display (1-3)
+   */
+  eventsSidebarContentCount?: ('1' | '2' | '3') | null;
+  /**
    * Select which advertisement to display in sidebar
    */
   eventsSidebarAdvertisement?: (number | null) | Advertisement;
@@ -2146,6 +2184,10 @@ export interface SiteSetting {
    * Select which content type to display in sidebar
    */
   articlesSidebarContentType?: ('articles' | 'podcasts' | 'events' | 'none') | null;
+  /**
+   * Number of content items to display (1-3)
+   */
+  articlesSidebarContentCount?: ('1' | '2' | '3') | null;
   /**
    * Select which advertisement to display in sidebar
    */
@@ -2170,6 +2212,38 @@ export interface SiteSetting {
    * Select announcement for full-width section
    */
   podcastsFullWidthAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which announcement to display in sidebar
+   */
+  djDetailSidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  djDetailSidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Select which content type to display in sidebar
+   */
+  djDetailSidebarContentType?: ('articles' | 'podcasts' | 'events' | 'none') | null;
+  /**
+   * Number of content items to display (1-3)
+   */
+  djDetailSidebarContentCount?: ('1' | '2' | '3') | null;
+  /**
+   * Select which announcement to display in sidebar
+   */
+  scheduleSidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Select which advertisement to display in sidebar
+   */
+  scheduleSidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Select which content type to display in sidebar
+   */
+  scheduleSidebarContentType?: ('articles' | 'podcasts' | 'events' | 'none') | null;
+  /**
+   * Number of content items to display (1-3)
+   */
+  scheduleSidebarContentCount?: ('1' | '2' | '3') | null;
   /**
    * 404 error page heading
    */
@@ -2405,16 +2479,26 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   rightWeeklyChart?: T;
   eventsSidebarAnnouncement?: T;
   eventsSidebarContentType?: T;
+  eventsSidebarContentCount?: T;
   eventsSidebarAdvertisement?: T;
   eventsFullWidthAnnouncement?: T;
   articlesSidebarAnnouncement?: T;
   articlesSidebarContentType?: T;
+  articlesSidebarContentCount?: T;
   articlesSidebarAdvertisement?: T;
   articlesFullWidthAnnouncement?: T;
   podcastsPageTitle?: T;
   podcastsSidebarAnnouncement?: T;
   podcastsSidebarAdvertisement?: T;
   podcastsFullWidthAnnouncement?: T;
+  djDetailSidebarAnnouncement?: T;
+  djDetailSidebarAdvertisement?: T;
+  djDetailSidebarContentType?: T;
+  djDetailSidebarContentCount?: T;
+  scheduleSidebarAnnouncement?: T;
+  scheduleSidebarAdvertisement?: T;
+  scheduleSidebarContentType?: T;
+  scheduleSidebarContentCount?: T;
   notFoundPageHeading?: T;
   notFoundPageMessage?: T;
   forbiddenPageHeading?: T;

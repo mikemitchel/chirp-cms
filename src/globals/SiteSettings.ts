@@ -169,6 +169,19 @@ export const SiteSettings: GlobalConfig = {
           },
         },
         {
+          name: 'eventsSidebarContentCount',
+          type: 'select',
+          options: [
+            { label: '1', value: '1' },
+            { label: '2', value: '2' },
+            { label: '3', value: '3' },
+          ],
+          defaultValue: '3',
+          admin: {
+            description: 'Number of content items to display (1-3)',
+          },
+        },
+        {
           name: 'eventsSidebarAdvertisement',
           type: 'relationship',
           relationTo: 'advertisements',
@@ -209,6 +222,19 @@ export const SiteSettings: GlobalConfig = {
           defaultValue: 'events',
           admin: {
             description: 'Select which content type to display in sidebar',
+          },
+        },
+        {
+          name: 'articlesSidebarContentCount',
+          type: 'select',
+          options: [
+            { label: '1', value: '1' },
+            { label: '2', value: '2' },
+            { label: '3', value: '3' },
+          ],
+          defaultValue: '3',
+          admin: {
+            description: 'Number of content items to display (1-3)',
           },
         },
         {
@@ -262,6 +288,102 @@ export const SiteSettings: GlobalConfig = {
           relationTo: 'announcements',
           admin: {
             description: 'Select announcement for full-width section',
+          },
+        },
+      ],
+        },
+        {
+          label: 'DJ Detail Page',
+      fields: [
+        {
+          name: 'djDetailSidebarAnnouncement',
+          type: 'relationship',
+          relationTo: 'announcements',
+          admin: {
+            description: 'Select which announcement to display in sidebar',
+          },
+        },
+        {
+          name: 'djDetailSidebarAdvertisement',
+          type: 'relationship',
+          relationTo: 'advertisements',
+          admin: {
+            description: 'Select which advertisement to display in sidebar',
+          },
+        },
+        {
+          name: 'djDetailSidebarContentType',
+          type: 'select',
+          options: [
+            { label: 'Articles', value: 'articles' },
+            { label: 'Podcasts', value: 'podcasts' },
+            { label: 'Events', value: 'events' },
+            { label: 'None', value: 'none' },
+          ],
+          defaultValue: 'articles',
+          admin: {
+            description: 'Select which content type to display in sidebar',
+          },
+        },
+        {
+          name: 'djDetailSidebarContentCount',
+          type: 'select',
+          options: [
+            { label: '1', value: '1' },
+            { label: '2', value: '2' },
+            { label: '3', value: '3' },
+          ],
+          defaultValue: '3',
+          admin: {
+            description: 'Number of content items to display (1-3)',
+          },
+        },
+      ],
+        },
+        {
+          label: 'Schedule Page',
+      fields: [
+        {
+          name: 'scheduleSidebarAnnouncement',
+          type: 'relationship',
+          relationTo: 'announcements',
+          admin: {
+            description: 'Select which announcement to display in sidebar',
+          },
+        },
+        {
+          name: 'scheduleSidebarAdvertisement',
+          type: 'relationship',
+          relationTo: 'advertisements',
+          admin: {
+            description: 'Select which advertisement to display in sidebar',
+          },
+        },
+        {
+          name: 'scheduleSidebarContentType',
+          type: 'select',
+          options: [
+            { label: 'Articles', value: 'articles' },
+            { label: 'Podcasts', value: 'podcasts' },
+            { label: 'Events', value: 'events' },
+            { label: 'None', value: 'none' },
+          ],
+          defaultValue: 'articles',
+          admin: {
+            description: 'Select which content type to display in sidebar',
+          },
+        },
+        {
+          name: 'scheduleSidebarContentCount',
+          type: 'select',
+          options: [
+            { label: '1', value: '1' },
+            { label: '2', value: '2' },
+            { label: '3', value: '3' },
+          ],
+          defaultValue: '3',
+          admin: {
+            description: 'Number of content items to display (1-3)',
           },
         },
       ],
