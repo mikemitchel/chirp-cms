@@ -21,6 +21,8 @@ import { ShowSchedules } from './src/collections/ShowSchedules'
 import { Users } from './src/collections/Users'
 import { AgeGate } from './src/collections/AgeGate'
 import { Members } from './src/collections/Members'
+import { Donations } from './src/collections/Donations'
+import { Purchases } from './src/collections/Purchases'
 import { Categories } from './src/collections/Categories'
 import { MobilePageContent } from './src/collections/MobilePageContent'
 import { SiteSettings } from './src/globals/SiteSettings'
@@ -41,6 +43,8 @@ export default buildConfig({
 
     // People
     Members,
+    Donations,
+    Purchases,
 
     // Content Assets
     Categories,

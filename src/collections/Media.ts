@@ -58,5 +58,24 @@ export const Media: CollectionConfig = {
       name: 'alt',
       type: 'text',
     },
+    {
+      name: 'category',
+      type: 'select',
+      required: true,
+      defaultValue: 'General',
+      options: [
+        { label: 'General', value: 'General' },
+        { label: 'Member Profile Images', value: 'Member Profile Images' },
+        { label: 'Articles', value: 'Articles' },
+        { label: 'Events', value: 'Events' },
+        { label: 'Podcasts', value: 'Podcasts' },
+        { label: 'Shop Items', value: 'Shop Items' },
+        { label: 'Advertisements', value: 'Advertisements' },
+      ],
+      admin: {
+        description: 'Organize media by category',
+        position: 'sidebar',
+      },
+    },
   ],
 }
