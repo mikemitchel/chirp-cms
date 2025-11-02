@@ -71,6 +71,8 @@ export interface Config {
     media: Media;
     'player-fallback-images': PlayerFallbackImage;
     listeners: Listener;
+    donations: Donation;
+    purchases: Purchase;
     categories: Category;
     venues: Venue;
     announcements: Announcement;
@@ -95,6 +97,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     'player-fallback-images': PlayerFallbackImagesSelect<false> | PlayerFallbackImagesSelect<true>;
     listeners: ListenersSelect<false> | ListenersSelect<true>;
+    donations: DonationsSelect<false> | DonationsSelect<true>;
+    purchases: PurchasesSelect<false> | PurchasesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     venues: VenuesSelect<false> | VenuesSelect<true>;
     announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
@@ -183,6 +187,10 @@ export interface User {
 export interface Media {
   id: number;
   alt?: string | null;
+  /**
+   * Organize media by category
+   */
+  category: 'General' | 'Member Profile Images' | 'Articles' | 'Events' | 'Podcasts' | 'Shop Items' | 'Advertisements';
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -282,7 +290,13 @@ export interface Listener {
    * User roles - multiple roles can be selected
    */
   roles: ('Listener' | 'Volunteer' | 'Regular DJ' | 'Substitute DJ' | 'Board Member')[];
+  /**
+   * URL to cropped/display profile image
+   */
   profileImage?: string | null;
+  /**
+   * URL to full-size original profile image
+   */
   fullProfileImage?: string | null;
   profileImageOrientation?: ('square' | 'landscape' | 'portrait') | null;
   /**
@@ -290,30 +304,12 @@ export interface Listener {
    */
   bio?: string | null;
   location?: string | null;
-  /**
-   * DJ on-air name (only for members with DJ role)
-   */
-  djName?: string | null;
-  /**
-   * Name of their radio show
-   */
-  showName?: string | null;
-  /**
-   * Show time slot - auto-populated from Show Schedules assignments
-   */
-  showTime?: string | null;
-  /**
-   * Short description for DJ cards and listings (1-2 sentences)
-   */
-  djExcerpt?: string | null;
-  /**
-   * Full DJ biography shown on detailed DJ profile page (can be longer and more detailed than general bio)
-   */
-  djBio?: string | null;
-  /**
-   * Optional donation link for the DJ
-   */
-  djDonationLink?: string | null;
+  preferences?: {
+    emailNotifications?: boolean | null;
+    showNotifications?: boolean | null;
+    darkMode?: ('light' | 'dark' | 'device') | null;
+    autoPlay?: boolean | null;
+  };
   /**
    * User's saved music collection
    */
@@ -336,12 +332,14 @@ export interface Listener {
         id?: string | null;
       }[]
     | null;
-  preferences?: {
-    emailNotifications?: boolean | null;
-    showNotifications?: boolean | null;
-    darkMode?: ('light' | 'dark' | 'device') | null;
-    autoPlay?: boolean | null;
-  };
+  /**
+   * Donor level based on total donations (e.g., Bronze, Silver, Gold)
+   */
+  donorLevel?: string | null;
+  /**
+   * Store purchases are managed in the Purchases collection. To view this member's purchase history, go to Collections > Purchases and filter by this member.
+   */
+  _purchaseNote?: string | null;
   primaryPhoneType?: string | null;
   primaryPhone?: string | null;
   secondaryPhoneType?: string | null;
@@ -386,7 +384,6 @@ export interface Listener {
         id?: string | null;
       }[]
     | null;
-  donorLevel?: string | null;
   socialLinks?: {
     facebook?: string | null;
     instagram?: string | null;
@@ -394,6 +391,27 @@ export interface Listener {
     bluesky?: string | null;
     linkedin?: string | null;
   };
+  djName?: string | null;
+  showName?: string | null;
+  /**
+   * Auto-populated from Show Schedules assignments
+   */
+  showTime?: string | null;
+  /**
+   * Short description for DJ cards and listings (1-2 sentences)
+   */
+  djExcerpt?: string | null;
+  /**
+   * Full DJ biography shown on detailed DJ profile page
+   */
+  djBio?: string | null;
+  /**
+   * Optional donation link for the DJ
+   */
+  djDonationLink?: string | null;
+  /**
+   * Only for Substitute DJs
+   */
   substituteAvailability?:
     | {
         time?: string | null;
@@ -409,9 +427,131 @@ export interface Listener {
         id?: string | null;
       }[]
     | null;
+  /**
+   * e.g., President, Treasurer, Secretary
+   */
   boardPosition?: string | null;
   boardSince?: string | null;
   boardTermEnd?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations".
+ */
+export interface Donation {
+  id: number;
+  /**
+   * Member who made this donation
+   */
+  member: number | Listener;
+  /**
+   * Donation amount in USD
+   */
+  amount: number;
+  /**
+   * Date of donation
+   */
+  date: string;
+  /**
+   * Type of donation
+   */
+  type: 'One-time' | 'Monthly' | 'Annual' | 'In-kind';
+  /**
+   * Status of donation transaction
+   */
+  status: 'completed' | 'pending' | 'failed' | 'refunded';
+  /**
+   * Unique transaction ID from payment processor
+   */
+  transactionId: string;
+  /**
+   * Payment source/processor
+   */
+  source?: ('Neon' | 'PayPal' | 'Manual' | 'Other') | null;
+  /**
+   * Whether tax receipt has been sent to donor
+   */
+  taxReceiptSent?: boolean | null;
+  /**
+   * URL to downloadable receipt PDF
+   */
+  receiptUrl?: string | null;
+  /**
+   * Internal notes about this donation
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "purchases".
+ */
+export interface Purchase {
+  id: number;
+  /**
+   * Member who made this purchase
+   */
+  member: number | Listener;
+  /**
+   * Items purchased in this order
+   */
+  items: {
+    /**
+     * Product ID from store
+     */
+    productId: string;
+    /**
+     * Name of product purchased
+     */
+    productName: string;
+    /**
+     * Quantity purchased
+     */
+    quantity: number;
+    /**
+     * Price per unit
+     */
+    price: number;
+    id?: string | null;
+  }[];
+  /**
+   * Total purchase amount in USD
+   */
+  total: number;
+  /**
+   * Date of purchase
+   */
+  date: string;
+  /**
+   * Status of purchase
+   */
+  status: 'completed' | 'pending' | 'shipped' | 'cancelled' | 'refunded';
+  /**
+   * Unique transaction ID from payment processor
+   */
+  transactionId: string;
+  /**
+   * Shipping address for this order
+   */
+  shippingAddress?: {
+    name?: string | null;
+    street?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zip?: string | null;
+    country?: string | null;
+  };
+  /**
+   * Shipping tracking number
+   */
+  trackingNumber?: string | null;
+  /**
+   * Internal notes about this purchase
+   */
+  notes?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1337,6 +1477,14 @@ export interface PayloadLockedDocument {
         value: number | Listener;
       } | null)
     | ({
+        relationTo: 'donations';
+        value: number | Donation;
+      } | null)
+    | ({
+        relationTo: 'purchases';
+        value: number | Purchase;
+      } | null)
+    | ({
         relationTo: 'categories';
         value: number | Category;
       } | null)
@@ -1463,6 +1611,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  category?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -1568,12 +1717,14 @@ export interface ListenersSelect<T extends boolean = true> {
   profileImageOrientation?: T;
   bio?: T;
   location?: T;
-  djName?: T;
-  showName?: T;
-  showTime?: T;
-  djExcerpt?: T;
-  djBio?: T;
-  djDonationLink?: T;
+  preferences?:
+    | T
+    | {
+        emailNotifications?: T;
+        showNotifications?: T;
+        darkMode?: T;
+        autoPlay?: T;
+      };
   collection?:
     | T
     | {
@@ -1593,14 +1744,8 @@ export interface ListenersSelect<T extends boolean = true> {
         djId?: T;
         id?: T;
       };
-  preferences?:
-    | T
-    | {
-        emailNotifications?: T;
-        showNotifications?: T;
-        darkMode?: T;
-        autoPlay?: T;
-      };
+  donorLevel?: T;
+  _purchaseNote?: T;
   primaryPhoneType?: T;
   primaryPhone?: T;
   secondaryPhoneType?: T;
@@ -1645,7 +1790,6 @@ export interface ListenersSelect<T extends boolean = true> {
         time?: T;
         id?: T;
       };
-  donorLevel?: T;
   socialLinks?:
     | T
     | {
@@ -1655,6 +1799,12 @@ export interface ListenersSelect<T extends boolean = true> {
         bluesky?: T;
         linkedin?: T;
       };
+  djName?: T;
+  showName?: T;
+  showTime?: T;
+  djExcerpt?: T;
+  djBio?: T;
+  djDonationLink?: T;
   substituteAvailability?:
     | T
     | {
@@ -1670,6 +1820,58 @@ export interface ListenersSelect<T extends boolean = true> {
   boardPosition?: T;
   boardSince?: T;
   boardTermEnd?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations_select".
+ */
+export interface DonationsSelect<T extends boolean = true> {
+  member?: T;
+  amount?: T;
+  date?: T;
+  type?: T;
+  status?: T;
+  transactionId?: T;
+  source?: T;
+  taxReceiptSent?: T;
+  receiptUrl?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "purchases_select".
+ */
+export interface PurchasesSelect<T extends boolean = true> {
+  member?: T;
+  items?:
+    | T
+    | {
+        productId?: T;
+        productName?: T;
+        quantity?: T;
+        price?: T;
+        id?: T;
+      };
+  total?: T;
+  date?: T;
+  status?: T;
+  transactionId?: T;
+  shippingAddress?:
+    | T
+    | {
+        name?: T;
+        street?: T;
+        city?: T;
+        state?: T;
+        zip?: T;
+        country?: T;
+      };
+  trackingNumber?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }
