@@ -1,0 +1,135 @@
+{
+  "id": 1,
+  "showTopAnnouncement": true,
+  "topAnnouncement": 8,
+  "sidebarAnnouncement": 7,
+  "sidebarAdvertisement": 2,
+  "showUserCollection": true,
+  "listenPageTitle": "Listen",
+  "listenCurrentPlaylistTitle": "Current Playlist",
+  "listenPreviousPlaysButtonText": "Previous Plays",
+  "listenUserCollectionTitle": "A Few from Your Collection",
+  "listenYourCollectionButtonText": "Your Collection",
+  "listenSidebarWeeklyChart": null,
+  "listenSidebarAdvertisement": 1,
+  "fullWidthAnnouncement": 5,
+  "leftWeeklyChart": null,
+  "rightWeeklyChart": null,
+  "eventsSidebarAnnouncement": 5,
+  "eventsSidebarContentType": "podcasts",
+  "eventsSidebarContentCount": "3",
+  "eventsSidebarAdvertisement": 4,
+  "eventsFullWidthAnnouncement": 7,
+  "articlesSidebarAnnouncement": 1,
+  "articlesSidebarContentType": "podcasts",
+  "articlesSidebarContentCount": "3",
+  "articlesSidebarAdvertisement": 6,
+  "articlesFullWidthAnnouncement": null,
+  "podcastsPageTitle": "Podcasts",
+  "podcastsSidebarAnnouncement": null,
+  "podcastsSidebarAdvertisement": null,
+  "podcastsFullWidthAnnouncement": null,
+  "djDetailSidebarAnnouncement": null,
+  "djDetailSidebarAdvertisement": null,
+  "djDetailSidebarContentType": "articles",
+  "djDetailSidebarContentCount": "3",
+  "scheduleSidebarAnnouncement": null,
+  "scheduleSidebarAdvertisement": null,
+  "scheduleSidebarContentType": "articles",
+  "scheduleSidebarContentCount": "3",
+  "notFoundPageHeading": "Page Not Found",
+  "notFoundPageMessage": "Sorry, we couldn't find the page you're looking for. It may have been moved or deleted.",
+  "forbiddenPageHeading": "Access Denied",
+  "forbiddenPageMessage": "Sorry, you don't have permission to access this page. Please log in or contact us if you believe this is an error.",
+  "forbiddenPageMessageLoggedIn": "You need to be signed in to access this page. Please sign in to continue.",
+  "serverErrorPageHeading": "Internal Server Error",
+  "serverErrorPageMessage": "Oops! Something went wrong on our end. We're working to fix the issue. Please try again later.",
+  "loginSuccessMessage": "Successfully logged in",
+  "logoutSuccessMessage": "Successfully signed out",
+  "signupSuccessMessage": "Account created successfully",
+  "profileUpdateSuccessMessage": "Profile updated successfully",
+  "profileUpdateErrorMessage": "Failed to save profile. Please try again.",
+  "addToCollectionSuccessMessage": "Added to your collection",
+  "removeFromCollectionSuccessMessage": "Removed from your collection",
+  "supportContent": {
+    "root": {
+      "children": [
+        {
+          "children": [
+            {
+              "detail": 0,
+              "format": 0,
+              "mode": "normal",
+              "style": "",
+              "text": "CHIRP is partially supported by a CityArts Grant from the City of Chicago Department of Cultural Affairs & Special Events, as well as through funding from the Illinois Arts Council.",
+              "type": "text",
+              "version": 1
+            }
+          ],
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "type": "paragraph",
+          "version": 1,
+          "textFormat": 0,
+          "textStyle": ""
+        }
+      ],
+      "direction": null,
+      "format": "",
+      "indent": 0,
+      "type": "root",
+      "version": 1
+    }
+  },
+  "showDCaseLogo": true,
+  "dCaseLogo": null,
+  "dCaseLogoUrl": null,
+  "showIlArtsCouncilLogo": true,
+  "ilArtsCouncilLogo": null,
+  "ilArtsCouncilLogoUrl": null,
+  "additionalLogos": [],
+  "supportAdvertisement": 5,
+  "copyrightText": "©2008–{year} Chicago Independent Radio Project. CHIRP, CHIRP Radio, and Chicago Independent Radio Project are registered trademarks.",
+  "socialLinks": [
+    {
+      "id": "6906da9913ed90a646695c80",
+      "platform": "facebook",
+      "url": "https://www.facebook.com/chirpradio",
+      "label": "Facebook"
+    },
+    {
+      "id": "6906da9913ed90a646695c81",
+      "platform": "instagram",
+      "url": "https://www.instagram.com/chirpradio",
+      "label": "Instagram"
+    },
+    {
+      "id": "6906da9913ed90a646695c82",
+      "platform": "twitter",
+      "url": "https://twitter.com/chirpradio",
+      "label": "Twitter"
+    },
+    {
+      "id": "6906da9913ed90a646695c83",
+      "platform": "bluesky",
+      "url": "https://bsky.app/profile/chirpradio.bsky.social",
+      "label": "Bluesky"
+    },
+    {
+      "id": "6906da9913ed90a646695c84",
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/company/chirp-radio",
+      "label": "LinkedIn"
+    }
+  ],
+  "showChirpFilmFestLogo": true,
+  "chirpFilmFestLogo": null,
+  "chirpFilmFestLogoUrl": "https://musicboxtheatre.com/series-and-festivals/chirp-music-film-festival",
+  "showFirstTimeLogo": true,
+  "firstTimeLogo": null,
+  "firstTimeLogoUrl": "https://firsttime.chirpradio.org/",
+  "updatedAt": "2025-11-02T04:14:17.154Z",
+  "createdAt": "2025-11-02T04:14:17.154Z",
+  "globalType": "siteSettings"
+}

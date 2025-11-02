@@ -72,6 +72,7 @@ const importShopImagesFromUrls = async () => {
           collection: 'media',
           data: {
             alt: `${item.name} product image`,
+            category: 'Shop Items',
           },
           file: {
             data: imageBuffer,
@@ -79,6 +80,7 @@ const importShopImagesFromUrls = async () => {
             name: filename,
             size: imageBuffer.length,
           },
+          draft: false,
         })
 
         console.log(`   ✓ Uploaded to Media collection (ID: ${mediaDoc.id})`)

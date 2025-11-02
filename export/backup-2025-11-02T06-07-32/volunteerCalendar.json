@@ -1,0 +1,276 @@
+{
+  "volunteerCalendar": [
+    {
+      "id": 8,
+      "name": "Music Library Organization Day",
+      "startDate": "2025-11-16T17:00:00.000Z",
+      "endDate": "2025-11-16T17:00:00.000Z",
+      "dateTime": "Monday, November 16, 2025 at 5:00 PM",
+      "description": "Help organize and catalog our vinyl and CD collection. Perfect for music enthusiasts who want to get hands-on with our library.",
+      "location": "CHIRP Radio Studio, 4045 N Rockwell St",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695be4",
+          "detail": "Catalog new arrivals"
+        },
+        {
+          "id": "6906da9813ed90a646695be5",
+          "detail": "Organize by genre and artist"
+        },
+        {
+          "id": "6906da9813ed90a646695be6",
+          "detail": "Quality check existing inventory"
+        },
+        {
+          "id": "6906da9813ed90a646695be7",
+          "detail": "Digital database updates"
+        },
+        {
+          "id": "6906da9813ed90a646695be8",
+          "detail": "Pizza provided!"
+        }
+      ],
+      "moreInfoUrl": null,
+      "updatedAt": "2025-11-02T04:14:16.283Z",
+      "createdAt": "2025-11-02T04:14:16.283Z"
+    },
+    {
+      "id": 7,
+      "name": "Fundraiser Planning Committee",
+      "startDate": "2025-11-12T18:30:00.000Z",
+      "endDate": "2025-11-12T18:30:00.000Z",
+      "dateTime": "Thursday, November 12, 2025 at 6:30 PM",
+      "description": "Help plan our winter fundraiser concert. All volunteers welcome to contribute ideas and assist with event logistics.",
+      "location": "CHIRP Radio Studio, 4045 N Rockwell St",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bdf",
+          "detail": "Review venue options"
+        },
+        {
+          "id": "6906da9813ed90a646695be0",
+          "detail": "Discuss potential performers"
+        },
+        {
+          "id": "6906da9813ed90a646695be1",
+          "detail": "Plan promotional strategy"
+        },
+        {
+          "id": "6906da9813ed90a646695be2",
+          "detail": "Assign volunteer roles"
+        },
+        {
+          "id": "6906da9813ed90a646695be3",
+          "detail": "Budget review"
+        }
+      ],
+      "moreInfoUrl": null,
+      "updatedAt": "2025-11-02T04:14:16.282Z",
+      "createdAt": "2025-11-02T04:14:16.282Z"
+    },
+    {
+      "id": 6,
+      "name": "DJ Training Workshop - Level 2",
+      "startDate": "2025-11-08T13:00:00.000Z",
+      "endDate": "2025-11-08T13:00:00.000Z",
+      "dateTime": "Sunday, November 8, 2025 at 1:00 PM",
+      "description": "Advanced DJ training covering show structure, guest interviews, and live performance techniques.",
+      "location": "CHIRP Radio Studio, 4045 N Rockwell St",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bda",
+          "detail": "Advanced board operation"
+        },
+        {
+          "id": "6906da9813ed90a646695bdb",
+          "detail": "Interview techniques"
+        },
+        {
+          "id": "6906da9813ed90a646695bdc",
+          "detail": "Live performance coordination"
+        },
+        {
+          "id": "6906da9813ed90a646695bdd",
+          "detail": "Show planning and structure"
+        },
+        {
+          "id": "6906da9813ed90a646695bde",
+          "detail": "Prerequisite: Level 1 training"
+        }
+      ],
+      "moreInfoUrl": "https://chirpradio.org/volunteer",
+      "updatedAt": "2025-11-02T04:14:16.281Z",
+      "createdAt": "2025-11-02T04:14:16.281Z"
+    },
+    {
+      "id": 5,
+      "name": "Record Fair Volunteer Day",
+      "startDate": "2025-11-01T09:00:00.000Z",
+      "endDate": "2025-11-01T09:00:00.000Z",
+      "dateTime": "Sunday, November 1, 2025 at 9:00 AM",
+      "description": "Help staff the CHIRP booth at the Chicago Record Fair. Great opportunity to connect with music lovers and promote the station.",
+      "location": "Plumbers Hall, 1340 W Washington Blvd",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bd5",
+          "detail": "Setup at 9:00 AM"
+        },
+        {
+          "id": "6906da9813ed90a646695bd6",
+          "detail": "Event runs 10:00 AM - 5:00 PM"
+        },
+        {
+          "id": "6906da9813ed90a646695bd7",
+          "detail": "Shifts available throughout the day"
+        },
+        {
+          "id": "6906da9813ed90a646695bd8",
+          "detail": "Free admission for volunteers"
+        },
+        {
+          "id": "6906da9813ed90a646695bd9",
+          "detail": "Discount on record purchases"
+        }
+      ],
+      "moreInfoUrl": null,
+      "updatedAt": "2025-11-02T04:14:16.280Z",
+      "createdAt": "2025-11-02T04:14:16.280Z"
+    },
+    {
+      "id": 4,
+      "name": "Content Team Meeting",
+      "startDate": "2025-10-25T14:00:00.000Z",
+      "endDate": "2025-10-25T14:00:00.000Z",
+      "dateTime": "Saturday, October 25, 2025 at 2:00 PM",
+      "description": "Monthly meeting for volunteers involved in content creation, social media, and web development.",
+      "location": "Virtual Meeting (Zoom)",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bd0",
+          "detail": "Review current content initiatives"
+        },
+        {
+          "id": "6906da9813ed90a646695bd1",
+          "detail": "Plan upcoming campaigns"
+        },
+        {
+          "id": "6906da9813ed90a646695bd2",
+          "detail": "Discuss website improvements"
+        },
+        {
+          "id": "6906da9813ed90a646695bd3",
+          "detail": "Social media strategy"
+        },
+        {
+          "id": "6906da9813ed90a646695bd4",
+          "detail": "Open discussion and ideas"
+        }
+      ],
+      "moreInfoUrl": null,
+      "updatedAt": "2025-11-02T04:14:16.278Z",
+      "createdAt": "2025-11-02T04:14:16.278Z"
+    },
+    {
+      "id": 3,
+      "name": "Volunteer Appreciation Mixer",
+      "startDate": "2025-10-22T19:00:00.000Z",
+      "endDate": "2025-10-22T19:00:00.000Z",
+      "dateTime": "Wednesday, October 22, 2025 at 7:00 PM",
+      "description": "Join us for an evening celebrating our amazing volunteer community. Food, drinks, and music provided.",
+      "location": "Empty Bottle, 1035 N Western Ave",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bcb",
+          "detail": "Complimentary food and drinks"
+        },
+        {
+          "id": "6906da9813ed90a646695bcc",
+          "detail": "Live DJ set from CHIRP volunteers"
+        },
+        {
+          "id": "6906da9813ed90a646695bcd",
+          "detail": "Networking with fellow volunteers"
+        },
+        {
+          "id": "6906da9813ed90a646695bce",
+          "detail": "Recognition awards"
+        },
+        {
+          "id": "6906da9813ed90a646695bcf",
+          "detail": "21+ event"
+        }
+      ],
+      "moreInfoUrl": null,
+      "updatedAt": "2025-11-02T04:14:16.277Z",
+      "createdAt": "2025-11-02T04:14:16.277Z"
+    },
+    {
+      "id": 2,
+      "name": "DJ Training Workshop - Level 1",
+      "startDate": "2025-10-18T10:00:00.000Z",
+      "endDate": "2025-10-18T10:00:00.000Z",
+      "dateTime": "Saturday, October 18, 2025 at 10:00 AM",
+      "description": "Hands-on training for aspiring DJs. Learn the basics of radio broadcasting, equipment operation, and show preparation.",
+      "location": "CHIRP Radio Studio, 4045 N Rockwell St",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bc6",
+          "detail": "Introduction to radio broadcasting"
+        },
+        {
+          "id": "6906da9813ed90a646695bc7",
+          "detail": "Equipment and studio walkthrough"
+        },
+        {
+          "id": "6906da9813ed90a646695bc8",
+          "detail": "FCC regulations and best practices"
+        },
+        {
+          "id": "6906da9813ed90a646695bc9",
+          "detail": "Music selection and programming"
+        },
+        {
+          "id": "6906da9813ed90a646695bca",
+          "detail": "Voice training basics"
+        }
+      ],
+      "moreInfoUrl": "https://chirpradio.org/volunteer",
+      "updatedAt": "2025-11-02T04:14:16.275Z",
+      "createdAt": "2025-11-02T04:14:16.275Z"
+    },
+    {
+      "id": 1,
+      "name": "New Volunteer Orientation",
+      "startDate": "2025-10-15T18:00:00.000Z",
+      "endDate": "2025-10-15T18:00:00.000Z",
+      "dateTime": "Wednesday, October 15, 2025 at 6:00 PM",
+      "description": "Welcome session for new CHIRP Radio volunteers. Learn about our mission, meet the team, and discover how you can contribute to independent radio.",
+      "location": "CHIRP Radio Studio, 4045 N Rockwell St",
+      "eventDetails": [
+        {
+          "id": "6906da9813ed90a646695bc1",
+          "detail": "Introduction to CHIRP Radio"
+        },
+        {
+          "id": "6906da9813ed90a646695bc2",
+          "detail": "Tour of the studio facilities"
+        },
+        {
+          "id": "6906da9813ed90a646695bc3",
+          "detail": "Overview of volunteer opportunities"
+        },
+        {
+          "id": "6906da9813ed90a646695bc4",
+          "detail": "Meet current volunteers and staff"
+        },
+        {
+          "id": "6906da9813ed90a646695bc5",
+          "detail": "Q&A session"
+        }
+      ],
+      "moreInfoUrl": "https://chirpradio.org/volunteer",
+      "updatedAt": "2025-11-02T04:14:16.274Z",
+      "createdAt": "2025-11-02T04:14:16.274Z"
+    }
+  ]
+}

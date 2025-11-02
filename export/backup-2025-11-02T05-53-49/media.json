@@ -1,0 +1,496 @@
+{
+  "media": [
+    {
+      "id": 13,
+      "alt": "107.1FM CHIRP logo shirt (standard and fitted styles available) product image",
+      "updatedAt": "2025-11-02T05:53:26.105Z",
+      "createdAt": "2025-11-02T05:53:26.105Z",
+      "url": "http://localhost:3000/api/media/file/Shawn_chirp_shirt-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Shawn_chirp_shirt-1-400x300.jpg",
+      "filename": "Shawn_chirp_shirt-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 56377,
+      "width": 496,
+      "height": 640,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Shawn_chirp_shirt-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 21674,
+          "filename": "Shawn_chirp_shirt-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Shawn_chirp_shirt-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 38231,
+          "filename": "Shawn_chirp_shirt-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 12,
+      "alt": "CHIRP Sandcastle Toddler T-Shirt product image",
+      "updatedAt": "2025-11-02T05:53:25.574Z",
+      "createdAt": "2025-11-02T05:53:25.574Z",
+      "url": "http://localhost:3000/api/media/file/image5-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/image5-1-400x300.jpg",
+      "filename": "image5-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 490150,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/image5-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 16078,
+          "filename": "image5-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/image5-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 33432,
+          "filename": "image5-1-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/image5-1-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 175003,
+          "filename": "image5-1-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "alt": "CHIRP Record Fair 2017 Poster product image",
+      "updatedAt": "2025-11-02T05:53:24.791Z",
+      "createdAt": "2025-11-02T05:53:24.791Z",
+      "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-1-400x300.jpg",
+      "filename": "RF_poster_2017_-_2-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 778886,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 43543,
+          "filename": "RF_poster_2017_-_2-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 97428,
+          "filename": "RF_poster_2017_-_2-1-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-1-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 363730,
+          "filename": "RF_poster_2017_-_2-1-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "alt": "CHIRP Record Fair 2018 poster product image",
+      "updatedAt": "2025-11-02T05:53:24.466Z",
+      "createdAt": "2025-11-02T05:53:24.465Z",
+      "url": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-1-400x300.jpg",
+      "filename": "20180227-CHIRP-RF-poster-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 201089,
+      "width": 750,
+      "height": 1000,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 36383,
+          "filename": "20180227-CHIRP-RF-poster-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 69032,
+          "filename": "20180227-CHIRP-RF-poster-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 9,
+      "alt": "CHIRP Record Fair 2019 Poster product image",
+      "updatedAt": "2025-11-02T05:53:24.284Z",
+      "createdAt": "2025-11-02T05:53:24.284Z",
+      "url": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-1-400x300.jpg",
+      "filename": "CHiRP2019_Poster_11x17-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 175992,
+      "width": 792,
+      "height": 1224,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 29210,
+          "filename": "CHiRP2019_Poster_11x17-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 43169,
+          "filename": "CHiRP2019_Poster_11x17-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 8,
+      "alt": "CHIRP Record Fair 2015 poster product image",
+      "updatedAt": "2025-11-02T05:53:24.097Z",
+      "createdAt": "2025-11-02T05:53:24.097Z",
+      "url": "http://localhost:3000/api/media/file/Record_Fair_2015-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Record_Fair_2015-1-400x300.jpg",
+      "filename": "Record_Fair_2015-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 524071,
+      "width": 1512,
+      "height": 2016,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Record_Fair_2015-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 32586,
+          "filename": "Record_Fair_2015-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Record_Fair_2015-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 74502,
+          "filename": "Record_Fair_2015-1-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/Record_Fair_2015-1-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 276486,
+          "filename": "Record_Fair_2015-1-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "alt": "CHIRP 2013 Poster product image",
+      "updatedAt": "2025-11-02T05:53:23.856Z",
+      "createdAt": "2025-11-02T05:53:23.856Z",
+      "url": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-1-400x300.jpg",
+      "filename": "CHIRP_spring_2013_design-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 91673,
+      "width": 540,
+      "height": 720,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 42541,
+          "filename": "CHIRP_spring_2013_design-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 80025,
+          "filename": "CHIRP_spring_2013_design-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 6,
+      "alt": "CHIRP Baby Onesie product image",
+      "updatedAt": "2025-11-02T05:53:23.715Z",
+      "createdAt": "2025-11-02T05:53:23.715Z",
+      "url": "http://localhost:3000/api/media/file/Baby_onesie-4.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Baby_onesie-4-400x300.jpg",
+      "filename": "Baby_onesie-4.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 553800,
+      "width": 2103,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Baby_onesie-4-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22778,
+          "filename": "Baby_onesie-4-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Baby_onesie-4-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 47184,
+          "filename": "Baby_onesie-4-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/Baby_onesie-4-1200x1369.jpg",
+          "width": 1200,
+          "height": 1369,
+          "mimeType": "image/jpeg",
+          "filesize": 204579,
+          "filename": "Baby_onesie-4-1200x1369.jpg"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "alt": "Logo for Chicago’s Department of Cultural Affairs and Special Events, showing a blue square, a red six-pointed star, and the text “DCASE” with the full department name below.",
+      "updatedAt": "2025-11-02T05:45:17.975Z",
+      "createdAt": "2025-11-02T05:45:17.975Z",
+      "url": "http://localhost:3000/api/media/file/dcase.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/dcase-400x300.png",
+      "filename": "dcase.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 37071,
+      "width": 1100,
+      "height": 342,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/dcase-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 58934,
+          "filename": "dcase-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/dcase-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 112874,
+          "filename": "dcase-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "alt": "Logo with the words \"Illinois ARTS Council,\" with \"ARTS\" in large green letters and the other words in black.",
+      "updatedAt": "2025-11-02T05:45:17.945Z",
+      "createdAt": "2025-11-02T05:45:17.945Z",
+      "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+      "filename": "NEW IAC LOGO_Black_Green.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 44094,
+      "width": 1024,
+      "height": 607,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 41388,
+          "filename": "NEW IAC LOGO_Black_Green-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 84448,
+          "filename": "NEW IAC LOGO_Black_Green-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "alt": "Dark background image with bold, distressed text reading \"THE FIRST TIME\" in large letters. The text evokes a mysterious and dramatic tone.",
+      "updatedAt": "2025-11-02T05:45:17.913Z",
+      "createdAt": "2025-11-02T05:45:17.913Z",
+      "url": "http://localhost:3000/api/media/file/FirstTimeLogo.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+      "filename": "FirstTimeLogo.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 8134,
+      "width": 481,
+      "height": 246,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 89116,
+          "filename": "FirstTimeLogo-400x300.png"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 1,
+      "alt": "Banner for the Chirp Music Film Festival. White text on a gray background with 'FILM' highlighted in red paint. Filmstrip border adds a cinematic feel.",
+      "updatedAt": "2025-11-02T05:45:17.862Z",
+      "createdAt": "2025-11-02T05:45:17.862Z",
+      "url": "http://localhost:3000/api/media/file/chirp-film-fest-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chirp-film-fest-1-400x300.jpg",
+      "filename": "chirp-film-fest-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 44154,
+      "width": 1080,
+      "height": 356,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17428,
+          "filename": "chirp-film-fest-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36298,
+          "filename": "chirp-film-fest-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    }
+  ]
+}

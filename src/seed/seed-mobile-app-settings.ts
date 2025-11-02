@@ -26,24 +26,7 @@ export async function seedMobileAppSettings(payload: Payload, dataDir?: string) 
       await payload.updateGlobal({
         slug: 'mobileAppSettings',
         data: {
-          // Listen Page
-          listenPageTitle: 'Listen Live',
-          listenCurrentPlaylistTitle: 'Current Playlist',
-          listenPreviousPlaysButtonText: 'View Previous Plays',
-          listenUserCollectionTitle: 'Your Collection',
-          listenYourCollectionButtonText: 'View Your Collection',
-
-          // Schedule Page
-          schedulePageTitle: 'DJ Schedule',
-          scheduleFilterAllText: 'All Shows',
-          scheduleViewFullScheduleText: 'View Full Schedule',
-
-          // Explore Page
-          explorePageTitle: 'Explore',
-          exploreSectionsTitle: 'Browse',
-
-          // Settings
-          settingsPageTitle: 'Settings',
+          accountBenefitsTitle: 'Benefits of Creating an Account',
         },
       })
     }

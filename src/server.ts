@@ -1,6 +1,6 @@
 import express from 'express'
 import { getPayload } from 'payload'
-import config from './payload.config.ts'
+import config from '@payload-config'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -26,7 +26,7 @@ const start = async () => {
       })
       res.json(articles)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -50,7 +50,7 @@ const start = async () => {
       })
       res.json(events)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -69,12 +69,12 @@ const start = async () => {
   app.get('/api/djs', async (req, res) => {
     try {
       const djs = await payload.find({
-        collection: 'djs',
+        collection: 'listeners',
         limit: req.query.limit ? parseInt(req.query.limit as string) : 50,
       })
       res.json(djs)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -86,7 +86,7 @@ const start = async () => {
       })
       res.json(pages)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -98,7 +98,7 @@ const start = async () => {
       })
       res.json(podcasts)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -110,7 +110,7 @@ const start = async () => {
       })
       res.json(announcements)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -122,7 +122,7 @@ const start = async () => {
       })
       res.json(media)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 
@@ -134,7 +134,7 @@ const start = async () => {
       })
       res.json(venues)
     } catch (error) {
-      res.status(500).json({ error: error.message })
+      res.status(500).json({ error: (error as Error).message })
     }
   })
 

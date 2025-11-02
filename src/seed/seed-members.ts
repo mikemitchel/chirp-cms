@@ -64,19 +64,19 @@ export async function seedMembers(payload: Payload, dataDir?: string) {
           {
             name: 'Demo Listener',
             email: 'listener@chirpradio.org',
-            roles: ['Listener'],
+            roles: ['Listener' as const],
             collection: [],
           },
           {
             name: 'Demo Volunteer',
             email: 'volunteer@chirpradio.org',
-            roles: ['Listener', 'Volunteer'],
+            roles: ['Listener' as const, 'Volunteer' as const],
             collection: [],
           },
           {
             name: 'Demo DJ',
             email: 'dj@chirpradio.org',
-            roles: ['Listener', 'Volunteer', 'Regular DJ'],
+            roles: ['Listener' as const, 'Volunteer' as const, 'Regular DJ' as const],
             collection: [],
           },
         ]

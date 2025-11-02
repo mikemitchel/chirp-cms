@@ -1,0 +1,294 @@
+{
+  "shopItems": [
+    {
+      "id": 9,
+      "name": "CHIRP Baby Onesie",
+      "slug": "chirp-baby-onesie",
+      "description": "CHIRP Baby Onesie from CHIRP Radio's official store.",
+      "itemType": "Apparel",
+      "category": "apparel",
+      "price": 15,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/Baby_onesie-3.jpeg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [
+        {
+          "id": "6906da9813ed90a646695bf9",
+          "size": "6M"
+        },
+        {
+          "id": "6906da9813ed90a646695bfa",
+          "size": "12M"
+        },
+        {
+          "id": "6906da9813ed90a646695bfb",
+          "size": "18M"
+        },
+        {
+          "id": "6906da9813ed90a646695bfc",
+          "size": "2T"
+        },
+        {
+          "id": "6906da9813ed90a646695bfd",
+          "size": "3T"
+        },
+        {
+          "id": "6906da9813ed90a646695bfe",
+          "size": "4T"
+        }
+      ],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.297Z",
+      "createdAt": "2025-11-02T04:14:16.297Z"
+    },
+    {
+      "id": 8,
+      "name": "CHIRP 2013 Poster",
+      "slug": "chirp-2013-poster",
+      "description": "CHIRP 2013 Poster from CHIRP Radio's official store.",
+      "itemType": "Poster",
+      "category": "poster",
+      "price": 30,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/CHIRP_spring_2013_design.jpg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.296Z",
+      "createdAt": "2025-11-02T04:14:16.296Z"
+    },
+    {
+      "id": 7,
+      "name": "CHIRP Record Fair 2015 poster",
+      "slug": "chirp-record-fair-2015-poster",
+      "description": "CHIRP Record Fair 2015 poster from CHIRP Radio's official store.",
+      "itemType": "Poster",
+      "category": "poster",
+      "price": 20,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/Record_Fair_2015.jpg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.294Z",
+      "createdAt": "2025-11-02T04:14:16.294Z"
+    },
+    {
+      "id": 6,
+      "name": "CHIRP Record Fair 2019 Poster",
+      "slug": "chirp-record-fair-2019-poster",
+      "description": "CHIRP Record Fair 2019 Poster from CHIRP Radio's official store.",
+      "itemType": "Poster",
+      "category": "poster",
+      "price": 15,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/CHiRP2019_Poster_11x17.jpg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.293Z",
+      "createdAt": "2025-11-02T04:14:16.293Z"
+    },
+    {
+      "id": 5,
+      "name": "CHIRP Record Fair 2018 poster",
+      "slug": "chirp-record-fair-2018-poster",
+      "description": "CHIRP Record Fair 2018 poster from CHIRP Radio's official store.",
+      "itemType": "Poster",
+      "category": "poster",
+      "price": 20,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/20180227-CHIRP-RF-poster.jpg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.292Z",
+      "createdAt": "2025-11-02T04:14:16.292Z"
+    },
+    {
+      "id": 4,
+      "name": "CHIRP Record Fair 2017 Poster",
+      "slug": "chirp-record-fair-2017-poster",
+      "description": "CHIRP Record Fair 2017 Poster from CHIRP Radio's official store.",
+      "itemType": "Poster",
+      "category": "poster",
+      "price": 20,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/RF_poster_2017_-_2.jpg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.290Z",
+      "createdAt": "2025-11-02T04:14:16.290Z"
+    },
+    {
+      "id": 3,
+      "name": "CHIRP Sandcastle Toddler T-Shirt",
+      "slug": "chirp-sandcastle-toddler-t-shirt",
+      "description": "CHIRP Sandcastle Toddler T-Shirt from CHIRP Radio's official store.",
+      "itemType": "Apparel",
+      "category": "apparel",
+      "price": 14,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/image5.jpeg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [
+        {
+          "id": "6906da9813ed90a646695bf3",
+          "size": "6M"
+        },
+        {
+          "id": "6906da9813ed90a646695bf4",
+          "size": "12M"
+        },
+        {
+          "id": "6906da9813ed90a646695bf5",
+          "size": "18M"
+        },
+        {
+          "id": "6906da9813ed90a646695bf6",
+          "size": "2T"
+        },
+        {
+          "id": "6906da9813ed90a646695bf7",
+          "size": "3T"
+        },
+        {
+          "id": "6906da9813ed90a646695bf8",
+          "size": "4T"
+        }
+      ],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.289Z",
+      "createdAt": "2025-11-02T04:14:16.289Z"
+    },
+    {
+      "id": 2,
+      "name": "chirpradio.org Record Logo Shirt (standard and fitted styles available)",
+      "slug": "chirpradio-org-record-logo-shirt-standard-and-fitted-styles-available",
+      "description": "chirpradio.org Record Logo Shirt (standard and fitted styles available) from CHIRP Radio's official store.",
+      "itemType": "Apparel",
+      "category": "apparel",
+      "price": 20,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/Red_CHIRP_shirt_3.JPG",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [
+        {
+          "id": "6906da9813ed90a646695bee",
+          "size": "S"
+        },
+        {
+          "id": "6906da9813ed90a646695bef",
+          "size": "M"
+        },
+        {
+          "id": "6906da9813ed90a646695bf0",
+          "size": "L"
+        },
+        {
+          "id": "6906da9813ed90a646695bf1",
+          "size": "XL"
+        },
+        {
+          "id": "6906da9813ed90a646695bf2",
+          "size": "XXL"
+        }
+      ],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.287Z",
+      "createdAt": "2025-11-02T04:14:16.287Z"
+    },
+    {
+      "id": 1,
+      "name": "107.1FM CHIRP logo shirt (standard and fitted styles available)",
+      "slug": "107-1fm-chirp-logo-shirt-standard-and-fitted-styles-available",
+      "description": "107.1FM CHIRP logo shirt (standard and fitted styles available) from CHIRP Radio's official store.",
+      "itemType": "Apparel",
+      "category": "apparel",
+      "price": 20,
+      "images": [],
+      "imageUrl": "https://chirpradio.org/_/files/store/Shawn_chirp_shirt.jpg",
+      "additionalImageUrls": [],
+      "inStock": true,
+      "sizes": [
+        {
+          "id": "6906da9813ed90a646695be9",
+          "size": "S"
+        },
+        {
+          "id": "6906da9813ed90a646695bea",
+          "size": "M"
+        },
+        {
+          "id": "6906da9813ed90a646695beb",
+          "size": "L"
+        },
+        {
+          "id": "6906da9813ed90a646695bec",
+          "size": "XL"
+        },
+        {
+          "id": "6906da9813ed90a646695bed",
+          "size": "XXL"
+        }
+      ],
+      "variants": [],
+      "externalUrl": null,
+      "featured": false,
+      "soldOut": false,
+      "limitedEdition": false,
+      "displayOrder": null,
+      "updatedAt": "2025-11-02T04:14:16.285Z",
+      "createdAt": "2025-11-02T04:14:16.285Z"
+    }
+  ]
+}

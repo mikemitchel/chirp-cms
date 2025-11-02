@@ -1,0 +1,208 @@
+{
+  "player-fallback-images": [
+    {
+      "id": 6,
+      "alt": "Album Cover Fallback",
+      "isActive": true,
+      "updatedAt": "2025-11-02T05:45:18.054Z",
+      "createdAt": "2025-11-02T05:45:18.054Z",
+      "url": "http://localhost:3000/api/player-fallback-images/file/album-art-2.png",
+      "thumbnailURL": "http://localhost:3000/api/player-fallback-images/file/album-art-2-400x400.png",
+      "filename": "album-art-2.png",
+      "mimeType": "image/png",
+      "filesize": 27185,
+      "width": 1024,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-2-400x400.png",
+          "width": 400,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 21650,
+          "filename": "album-art-2-400x400.png"
+        },
+        "player": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-2-600x600.png",
+          "width": 600,
+          "height": 600,
+          "mimeType": "image/png",
+          "filesize": 40401,
+          "filename": "album-art-2-600x600.png"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "alt": "Album Cover Fallback",
+      "isActive": true,
+      "updatedAt": "2025-11-02T05:45:18.044Z",
+      "createdAt": "2025-11-02T05:45:18.044Z",
+      "url": "http://localhost:3000/api/player-fallback-images/file/album-art-3.png",
+      "thumbnailURL": "http://localhost:3000/api/player-fallback-images/file/album-art-3-400x400.png",
+      "filename": "album-art-3.png",
+      "mimeType": "image/png",
+      "filesize": 27691,
+      "width": 1024,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-3-400x400.png",
+          "width": 400,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 21904,
+          "filename": "album-art-3-400x400.png"
+        },
+        "player": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-3-600x600.png",
+          "width": 600,
+          "height": 600,
+          "mimeType": "image/png",
+          "filesize": 42050,
+          "filename": "album-art-3-600x600.png"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "alt": "Album Cover Fallback",
+      "isActive": true,
+      "updatedAt": "2025-11-02T05:45:18.034Z",
+      "createdAt": "2025-11-02T05:45:18.034Z",
+      "url": "http://localhost:3000/api/player-fallback-images/file/album-art-4.png",
+      "thumbnailURL": "http://localhost:3000/api/player-fallback-images/file/album-art-4-400x400.png",
+      "filename": "album-art-4.png",
+      "mimeType": "image/png",
+      "filesize": 14605,
+      "width": 1024,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-4-400x400.png",
+          "width": 400,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 18235,
+          "filename": "album-art-4-400x400.png"
+        },
+        "player": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-4-600x600.png",
+          "width": 600,
+          "height": 600,
+          "mimeType": "image/png",
+          "filesize": 33095,
+          "filename": "album-art-4-600x600.png"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "alt": "Album Cover Fallback",
+      "isActive": true,
+      "updatedAt": "2025-11-02T05:45:18.022Z",
+      "createdAt": "2025-11-02T05:45:18.022Z",
+      "url": "http://localhost:3000/api/player-fallback-images/file/album-art-5.png",
+      "thumbnailURL": "http://localhost:3000/api/player-fallback-images/file/album-art-5-400x400.png",
+      "filename": "album-art-5.png",
+      "mimeType": "image/png",
+      "filesize": 99255,
+      "width": 1024,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-5-400x400.png",
+          "width": 400,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 69494,
+          "filename": "album-art-5-400x400.png"
+        },
+        "player": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-5-600x600.png",
+          "width": 600,
+          "height": 600,
+          "mimeType": "image/png",
+          "filesize": 133587,
+          "filename": "album-art-5-600x600.png"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "alt": "Album Cover Fallback",
+      "isActive": true,
+      "updatedAt": "2025-11-02T05:45:18.009Z",
+      "createdAt": "2025-11-02T05:45:18.009Z",
+      "url": "http://localhost:3000/api/player-fallback-images/file/album-art-6.png",
+      "thumbnailURL": "http://localhost:3000/api/player-fallback-images/file/album-art-6-400x400.png",
+      "filename": "album-art-6.png",
+      "mimeType": "image/png",
+      "filesize": 106073,
+      "width": 1024,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-6-400x400.png",
+          "width": 400,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 72728,
+          "filename": "album-art-6-400x400.png"
+        },
+        "player": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-6-600x600.png",
+          "width": 600,
+          "height": 600,
+          "mimeType": "image/png",
+          "filesize": 140300,
+          "filename": "album-art-6-600x600.png"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "alt": "Album Cover Fallback",
+      "isActive": true,
+      "updatedAt": "2025-11-02T05:45:17.997Z",
+      "createdAt": "2025-11-02T05:45:17.997Z",
+      "url": "http://localhost:3000/api/player-fallback-images/file/album-art-7.png",
+      "thumbnailURL": "http://localhost:3000/api/player-fallback-images/file/album-art-7-400x400.png",
+      "filename": "album-art-7.png",
+      "mimeType": "image/png",
+      "filesize": 52955,
+      "width": 1024,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-7-400x400.png",
+          "width": 400,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 52919,
+          "filename": "album-art-7-400x400.png"
+        },
+        "player": {
+          "url": "http://localhost:3000/api/player-fallback-images/file/album-art-7-600x600.png",
+          "width": 600,
+          "height": 600,
+          "mimeType": "image/png",
+          "filesize": 95447,
+          "filename": "album-art-7-600x600.png"
+        }
+      }
+    }
+  ]
+}

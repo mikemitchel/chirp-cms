@@ -23,7 +23,7 @@ async function seedMobileContent() {
     // Seed mobile page content
     const mobilePages = [
       {
-        pageIdentifier: 'make-request',
+        pageIdentifier: 'make-request' as const,
         pageTitle: 'Make a Song Request',
         introContent: {
           root: {
@@ -169,55 +169,6 @@ async function seedMobileContent() {
           },
           loginButtonText: 'Log In',
           signupButtonText: 'Sign Up',
-        },
-        firstLaunchWelcome: {
-          isEnabled: true,
-          title: 'Welcome to CHIRP Radio',
-          content: {
-            root: {
-              type: 'root',
-              children: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      type: 'text',
-                      text: 'Stream live community radio, discover new music, and connect with Chicago\'s independent music scene.',
-                    },
-                  ],
-                },
-              ],
-            },
-          },
-          ctaButtonText: 'Get Started',
-        },
-        termsAcceptance: {
-          isRequired: false,
-          title: 'Terms and Conditions',
-          content: {
-            root: {
-              type: 'root',
-              children: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      type: 'text',
-                      text: 'By using CHIRP Radio, you agree to our terms of service and privacy policy.',
-                    },
-                  ],
-                },
-              ],
-            },
-          },
-          acceptanceText: 'I agree to the Terms and Conditions',
-        },
-        errorMessages: {
-          networkError: 'Unable to connect. Please check your internet connection.',
-          serverError: 'Something went wrong. Please try again later.',
-          authenticationError: 'Your session has expired. Please log in again.',
-          notFoundError: 'Content not found.',
-          permissionError: 'You don\'t have permission to access this content.',
         },
       },
     })

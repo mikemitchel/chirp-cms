@@ -70,13 +70,13 @@ const importData = async () => {
       })
 
       if (existing.length > 0) {
-        categoryMap[categoryName] = existing[0].id
+        categoryMap[categoryName] = String(existing[0].id)
       } else {
         const category = await payload.create({
           collection: 'categories',
           data: { name: categoryName },
         })
-        categoryMap[categoryName] = category.id
+        categoryMap[categoryName] = String(category.id)
       }
     }
     console.log(`✓ ${categoryNames.length} categories created\n`)
