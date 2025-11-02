@@ -10,6 +10,13 @@ export const Members: CollectionConfig = {
     useAsTitle: 'email',
     defaultColumns: ['email', 'firstName', 'lastName', 'roles'],
     group: 'Community',
+    description: 'Search by email, first name, last name, or DJ name',
+    pagination: {
+      defaultLimit: 50,
+    },
+  },
+  search: {
+    fields: ['email', 'firstName', 'lastName', 'djName'],
   },
   access: {
     read: () => true,
@@ -92,6 +99,7 @@ export const Members: CollectionConfig = {
     // DJ Fields (for Regular DJ and Substitute DJ roles)
     {
       name: 'djName',
+      label: 'DJ Name',
       type: 'text',
       admin: {
         description: 'DJ on-air name (only for members with DJ role)'
@@ -108,11 +116,13 @@ export const Members: CollectionConfig = {
       name: 'showTime',
       type: 'text',
       admin: {
-        description: 'Show time slot (e.g., "Mon 6am - 9am")'
+        readOnly: true,
+        description: 'Show time slot - auto-populated from Show Schedules assignments'
       }
     },
     {
       name: 'djExcerpt',
+      label: 'DJ Excerpt',
       type: 'textarea',
       admin: {
         description: 'Short description for DJ cards and listings (1-2 sentences)'
@@ -120,6 +130,7 @@ export const Members: CollectionConfig = {
     },
     {
       name: 'djBio',
+      label: 'DJ Bio',
       type: 'textarea',
       admin: {
         description: 'Full DJ biography shown on detailed DJ profile page (can be longer and more detailed than general bio)'
@@ -127,6 +138,7 @@ export const Members: CollectionConfig = {
     },
     {
       name: 'djDonationLink',
+      label: 'DJ Donation Link',
       type: 'text',
       admin: {
         description: 'Optional donation link for the DJ'
