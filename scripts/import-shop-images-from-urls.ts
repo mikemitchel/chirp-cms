@@ -3,7 +3,6 @@ import config from '../payload.config'
 import dotenv from 'dotenv'
 import https from 'https'
 import http from 'http'
-import type { FileData } from 'payload'
 
 dotenv.config()
 

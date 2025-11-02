@@ -126,9 +126,6 @@ const importData = async () => {
     const eventsData = JSON.parse(
       fs.readFileSync(path.join(dataDir, 'events.json'), 'utf-8')
     )
-    const usersData = JSON.parse(
-      fs.readFileSync(path.join(dataDir, 'users.json'), 'utf-8')
-    )
     const podcastsData = JSON.parse(
       fs.readFileSync(path.join(dataDir, 'podcasts.json'), 'utf-8')
     )

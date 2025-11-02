@@ -139,7 +139,7 @@ const start = async () => {
   })
 
   // Root and admin routes
-  app.get('/', (req, res) => {
+  app.get('/', (_req, res) => {
     res.json({
       message: 'CHIRP Radio CMS API',
       version: '1.0.0',
@@ -157,7 +157,7 @@ const start = async () => {
     })
   })
 
-  app.get('/admin', (req, res) => {
+  app.get('/admin', (_req, res) => {
     res.send(`
       <html>
         <head><title>CHIRP CMS</title></head>

@@ -1,5 +1,4 @@
-import { CollectionConfig } from 'payload/types'
-import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
+import type { CollectionConfig } from 'payload'
 
 export const VolunteerCalendar: CollectionConfig = {
   slug: 'volunteerCalendar',

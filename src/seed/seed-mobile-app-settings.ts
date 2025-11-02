@@ -18,13 +18,13 @@ export async function seedMobileAppSettings(payload: Payload, dataDir?: string) 
       const { id, createdAt, updatedAt, globalType, ...cleanData } = settingsData
 
       await payload.updateGlobal({
-        slug: 'mobile-app-settings',
+        slug: 'mobileAppSettings',
         data: cleanData,
       })
     } else {
       // Create default mobile app settings
       await payload.updateGlobal({
-        slug: 'mobile-app-settings',
+        slug: 'mobileAppSettings',
         data: {
           // Listen Page
           listenPageTitle: 'Listen Live',

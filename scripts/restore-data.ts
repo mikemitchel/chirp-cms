@@ -175,7 +175,7 @@ const restoreData = async () => {
       )
       const { id, createdAt, updatedAt, globalType, ...cleanData } = settingsData
       await payload.updateGlobal({
-        slug: 'site-settings',
+        slug: 'siteSettings',
         data: cleanData,
       })
       console.log('✓ Site Settings restored')
