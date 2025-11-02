@@ -117,6 +117,9 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
             root: {
               type: 'root',
               version: 1,
+              direction: 'ltr' as const,
+              format: '' as const,
+              indent: 0,
               children: [
                 {
                   type: 'paragraph',
@@ -164,6 +167,9 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
             root: {
               type: 'root',
               version: 1,
+              direction: 'ltr' as const,
+              format: '' as const,
+              indent: 0,
               children: [
                 {
                   type: 'paragraph',
