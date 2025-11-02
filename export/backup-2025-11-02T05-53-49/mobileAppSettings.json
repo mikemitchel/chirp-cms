@@ -1,0 +1,13 @@
+{
+  "notLoggedInMessage": {
+    "title": "Login Required",
+    "loginButtonText": "Log In",
+    "signupButtonText": "Sign Up"
+  },
+  "loginModal": {},
+  "accountBenefits": {
+    "benefits": [],
+    "title": "Benefits of Creating an Account:"
+  },
+  "accountBenefitsTitle": "Benefits of Creating an Account"
+}

@@ -15,6 +15,7 @@ const textureColors: Record<string, string> = {
 
 export const TextureBackgroundField: SelectFieldClientComponent = (props) => {
   const { value } = useField({ path: props.path })
+  const stringValue = value as string
 
   return (
     <div
@@ -28,7 +29,7 @@ export const TextureBackgroundField: SelectFieldClientComponent = (props) => {
       <div style={{ flex: 1 }}>
         <SelectField {...props} />
       </div>
-      {value && textureColors[value as string] && (
+      {stringValue && textureColors[stringValue] && (
         <div
           style={{
             display: 'flex',
@@ -41,7 +42,7 @@ export const TextureBackgroundField: SelectFieldClientComponent = (props) => {
             style={{
               width: '40px',
               height: '40px',
-              backgroundColor: textureColors[value as string],
+              backgroundColor: textureColors[stringValue],
               border: '1px solid #ddd',
               borderRadius: '4px',
               boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
@@ -49,9 +50,9 @@ export const TextureBackgroundField: SelectFieldClientComponent = (props) => {
             }}
           />
           <div style={{ fontSize: '12px', color: '#666' }}>
-            <div style={{ fontWeight: '500', color: '#333' }}>{value as string}</div>
+            <div style={{ fontWeight: '500', color: '#333' }}>{stringValue}</div>
             <div style={{ fontFamily: 'monospace', fontSize: '11px' }}>
-              {textureColors[value as string]}
+              {textureColors[stringValue]}
             </div>
           </div>
         </div>

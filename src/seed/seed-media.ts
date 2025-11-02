@@ -1,7 +1,6 @@
 import type { Payload } from 'payload'
 import path from 'path'
 import fs from 'fs'
-import type { FileData } from 'payload'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -32,20 +31,21 @@ export async function seedMedia(payload: Payload) {
       try {
         // Read the file and create a File-like object
         const fileBuffer = fs.readFileSync(mediaFilePath)
-        const file: FileData = {
-          data: fileBuffer,
-          mimetype: mediaItem.mimeType,
-          name: mediaItem.filename,
-          size: mediaItem.filesize,
-        }
 
         // Upload the file through Payload's API
         await payload.create({
           collection: 'media',
           data: {
             alt: mediaItem.alt || '',
+            category: 'General',
           },
-          file,
+          file: {
+            data: fileBuffer,
+            mimetype: mediaItem.mimeType,
+            name: mediaItem.filename,
+            size: mediaItem.filesize,
+          },
+          draft: false,
         })
         console.log(`  ✓ ${mediaItem.filename}`)
       } catch (error) {

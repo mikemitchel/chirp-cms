@@ -51,7 +51,7 @@ const importShopImages = async () => {
       fs.mkdirSync(tempDir, { recursive: true })
     }
 
-    const imageMap = new Map<string, string>() // URL/filename -> Media ID
+    const imageMap = new Map<string, number | string>() // URL/filename -> Media ID
 
     // Get existing media to avoid duplicates
     const { docs: existingMedia } = await payload.find({
@@ -105,6 +105,7 @@ const importShopImages = async () => {
             collection: 'media',
             data: {
               alt: `${item.name} - CHIRP Radio Store`,
+              category: 'Shop Items',
             },
             file: {
               data: fileBuffer,
@@ -112,6 +113,7 @@ const importShopImages = async () => {
               name: normalizedFilename,
               size: fileBuffer.length,
             },
+            draft: false,
           })
 
           imageMap.set(url, media.id)
@@ -172,6 +174,7 @@ const importShopImages = async () => {
             collection: 'media',
             data: {
               alt: `CHIRP Radio Store - ${path.basename(normalizedFilename, path.extname(normalizedFilename))}`,
+              category: 'Shop Items',
             },
             file: {
               data: fileBuffer,
@@ -179,6 +182,7 @@ const importShopImages = async () => {
               name: normalizedFilename,
               size: fileBuffer.length,
             },
+            draft: false,
           })
 
           imageMap.set(normalizedFilename, media.id)
@@ -214,7 +218,7 @@ const importShopImages = async () => {
                 data: {
                   images: [
                     {
-                      image: mediaId,
+                      image: typeof mediaId === 'number' ? mediaId : undefined,
                       alt: originalData.name,
                     },
                   ],

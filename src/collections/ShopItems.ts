@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import type { CollectionConfig } from 'payload'
 
 export const ShopItems: CollectionConfig = {
   slug: 'shopItems',
@@ -37,8 +37,8 @@ export const ShopItems: CollectionConfig = {
       hooks: {
         beforeChange: [
           ({ data, value }) => {
-            if (!value && data.name) {
-              return data.name
+            if (!value && data?.name) {
+              return data?.name
                 .toLowerCase()
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-+|-+$/g, '')

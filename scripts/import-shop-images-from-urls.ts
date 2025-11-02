@@ -3,7 +3,6 @@ import config from '../payload.config'
 import dotenv from 'dotenv'
 import https from 'https'
 import http from 'http'
-import type { FileData } from 'payload'
 
 dotenv.config()
 
@@ -73,6 +72,7 @@ const importShopImagesFromUrls = async () => {
           collection: 'media',
           data: {
             alt: `${item.name} product image`,
+            category: 'Shop Items',
           },
           file: {
             data: imageBuffer,
@@ -80,6 +80,7 @@ const importShopImagesFromUrls = async () => {
             name: filename,
             size: imageBuffer.length,
           },
+          draft: false,
         })
 
         console.log(`   ✓ Uploaded to Media collection (ID: ${mediaDoc.id})`)

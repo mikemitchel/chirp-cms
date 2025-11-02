@@ -15,7 +15,7 @@ export async function seedShopItems(payload: Payload, dataDir?: string) {
       for (const item of shopItemsData['shop-items'] || []) {
         const { id, createdAt, updatedAt, ...itemData } = item
         await payload.create({
-          collection: 'shop-items',
+          collection: 'shopItems',
           data: itemData,
         })
         console.log(`  ✓ ${item.name}`)

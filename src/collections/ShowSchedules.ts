@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import type { CollectionConfig } from 'payload'
 
 export const ShowSchedules: CollectionConfig = {
   slug: 'showSchedules',
@@ -16,7 +16,7 @@ export const ShowSchedules: CollectionConfig = {
   },
   hooks: {
     beforeChange: [
-      async ({ data, req, operation }) => {
+      async ({ data, req }) => {
         // Generate title from day + time + DJ/Music Mix
         if (data) {
           const day = data.dayOfWeek?.charAt(0).toUpperCase() + data.dayOfWeek?.slice(1) || ''
@@ -50,7 +50,7 @@ export const ShowSchedules: CollectionConfig = {
       },
     ],
     afterChange: [
-      async ({ doc, req, operation }) => {
+      async ({ doc, req }) => {
         // Helper function to format time in compact style
         const formatTime = (timeStr: string): string => {
           // Parse "6:00 AM" or "11:00 PM"
@@ -185,7 +185,7 @@ export const ShowSchedules: CollectionConfig = {
         description: 'DJ assigned to this time slot (not required for Music Mix)',
         condition: (data) => !data.isMusicMix,
       },
-      filterOptions: ({ data }) => {
+      filterOptions: () => {
         // Filter to only show members with DJ roles
         return {
           roles: {

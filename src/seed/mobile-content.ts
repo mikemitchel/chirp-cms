@@ -21,6 +21,7 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
             message: {
               root: {
                 type: 'root',
+                version: 1,
                 children: [
                   {
                     type: 'paragraph',
@@ -41,6 +42,7 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
             loginMessage: {
               root: {
                 type: 'root',
+                version: 1,
                 children: [
                   {
                     type: 'paragraph',
@@ -57,6 +59,7 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
             signupMessage: {
               root: {
                 type: 'root',
+                version: 1,
                 children: [
                   {
                     type: 'paragraph',
@@ -113,9 +116,14 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
           customNotLoggedInMessage: {
             root: {
               type: 'root',
+              version: 1,
+              direction: 'ltr' as const,
+              format: '' as const,
+              indent: 0,
               children: [
                 {
                   type: 'paragraph',
+                  version: 1,
                   children: [
                     {
                       type: 'text',
@@ -158,9 +166,14 @@ export async function seedMobileContent(payload: Payload): Promise<void> {
           customNotLoggedInMessage: {
             root: {
               type: 'root',
+              version: 1,
+              direction: 'ltr' as const,
+              format: '' as const,
+              indent: 0,
               children: [
                 {
                   type: 'paragraph',
+                  version: 1,
                   children: [
                     {
                       type: 'text',

@@ -105,7 +105,7 @@ const restoreData = async () => {
     // ========================================
 
     // Note: These restore metadata only, actual files need manual copy
-    await seedPlayerFallbackImages(payload, backupDir)
+    await seedPlayerFallbackImages(payload)
     await restoreCollection(payload, backupDir, 'media', 'Media Files')
 
     // ========================================
@@ -114,7 +114,7 @@ const restoreData = async () => {
 
     await seedListeners(payload, backupDir)
     await seedShopItems(payload, backupDir)
-    await seedWeeklyCharts(payload, backupDir)
+    await seedWeeklyCharts(payload)
 
     // ========================================
     // STEP 6: RESTORE ANNOUNCEMENTS & ADS
@@ -175,7 +175,7 @@ const restoreData = async () => {
       )
       const { id, createdAt, updatedAt, globalType, ...cleanData } = settingsData
       await payload.updateGlobal({
-        slug: 'site-settings',
+        slug: 'siteSettings',
         data: cleanData,
       })
       console.log('✓ Site Settings restored')

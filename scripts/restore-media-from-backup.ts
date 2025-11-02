@@ -4,7 +4,6 @@ import dotenv from 'dotenv'
 import path from 'path'
 import fs from 'fs'
 import { fileURLToPath } from 'url'
-import type { FileData } from 'payload'
 
 dotenv.config()
 
@@ -42,20 +41,21 @@ const restoreMediaFromBackup = async () => {
         try {
           // Read the file and create a File-like object
           const fileBuffer = fs.readFileSync(mediaFilePath)
-          const file: FileData = {
-            data: fileBuffer,
-            mimetype: mediaItem.mimeType,
-            name: mediaItem.filename,
-            size: mediaItem.filesize,
-          }
 
           // Upload the file through Payload's API
           await payload.create({
             collection: 'media',
             data: {
               alt: mediaItem.alt || '',
+              category: 'General',
             },
-            file,
+            file: {
+              data: fileBuffer,
+              mimetype: mediaItem.mimeType,
+              name: mediaItem.filename,
+              size: mediaItem.filesize,
+            },
+            draft: false,
           })
           console.log(`  ✓ Restored: ${mediaItem.filename}`)
         } catch (error) {
@@ -84,12 +84,6 @@ const restoreMediaFromBackup = async () => {
         try {
           // Read the file and create a File-like object
           const fileBuffer = fs.readFileSync(fallbackFilePath)
-          const file: FileData = {
-            data: fileBuffer,
-            mimetype: fallbackItem.mimeType,
-            name: fallbackItem.filename,
-            size: fallbackItem.filesize,
-          }
 
           // Upload the file through Payload's API
           await payload.create({
@@ -98,7 +92,13 @@ const restoreMediaFromBackup = async () => {
               alt: fallbackItem.alt || '',
               isActive: fallbackItem.isActive,
             },
-            file,
+            file: {
+              data: fileBuffer,
+              mimetype: fallbackItem.mimeType,
+              name: fallbackItem.filename,
+              size: fallbackItem.filesize,
+            },
+            draft: false,
           })
           console.log(`  ✓ Restored: ${fallbackItem.filename}`)
         } catch (error) {

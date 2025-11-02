@@ -1,7 +1,6 @@
 import type { Payload } from 'payload'
 import path from 'path'
 import fs from 'fs'
-import type { FileData } from 'payload'
 import { fileURLToPath } from 'url'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -32,12 +31,6 @@ export async function seedPlayerFallbackImages(payload: Payload) {
       try {
         // Read the file and create a File-like object
         const fileBuffer = fs.readFileSync(mediaFilePath)
-        const file: FileData = {
-          data: fileBuffer,
-          mimetype: image.mimeType,
-          name: image.filename,
-          size: image.filesize,
-        }
 
         // Upload the file through Payload's API
         await payload.create({
@@ -46,7 +39,13 @@ export async function seedPlayerFallbackImages(payload: Payload) {
             alt: image.alt || '',
             isActive: image.isActive || false,
           },
-          file,
+          file: {
+            data: fileBuffer,
+            mimetype: image.mimeType,
+            name: image.filename,
+            size: image.filesize,
+          },
+          draft: false,
         })
         console.log(`  ✓ ${image.filename}`)
       } catch (error) {

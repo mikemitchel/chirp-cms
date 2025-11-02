@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types'
+import type { CollectionConfig } from 'payload'
 
 export const Members: CollectionConfig = {
   slug: 'listeners', // Keep DB table name as 'listeners' to preserve existing data
@@ -13,9 +13,6 @@ export const Members: CollectionConfig = {
     pagination: {
       defaultLimit: 50,
     },
-  },
-  search: {
-    fields: ['firstName', 'lastName', 'email', 'djName'],
   },
   access: {
     read: () => true,

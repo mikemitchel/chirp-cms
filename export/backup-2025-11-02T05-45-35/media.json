@@ -1,0 +1,250 @@
+{
+  "media": [
+    {
+      "id": 6,
+      "alt": "",
+      "updatedAt": "2025-11-02T05:45:17.981Z",
+      "createdAt": "2025-11-02T05:45:17.980Z",
+      "url": "http://localhost:3000/api/media/file/logoipsum-330.svg",
+      "thumbnailURL": null,
+      "filename": "logoipsum-330.svg",
+      "mimeType": "image/svg+xml",
+      "filesize": 1039,
+      "width": 54,
+      "height": 41,
+      "focalX": null,
+      "focalY": null,
+      "sizes": {
+        "thumbnail": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 5,
+      "alt": "Logo for Chicago’s Department of Cultural Affairs and Special Events, showing a blue square, a red six-pointed star, and the text “DCASE” with the full department name below.",
+      "updatedAt": "2025-11-02T05:45:17.975Z",
+      "createdAt": "2025-11-02T05:45:17.975Z",
+      "url": "http://localhost:3000/api/media/file/dcase.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/dcase-400x300.png",
+      "filename": "dcase.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 37071,
+      "width": 1100,
+      "height": 342,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/dcase-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 58934,
+          "filename": "dcase-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/dcase-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 112874,
+          "filename": "dcase-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "alt": "Logo with the words \"Illinois ARTS Council,\" with \"ARTS\" in large green letters and the other words in black.",
+      "updatedAt": "2025-11-02T05:45:17.945Z",
+      "createdAt": "2025-11-02T05:45:17.945Z",
+      "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+      "filename": "NEW IAC LOGO_Black_Green.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 44094,
+      "width": 1024,
+      "height": 607,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 41388,
+          "filename": "NEW IAC LOGO_Black_Green-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 84448,
+          "filename": "NEW IAC LOGO_Black_Green-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "alt": "Dark background image with bold, distressed text reading \"THE FIRST TIME\" in large letters. The text evokes a mysterious and dramatic tone.",
+      "updatedAt": "2025-11-02T05:45:17.913Z",
+      "createdAt": "2025-11-02T05:45:17.913Z",
+      "url": "http://localhost:3000/api/media/file/FirstTimeLogo.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+      "filename": "FirstTimeLogo.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 8134,
+      "width": 481,
+      "height": 246,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 89116,
+          "filename": "FirstTimeLogo-400x300.png"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 2,
+      "alt": "Dark background image with bold, distressed text reading \"THE FIRST TIME\" in large letters. The text evokes a mysterious and dramatic tone.",
+      "updatedAt": "2025-11-02T05:45:17.893Z",
+      "createdAt": "2025-11-02T05:45:17.893Z",
+      "url": "http://localhost:3000/api/media/file/FirstTimeLogo-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/FirstTimeLogo-1-400x300.png",
+      "filename": "FirstTimeLogo-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 8134,
+      "width": 481,
+      "height": 246,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/FirstTimeLogo-1-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 89116,
+          "filename": "FirstTimeLogo-1-400x300.png"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 1,
+      "alt": "Banner for the Chirp Music Film Festival. White text on a gray background with 'FILM' highlighted in red paint. Filmstrip border adds a cinematic feel.",
+      "updatedAt": "2025-11-02T05:45:17.862Z",
+      "createdAt": "2025-11-02T05:45:17.862Z",
+      "url": "http://localhost:3000/api/media/file/chirp-film-fest-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chirp-film-fest-1-400x300.jpg",
+      "filename": "chirp-film-fest-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 44154,
+      "width": 1080,
+      "height": 356,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17428,
+          "filename": "chirp-film-fest-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36298,
+          "filename": "chirp-film-fest-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    }
+  ]
+}
