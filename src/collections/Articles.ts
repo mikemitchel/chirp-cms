@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
+import { sendWebhook } from '../utils/webhook'
 
 export const Articles: CollectionConfig = {
   slug: 'articles',
@@ -17,6 +18,30 @@ export const Articles: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'articles',
+          operation: operation === 'create' ? 'create' : 'update',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
+    afterDelete: [
+      async ({ doc }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'articles',
+          operation: 'delete',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
   },
   fields: [
     {
