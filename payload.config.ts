@@ -29,6 +29,7 @@ import { MobilePageContent } from './src/collections/MobilePageContent'
 import { Onboarding } from './src/collections/Onboarding'
 import { SiteSettings } from './src/globals/SiteSettings'
 import { MobileAppSettings } from './src/globals/MobileAppSettings'
+import { VolunteerFormSettings } from './src/globals/VolunteerFormSettings'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -79,6 +80,7 @@ export default buildConfig({
   globals: [
     // Mobile App
     MobileAppSettings,
+    VolunteerFormSettings,
 
     // Website
     SiteSettings,
