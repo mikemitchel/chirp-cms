@@ -64,6 +64,7 @@ export type SupportedTimezones =
 export interface Config {
   auth: {
     users: UserAuthOperations;
+    listeners: ListenerAuthOperations;
   };
   blocks: {};
   collections: {
@@ -85,6 +86,7 @@ export interface Config {
     weeklyCharts: WeeklyChart;
     volunteerCalendar: VolunteerCalendar;
     mobilePageContent: MobilePageContent;
+    onboarding: Onboarding;
     pages: Page;
     ageGate: AgeGate;
     'payload-locked-documents': PayloadLockedDocument;
@@ -111,6 +113,7 @@ export interface Config {
     weeklyCharts: WeeklyChartsSelect<false> | WeeklyChartsSelect<true>;
     volunteerCalendar: VolunteerCalendarSelect<false> | VolunteerCalendarSelect<true>;
     mobilePageContent: MobilePageContentSelect<false> | MobilePageContentSelect<true>;
+    onboarding: OnboardingSelect<false> | OnboardingSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     ageGate: AgeGateSelect<false> | AgeGateSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -122,22 +125,46 @@ export interface Config {
   };
   globals: {
     mobileAppSettings: MobileAppSetting;
+    volunteerFormSettings: VolunteerFormSetting;
     siteSettings: SiteSetting;
   };
   globalsSelect: {
     mobileAppSettings: MobileAppSettingsSelect<false> | MobileAppSettingsSelect<true>;
+    volunteerFormSettings: VolunteerFormSettingsSelect<false> | VolunteerFormSettingsSelect<true>;
     siteSettings: SiteSettingsSelect<false> | SiteSettingsSelect<true>;
   };
   locale: null;
-  user: User & {
-    collection: 'users';
-  };
+  user:
+    | (User & {
+        collection: 'users';
+      })
+    | (Listener & {
+        collection: 'listeners';
+      });
   jobs: {
     tasks: unknown;
     workflows: unknown;
   };
 }
 export interface UserAuthOperations {
+  forgotPassword: {
+    email: string;
+    password: string;
+  };
+  login: {
+    email: string;
+    password: string;
+  };
+  registerFirstUser: {
+    email: string;
+    password: string;
+  };
+  unlock: {
+    email: string;
+    password: string;
+  };
+}
+export interface ListenerAuthOperations {
   forgotPassword: {
     email: string;
     password: string;
@@ -311,6 +338,10 @@ export interface Listener {
     autoPlay?: boolean | null;
   };
   /**
+   * Whether the user has completed the initial onboarding tour
+   */
+  onboardingCompleted?: boolean | null;
+  /**
    * User's saved music collection
    */
   collection?:
@@ -435,6 +466,22 @@ export interface Listener {
   boardTermEnd?: string | null;
   updatedAt: string;
   createdAt: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  _verified?: boolean | null;
+  _verificationToken?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1375,6 +1422,70 @@ export interface MobilePageContent {
   createdAt: string;
 }
 /**
+ * Manage onboarding tour steps shown to new users
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "onboarding".
+ */
+export interface Onboarding {
+  id: number;
+  /**
+   * Title of this onboarding step (e.g., "Complete Your Profile")
+   */
+  title: string;
+  /**
+   * Description text explaining this feature to the user
+   */
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Which feature this step demonstrates (used by frontend to trigger appropriate UI)
+   */
+  featureIdentifier:
+    | 'welcome'
+    | 'profile'
+    | 'collection'
+    | 'explore-features'
+    | 'support'
+    | 'favorite-djs'
+    | 'request-songs';
+  /**
+   * Order in which this step appears (lower numbers appear first)
+   */
+  order: number;
+  /**
+   * Which platform(s) should show this step
+   */
+  platform: 'both' | 'web' | 'mobile';
+  /**
+   * Optional image or video to illustrate this step
+   */
+  media?: (number | null) | Media;
+  /**
+   * Call-to-action button text (e.g., "Get Started", "Next", "Skip")
+   */
+  ctaText?: string | null;
+  /**
+   * Uncheck to temporarily hide this step without deleting it
+   */
+  isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
@@ -1533,6 +1644,10 @@ export interface PayloadLockedDocument {
         value: number | MobilePageContent;
       } | null)
     | ({
+        relationTo: 'onboarding';
+        value: number | Onboarding;
+      } | null)
+    | ({
         relationTo: 'pages';
         value: number | Page;
       } | null)
@@ -1541,10 +1656,15 @@ export interface PayloadLockedDocument {
         value: number | AgeGate;
       } | null);
   globalSlug?: string | null;
-  user: {
-    relationTo: 'users';
-    value: number | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'listeners';
+        value: number | Listener;
+      };
   updatedAt: string;
   createdAt: string;
 }
@@ -1554,10 +1674,15 @@ export interface PayloadLockedDocument {
  */
 export interface PayloadPreference {
   id: number;
-  user: {
-    relationTo: 'users';
-    value: number | User;
-  };
+  user:
+    | {
+        relationTo: 'users';
+        value: number | User;
+      }
+    | {
+        relationTo: 'listeners';
+        value: number | Listener;
+      };
   key?: string | null;
   value?:
     | {
@@ -1725,6 +1850,7 @@ export interface ListenersSelect<T extends boolean = true> {
         darkMode?: T;
         autoPlay?: T;
       };
+  onboardingCompleted?: T;
   collection?:
     | T
     | {
@@ -1822,6 +1948,21 @@ export interface ListenersSelect<T extends boolean = true> {
   boardTermEnd?: T;
   updatedAt?: T;
   createdAt?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  _verified?: T;
+  _verificationToken?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -2157,6 +2298,22 @@ export interface MobilePageContentSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "onboarding_select".
+ */
+export interface OnboardingSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  featureIdentifier?: T;
+  order?: T;
+  platform?: T;
+  media?: T;
+  ctaText?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages_select".
  */
 export interface PagesSelect<T extends boolean = true> {
@@ -2365,6 +2522,87 @@ export interface MobileAppSetting {
     };
     [k: string]: unknown;
   } | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Configure the Volunteer Details form fields and options
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerFormSettings".
+ */
+export interface VolunteerFormSetting {
+  id: number;
+  ageQuestion?: {
+    label?: string | null;
+    options?:
+      | {
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  educationQuestion?: {
+    label?: string | null;
+    placeholder?: string | null;
+  };
+  employerQuestion?: {
+    label?: string | null;
+    placeholder?: string | null;
+  };
+  volunteerOrgsQuestion?: {
+    label?: string | null;
+    placeholder?: string | null;
+    addButtonText?: string | null;
+  };
+  radioExperienceQuestion?: {
+    label?: string | null;
+    followUpLabel?: string | null;
+    followUpPlaceholder?: string | null;
+  };
+  specialSkillsQuestion?: {
+    label?: string | null;
+    options?:
+      | {
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  hearAboutChirpQuestion?: {
+    label?: string | null;
+    options?:
+      | {
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  interestsQuestion?: {
+    label?: string | null;
+    options?:
+      | {
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  wantsToDJQuestion?: {
+    label?: string | null;
+  };
+  djAvailabilityQuestion?: {
+    label?: string | null;
+    options?:
+      | {
+          value: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  formActions?: {
+    cancelButtonText?: string | null;
+    saveButtonText?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -2731,6 +2969,107 @@ export interface MobileAppSettingsSelect<T extends boolean = true> {
       };
   accountBenefitsTitle?: T;
   accountBenefitsContent?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerFormSettings_select".
+ */
+export interface VolunteerFormSettingsSelect<T extends boolean = true> {
+  ageQuestion?:
+    | T
+    | {
+        label?: T;
+        options?:
+          | T
+          | {
+              value?: T;
+              id?: T;
+            };
+      };
+  educationQuestion?:
+    | T
+    | {
+        label?: T;
+        placeholder?: T;
+      };
+  employerQuestion?:
+    | T
+    | {
+        label?: T;
+        placeholder?: T;
+      };
+  volunteerOrgsQuestion?:
+    | T
+    | {
+        label?: T;
+        placeholder?: T;
+        addButtonText?: T;
+      };
+  radioExperienceQuestion?:
+    | T
+    | {
+        label?: T;
+        followUpLabel?: T;
+        followUpPlaceholder?: T;
+      };
+  specialSkillsQuestion?:
+    | T
+    | {
+        label?: T;
+        options?:
+          | T
+          | {
+              value?: T;
+              id?: T;
+            };
+      };
+  hearAboutChirpQuestion?:
+    | T
+    | {
+        label?: T;
+        options?:
+          | T
+          | {
+              value?: T;
+              id?: T;
+            };
+      };
+  interestsQuestion?:
+    | T
+    | {
+        label?: T;
+        options?:
+          | T
+          | {
+              value?: T;
+              id?: T;
+            };
+      };
+  wantsToDJQuestion?:
+    | T
+    | {
+        label?: T;
+      };
+  djAvailabilityQuestion?:
+    | T
+    | {
+        label?: T;
+        options?:
+          | T
+          | {
+              value?: T;
+              id?: T;
+            };
+      };
+  formActions?:
+    | T
+    | {
+        cancelButtonText?: T;
+        saveButtonText?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;
