@@ -4,6 +4,7 @@ import { buildConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import sharp from 'sharp'
+import { Resend } from 'resend'
 
 import { Articles } from './src/collections/Articles'
 import { Events } from './src/collections/Events'
@@ -25,11 +26,15 @@ import { Donations } from './src/collections/Donations'
 import { Purchases } from './src/collections/Purchases'
 import { Categories } from './src/collections/Categories'
 import { MobilePageContent } from './src/collections/MobilePageContent'
+import { Onboarding } from './src/collections/Onboarding'
 import { SiteSettings } from './src/globals/SiteSettings'
 import { MobileAppSettings } from './src/globals/MobileAppSettings'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+// Initialize Resend client (with fallback for scripts that load config before env vars are set)
+const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_scripts')
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
@@ -63,6 +68,7 @@ export default buildConfig({
 
     // Mobile App
     MobilePageContent,
+    Onboarding,
 
     // Website
     Pages,
@@ -88,6 +94,33 @@ export default buildConfig({
   }),
   editor: lexicalEditor({}),
   sharp,
+  email: ({ payload }) => ({
+    name: 'resend',
+    defaultFromAddress: process.env.EMAIL_FROM || 'noreply@chirpradio.org',
+    defaultFromName: process.env.EMAIL_FROM_NAME || 'CHIRP Radio',
+    sendEmail: async (message) => {
+      try {
+        const { to, subject, html, text, from } = message
+
+        console.log('📧 Sending email via Resend:')
+        console.log('  To:', to)
+        console.log('  Subject:', subject)
+
+        const result = await resend.emails.send({
+          from: from ? (typeof from === 'string' ? from : `${from.name || 'CHIRP Radio'} <${from.address}>`) : `${process.env.EMAIL_FROM_NAME || 'CHIRP Radio'} <${process.env.EMAIL_FROM || 'noreply@chirpradio.org'}>`,
+          to: Array.isArray(to) ? to : [to],
+          subject: subject || '',
+          html: html || text || '',
+        })
+
+        console.log('✅ Email sent successfully:', result)
+        return result
+      } catch (error) {
+        console.error('❌ Resend email error:', error)
+        throw error
+      }
+    },
+  }),
   cors: [
     process.env.FRONTEND_URL || 'http://localhost:5173',
     'http://localhost:5173',
