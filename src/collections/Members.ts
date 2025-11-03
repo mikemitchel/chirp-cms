@@ -6,6 +6,177 @@ export const Members: CollectionConfig = {
     singular: 'Member',
     plural: 'Members',
   },
+  auth: {
+    verify: {
+      generateEmailSubject: () => 'Verify your CHIRP Radio account',
+      generateEmailHTML: ({ token, user }: any) => {
+        const verifyURL = `${process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/listeners/verify/${token}`
+
+        return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify Your Email</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f5f5f5; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table cellpadding="0" cellspacing="0" border="0" width="600" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #000000; padding: 40px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600;">CHIRP Radio</h1>
+              <p style="margin: 10px 0 0; color: #cccccc; font-size: 14px;">Chicago's Independent Radio Project</p>
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px;">
+              <h2 style="margin: 0 0 20px; color: #333333; font-size: 24px; font-weight: 600;">Welcome to CHIRP Radio!</h2>
+
+              <p style="margin: 0 0 20px; color: #666666; font-size: 16px; line-height: 1.5;">
+                Thanks for signing up${user?.email ? ` with ${user.email}` : ''}! We're excited to have you join our community of music lovers.
+              </p>
+
+              <p style="margin: 0 0 30px; color: #666666; font-size: 16px; line-height: 1.5;">
+                To complete your registration and start enjoying personalized features, please verify your email address by clicking the button below:
+              </p>
+
+              <!-- CTA Button -->
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding: 0 0 30px;">
+                    <a href="${verifyURL}" style="display: inline-block; padding: 16px 40px; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 4px; font-size: 16px; font-weight: 600;">
+                      Verify Email Address
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 0 0 10px; color: #999999; font-size: 14px; line-height: 1.5;">
+                Or copy and paste this link into your browser:
+              </p>
+              <p style="margin: 0 0 30px; color: #666666; font-size: 14px; line-height: 1.5; word-break: break-all;">
+                <a href="${verifyURL}" style="color: #666666;">${verifyURL}</a>
+              </p>
+
+              <p style="margin: 0; color: #999999; font-size: 13px; line-height: 1.5;">
+                This verification link will expire in 2 hours for security reasons.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f9f9f9; padding: 30px; text-align: center; border-radius: 0 0 8px 8px; border-top: 1px solid #eeeeee;">
+              <p style="margin: 0 0 10px; color: #999999; font-size: 12px; line-height: 1.5;">
+                If you didn't create an account with CHIRP Radio, you can safely ignore this email.
+              </p>
+              <p style="margin: 0; color: #cccccc; font-size: 12px;">
+                &copy; ${new Date().getFullYear()} CHIRP Radio. All rights reserved.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+        `
+      },
+    },
+    tokenExpiration: 7200, // 2 hours for verification token
+    maxLoginAttempts: 5,
+    lockTime: 600 * 1000, // 10 minutes
+    forgotPassword: {
+      generateEmailSubject: () => 'Reset your CHIRP Radio password',
+      generateEmailHTML: ({ token, user }: any) => {
+        const resetURL = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/reset-password?token=${token}`
+
+        return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Your Password</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #f5f5f5;">
+  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #f5f5f5; padding: 40px 20px;">
+    <tr>
+      <td align="center">
+        <table cellpadding="0" cellspacing="0" border="0" width="600" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+          <!-- Header -->
+          <tr>
+            <td style="background-color: #000000; padding: 40px; text-align: center; border-radius: 8px 8px 0 0;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 600;">CHIRP Radio</h1>
+              <p style="margin: 10px 0 0; color: #cccccc; font-size: 14px;">Chicago's Independent Radio Project</p>
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td style="padding: 40px;">
+              <h2 style="margin: 0 0 20px; color: #333333; font-size: 24px; font-weight: 600;">Reset Your Password</h2>
+
+              <p style="margin: 0 0 20px; color: #666666; font-size: 16px; line-height: 1.5;">
+                We received a request to reset the password for your CHIRP Radio account${user?.email ? ` (${user.email})` : ''}.
+              </p>
+
+              <p style="margin: 0 0 30px; color: #666666; font-size: 16px; line-height: 1.5;">
+                Click the button below to reset your password:
+              </p>
+
+              <!-- CTA Button -->
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center" style="padding: 0 0 30px;">
+                    <a href="${resetURL}" style="display: inline-block; padding: 16px 40px; background-color: #000000; color: #ffffff; text-decoration: none; border-radius: 4px; font-size: 16px; font-weight: 600;">
+                      Reset Password
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 0 0 10px; color: #999999; font-size: 14px; line-height: 1.5;">
+                Or copy and paste this link into your browser:
+              </p>
+              <p style="margin: 0 0 30px; color: #666666; font-size: 14px; line-height: 1.5; word-break: break-all;">
+                <a href="${resetURL}" style="color: #666666;">${resetURL}</a>
+              </p>
+
+              <p style="margin: 0; color: #999999; font-size: 13px; line-height: 1.5;">
+                This password reset link will expire in 2 hours for security reasons.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f9f9f9; padding: 30px; text-align: center; border-radius: 0 0 8px 8px; border-top: 1px solid #eeeeee;">
+              <p style="margin: 0 0 10px; color: #999999; font-size: 12px; line-height: 1.5;">
+                If you didn't request a password reset, you can safely ignore this email. Your password will remain unchanged.
+              </p>
+              <p style="margin: 0; color: #cccccc; font-size: 12px;">
+                &copy; ${new Date().getFullYear()} CHIRP Radio. All rights reserved.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+        `
+      },
+    },
+  },
   admin: {
     useAsTitle: 'email',
     defaultColumns: ['firstName', 'lastName', 'email', 'roles'],
@@ -17,8 +188,18 @@ export const Members: CollectionConfig = {
   access: {
     read: () => true,
     create: () => true,
-    update: () => true,
-    delete: () => true,
+    update: ({ req }) => {
+      // Users can update their own profile
+      if (req.user) {
+        return {
+          id: {
+            equals: req.user.id,
+          },
+        }
+      }
+      return false
+    },
+    delete: () => false, // Prevent deletion
   },
   fields: [
     // TABS START HERE
@@ -127,6 +308,15 @@ export const Members: CollectionConfig = {
                 ]},
                 { name: 'autoPlay', type: 'checkbox', defaultValue: true, label: 'Auto Play' },
               ]
+            },
+            {
+              name: 'onboardingCompleted',
+              type: 'checkbox',
+              defaultValue: false,
+              label: 'Onboarding Completed',
+              admin: {
+                description: 'Whether the user has completed the initial onboarding tour'
+              }
             },
           ],
         },

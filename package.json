@@ -16,6 +16,7 @@
     "generate:types": "payload generate:types",
     "seed": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx src/seed/import-data.ts",
     "seed:mobile": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/seed-mobile-content.ts",
+    "seed:onboarding": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/seed-onboarding.ts",
     "create:admin": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/create-admin.ts",
     "import:shop-images": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/import-shop-images.ts",
     "import:shop-images-from-urls": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/import-shop-images-from-urls.ts",
@@ -38,10 +39,12 @@
     "express": "^4.19.2",
     "graphql": "^16.11.0",
     "next": "^15.5.6",
+    "nodemailer": "^7.0.10",
     "payload": "^3.61.0",
     "postgres": "^3.4.7",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "resend": "^6.4.0",
     "sharp": "^0.34.4"
   },
   "devDependencies": {
