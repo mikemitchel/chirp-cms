@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const Announcements: CollectionConfig = {
   slug: 'announcements',
@@ -13,6 +14,30 @@ export const Announcements: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'announcements',
+          operation: operation === 'create' ? 'create' : 'update',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
+    afterDelete: [
+      async ({ doc }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'announcements',
+          operation: 'delete',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
   },
   fields: [
     {

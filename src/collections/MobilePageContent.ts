@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const MobilePageContent: CollectionConfig = {
   slug: 'mobilePageContent',
@@ -14,6 +15,30 @@ export const MobilePageContent: CollectionConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'mobile-page-content',
+          operation: operation === 'create' ? 'create' : 'update',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
+    afterDelete: [
+      async ({ doc }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'mobile-page-content',
+          operation: 'delete',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
   },
   fields: [
     {

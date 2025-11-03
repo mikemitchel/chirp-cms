@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'siteSettings',
@@ -8,6 +9,18 @@ export const SiteSettings: GlobalConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async () => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'siteSettings',
+          operation: 'update',
+          timestamp: new Date().toISOString(),
+        })
+      },
+    ],
   },
   fields: [
     {

@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const MobileAppSettings: GlobalConfig = {
   slug: 'mobileAppSettings',
@@ -9,6 +10,18 @@ export const MobileAppSettings: GlobalConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async () => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'mobile-app-settings',
+          operation: 'update',
+          timestamp: new Date().toISOString(),
+        })
+      },
+    ],
   },
   fields: [
     {
