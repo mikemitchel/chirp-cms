@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const Members: CollectionConfig = {
   slug: 'listeners', // Keep DB table name as 'listeners' to preserve existing data
@@ -200,6 +201,30 @@ export const Members: CollectionConfig = {
       return false
     },
     delete: () => false, // Prevent deletion
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, operation }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'members',
+          operation: operation === 'create' ? 'create' : 'update',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
+    afterDelete: [
+      async ({ doc }) => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'members',
+          operation: 'delete',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+      },
+    ],
   },
   fields: [
     // TABS START HERE

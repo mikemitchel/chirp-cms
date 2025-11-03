@@ -1,4 +1,5 @@
 import type { GlobalConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const VolunteerFormSettings: GlobalConfig = {
   slug: 'volunteerFormSettings',
@@ -9,6 +10,18 @@ export const VolunteerFormSettings: GlobalConfig = {
   },
   access: {
     read: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async () => {
+        // Send webhook notification to front-end
+        await sendWebhook({
+          collection: 'volunteer-form-settings',
+          operation: 'update',
+          timestamp: new Date().toISOString(),
+        })
+      },
+    ],
   },
   fields: [
     {
