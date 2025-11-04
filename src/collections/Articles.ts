@@ -59,10 +59,13 @@ export const Articles: CollectionConfig = {
     {
       name: 'slug',
       type: 'text',
-      required: true,
+      required: false,
       unique: true,
       admin: {
         position: 'sidebar',
+        components: {
+          Field: '@/fields/SlugField#SlugField',
+        },
       },
       hooks: {
         beforeValidate: [formatSlugHook('title')],
