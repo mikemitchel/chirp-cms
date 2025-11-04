@@ -318,18 +318,10 @@ export interface Listener {
    */
   roles: ('Listener' | 'Volunteer' | 'Regular DJ' | 'Substitute DJ' | 'Board Member')[];
   /**
-   * URL to cropped/display profile image
+   * Profile image (use CrImageCropper to create avatar)
    */
-  profileImage?: string | null;
-  /**
-   * URL to full-size original profile image
-   */
-  fullProfileImage?: string | null;
+  profileImage?: (number | null) | Media;
   profileImageOrientation?: ('square' | 'landscape' | 'portrait') | null;
-  /**
-   * General bio for all member types (shown on member profiles and directory listings)
-   */
-  bio?: string | null;
   location?: string | null;
   preferences?: {
     emailNotifications?: boolean | null;
@@ -1838,9 +1830,7 @@ export interface ListenersSelect<T extends boolean = true> {
   memberSince?: T;
   roles?: T;
   profileImage?: T;
-  fullProfileImage?: T;
   profileImageOrientation?: T;
-  bio?: T;
   location?: T;
   preferences?:
     | T
