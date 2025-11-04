@@ -8,6 +8,7 @@ const __dirname = path.dirname(__filename)
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   turbopack: {},
+  outputFileTracingRoot: __dirname, // Fix Next.js workspace root warning
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

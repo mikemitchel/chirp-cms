@@ -10,10 +10,13 @@ export async function seedMembers(payload: Payload, dataDir?: string) {
   console.log('👥 Seeding Members...')
 
   try {
+    // Use provided dataDir or default to src/seed/data
+    const seedDataDir = dataDir || path.join(__dirname, 'data')
+
     // Check if we have exported data from backup
-    if (dataDir && fs.existsSync(path.join(dataDir, 'listeners.json'))) {
+    if (fs.existsSync(path.join(seedDataDir, 'listeners.json'))) {
       const membersData = JSON.parse(
-        fs.readFileSync(path.join(dataDir, 'listeners.json'), 'utf-8')
+        fs.readFileSync(path.join(seedDataDir, 'listeners.json'), 'utf-8')
       )
 
       for (const member of membersData['listeners'] || []) {
