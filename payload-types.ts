@@ -898,7 +898,10 @@ export interface Article {
   id: number;
   category: number | Category;
   title: string;
-  slug: string;
+  /**
+   * URL-friendly version of the title (auto-generated if empty)
+   */
+  slug?: string | null;
   author: string;
   featuredImage?: (number | null) | Media;
   /**
@@ -950,7 +953,10 @@ export interface Event {
    */
   category: number | Category;
   title: string;
-  slug: string;
+  /**
+   * URL-friendly version of the title (auto-generated if empty)
+   */
+  slug?: string | null;
   /**
    * Brief summary (max 200 characters)
    */
@@ -1018,7 +1024,10 @@ export interface Podcast {
    */
   category: number | Category;
   title: string;
-  slug: string;
+  /**
+   * URL-friendly version of the title (auto-generated if empty)
+   */
+  slug?: string | null;
   /**
    * Brief summary (max 200 characters)
    */
