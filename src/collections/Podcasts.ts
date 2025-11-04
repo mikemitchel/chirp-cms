@@ -36,14 +36,13 @@ export const Podcasts: CollectionConfig = {
     },
     {
       name: 'slug',
+      label: 'Slug',
       type: 'text',
       required: false,
       unique: true,
       admin: {
         position: 'sidebar',
-        components: {
-          Field: '@/fields/SlugField#SlugField',
-        },
+        description: 'URL-friendly version of the title (auto-generated if empty)',
       },
       hooks: {
         beforeValidate: [formatSlugHook('title')],
