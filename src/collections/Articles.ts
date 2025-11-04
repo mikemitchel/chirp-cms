@@ -1,6 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
 import { sendWebhook } from '../utils/webhook'
+import { formatSlugHook } from '../utils/formatSlug'
 
 export const Articles: CollectionConfig = {
   slug: 'articles',
@@ -62,6 +63,9 @@ export const Articles: CollectionConfig = {
       unique: true,
       admin: {
         position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [formatSlugHook('title')],
       },
     },
     {

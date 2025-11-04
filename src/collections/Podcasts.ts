@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor, LinkFeature } from '@payloadcms/richtext-lexical'
+import { formatSlugHook } from '../utils/formatSlug'
 
 export const Podcasts: CollectionConfig = {
   slug: 'podcasts',
@@ -40,6 +41,9 @@ export const Podcasts: CollectionConfig = {
       unique: true,
       admin: {
         position: 'sidebar',
+      },
+      hooks: {
+        beforeValidate: [formatSlugHook('title')],
       },
     },
     {
