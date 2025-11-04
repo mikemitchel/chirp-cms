@@ -13,7 +13,15 @@ export const Podcasts: CollectionConfig = {
     defaultColumns: ['title', 'host', 'category'],
     group: 'Content',
     livePreview: {
-      url: ({ data }) => `http://localhost:5173/podcasts/${data.slug}`,
+      url: ({ data }) => {
+        // Use existing slug or generate from title for preview
+        const slug = data.slug || data.title?.toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-+|-+$/g, '')
+        return `http://localhost:5173/podcasts/${slug || 'preview'}`
+      },
     },
   },
   access: {

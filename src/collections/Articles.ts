@@ -14,7 +14,15 @@ export const Articles: CollectionConfig = {
     defaultColumns: ['title', 'author', 'category', 'publishedDate'],
     group: 'Content',
     livePreview: {
-      url: ({ data }) => `http://localhost:5173/articles/${data.slug}`,
+      url: ({ data }) => {
+        // Use existing slug or generate from title for preview
+        const slug = data.slug || data.title?.toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-')
+          .replace(/^-+|-+$/g, '')
+        return `http://localhost:5173/articles/${slug || 'preview'}`
+      },
     },
   },
   access: {
