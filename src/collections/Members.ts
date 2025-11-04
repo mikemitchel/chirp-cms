@@ -190,7 +190,11 @@ export const Members: CollectionConfig = {
     read: () => true,
     create: () => true,
     update: ({ req }) => {
-      // Users can update their own profile
+      // Admins can update any profile
+      if (req.user?.collection === 'users') {
+        return true
+      }
+      // Regular users can only update their own profile
       if (req.user) {
         return {
           id: {
@@ -200,7 +204,10 @@ export const Members: CollectionConfig = {
       }
       return false
     },
-    delete: () => false, // Prevent deletion
+    delete: ({ req }) => {
+      // Only admins can delete members
+      return req.user?.collection === 'users'
+    },
   },
   hooks: {
     afterChange: [
@@ -279,16 +286,10 @@ export const Members: CollectionConfig = {
             },
             {
               name: 'profileImage',
-              type: 'text',
+              type: 'upload',
+              relationTo: 'media',
               admin: {
-                description: 'URL to cropped/display profile image'
-              }
-            },
-            {
-              name: 'fullProfileImage',
-              type: 'text',
-              admin: {
-                description: 'URL to full-size original profile image'
+                description: 'Profile image (use CrImageCropper to create avatar)'
               }
             },
             {
@@ -299,13 +300,6 @@ export const Members: CollectionConfig = {
                 { label: 'Landscape', value: 'landscape' },
                 { label: 'Portrait', value: 'portrait' },
               ],
-            },
-            {
-              name: 'bio',
-              type: 'textarea',
-              admin: {
-                description: 'General bio for all member types (shown on member profiles and directory listings)'
-              }
             },
             {
               name: 'location',
