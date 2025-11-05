@@ -1,4 +1,7 @@
 import type { CollectionConfig } from 'payload'
+import { generateAltText, capitalizeFirstLetter } from '../utils/generateAltText'
+import fs from 'fs'
+import path from 'path'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -52,6 +55,52 @@ export const Media: CollectionConfig = {
     create: () => true,
     update: () => true,
     delete: () => true,
+  },
+  hooks: {
+    afterChange: [
+      async ({ doc, req, operation, previousDoc }) => {
+        // Only auto-generate alt text on create (new uploads) if alt text is not already set
+        if (operation === 'create' && !doc.alt && doc.filename) {
+          try {
+            // Construct the file path from the media directory
+            const mediaDir = path.join(process.cwd(), 'media')
+            const filePath = path.join(mediaDir, doc.filename as string)
+
+            console.log('[Media afterChange] Checking file:', filePath)
+
+            if (fs.existsSync(filePath)) {
+              const imageBuffer = fs.readFileSync(filePath)
+
+              // Generate alt text using Hugging Face
+              const generatedAlt = await generateAltText(imageBuffer)
+
+              if (generatedAlt) {
+                // Capitalize first letter for proper formatting
+                const altText = capitalizeFirstLetter(generatedAlt)
+
+                // Update the document with the generated alt text
+                await req.payload.update({
+                  collection: 'media',
+                  id: doc.id,
+                  data: {
+                    alt: altText,
+                  },
+                })
+
+                console.log('[Media afterChange] Auto-generated and saved alt text:', altText)
+              }
+            } else {
+              console.log('[Media afterChange] File not found:', filePath)
+            }
+          } catch (error) {
+            console.error('[Media afterChange] Error generating alt text:', error)
+            // Don't throw - upload already succeeded
+          }
+        }
+
+        return doc
+      },
+    ],
   },
   fields: [
     {
