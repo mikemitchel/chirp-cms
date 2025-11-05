@@ -69,7 +69,23 @@ export const Pages: CollectionConfig = {
       },
     },
     {
+      name: 'layoutTemplate',
+      label: 'Page Layout Template',
+      type: 'select',
+      required: true,
+      defaultValue: 'default',
+      options: [
+        { label: 'Single Column', value: 'default' },
+        { label: 'Sidebar Right', value: 'sidebar-right' },
+      ],
+      admin: {
+        position: 'sidebar',
+        description: 'Choose the overall page layout structure',
+      },
+    },
+    {
       name: 'layout',
+      label: 'Page Content Blocks',
       type: 'blocks',
       blocks: [
         {
@@ -183,6 +199,24 @@ export const Pages: CollectionConfig = {
         description: 'Type of content to display in sidebar cards',
         condition: (data) => {
           return !['about', 'terms-of-service', 'privacy-policy'].includes(data.slug)
+        },
+      },
+    },
+    {
+      name: 'sidebarContentCount',
+      type: 'number',
+      defaultValue: 3,
+      min: 1,
+      max: 10,
+      admin: {
+        position: 'sidebar',
+        description: 'Number of items to display (1-10)',
+        condition: (data) => {
+          return (
+            !['about', 'terms-of-service', 'privacy-policy'].includes(data.slug) &&
+            data.sidebarContentType &&
+            data.sidebarContentType !== 'none'
+          )
         },
       },
     },
