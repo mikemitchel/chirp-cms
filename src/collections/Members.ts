@@ -554,6 +554,58 @@ export const Members: CollectionConfig = {
                 description: 'Optional donation link for the DJ'
               }
             },
+            {
+              name: 'previousShows',
+              type: 'array',
+              label: 'Previous Shows',
+              labels: {
+                singular: 'Previous Show',
+                plural: 'Previous Shows',
+              },
+              fields: [
+                {
+                  name: 'title',
+                  type: 'text',
+                  required: true,
+                  admin: {
+                    description: 'Show title (e.g., "Morning Mix - March 15")'
+                  }
+                },
+                {
+                  name: 'date',
+                  type: 'date',
+                  required: true,
+                  admin: {
+                    description: 'Date the show aired'
+                  }
+                },
+                {
+                  name: 'audioUrl',
+                  type: 'text',
+                  required: true,
+                  admin: {
+                    description: 'Google Cloud Storage URL for the audio file'
+                  }
+                },
+                {
+                  name: 'duration',
+                  type: 'text',
+                  admin: {
+                    description: 'Show duration (e.g., "2:00:00")'
+                  }
+                },
+                {
+                  name: 'gcsFileName',
+                  type: 'text',
+                  admin: {
+                    description: 'Original GCS file name for reference'
+                  }
+                }
+              ],
+              admin: {
+                description: 'Auto-populated from Google Cloud Storage. Shows are automatically added when uploaded to GCS.'
+              }
+            },
 
             // Substitute DJ specific fields (nested condition)
             {
