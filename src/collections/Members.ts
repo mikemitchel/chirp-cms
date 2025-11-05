@@ -181,7 +181,7 @@ export const Members: CollectionConfig = {
   admin: {
     useAsTitle: 'displayTitle',
     defaultColumns: ['firstName', 'lastName', 'email', 'roles'],
-    group: 'Community',
+    group: 'Community & Schedule',
     pagination: {
       defaultLimit: 50,
     },

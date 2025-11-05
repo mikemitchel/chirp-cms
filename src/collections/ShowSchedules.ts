@@ -10,7 +10,7 @@ export const ShowSchedules: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['dayOfWeek', 'startTime', 'endTime', 'dj', 'isActive'],
-    group: 'Programming',
+    group: 'Community & Schedule',
     pagination: {
       defaultLimit: 50,
     },
