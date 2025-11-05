@@ -77,7 +77,6 @@ export const Pages: CollectionConfig = {
       options: [
         { label: 'Single Column', value: 'default' },
         { label: 'Sidebar Right', value: 'sidebar-right' },
-        { label: 'Sidebar Left', value: 'sidebar-left' },
       ],
       admin: {
         position: 'sidebar',
