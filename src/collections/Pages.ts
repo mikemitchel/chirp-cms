@@ -75,10 +75,9 @@ export const Pages: CollectionConfig = {
       required: true,
       defaultValue: 'default',
       options: [
-        { label: 'Default (Single Column)', value: 'default' },
+        { label: 'Single Column', value: 'default' },
         { label: 'Sidebar Right', value: 'sidebar-right' },
         { label: 'Sidebar Left', value: 'sidebar-left' },
-        { label: 'Two Column Grid', value: 'two-column' },
       ],
       admin: {
         position: 'sidebar',
