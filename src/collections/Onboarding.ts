@@ -9,7 +9,7 @@ export const Onboarding: CollectionConfig = {
   admin: {
     useAsTitle: 'title',
     defaultColumns: ['title', 'featureIdentifier', 'platform', 'order', 'isActive'],
-    group: 'Mobile App',
+    group: 'Content Assets',
     description: 'Manage onboarding tour steps shown to new users',
   },
   access: {
