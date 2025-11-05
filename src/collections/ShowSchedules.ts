@@ -18,11 +18,22 @@ export const ShowSchedules: CollectionConfig = {
   hooks: {
     beforeChange: [
       async ({ data, req }) => {
+        // Helper to format ISO time to "h:mm AM/PM"
+        const formatTime = (isoTime: string | Date): string => {
+          const date = new Date(isoTime)
+          const hours = date.getHours()
+          const minutes = date.getMinutes()
+          const period = hours >= 12 ? 'PM' : 'AM'
+          const displayHours = hours % 12 || 12
+          const displayMinutes = minutes.toString().padStart(2, '0')
+          return `${displayHours}:${displayMinutes} ${period}`
+        }
+
         // Generate title from day + time + DJ/Music Mix
         if (data) {
           const day = data.dayOfWeek?.charAt(0).toUpperCase() + data.dayOfWeek?.slice(1) || ''
-          const start = data.startTime || ''
-          const end = data.endTime || ''
+          const start = data.startTime ? formatTime(data.startTime) : ''
+          const end = data.endTime ? formatTime(data.endTime) : ''
 
           let djName = 'Unassigned'
           if (data.isMusicMix) {
@@ -61,25 +72,23 @@ export const ShowSchedules: CollectionConfig = {
         })
 
         // Helper function to format time in compact style
-        const formatTime = (timeStr: string): string => {
-          // Parse "6:00 AM" or "11:00 PM"
-          const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i)
-          if (!match) return timeStr
-
-          const hour = parseInt(match[1])
-          const minutes = match[2]
-          const period = match[3].toUpperCase()
+        const formatTime = (isoTime: string): string => {
+          const date = new Date(isoTime)
+          const hours = date.getHours()
+          const minutes = date.getMinutes()
+          const period = hours >= 12 ? 'pm' : 'am'
+          const displayHours = hours % 12 || 12
 
           // Special cases for noon and midnight
-          if (hour === 12 && minutes === '00') {
-            return period === 'PM' ? '12n' : '12m'
+          if (displayHours === 12 && minutes === 0) {
+            return period === 'pm' ? '12n' : '12m'
           }
 
           // Regular times - remove :00, lowercase am/pm
-          if (minutes === '00') {
-            return `${hour}${period.toLowerCase()}`
+          if (minutes === 0) {
+            return `${displayHours}${period}`
           } else {
-            return `${hour}:${minutes}${period.toLowerCase()}`
+            return `${displayHours}:${minutes.toString().padStart(2, '0')}${period}`
           }
         }
 
@@ -172,18 +181,26 @@ export const ShowSchedules: CollectionConfig = {
     },
     {
       name: 'startTime',
-      type: 'text',
+      type: 'date',
       required: true,
       admin: {
-        description: 'Start time (e.g., "6:00 AM", "11:00 PM")',
+        date: {
+          pickerAppearance: 'timeOnly',
+          displayFormat: 'h:mm a',
+        },
+        description: 'Start time for this show',
       },
     },
     {
       name: 'endTime',
-      type: 'text',
+      type: 'date',
       required: true,
       admin: {
-        description: 'End time (e.g., "9:00 AM", "1:00 AM")',
+        date: {
+          pickerAppearance: 'timeOnly',
+          displayFormat: 'h:mm a',
+        },
+        description: 'End time for this show',
       },
     },
     {
