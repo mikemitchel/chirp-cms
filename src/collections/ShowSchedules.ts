@@ -217,26 +217,18 @@ export const ShowSchedules: CollectionConfig = {
     },
     {
       name: 'startTime',
-      type: 'date',
+      type: 'text',
       required: true,
       admin: {
-        date: {
-          pickerAppearance: 'timeOnly',
-          displayFormat: 'h:mm a',
-        },
-        description: 'Start time for this show',
+        description: 'Start time (e.g., "6:00 AM", "11:00 PM")',
       },
     },
     {
       name: 'endTime',
-      type: 'date',
+      type: 'text',
       required: true,
       admin: {
-        date: {
-          pickerAppearance: 'timeOnly',
-          displayFormat: 'h:mm a',
-        },
-        description: 'End time for this show',
+        description: 'End time (e.g., "9:00 AM", "1:00 AM")',
       },
     },
     {
