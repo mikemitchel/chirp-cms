@@ -203,6 +203,24 @@ export const Pages: CollectionConfig = {
       },
     },
     {
+      name: 'sidebarContentCount',
+      type: 'number',
+      defaultValue: 3,
+      min: 1,
+      max: 10,
+      admin: {
+        position: 'sidebar',
+        description: 'Number of items to display (1-10)',
+        condition: (data) => {
+          return (
+            !['about', 'terms-of-service', 'privacy-policy'].includes(data.slug) &&
+            data.sidebarContentType &&
+            data.sidebarContentType !== 'none'
+          )
+        },
+      },
+    },
+    {
       name: 'sidebarAdvertisement',
       type: 'relationship',
       relationTo: 'advertisements',
