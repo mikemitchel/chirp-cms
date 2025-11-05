@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { sendWebhook } from '../utils/webhook'
 
 export const ShowSchedules: CollectionConfig = {
   slug: 'showSchedules',
@@ -50,7 +51,15 @@ export const ShowSchedules: CollectionConfig = {
       },
     ],
     afterChange: [
-      async ({ doc, req }) => {
+      async ({ doc, req, operation }) => {
+        // Send webhook to notify frontend of changes
+        await sendWebhook({
+          collection: 'showSchedules',
+          operation: operation === 'create' ? 'create' : 'update',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
+
         // Helper function to format time in compact style
         const formatTime = (timeStr: string): string => {
           // Parse "6:00 AM" or "11:00 PM"
@@ -115,6 +124,17 @@ export const ShowSchedules: CollectionConfig = {
           }
         }
         return doc
+      },
+    ],
+    afterDelete: [
+      async ({ doc }) => {
+        // Send webhook to notify frontend of deletion
+        await sendWebhook({
+          collection: 'showSchedules',
+          operation: 'delete',
+          timestamp: new Date().toISOString(),
+          id: doc.id,
+        })
       },
     ],
   },
