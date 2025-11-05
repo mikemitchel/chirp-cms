@@ -195,13 +195,6 @@ export const ShowSchedules: CollectionConfig = {
       },
     },
     {
-      name: 'showName',
-      type: 'text',
-      admin: {
-        description: 'Show name (optional - will use DJ\'s show name if not provided)',
-      },
-    },
-    {
       name: 'isActive',
       type: 'checkbox',
       defaultValue: true,
