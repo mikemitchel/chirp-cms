@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url'
 import { buildConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import sharp from 'sharp'
 import { Resend } from 'resend'
 
@@ -39,6 +40,16 @@ const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_scripts')
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  plugins: [
+    redirectsPlugin({
+      collections: ['pages', 'articles', 'events', 'podcasts'],
+      overrides: {
+        admin: {
+          group: 'Website',
+        },
+      },
+    }),
+  ],
   collections: [
     // 1. CMS Settings
     Users,

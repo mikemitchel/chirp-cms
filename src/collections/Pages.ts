@@ -69,7 +69,26 @@ export const Pages: CollectionConfig = {
       },
     },
     {
+      name: 'layoutTemplate',
+      label: 'Page Layout Template',
+      type: 'select',
+      required: true,
+      defaultValue: 'default',
+      options: [
+        { label: 'Default (Single Column)', value: 'default' },
+        { label: 'Full Width', value: 'full-width' },
+        { label: 'Sidebar Right', value: 'sidebar-right' },
+        { label: 'Sidebar Left', value: 'sidebar-left' },
+        { label: 'Two Column Grid', value: 'two-column' },
+      ],
+      admin: {
+        position: 'sidebar',
+        description: 'Choose the overall page layout structure',
+      },
+    },
+    {
       name: 'layout',
+      label: 'Page Content Blocks',
       type: 'blocks',
       blocks: [
         {
