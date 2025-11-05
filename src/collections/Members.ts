@@ -214,7 +214,7 @@ export const Members: CollectionConfig = {
       async ({ doc, operation }) => {
         // Send webhook notification to front-end
         await sendWebhook({
-          collection: 'members',
+          collection: 'listeners',
           operation: operation === 'create' ? 'create' : 'update',
           timestamp: new Date().toISOString(),
           id: doc.id,
@@ -225,7 +225,7 @@ export const Members: CollectionConfig = {
       async ({ doc }) => {
         // Send webhook notification to front-end
         await sendWebhook({
-          collection: 'members',
+          collection: 'listeners',
           operation: 'delete',
           timestamp: new Date().toISOString(),
           id: doc.id,
@@ -286,6 +286,7 @@ export const Members: CollectionConfig = {
             },
             {
               name: 'profileImage',
+              label: 'Profile Image',
               type: 'upload',
               relationTo: 'media',
               admin: {

@@ -39,13 +39,6 @@ export const Media: CollectionConfig = {
       fit: 'inside',
       withoutEnlargement: true,
     },
-    formatOptions: {
-      format: 'jpeg',
-      options: {
-        quality: 85,
-        progressive: true,
-      },
-    },
   },
   access: {
     read: () => true,
