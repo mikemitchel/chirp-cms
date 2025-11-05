@@ -28,6 +28,9 @@
     "export:shop-items": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/export-shop-items.ts",
     "restore": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/restore-data.ts",
     "restore:media": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/restore-media-from-backup.ts",
+    "update:member-titles": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/update-member-display-titles.ts",
+    "update:show-schedules": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx scripts/update-show-schedule-display.ts",
+    "backup": "bash scripts/backup.sh",
     "prepare": "husky"
   },
   "dependencies": {

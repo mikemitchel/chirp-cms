@@ -179,7 +179,7 @@ export const Members: CollectionConfig = {
     },
   },
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'displayTitle',
     defaultColumns: ['firstName', 'lastName', 'email', 'roles'],
     group: 'Community',
     pagination: {
@@ -210,6 +210,29 @@ export const Members: CollectionConfig = {
     },
   },
   hooks: {
+    beforeChange: [
+      async ({ data }) => {
+        // Generate display title for dropdown selections
+        if (data) {
+          const firstName = data.firstName || ''
+          const lastName = data.lastName || ''
+          const djName = data.djName || ''
+          const email = data.email || ''
+
+          // Format: "First Last - DJ Name" or fallback to email
+          if (firstName && lastName && djName) {
+            data.displayTitle = `${firstName} ${lastName} - ${djName}`
+          } else if (firstName && lastName) {
+            data.displayTitle = `${firstName} ${lastName}`
+          } else if (djName) {
+            data.displayTitle = djName
+          } else {
+            data.displayTitle = email
+          }
+        }
+        return data
+      },
+    ],
     afterChange: [
       async ({ doc, operation }) => {
         // Send webhook notification to front-end
@@ -245,6 +268,14 @@ export const Members: CollectionConfig = {
           label: 'Listener',
           fields: [
             // Base Information
+            {
+              name: 'displayTitle',
+              type: 'text',
+              admin: {
+                hidden: true,
+                readOnly: true,
+              },
+            },
             {
               name: 'email',
               type: 'email',

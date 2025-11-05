@@ -189,6 +189,7 @@ export interface ListenerAuthOperations {
 export interface User {
   id: number;
   name?: string | null;
+  avatar?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -308,6 +309,7 @@ export interface PlayerFallbackImage {
  */
 export interface Listener {
   id: number;
+  displayTitle?: string | null;
   email: string;
   username?: string | null;
   firstName?: string | null;
@@ -1244,10 +1246,6 @@ export interface ShowSchedule {
    */
   dj?: (number | null) | Listener;
   /**
-   * Show name (optional - will use DJ's show name if not provided)
-   */
-  showName?: string | null;
-  /**
    * Whether this show is currently active
    */
   isActive?: boolean | null;
@@ -1742,6 +1740,7 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1860,6 +1859,7 @@ export interface PlayerFallbackImagesSelect<T extends boolean = true> {
  * via the `definition` "listeners_select".
  */
 export interface ListenersSelect<T extends boolean = true> {
+  displayTitle?: T;
   email?: T;
   username?: T;
   firstName?: T;
@@ -2262,7 +2262,6 @@ export interface ShowSchedulesSelect<T extends boolean = true> {
   endTime?: T;
   isMusicMix?: T;
   dj?: T;
-  showName?: T;
   isActive?: T;
   notes?: T;
   displayOrder?: T;
