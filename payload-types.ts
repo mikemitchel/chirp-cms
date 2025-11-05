@@ -1230,11 +1230,11 @@ export interface ShowSchedule {
    */
   dayOfWeek: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
   /**
-   * Start time (e.g., "6:00 AM", "11:00 PM")
+   * Start time for this show
    */
   startTime: string;
   /**
-   * End time (e.g., "9:00 AM", "1:00 AM")
+   * End time for this show
    */
   endTime: string;
   /**

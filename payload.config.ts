@@ -40,42 +40,42 @@ const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_scripts')
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
   collections: [
-    // CMS Settings
+    // 1. CMS Settings
     Users,
 
-    // Media
-    Media,
-    PlayerFallbackImages,
-
-    // People
+    // 2. Community & Schedule
     Members,
-    Donations,
-    Purchases,
+    ShowSchedules,
 
-    // Content Assets
-    Categories,
-    Venues,
-    Announcements,
-    Advertisements,
-
-    // Collections
+    // 3. Content
     Articles,
     Events,
     Podcasts,
     ShopItems,
-    ShowSchedules,
     WeeklyCharts,
     VolunteerCalendar,
 
-    // Mobile App
-    MobilePageContent,
-    Onboarding,
+    // 4. Content Assets
+    Categories,
+    Venues,
+    Announcements,
+    Advertisements,
+    AgeGate,
 
-    // Website
+    // 5. Media
+    Media,
+    PlayerFallbackImages,
+
+    // 6. Commerce
+    Donations,
+    Purchases,
+
+    // 7. Website
     Pages,
 
-    // Other
-    AgeGate,
+    // 8. Mobile App
+    MobilePageContent,
+    Onboarding,
   ],
   globals: [
     // Mobile App
