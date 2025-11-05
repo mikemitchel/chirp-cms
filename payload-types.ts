@@ -433,6 +433,34 @@ export interface Listener {
    */
   djDonationLink?: string | null;
   /**
+   * Auto-populated from Google Cloud Storage. Shows are automatically added when uploaded to GCS.
+   */
+  previousShows?:
+    | {
+        /**
+         * Show title (e.g., "Morning Mix - March 15")
+         */
+        title: string;
+        /**
+         * Date the show aired
+         */
+        date: string;
+        /**
+         * Google Cloud Storage URL for the audio file
+         */
+        audioUrl: string;
+        /**
+         * Show duration (e.g., "2:00:00")
+         */
+        duration?: string | null;
+        /**
+         * Original GCS file name for reference
+         */
+        gcsFileName?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Only for Substitute DJs
    */
   substituteAvailability?:
@@ -1930,6 +1958,16 @@ export interface ListenersSelect<T extends boolean = true> {
   djExcerpt?: T;
   djBio?: T;
   djDonationLink?: T;
+  previousShows?:
+    | T
+    | {
+        title?: T;
+        date?: T;
+        audioUrl?: T;
+        duration?: T;
+        gcsFileName?: T;
+        id?: T;
+      };
   substituteAvailability?:
     | T
     | {
