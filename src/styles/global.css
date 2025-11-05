@@ -1,0 +1,432 @@
+/* ============================================
+   CHIRP Radio CMS - Global Admin Styles
+   ============================================
+
+   Accessibility & UX improvements for PayloadCMS admin panel
+   ============================================ */
+
+/* ============================================
+   LAYOUT & SPACING IMPROVEMENTS
+   ============================================ */
+
+/* Better padding for main content area */
+.payload-template {
+  padding: 2rem;
+}
+
+/* Dashboard card title sizing */
+.card__title {
+  font-size: 14px !important;
+}
+
+/* Dashboard section labels */
+h2.dashboard__label,
+.dashboard__label {
+  font-size: 21px !important;
+}
+
+/* Card height - only as tall as content */
+.card,
+[class*="card--"],
+[class*="Card"] {
+  height: auto !important;
+  min-height: auto !important;
+  align-self: start;
+}
+
+/* Dashboard grid - prevent card stretching */
+.dashboard__grid,
+[class*="dashboard__grid"] {
+  align-items: start;
+}
+
+/* Improved form field spacing */
+.field-type,
+.field-type-text,
+.field-type-textarea,
+.field-type-richText,
+.field-type-select,
+.field-type-upload,
+.field-type-relationship {
+  margin-bottom: 1.5rem;
+}
+
+/* Better spacing in groups and arrays */
+.field-type-group,
+.field-type-array {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+}
+
+/* Collection list table improvements */
+.collection-list__table {
+  margin-top: 1rem;
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Enhanced focus states for keyboard navigation */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Improved focus for interactive elements */
+[role="button"]:focus-visible,
+[role="link"]:focus-visible {
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Skip to content link (for screen readers) */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-to-content:focus {
+  top: 0;
+}
+
+/* Better contrast for labels */
+label {
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* Dark mode label adjustments */
+[data-theme="dark"] label {
+  color: #f3f4f6;
+}
+
+/* ============================================
+   FORM IMPROVEMENTS
+   ============================================ */
+
+/* Better input field styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="url"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
+  border-radius: 6px;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #d1d5db;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Error state styling */
+input[aria-invalid="true"],
+textarea[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: #ef4444;
+}
+
+input[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* ============================================
+   UPLOAD FIELD IMPROVEMENTS
+   ============================================ */
+
+/* Better upload field layout */
+.upload {
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.upload:hover {
+  border-color: #3b82f6;
+}
+
+.upload--has-value {
+  border-style: solid;
+  border-color: #10b981;
+}
+
+/* Upload button styling */
+.file-field__upload-button {
+  margin-top: 1rem;
+}
+
+/* ============================================
+   RELATIONSHIP & SELECT FIELDS
+   ============================================ */
+
+/* Better dropdown styling */
+.rs__control {
+  border-radius: 6px !important;
+  border-color: #d1d5db !important;
+  min-height: 42px !important;
+}
+
+.rs__control:hover {
+  border-color: #9ca3af !important;
+}
+
+.rs__control--is-focused {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* ============================================
+   BUTTON IMPROVEMENTS
+   ============================================ */
+
+/* Better button spacing and sizing */
+button {
+  border-radius: 6px;
+  padding: 0.625rem 1.25rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+}
+
+/* Primary button enhancements */
+.btn--style-primary {
+  background-color: #3b82f6;
+  color: white;
+}
+
+.btn--style-primary:hover:not(:disabled) {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn--style-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Secondary button enhancements */
+.btn--style-secondary {
+  border: 1px solid #d1d5db;
+}
+
+.btn--style-secondary:hover:not(:disabled) {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* Disabled button state */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   TABLE IMPROVEMENTS
+   ============================================ */
+
+/* Better table row hover states */
+.table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+[data-theme="dark"] .table tbody tr:hover {
+  background-color: #1f2937;
+}
+
+/* Improved table cell padding */
+.table td,
+.table th {
+  padding: 0.875rem 1rem;
+}
+
+/* ============================================
+   RICH TEXT EDITOR IMPROVEMENTS
+   ============================================ */
+
+/* Better spacing for Lexical editor */
+.lexical-editor {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.75rem;
+  min-height: 200px;
+}
+
+.lexical-editor:focus-within {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* ============================================
+   SIDEBAR IMPROVEMENTS
+   ============================================ */
+
+/* Better sidebar navigation */
+.nav a {
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+  transition: background-color 0.15s ease;
+}
+
+.nav a:hover {
+  background-color: #f3f4f6;
+}
+
+.nav a[aria-current="page"] {
+  background-color: #eff6ff;
+  color: #3b82f6;
+  font-weight: 500;
+}
+
+[data-theme="dark"] .nav a:hover {
+  background-color: #374151;
+}
+
+[data-theme="dark"] .nav a[aria-current="page"] {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+/* ============================================
+   TOAST/NOTIFICATION IMPROVEMENTS
+   ============================================ */
+
+/* Better toast positioning and styling */
+.payload-toast-container {
+  z-index: 9999;
+}
+
+.payload-toast {
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================
+   LOADING & EMPTY STATES
+   ============================================ */
+
+/* Better loading spinner */
+.spinner {
+  border-color: #3b82f6;
+  border-top-color: transparent;
+}
+
+/* Empty state styling */
+.empty-state {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+/* ============================================
+   MOBILE RESPONSIVENESS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .payload-template {
+    padding: 1rem;
+  }
+
+  .field-type-group,
+  .field-type-array {
+    padding: 1rem;
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    width: 100%;
+  }
+
+  .table {
+    font-size: 0.875rem;
+  }
+
+  .table td,
+  .table th {
+    padding: 0.625rem 0.5rem;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .sidebar,
+  .nav,
+  button,
+  .file-field__upload-button {
+    display: none;
+  }
+
+  .payload-template {
+    padding: 0;
+  }
+}
+
+/* ============================================
+   REDUCED MOTION PREFERENCES
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE
+   ============================================ */
+
+@media (prefers-contrast: high) {
+  button,
+  input,
+  select,
+  textarea {
+    border-width: 2px;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline-width: 4px;
+  }
+}

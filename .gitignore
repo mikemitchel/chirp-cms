@@ -55,3 +55,6 @@ next-env.d.ts
 
 # Temporary seed export
 seed-data-export/
+
+# Backups
+backups/
