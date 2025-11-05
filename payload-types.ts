@@ -69,26 +69,27 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
-    media: Media;
-    'player-fallback-images': PlayerFallbackImage;
     listeners: Listener;
-    donations: Donation;
-    purchases: Purchase;
-    categories: Category;
-    venues: Venue;
-    announcements: Announcement;
-    advertisements: Advertisement;
+    showSchedules: ShowSchedule;
     articles: Article;
     events: Event;
     podcasts: Podcast;
     shopItems: ShopItem;
-    showSchedules: ShowSchedule;
     weeklyCharts: WeeklyChart;
     volunteerCalendar: VolunteerCalendar;
+    categories: Category;
+    venues: Venue;
+    announcements: Announcement;
+    advertisements: Advertisement;
+    ageGate: AgeGate;
+    media: Media;
+    'player-fallback-images': PlayerFallbackImage;
+    donations: Donation;
+    purchases: Purchase;
+    pages: Page;
     mobilePageContent: MobilePageContent;
     onboarding: Onboarding;
-    pages: Page;
-    ageGate: AgeGate;
+    redirects: Redirect;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -96,26 +97,27 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
-    'player-fallback-images': PlayerFallbackImagesSelect<false> | PlayerFallbackImagesSelect<true>;
     listeners: ListenersSelect<false> | ListenersSelect<true>;
-    donations: DonationsSelect<false> | DonationsSelect<true>;
-    purchases: PurchasesSelect<false> | PurchasesSelect<true>;
-    categories: CategoriesSelect<false> | CategoriesSelect<true>;
-    venues: VenuesSelect<false> | VenuesSelect<true>;
-    announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
-    advertisements: AdvertisementsSelect<false> | AdvertisementsSelect<true>;
+    showSchedules: ShowSchedulesSelect<false> | ShowSchedulesSelect<true>;
     articles: ArticlesSelect<false> | ArticlesSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     podcasts: PodcastsSelect<false> | PodcastsSelect<true>;
     shopItems: ShopItemsSelect<false> | ShopItemsSelect<true>;
-    showSchedules: ShowSchedulesSelect<false> | ShowSchedulesSelect<true>;
     weeklyCharts: WeeklyChartsSelect<false> | WeeklyChartsSelect<true>;
     volunteerCalendar: VolunteerCalendarSelect<false> | VolunteerCalendarSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    venues: VenuesSelect<false> | VenuesSelect<true>;
+    announcements: AnnouncementsSelect<false> | AnnouncementsSelect<true>;
+    advertisements: AdvertisementsSelect<false> | AdvertisementsSelect<true>;
+    ageGate: AgeGateSelect<false> | AgeGateSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    'player-fallback-images': PlayerFallbackImagesSelect<false> | PlayerFallbackImagesSelect<true>;
+    donations: DonationsSelect<false> | DonationsSelect<true>;
+    purchases: PurchasesSelect<false> | PurchasesSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     mobilePageContent: MobilePageContentSelect<false> | MobilePageContentSelect<true>;
     onboarding: OnboardingSelect<false> | OnboardingSelect<true>;
-    pages: PagesSelect<false> | PagesSelect<true>;
-    ageGate: AgeGateSelect<false> | AgeGateSelect<true>;
+    redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -248,52 +250,6 @@ export interface Media {
       filename?: string | null;
     };
     large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
-}
-/**
- * Fallback images displayed in the music player when album art is unavailable. These images are randomly selected to provide visual variety.
- *
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "player-fallback-images".
- */
-export interface PlayerFallbackImage {
-  id: number;
-  /**
-   * Descriptive name for this fallback image (e.g., "Abstract Pattern 1")
-   */
-  alt: string;
-  /**
-   * Uncheck to temporarily disable this image from the random pool
-   */
-  isActive?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    player?: {
       url?: string | null;
       width?: number | null;
       height?: number | null;
@@ -507,120 +463,98 @@ export interface Listener {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "donations".
+ * via the `definition` "showSchedules".
  */
-export interface Donation {
+export interface ShowSchedule {
   id: number;
   /**
-   * Member who made this donation
+   * Auto-generated title for this schedule slot
    */
-  member: number | Listener;
+  title?: string | null;
   /**
-   * Donation amount in USD
+   * Day of the week for this show
    */
-  amount: number;
+  dayOfWeek: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
   /**
-   * Date of donation
+   * Start time for this show
    */
-  date: string;
+  startTime: string;
   /**
-   * Type of donation
+   * End time for this show
    */
-  type: 'One-time' | 'Monthly' | 'Annual' | 'In-kind';
+  endTime: string;
   /**
-   * Status of donation transaction
+   * Check this for automated Music Mix slots (no DJ assignment needed)
    */
-  status: 'completed' | 'pending' | 'failed' | 'refunded';
+  isMusicMix?: boolean | null;
   /**
-   * Unique transaction ID from payment processor
+   * DJ assigned to this time slot (not required for Music Mix)
    */
-  transactionId: string;
+  dj?: (number | null) | Listener;
   /**
-   * Payment source/processor
+   * Whether this show is currently active
    */
-  source?: ('Neon' | 'PayPal' | 'Manual' | 'Other') | null;
+  isActive?: boolean | null;
   /**
-   * Whether tax receipt has been sent to donor
-   */
-  taxReceiptSent?: boolean | null;
-  /**
-   * URL to downloadable receipt PDF
-   */
-  receiptUrl?: string | null;
-  /**
-   * Internal notes about this donation
+   * Internal notes about this show slot
    */
   notes?: string | null;
+  /**
+   * Order in which to display (lower numbers appear first)
+   */
+  displayOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "purchases".
+ * via the `definition` "articles".
  */
-export interface Purchase {
+export interface Article {
   id: number;
+  category: number | Category;
+  title: string;
   /**
-   * Member who made this purchase
+   * URL-friendly version of the title (auto-generated if empty)
    */
-  member: number | Listener;
+  slug?: string | null;
+  author: string;
+  featuredImage?: (number | null) | Media;
   /**
-   * Items purchased in this order
+   * Or provide external URL
    */
-  items: {
-    /**
-     * Product ID from store
-     */
-    productId: string;
-    /**
-     * Name of product purchased
-     */
-    productName: string;
-    /**
-     * Quantity purchased
-     */
-    quantity: number;
-    /**
-     * Price per unit
-     */
-    price: number;
-    id?: string | null;
-  }[];
+  featuredImageUrl?: string | null;
   /**
-   * Total purchase amount in USD
+   * Brief summary (max 200 characters)
    */
-  total: number;
-  /**
-   * Date of purchase
-   */
-  date: string;
-  /**
-   * Status of purchase
-   */
-  status: 'completed' | 'pending' | 'shipped' | 'cancelled' | 'refunded';
-  /**
-   * Unique transaction ID from payment processor
-   */
-  transactionId: string;
-  /**
-   * Shipping address for this order
-   */
-  shippingAddress?: {
-    name?: string | null;
-    street?: string | null;
-    city?: string | null;
-    state?: string | null;
-    zip?: string | null;
-    country?: string | null;
+  excerpt: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
   };
+  videoTitle?: string | null;
   /**
-   * Shipping tracking number
+   * YouTube video ID or full URL (e.g., rXeaPSu1JFY or https://www.youtube.com/watch?v=rXeaPSu1JFY)
    */
-  trackingNumber?: string | null;
-  /**
-   * Internal notes about this purchase
-   */
-  notes?: string | null;
+  youtubeVideoId?: string | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  publishedDate: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -631,6 +565,67 @@ export interface Purchase {
 export interface Category {
   id: number;
   name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  /**
+   * Select a category for this event
+   */
+  category: number | Category;
+  title: string;
+  /**
+   * URL-friendly version of the title (auto-generated if empty)
+   */
+  slug?: string | null;
+  /**
+   * Brief summary (max 200 characters)
+   */
+  excerpt: string;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  featuredImage?: (number | null) | Media;
+  /**
+   * Or provide external URL
+   */
+  featuredImageUrl?: string | null;
+  /**
+   * Display photo credit on the event page
+   */
+  showPhotoCredit?: boolean | null;
+  /**
+   * Name of the photographer
+   */
+  photographerName?: string | null;
+  /**
+   * Select a venue from the list
+   */
+  venue: number | Venue;
+  date: string;
+  endDate?: string | null;
+  featured?: boolean | null;
+  /**
+   * Select age restriction if applicable
+   */
+  ageRestriction?: (number | null) | AgeGate;
   updatedAt: string;
   createdAt: string;
 }
@@ -648,6 +643,295 @@ export interface Venue {
   phone?: string | null;
   website?: string | null;
   mapUrl?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ageGate".
+ */
+export interface AgeGate {
+  id: number;
+  age: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "podcasts".
+ */
+export interface Podcast {
+  id: number;
+  /**
+   * Select a category for this podcast
+   */
+  category: number | Category;
+  title: string;
+  /**
+   * URL-friendly version of the title (auto-generated if empty)
+   */
+  slug?: string | null;
+  /**
+   * Brief summary (max 200 characters)
+   */
+  excerpt: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  host: string;
+  coverArt?: (number | null) | Media;
+  /**
+   * Or provide external URL
+   */
+  coverArtUrl?: string | null;
+  /**
+   * SoundCloud embed URL
+   */
+  soundCloudEmbedUrl?: string | null;
+  pullQuote?: string | null;
+  pullQuoteAttribution?: string | null;
+  additionalInfo?: string | null;
+  transcriptUrl?: string | null;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "shopItems".
+ */
+export interface ShopItem {
+  id: number;
+  /**
+   * Product name
+   */
+  name: string;
+  /**
+   * URL-friendly identifier (auto-generated from name)
+   */
+  slug: string;
+  /**
+   * Product description
+   */
+  description: string;
+  /**
+   * Display type (e.g., Apparel, Poster, Merchandise)
+   */
+  itemType?: string | null;
+  /**
+   * Product category
+   */
+  category: 'apparel' | 'accessories' | 'poster' | 'merchandise' | 'music' | 'other';
+  /**
+   * Price in USD
+   */
+  price: number;
+  /**
+   * Product images (first image is the main image)
+   */
+  images?:
+    | {
+        image: number | Media;
+        /**
+         * Alt text for accessibility
+         */
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * External image URL (if not using uploaded image)
+   */
+  imageUrl?: string | null;
+  /**
+   * Additional product images (external URLs)
+   */
+  additionalImageUrls?:
+    | {
+        /**
+         * Additional image URL
+         */
+        url: string;
+        /**
+         * Alt text for accessibility
+         */
+        alt?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Is this item currently in stock?
+   */
+  inStock?: boolean | null;
+  /**
+   * Available sizes (e.g., S, M, L, XL)
+   */
+  sizes?:
+    | {
+        size: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Product variants (colors, styles, etc.)
+   */
+  variants?:
+    | {
+        /**
+         * Variant name (e.g., Color, Style)
+         */
+        name: string;
+        options: {
+          option: string;
+          id?: string | null;
+        }[];
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * External purchase URL (if sold on another platform)
+   */
+  externalUrl?: string | null;
+  /**
+   * Feature this item on the shop homepage
+   */
+  featured?: boolean | null;
+  /**
+   * Mark as sold out
+   */
+  soldOut?: boolean | null;
+  /**
+   * Mark as limited edition
+   */
+  limitedEdition?: boolean | null;
+  /**
+   * Display order (lower numbers appear first)
+   */
+  displayOrder?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weeklyCharts".
+ */
+export interface WeeklyChart {
+  id: number;
+  /**
+   * Eyebrow text shown above the chart title on the Listen page (e.g., "Week of October 19, 2025" or "Chicago Local Artists")
+   */
+  preheader?: string | null;
+  /**
+   * Chart title (e.g., "Top 50", "Most Added", "This Week's Adds")
+   */
+  title: string;
+  /**
+   * URL-friendly identifier (e.g., "top-50", "most-added"). Auto-generated from title if left blank.
+   */
+  slug?: string | null;
+  /**
+   * Legacy field - no longer used
+   */
+  listType?: string | null;
+  /**
+   * Upload a CSV file (format: Position,Artist,Track,Label). Click "Create New" to select and upload a file.
+   */
+  csvFile?: (number | null) | Media;
+  /**
+   * Paste CSV data here (format: Song,Artist,Label). Each line should be one item. This will populate the items below when you save.
+   */
+  csvImport?: string | null;
+  /**
+   * Items for this list. Format: Song Name – Artist Name (Record Company)
+   */
+  tracks: {
+    /**
+     * Song/track/album title
+     */
+    songName: string;
+    /**
+     * Artist name
+     */
+    artistName: string;
+    /**
+     * Record label/company (use "self-released" if independent)
+     */
+    recordCompany: string;
+    id?: string | null;
+  }[];
+  /**
+   * Mark this as the current week's chart to display on the Listen page
+   */
+  isCurrentWeek?: boolean | null;
+  /**
+   * Optional notes or highlights for this week
+   */
+  notes?: string | null;
+  /**
+   * Position of the featured/highlighted track (optional)
+   */
+  featuredTrack?: number | null;
+  /**
+   * Publish status
+   */
+  status?: ('draft' | 'published') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "volunteerCalendar".
+ */
+export interface VolunteerCalendar {
+  id: number;
+  name: string;
+  startDate: string;
+  /**
+   * Optional - leave blank if same as start date
+   */
+  endDate?: string | null;
+  /**
+   * Human-readable date and time (e.g., "Wednesday, October 15, 2025 at 6:00 PM")
+   */
+  dateTime: string;
+  /**
+   * Brief description of the event
+   */
+  description: string;
+  /**
+   * Full address or virtual meeting info
+   */
+  location: string;
+  /**
+   * Bullet points with additional event details
+   */
+  eventDetails?:
+    | {
+        detail: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Optional link for more information
+   */
+  moreInfoUrl?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -921,449 +1205,254 @@ export interface Advertisement {
   createdAt: string;
 }
 /**
+ * Fallback images displayed in the music player when album art is unavailable. These images are randomly selected to provide visual variety.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "articles".
+ * via the `definition` "player-fallback-images".
  */
-export interface Article {
-  id: number;
-  category: number | Category;
-  title: string;
-  /**
-   * URL-friendly version of the title (auto-generated if empty)
-   */
-  slug?: string | null;
-  author: string;
-  featuredImage?: (number | null) | Media;
-  /**
-   * Or provide external URL
-   */
-  featuredImageUrl?: string | null;
-  /**
-   * Brief summary (max 200 characters)
-   */
-  excerpt: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  videoTitle?: string | null;
-  /**
-   * YouTube video ID or full URL (e.g., rXeaPSu1JFY or https://www.youtube.com/watch?v=rXeaPSu1JFY)
-   */
-  youtubeVideoId?: string | null;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  publishedDate: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "events".
- */
-export interface Event {
+export interface PlayerFallbackImage {
   id: number;
   /**
-   * Select a category for this event
+   * Descriptive name for this fallback image (e.g., "Abstract Pattern 1")
    */
-  category: number | Category;
-  title: string;
+  alt: string;
   /**
-   * URL-friendly version of the title (auto-generated if empty)
-   */
-  slug?: string | null;
-  /**
-   * Brief summary (max 200 characters)
-   */
-  excerpt: string;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  featuredImage?: (number | null) | Media;
-  /**
-   * Or provide external URL
-   */
-  featuredImageUrl?: string | null;
-  /**
-   * Display photo credit on the event page
-   */
-  showPhotoCredit?: boolean | null;
-  /**
-   * Name of the photographer
-   */
-  photographerName?: string | null;
-  /**
-   * Select a venue from the list
-   */
-  venue: number | Venue;
-  date: string;
-  endDate?: string | null;
-  featured?: boolean | null;
-  /**
-   * Select age restriction if applicable
-   */
-  ageRestriction?: (number | null) | AgeGate;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ageGate".
- */
-export interface AgeGate {
-  id: number;
-  age: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "podcasts".
- */
-export interface Podcast {
-  id: number;
-  /**
-   * Select a category for this podcast
-   */
-  category: number | Category;
-  title: string;
-  /**
-   * URL-friendly version of the title (auto-generated if empty)
-   */
-  slug?: string | null;
-  /**
-   * Brief summary (max 200 characters)
-   */
-  excerpt: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  host: string;
-  coverArt?: (number | null) | Media;
-  /**
-   * Or provide external URL
-   */
-  coverArtUrl?: string | null;
-  /**
-   * SoundCloud embed URL
-   */
-  soundCloudEmbedUrl?: string | null;
-  pullQuote?: string | null;
-  pullQuoteAttribution?: string | null;
-  additionalInfo?: string | null;
-  transcriptUrl?: string | null;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "shopItems".
- */
-export interface ShopItem {
-  id: number;
-  /**
-   * Product name
-   */
-  name: string;
-  /**
-   * URL-friendly identifier (auto-generated from name)
-   */
-  slug: string;
-  /**
-   * Product description
-   */
-  description: string;
-  /**
-   * Display type (e.g., Apparel, Poster, Merchandise)
-   */
-  itemType?: string | null;
-  /**
-   * Product category
-   */
-  category: 'apparel' | 'accessories' | 'poster' | 'merchandise' | 'music' | 'other';
-  /**
-   * Price in USD
-   */
-  price: number;
-  /**
-   * Product images (first image is the main image)
-   */
-  images?:
-    | {
-        image: number | Media;
-        /**
-         * Alt text for accessibility
-         */
-        alt?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * External image URL (if not using uploaded image)
-   */
-  imageUrl?: string | null;
-  /**
-   * Additional product images (external URLs)
-   */
-  additionalImageUrls?:
-    | {
-        /**
-         * Additional image URL
-         */
-        url: string;
-        /**
-         * Alt text for accessibility
-         */
-        alt?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Is this item currently in stock?
-   */
-  inStock?: boolean | null;
-  /**
-   * Available sizes (e.g., S, M, L, XL)
-   */
-  sizes?:
-    | {
-        size: string;
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * Product variants (colors, styles, etc.)
-   */
-  variants?:
-    | {
-        /**
-         * Variant name (e.g., Color, Style)
-         */
-        name: string;
-        options: {
-          option: string;
-          id?: string | null;
-        }[];
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * External purchase URL (if sold on another platform)
-   */
-  externalUrl?: string | null;
-  /**
-   * Feature this item on the shop homepage
-   */
-  featured?: boolean | null;
-  /**
-   * Mark as sold out
-   */
-  soldOut?: boolean | null;
-  /**
-   * Mark as limited edition
-   */
-  limitedEdition?: boolean | null;
-  /**
-   * Display order (lower numbers appear first)
-   */
-  displayOrder?: number | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "showSchedules".
- */
-export interface ShowSchedule {
-  id: number;
-  /**
-   * Auto-generated title for this schedule slot
-   */
-  title?: string | null;
-  /**
-   * Day of the week for this show
-   */
-  dayOfWeek: 'monday' | 'tuesday' | 'wednesday' | 'thursday' | 'friday' | 'saturday' | 'sunday';
-  /**
-   * Start time for this show
-   */
-  startTime: string;
-  /**
-   * End time for this show
-   */
-  endTime: string;
-  /**
-   * Check this for automated Music Mix slots (no DJ assignment needed)
-   */
-  isMusicMix?: boolean | null;
-  /**
-   * DJ assigned to this time slot (not required for Music Mix)
-   */
-  dj?: (number | null) | Listener;
-  /**
-   * Whether this show is currently active
+   * Uncheck to temporarily disable this image from the random pool
    */
   isActive?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    player?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations".
+ */
+export interface Donation {
+  id: number;
   /**
-   * Internal notes about this show slot
+   * Member who made this donation
+   */
+  member: number | Listener;
+  /**
+   * Donation amount in USD
+   */
+  amount: number;
+  /**
+   * Date of donation
+   */
+  date: string;
+  /**
+   * Type of donation
+   */
+  type: 'One-time' | 'Monthly' | 'Annual' | 'In-kind';
+  /**
+   * Status of donation transaction
+   */
+  status: 'completed' | 'pending' | 'failed' | 'refunded';
+  /**
+   * Unique transaction ID from payment processor
+   */
+  transactionId: string;
+  /**
+   * Payment source/processor
+   */
+  source?: ('Neon' | 'PayPal' | 'Manual' | 'Other') | null;
+  /**
+   * Whether tax receipt has been sent to donor
+   */
+  taxReceiptSent?: boolean | null;
+  /**
+   * URL to downloadable receipt PDF
+   */
+  receiptUrl?: string | null;
+  /**
+   * Internal notes about this donation
    */
   notes?: string | null;
-  /**
-   * Order in which to display (lower numbers appear first)
-   */
-  displayOrder?: number | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "weeklyCharts".
+ * via the `definition` "purchases".
  */
-export interface WeeklyChart {
+export interface Purchase {
   id: number;
   /**
-   * Eyebrow text shown above the chart title on the Listen page (e.g., "Week of October 19, 2025" or "Chicago Local Artists")
+   * Member who made this purchase
    */
-  preheader?: string | null;
+  member: number | Listener;
   /**
-   * Chart title (e.g., "Top 50", "Most Added", "This Week's Adds")
+   * Items purchased in this order
    */
-  title: string;
-  /**
-   * URL-friendly identifier (e.g., "top-50", "most-added"). Auto-generated from title if left blank.
-   */
-  slug?: string | null;
-  /**
-   * Legacy field - no longer used
-   */
-  listType?: string | null;
-  /**
-   * Upload a CSV file (format: Position,Artist,Track,Label). Click "Create New" to select and upload a file.
-   */
-  csvFile?: (number | null) | Media;
-  /**
-   * Paste CSV data here (format: Song,Artist,Label). Each line should be one item. This will populate the items below when you save.
-   */
-  csvImport?: string | null;
-  /**
-   * Items for this list. Format: Song Name – Artist Name (Record Company)
-   */
-  tracks: {
+  items: {
     /**
-     * Song/track/album title
+     * Product ID from store
      */
-    songName: string;
+    productId: string;
     /**
-     * Artist name
+     * Name of product purchased
      */
-    artistName: string;
+    productName: string;
     /**
-     * Record label/company (use "self-released" if independent)
+     * Quantity purchased
      */
-    recordCompany: string;
+    quantity: number;
+    /**
+     * Price per unit
+     */
+    price: number;
     id?: string | null;
   }[];
   /**
-   * Mark this as the current week's chart to display on the Listen page
+   * Total purchase amount in USD
    */
-  isCurrentWeek?: boolean | null;
+  total: number;
   /**
-   * Optional notes or highlights for this week
+   * Date of purchase
+   */
+  date: string;
+  /**
+   * Status of purchase
+   */
+  status: 'completed' | 'pending' | 'shipped' | 'cancelled' | 'refunded';
+  /**
+   * Unique transaction ID from payment processor
+   */
+  transactionId: string;
+  /**
+   * Shipping address for this order
+   */
+  shippingAddress?: {
+    name?: string | null;
+    street?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zip?: string | null;
+    country?: string | null;
+  };
+  /**
+   * Shipping tracking number
+   */
+  trackingNumber?: string | null;
+  /**
+   * Internal notes about this purchase
    */
   notes?: string | null;
-  /**
-   * Position of the featured/highlighted track (optional)
-   */
-  featuredTrack?: number | null;
-  /**
-   * Publish status
-   */
-  status?: ('draft' | 'published') | null;
   updatedAt: string;
   createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "volunteerCalendar".
+ * via the `definition` "pages".
  */
-export interface VolunteerCalendar {
+export interface Page {
   id: number;
-  name: string;
-  startDate: string;
   /**
-   * Optional - leave blank if same as start date
+   * The title displayed in browser tabs and search results (SEO)
    */
-  endDate?: string | null;
+  title: string;
+  slug: string;
   /**
-   * Human-readable date and time (e.g., "Wednesday, October 15, 2025 at 6:00 PM")
+   * Brief page summary used for SEO meta description and social media previews (recommended 150-160 characters)
    */
-  dateTime: string;
+  excerpt?: string | null;
   /**
-   * Brief description of the event
+   * Choose the overall page layout structure
    */
-  description: string;
-  /**
-   * Full address or virtual meeting info
-   */
-  location: string;
-  /**
-   * Bullet points with additional event details
-   */
-  eventDetails?:
-    | {
-        detail: string;
-        id?: string | null;
-      }[]
+  layoutTemplate: 'default' | 'sidebar-right';
+  layout?:
+    | (
+        | {
+            /**
+             * Small text above the title
+             */
+            preheader?: string | null;
+            title: string;
+            titleTag?: ('h1' | 'h2' | 'h3' | 'h4') | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            imagePosition?: ('none' | 'left' | 'right') | null;
+            backgroundImage?: (number | null) | Media;
+            /**
+             * Or provide external URL
+             */
+            backgroundImageUrl?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contentCard';
+          }
+        | {
+            images?:
+              | {
+                  image?: (number | null) | Media;
+                  imageUrl?: string | null;
+                  alt?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'imageRow';
+          }
+      )[]
     | null;
   /**
-   * Optional link for more information
+   * Optional announcement to display in sidebar
    */
-  moreInfoUrl?: string | null;
+  sidebarAnnouncement?: (number | null) | Announcement;
+  /**
+   * Type of content to display in sidebar cards
+   */
+  sidebarContentType?: ('none' | 'articles' | 'events' | 'podcasts') | null;
+  /**
+   * Number of items to display (1-10)
+   */
+  sidebarContentCount?: number | null;
+  /**
+   * Advertisement to display in sidebar
+   */
+  sidebarAdvertisement?: (number | null) | Advertisement;
   updatedAt: string;
   createdAt: string;
 }
@@ -1514,80 +1603,32 @@ export interface Onboarding {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages".
+ * via the `definition` "redirects".
  */
-export interface Page {
+export interface Redirect {
   id: number;
-  /**
-   * The title displayed in browser tabs and search results (SEO)
-   */
-  title: string;
-  slug: string;
-  /**
-   * Brief page summary used for SEO meta description and social media previews (recommended 150-160 characters)
-   */
-  excerpt?: string | null;
-  layout?:
-    | (
-        | {
-            /**
-             * Small text above the title
-             */
-            preheader?: string | null;
-            title: string;
-            titleTag?: ('h1' | 'h2' | 'h3' | 'h4') | null;
-            content: {
-              root: {
-                type: string;
-                children: {
-                  type: any;
-                  version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            };
-            imagePosition?: ('none' | 'left' | 'right') | null;
-            backgroundImage?: (number | null) | Media;
-            /**
-             * Or provide external URL
-             */
-            backgroundImageUrl?: string | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'contentCard';
-          }
-        | {
-            images?:
-              | {
-                  image?: (number | null) | Media;
-                  imageUrl?: string | null;
-                  alt?: string | null;
-                  id?: string | null;
-                }[]
-              | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'imageRow';
-          }
-      )[]
-    | null;
-  /**
-   * Optional announcement to display in sidebar
-   */
-  sidebarAnnouncement?: (number | null) | Announcement;
-  /**
-   * Type of content to display in sidebar cards
-   */
-  sidebarContentType?: ('none' | 'articles' | 'events' | 'podcasts') | null;
-  /**
-   * Advertisement to display in sidebar
-   */
-  sidebarAdvertisement?: (number | null) | Advertisement;
+  from: string;
+  to?: {
+    type?: ('reference' | 'custom') | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'articles';
+          value: number | Article;
+        } | null)
+      | ({
+          relationTo: 'events';
+          value: number | Event;
+        } | null)
+      | ({
+          relationTo: 'podcasts';
+          value: number | Podcast;
+        } | null);
+    url?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1603,40 +1644,12 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'player-fallback-images';
-        value: number | PlayerFallbackImage;
-      } | null)
-    | ({
         relationTo: 'listeners';
         value: number | Listener;
       } | null)
     | ({
-        relationTo: 'donations';
-        value: number | Donation;
-      } | null)
-    | ({
-        relationTo: 'purchases';
-        value: number | Purchase;
-      } | null)
-    | ({
-        relationTo: 'categories';
-        value: number | Category;
-      } | null)
-    | ({
-        relationTo: 'venues';
-        value: number | Venue;
-      } | null)
-    | ({
-        relationTo: 'announcements';
-        value: number | Announcement;
-      } | null)
-    | ({
-        relationTo: 'advertisements';
-        value: number | Advertisement;
+        relationTo: 'showSchedules';
+        value: number | ShowSchedule;
       } | null)
     | ({
         relationTo: 'articles';
@@ -1655,16 +1668,52 @@ export interface PayloadLockedDocument {
         value: number | ShopItem;
       } | null)
     | ({
-        relationTo: 'showSchedules';
-        value: number | ShowSchedule;
-      } | null)
-    | ({
         relationTo: 'weeklyCharts';
         value: number | WeeklyChart;
       } | null)
     | ({
         relationTo: 'volunteerCalendar';
         value: number | VolunteerCalendar;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'venues';
+        value: number | Venue;
+      } | null)
+    | ({
+        relationTo: 'announcements';
+        value: number | Announcement;
+      } | null)
+    | ({
+        relationTo: 'advertisements';
+        value: number | Advertisement;
+      } | null)
+    | ({
+        relationTo: 'ageGate';
+        value: number | AgeGate;
+      } | null)
+    | ({
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'player-fallback-images';
+        value: number | PlayerFallbackImage;
+      } | null)
+    | ({
+        relationTo: 'donations';
+        value: number | Donation;
+      } | null)
+    | ({
+        relationTo: 'purchases';
+        value: number | Purchase;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null)
     | ({
         relationTo: 'mobilePageContent';
@@ -1675,12 +1724,8 @@ export interface PayloadLockedDocument {
         value: number | Onboarding;
       } | null)
     | ({
-        relationTo: 'pages';
-        value: number | Page;
-      } | null)
-    | ({
-        relationTo: 'ageGate';
-        value: number | AgeGate;
+        relationTo: 'redirects';
+        value: number | Redirect;
       } | null);
   globalSlug?: string | null;
   user:
@@ -1756,102 +1801,6 @@ export interface UsersSelect<T extends boolean = true> {
         id?: T;
         createdAt?: T;
         expiresAt?: T;
-      };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
- */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  category?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        card?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        large?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-      };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "player-fallback-images_select".
- */
-export interface PlayerFallbackImagesSelect<T extends boolean = true> {
-  alt?: T;
-  isActive?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        player?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
       };
 }
 /**
@@ -2003,124 +1952,18 @@ export interface ListenersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "donations_select".
+ * via the `definition` "showSchedules_select".
  */
-export interface DonationsSelect<T extends boolean = true> {
-  member?: T;
-  amount?: T;
-  date?: T;
-  type?: T;
-  status?: T;
-  transactionId?: T;
-  source?: T;
-  taxReceiptSent?: T;
-  receiptUrl?: T;
-  notes?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "purchases_select".
- */
-export interface PurchasesSelect<T extends boolean = true> {
-  member?: T;
-  items?:
-    | T
-    | {
-        productId?: T;
-        productName?: T;
-        quantity?: T;
-        price?: T;
-        id?: T;
-      };
-  total?: T;
-  date?: T;
-  status?: T;
-  transactionId?: T;
-  shippingAddress?:
-    | T
-    | {
-        name?: T;
-        street?: T;
-        city?: T;
-        state?: T;
-        zip?: T;
-        country?: T;
-      };
-  trackingNumber?: T;
-  notes?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories_select".
- */
-export interface CategoriesSelect<T extends boolean = true> {
-  name?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "venues_select".
- */
-export interface VenuesSelect<T extends boolean = true> {
-  name?: T;
-  address?: T;
-  city?: T;
-  state?: T;
-  zip?: T;
-  phone?: T;
-  website?: T;
-  mapUrl?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "announcements_select".
- */
-export interface AnnouncementsSelect<T extends boolean = true> {
-  headlineText?: T;
-  bodyText?: T;
-  variant?: T;
-  textureBackground?: T;
-  showLink?: T;
-  linkText?: T;
-  linkUrl?: T;
-  buttonCount?: T;
-  button1Text?: T;
-  button1Icon?: T;
-  button2Text?: T;
-  button2Icon?: T;
-  currentAmount?: T;
-  targetAmount?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "advertisements_select".
- */
-export interface AdvertisementsSelect<T extends boolean = true> {
-  name?: T;
+export interface ShowSchedulesSelect<T extends boolean = true> {
+  title?: T;
+  dayOfWeek?: T;
+  startTime?: T;
+  endTime?: T;
+  isMusicMix?: T;
+  dj?: T;
   isActive?: T;
-  size?: T;
-  customWidth?: T;
-  customHeight?: T;
-  contentType?: T;
-  image?: T;
-  imageUrl?: T;
-  alt?: T;
-  video?: T;
-  videoUrl?: T;
-  htmlContent?: T;
-  embedCode?: T;
-  href?: T;
-  target?: T;
-  showLabel?: T;
+  notes?: T;
+  displayOrder?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2253,23 +2096,6 @@ export interface ShopItemsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "showSchedules_select".
- */
-export interface ShowSchedulesSelect<T extends boolean = true> {
-  title?: T;
-  dayOfWeek?: T;
-  startTime?: T;
-  endTime?: T;
-  isMusicMix?: T;
-  dj?: T;
-  isActive?: T;
-  notes?: T;
-  displayOrder?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "weeklyCharts_select".
  */
 export interface WeeklyChartsSelect<T extends boolean = true> {
@@ -2317,34 +2143,229 @@ export interface VolunteerCalendarSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "mobilePageContent_select".
+ * via the `definition` "categories_select".
  */
-export interface MobilePageContentSelect<T extends boolean = true> {
-  pageIdentifier?: T;
-  pageTitle?: T;
-  pageSubtitle?: T;
-  introContent?: T;
-  formHintText?: T;
-  announcement?: T;
-  customNotLoggedInMessage?: T;
-  isLoginRequired?: T;
-  isActive?: T;
+export interface CategoriesSelect<T extends boolean = true> {
+  name?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "onboarding_select".
+ * via the `definition` "venues_select".
  */
-export interface OnboardingSelect<T extends boolean = true> {
-  title?: T;
-  description?: T;
-  featureIdentifier?: T;
-  order?: T;
-  platform?: T;
-  media?: T;
-  ctaText?: T;
+export interface VenuesSelect<T extends boolean = true> {
+  name?: T;
+  address?: T;
+  city?: T;
+  state?: T;
+  zip?: T;
+  phone?: T;
+  website?: T;
+  mapUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "announcements_select".
+ */
+export interface AnnouncementsSelect<T extends boolean = true> {
+  headlineText?: T;
+  bodyText?: T;
+  variant?: T;
+  textureBackground?: T;
+  showLink?: T;
+  linkText?: T;
+  linkUrl?: T;
+  buttonCount?: T;
+  button1Text?: T;
+  button1Icon?: T;
+  button2Text?: T;
+  button2Icon?: T;
+  currentAmount?: T;
+  targetAmount?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "advertisements_select".
+ */
+export interface AdvertisementsSelect<T extends boolean = true> {
+  name?: T;
   isActive?: T;
+  size?: T;
+  customWidth?: T;
+  customHeight?: T;
+  contentType?: T;
+  image?: T;
+  imageUrl?: T;
+  alt?: T;
+  video?: T;
+  videoUrl?: T;
+  htmlContent?: T;
+  embedCode?: T;
+  href?: T;
+  target?: T;
+  showLabel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ageGate_select".
+ */
+export interface AgeGateSelect<T extends boolean = true> {
+  age?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        card?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        large?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "player-fallback-images_select".
+ */
+export interface PlayerFallbackImagesSelect<T extends boolean = true> {
+  alt?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        player?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations_select".
+ */
+export interface DonationsSelect<T extends boolean = true> {
+  member?: T;
+  amount?: T;
+  date?: T;
+  type?: T;
+  status?: T;
+  transactionId?: T;
+  source?: T;
+  taxReceiptSent?: T;
+  receiptUrl?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "purchases_select".
+ */
+export interface PurchasesSelect<T extends boolean = true> {
+  member?: T;
+  items?:
+    | T
+    | {
+        productId?: T;
+        productName?: T;
+        quantity?: T;
+        price?: T;
+        id?: T;
+      };
+  total?: T;
+  date?: T;
+  status?: T;
+  transactionId?: T;
+  shippingAddress?:
+    | T
+    | {
+        name?: T;
+        street?: T;
+        city?: T;
+        state?: T;
+        zip?: T;
+        country?: T;
+      };
+  trackingNumber?: T;
+  notes?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2356,6 +2377,7 @@ export interface PagesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
   excerpt?: T;
+  layoutTemplate?: T;
   layout?:
     | T
     | {
@@ -2389,16 +2411,57 @@ export interface PagesSelect<T extends boolean = true> {
       };
   sidebarAnnouncement?: T;
   sidebarContentType?: T;
+  sidebarContentCount?: T;
   sidebarAdvertisement?: T;
   updatedAt?: T;
   createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "ageGate_select".
+ * via the `definition` "mobilePageContent_select".
  */
-export interface AgeGateSelect<T extends boolean = true> {
-  age?: T;
+export interface MobilePageContentSelect<T extends boolean = true> {
+  pageIdentifier?: T;
+  pageTitle?: T;
+  pageSubtitle?: T;
+  introContent?: T;
+  formHintText?: T;
+  announcement?: T;
+  customNotLoggedInMessage?: T;
+  isLoginRequired?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "onboarding_select".
+ */
+export interface OnboardingSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  featureIdentifier?: T;
+  order?: T;
+  platform?: T;
+  media?: T;
+  ctaText?: T;
+  isActive?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "redirects_select".
+ */
+export interface RedirectsSelect<T extends boolean = true> {
+  from?: T;
+  to?:
+    | T
+    | {
+        type?: T;
+        reference?: T;
+        url?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
