@@ -625,6 +625,18 @@ export const SiteSettings: GlobalConfig = {
       ],
         },
         {
+          label: 'Collection Page',
+      fields: [
+        {
+          name: 'collectionPageContent',
+          type: 'richText',
+          admin: {
+            description: 'Informational message about Your Collection feature. Explains that saved songs are available on web and mobile, and can be downloaded as CSV. Shows above the table on web, or in the main section on mobile (hidden when collection has items).',
+          },
+        },
+      ],
+        },
+        {
           label: 'Footer',
       fields: [
         {
