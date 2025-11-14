@@ -533,6 +533,7 @@ export const Members: CollectionConfig = {
                 { name: 'facebook', type: 'text', label: 'Facebook URL' },
                 { name: 'instagram', type: 'text', label: 'Instagram URL' },
                 { name: 'twitter', type: 'text', label: 'Twitter URL' },
+                { name: 'tiktok', type: 'text', label: 'TikTok URL' },
                 { name: 'bluesky', type: 'text', label: 'Bluesky URL' },
                 { name: 'linkedin', type: 'text', label: 'LinkedIn URL' },
               ]
