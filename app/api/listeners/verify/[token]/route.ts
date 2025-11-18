@@ -3,16 +3,17 @@ import config from '@payload-config'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { token: string } }
+  _request: NextRequest,
+  { params }: { params: Promise<{ token: string }> }
 ) {
   try {
+    const { token } = await params
     const payload = await getPayload({ config })
 
     // Use Payload's Local API to verify the email
     await payload.verifyEmail({
       collection: 'listeners',
-      token: params.token,
+      token: token,
     })
 
     // Redirect to frontend success page or show success message
