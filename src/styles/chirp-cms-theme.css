@@ -259,13 +259,14 @@
     color: #33a7cf;
   }
 
-  /* Focus states - CHIRP Red */
+  /* Focus states - CHIRP Blue for better visibility */
   button:focus-visible,
   a:focus-visible,
   input:focus-visible,
   select:focus-visible,
   textarea:focus-visible {
-    outline-color: #ea1c2c;
+    outline: 3px solid #41b6e6 !important;
+    outline-offset: 2px !important;
   }
 
   /* Active navigation - CHIRP Red accent */
