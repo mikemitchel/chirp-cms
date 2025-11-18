@@ -232,5 +232,29 @@ export const Pages: CollectionConfig = {
         },
       },
     },
+    {
+      name: 'songRequestCooldownMinutes',
+      label: 'Song Request Cooldown (Minutes)',
+      type: 'number',
+      defaultValue: 5,
+      min: 0,
+      max: 60,
+      admin: {
+        position: 'sidebar',
+        description: 'Number of minutes users must wait between song requests to prevent spam. Set to 0 to disable cooldown.',
+        condition: (data) => data.slug === 'request-song',
+      },
+    },
+    {
+      name: 'songRequestCooldownMessage',
+      label: 'Cooldown Message',
+      type: 'text',
+      defaultValue: 'You can submit another request in {minutes} minutes.',
+      admin: {
+        position: 'sidebar',
+        description: 'Message shown to users during cooldown period. Use {minutes} as placeholder for remaining time.',
+        condition: (data) => data.slug === 'request-song',
+      },
+    },
   ],
 }
