@@ -369,6 +369,7 @@ export interface Listener {
     facebook?: string | null;
     instagram?: string | null;
     twitter?: string | null;
+    tiktok?: string | null;
     bluesky?: string | null;
     linkedin?: string | null;
   };
@@ -1453,6 +1454,14 @@ export interface Page {
    * Advertisement to display in sidebar
    */
   sidebarAdvertisement?: (number | null) | Advertisement;
+  /**
+   * Number of minutes users must wait between song requests to prevent spam. Set to 0 to disable cooldown.
+   */
+  songRequestCooldownMinutes?: number | null;
+  /**
+   * Message shown to users during cooldown period. Use {minutes} as placeholder for remaining time.
+   */
+  songRequestCooldownMessage?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1898,6 +1907,7 @@ export interface ListenersSelect<T extends boolean = true> {
         facebook?: T;
         instagram?: T;
         twitter?: T;
+        tiktok?: T;
         bluesky?: T;
         linkedin?: T;
       };
@@ -2413,6 +2423,8 @@ export interface PagesSelect<T extends boolean = true> {
   sidebarContentType?: T;
   sidebarContentCount?: T;
   sidebarAdvertisement?: T;
+  songRequestCooldownMinutes?: T;
+  songRequestCooldownMessage?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -2860,6 +2872,24 @@ export interface SiteSetting {
    */
   scheduleSidebarContentCount?: ('1' | '2' | '3') | null;
   /**
+   * Informational message about Your Collection feature. Explains that saved songs are available on web and mobile, and can be downloaded as CSV. Shows above the table on web, or in the main section on mobile (hidden when collection has items).
+   */
+  collectionPageContent?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
    * 404 error page heading
    */
   notFoundPageHeading?: string | null;
@@ -3215,6 +3245,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   scheduleSidebarAdvertisement?: T;
   scheduleSidebarContentType?: T;
   scheduleSidebarContentCount?: T;
+  collectionPageContent?: T;
   notFoundPageHeading?: T;
   notFoundPageMessage?: T;
   forbiddenPageHeading?: T;
