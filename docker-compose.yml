@@ -1,0 +1,90 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:16-alpine
+    container_name: chirp-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: chirp_cms
+      POSTGRES_USER: chirp
+      POSTGRES_PASSWORD: chirp_dev_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U chirp -d chirp_cms"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # CHIRP CMS Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: chirp-cms
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Database
+      DATABASE_URI: postgresql://chirp:chirp_dev_password@db:5432/chirp_cms
+
+      # Payload Configuration
+      PAYLOAD_SECRET: your-secret-key-here-change-in-production
+      PAYLOAD_PUBLIC_SERVER_URL: http://localhost:3000
+
+      # Email (Resend)
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      EMAIL_FROM: noreply@chirpradio.org
+      EMAIL_FROM_NAME: CHIRP Radio
+
+      # OpenAI (Optional)
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+
+      # Frontend CORS
+      FRONTEND_URL: http://localhost:5173
+
+      # Node Environment
+      NODE_ENV: production
+      PORT: 3000
+    volumes:
+      # Mount media directory for local file storage
+      - ./media:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/admin', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # pgAdmin (Optional - Database Management UI)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: chirp-pgadmin
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@chirpradio.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - db
+    profiles:
+      - tools  # Only start with: docker-compose --profile tools up
+
+volumes:
+  postgres_data:
+    driver: local
+  pgadmin_data:
+    driver: local

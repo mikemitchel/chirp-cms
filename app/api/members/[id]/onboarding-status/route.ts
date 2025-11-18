@@ -16,15 +16,16 @@ const getAllowedOrigin = (request: NextRequest): string => {
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const payload = await getPayload({ config })
 
     // Get member by ID
     const member = await payload.findByID({
       collection: 'listeners',
-      id: params.id,
+      id: id,
     })
 
     const allowedOrigin = getAllowedOrigin(request)

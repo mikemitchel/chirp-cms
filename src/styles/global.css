@@ -74,7 +74,7 @@ a:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #41b6e6;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -82,7 +82,7 @@ textarea:focus-visible {
 /* Improved focus for interactive elements */
 [role="button"]:focus-visible,
 [role="link"]:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #41b6e6;
   outline-offset: 2px;
 }
 
@@ -144,8 +144,8 @@ input[type="tel"]:focus,
 input[type="date"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #41b6e6;
+  box-shadow: 0 0 0 3px rgba(65, 182, 230, 0.1);
 }
 
 /* Error state styling */
@@ -175,7 +175,7 @@ select[aria-invalid="true"]:focus {
 }
 
 .upload:hover {
-  border-color: #3b82f6;
+  border-color: #41b6e6;
 }
 
 .upload--has-value {
@@ -204,8 +204,8 @@ select[aria-invalid="true"]:focus {
 }
 
 .rs__control--is-focused {
-  border-color: #3b82f6 !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  border-color: #41b6e6 !important;
+  box-shadow: 0 0 0 3px rgba(65, 182, 230, 0.1) !important;
 }
 
 /* ============================================
@@ -220,14 +220,14 @@ button {
   transition: all 0.15s ease-in-out;
 }
 
-/* Primary button enhancements */
+/* Primary button enhancements - overridden by chirp-cms-theme.css */
 .btn--style-primary {
-  background-color: #3b82f6;
+  background-color: #004d5c;
   color: white;
 }
 
 .btn--style-primary:hover:not(:disabled) {
-  background-color: #2563eb;
+  background-color: #006589;
   transform: translateY(-1px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
@@ -284,8 +284,8 @@ button:disabled {
 }
 
 .lexical-editor:focus-within {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #41b6e6;
+  box-shadow: 0 0 0 3px rgba(65, 182, 230, 0.1);
 }
 
 /* ============================================
@@ -306,7 +306,7 @@ button:disabled {
 
 .nav a[aria-current="page"] {
   background-color: #eff6ff;
-  color: #3b82f6;
+  color: #004d5c;
   font-weight: 500;
 }
 
@@ -316,7 +316,7 @@ button:disabled {
 
 [data-theme="dark"] .nav a[aria-current="page"] {
   background-color: #1e3a8a;
-  color: #93c5fd;
+  color: #0091c3;
 }
 
 /* ============================================
@@ -340,7 +340,7 @@ button:disabled {
 
 /* Better loading spinner */
 .spinner {
-  border-color: #3b82f6;
+  border-color: #41b6e6;
   border-top-color: transparent;
 }
 

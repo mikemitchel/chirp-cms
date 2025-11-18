@@ -2,6 +2,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { buildConfig } from 'payload'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import sharp from 'sharp'
@@ -37,6 +38,29 @@ const __dirname = path.dirname(__filename)
 
 // Initialize Resend client (with fallback for scripts that load config before env vars are set)
 const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_scripts')
+
+// Database adapter selection based on DATABASE_URI
+const databaseAdapter = () => {
+  const dbUri = process.env.DATABASE_URI || 'file:./payload.db'
+
+  // Use PostgreSQL if URI starts with postgresql:// or postgres://
+  if (dbUri.startsWith('postgresql://') || dbUri.startsWith('postgres://')) {
+    console.log('📊 Using PostgreSQL database adapter')
+    return postgresAdapter({
+      pool: {
+        connectionString: dbUri,
+      },
+    })
+  }
+
+  // Default to SQLite for local development
+  console.log('📊 Using SQLite database adapter')
+  return sqliteAdapter({
+    client: {
+      url: dbUri,
+    },
+  })
+}
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
@@ -113,14 +137,10 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
-  db: sqliteAdapter({
-    client: {
-      url: process.env.DATABASE_URI || 'file:./payload.db',
-    },
-  }),
+  db: databaseAdapter(),
   editor: lexicalEditor({}),
   sharp,
-  email: ({ payload }) => ({
+  email: () => ({
     name: 'resend',
     defaultFromAddress: process.env.EMAIL_FROM || 'noreply@chirpradio.org',
     defaultFromName: process.env.EMAIL_FROM_NAME || 'CHIRP Radio',

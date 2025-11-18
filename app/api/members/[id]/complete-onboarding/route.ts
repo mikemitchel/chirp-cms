@@ -16,15 +16,16 @@ const getAllowedOrigin = (request: NextRequest): string => {
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params
     const payload = await getPayload({ config })
 
     // Update member's onboarding status
     const member = await payload.update({
       collection: 'listeners',
-      id: params.id,
+      id: id,
       data: {
         onboardingCompleted: true,
       },
