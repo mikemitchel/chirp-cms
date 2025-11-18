@@ -1,0 +1,337 @@
+/* ============================================
+   CHIRP Radio CMS - Brand Theme
+   ============================================
+
+   Custom theme using CHIRP brand colors and typography
+   Overrides PayloadCMS default theme variables
+   ============================================ */
+
+/* Import CHIRP fonts */
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100;300;400;600;700&family=Roboto:wght@300;400;500;600;700;900&family=Roboto+Serif:wght@400;600&display=swap');
+
+@layer payload-default {
+  :root {
+    /* ============================================
+       CHIRP BRAND COLORS - Primary (Red)
+       ============================================ */
+    --color-base-0: #ffffff;
+    --color-base-50: #fafafa;
+    --color-base-100: #f4f4f5;
+    --color-base-150: #e4e4e7;
+    --color-base-200: #d4d4d8;
+    --color-base-250: #c4c4cc;
+    --color-base-300: #a1a1aa;
+    --color-base-350: #8b8b95;
+    --color-base-400: #71717a;
+    --color-base-450: #63636f;
+    --color-base-500: #52525b;
+    --color-base-550: #474751;
+    --color-base-600: #3f3f46;
+    --color-base-650: #35353b;
+    --color-base-700: #27272a;
+    --color-base-750: #1f1f22;
+    --color-base-800: #18181b;
+    --color-base-850: #121214;
+    --color-base-900: #0a0a0b;
+    --color-base-950: #050505;
+    --color-base-1000: #000000;
+
+    /* CHIRP Primary Red Scale */
+    --color-success-50: #fef2f2;
+    --color-success-100: #fee2e2;
+    --color-success-150: #fecaca;
+    --color-success-200: #fca5a5;
+    --color-success-250: #f87171;
+    --color-success-300: #f87171;
+    --color-success-350: #ef4444;
+    --color-success-400: #ea1c2c;
+    --color-success-450: #dc2626;
+    --color-success-500: #ea1c2c;
+    --color-success-550: #c71a24;
+    --color-success-600: #a20c1d;
+    --color-success-650: #8b0a19;
+    --color-success-700: #7f1d1d;
+    --color-success-750: #6d0913;
+    --color-success-800: #5f0711;
+    --color-success-850: #4a050d;
+    --color-success-900: #3a0409;
+    --color-success-950: #1c0204;
+
+    /* CHIRP Secondary Blue Scale - using cr-secondary-700 as base */
+    --color-blue-50: #e6f4f9;
+    --color-blue-100: #cce9f3;
+    --color-blue-150: #99d3e7;
+    --color-blue-200: #66bddb;
+    --color-blue-250: #33a7cf;
+    --color-blue-300: #0091c3;
+    --color-blue-350: #007ba6;
+    --color-blue-400: #006589;
+    --color-blue-450: #00596f;
+    --color-blue-500: #004d5c;
+    --color-blue-550: #004d5c;
+    --color-blue-600: #004d5c;
+    --color-blue-650: #004150;
+    --color-blue-700: #004d5c;
+    --color-blue-750: #003944;
+    --color-blue-800: #002d38;
+    --color-blue-850: #00212c;
+    --color-blue-900: #001520;
+    --color-blue-950: #000914;
+
+    /* CHIRP Accent Yellow Scale */
+    --color-warning-50: #fffbeb;
+    --color-warning-100: #fef3c7;
+    --color-warning-150: #fde68a;
+    --color-warning-200: #fcd34d;
+    --color-warning-250: #fbbf24;
+    --color-warning-300: #f59e0b;
+    --color-warning-350: #d97706;
+    --color-warning-400: #ffc72c;
+    --color-warning-450: #e6b327;
+    --color-warning-500: #ffc72c;
+    --color-warning-550: #cc9f23;
+    --color-warning-600: #a68019;
+    --color-warning-650: #8c6b15;
+    --color-warning-700: #78550f;
+    --color-warning-750: #664b00;
+    --color-warning-800: #664b00;
+    --color-warning-850: #523c00;
+    --color-warning-900: #422f00;
+    --color-warning-950: #1f1700;
+
+    /* Error/Support Colors (keep functional, use CHIRP red tones) */
+    --color-error-50: #fef2f2;
+    --color-error-100: #fee2e2;
+    --color-error-150: #fecaca;
+    --color-error-200: #fca5a5;
+    --color-error-250: #f87171;
+    --color-error-300: #f87171;
+    --color-error-350: #ef4444;
+    --color-error-400: #ea1c2c;
+    --color-error-450: #dc2626;
+    --color-error-500: #ea1c2c;
+    --color-error-550: #c71a24;
+    --color-error-600: #a20c1d;
+    --color-error-650: #8b0a19;
+    --color-error-700: #7f1d1d;
+    --color-error-750: #6d0913;
+    --color-error-800: #5f0711;
+    --color-error-850: #4a050d;
+    --color-error-900: #3a0409;
+    --color-error-950: #1c0204;
+  }
+
+  /* ============================================
+     CHIRP TYPOGRAPHY
+     ============================================ */
+
+  /* Apply Antonio for headings and titles */
+  h1, h2, h3, h4, h5, h6,
+  .payload-template h1,
+  .payload-template h2,
+  .payload-template h3,
+  .payload-template h4,
+  .payload-template h5,
+  .payload-template h6 {
+    font-family: 'Antonio', sans-serif;
+    font-weight: 600;
+  }
+
+  /* Apply Roboto for UI elements */
+  body,
+  button,
+  input,
+  select,
+  textarea,
+  .payload-template {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  /* ============================================
+     LOGO REPLACEMENT
+     ============================================ */
+
+  /* Hide default Payload logo and replace with CHIRP logo */
+  .nav-brand svg,
+  .nav-brand img,
+  a[href="/admin"] svg,
+  a[href="/admin"] img {
+    display: none !important;
+  }
+
+  .nav-brand::before,
+  a[href="/admin"]::before {
+    content: '';
+    display: block;
+    width: 160px;
+    height: 45px;
+    background-image: url('/images/chirp-logo-reversed.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* Dark mode - make logo white */
+  html[data-theme='dark'] .nav-brand::before,
+  html[data-theme='dark'] a[href="/admin"]::before {
+    filter: brightness(0) invert(1);
+  }
+
+  /* Navigation logo sizing */
+  .step-nav__home {
+    width: auto !important;
+    height: auto !important;
+    min-height: 60px !important;
+    padding: 0 !important;
+  }
+
+  .step-nav__home .chirp-logo-container {
+    width: auto;
+    height: 100%;
+    padding: 0;
+  }
+
+  .step-nav__home .chirp-logo {
+    width: 180px;
+    height: auto;
+    min-height: 50px;
+  }
+
+  /* Navigation group toggle shadow */
+  .nav-group__toggle {
+    box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.25);
+  }
+
+  html[data-theme='dark'] .nav-group__toggle {
+    box-shadow: 0px 0px 3px 1px rgba(255, 255, 255, 0.25);
+  }
+
+  html[data-theme='dark'] .nav-group__label {
+    color: #e4e4e7;
+  }
+
+  /* ============================================
+     BRAND ACCENT OVERRIDES
+     ============================================ */
+
+  /* Primary action buttons - CHIRP cr-secondary-700 */
+  .btn--style-primary,
+  button[type="submit"] {
+    background-color: #004d5c !important;
+    border-color: #004d5c !important;
+    color: white !important;
+  }
+
+  .btn--style-primary:hover:not(:disabled),
+  button[type="submit"]:hover:not(:disabled) {
+    background-color: #006589 !important;
+    border-color: #006589 !important;
+  }
+
+  /* Dark mode - switch to cr-secondary-300 */
+  html[data-theme='dark'] .btn--style-primary,
+  html[data-theme='dark'] button[type="submit"] {
+    background-color: #0091c3 !important;
+    border-color: #0091c3 !important;
+  }
+
+  html[data-theme='dark'] .btn--style-primary:hover:not(:disabled),
+  html[data-theme='dark'] button[type="submit"]:hover:not(:disabled) {
+    background-color: #33a7cf !important;
+    border-color: #33a7cf !important;
+  }
+
+  /* Links and interactive elements - CHIRP Blue (cr-secondary-700) */
+  a {
+    color: #004d5c;
+  }
+
+  a:hover {
+    color: #006589;
+  }
+
+  /* Dark mode links - cr-secondary-300 */
+  html[data-theme='dark'] a {
+    color: #0091c3;
+  }
+
+  html[data-theme='dark'] a:hover {
+    color: #33a7cf;
+  }
+
+  /* Focus states - CHIRP Red */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline-color: #ea1c2c;
+  }
+
+  /* Active navigation - CHIRP Red accent */
+  .nav a[aria-current="page"],
+  .nav a.active,
+  .nav__link:has(.nav__link-indicator) {
+    border-left: 3px solid #ea1c2c;
+  }
+
+  /* Maintain consistent padding when active (compensate for indicator) */
+  .nav__link:has(.nav__link-indicator) {
+    padding-left: 1rem !important;
+  }
+
+  .nav__link:has(.nav__link-indicator) .nav__link-indicator {
+    display: none !important;
+  }
+
+  /* Increase vertical padding to prevent jump on selection */
+  .nav__link {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
+  /* Fix search icon overlapping placeholder text */
+  .search-filter input {
+    padding-left: 2.5rem !important;
+  }
+
+  /* ============================================
+     CLEAN, FUNCTIONAL AESTHETICS
+     ============================================ */
+
+  /* Subtle borders using CHIRP neutral colors */
+  .payload-template {
+    border-color: #d4d4d8;
+  }
+
+  html[data-theme='dark'] .payload-template {
+    border-color: #3f3f46;
+  }
+
+  /* Card shadows - subtle depth */
+  .card,
+  [class*="card--"] {
+    box-shadow: 0 1px 3px 0 rgba(24, 24, 27, 0.1),
+                0 1px 2px -1px rgba(24, 24, 27, 0.1);
+  }
+
+  html[data-theme='dark'] .card,
+  html[data-theme='dark'] [class*="card--"] {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3),
+                0 1px 2px -1px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Success states - keep green for standard UI patterns */
+  .success,
+  [class*="success"] {
+    color: #067a46;
+    background-color: #d1eec6;
+  }
+
+  /* Warning states - CHIRP Yellow */
+  .warning,
+  [class*="warning"] {
+    color: #664b00;
+    background-color: #fff1cc;
+  }
+}

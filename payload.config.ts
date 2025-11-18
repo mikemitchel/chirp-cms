@@ -40,6 +40,19 @@ const resend = new Resend(process.env.RESEND_API_KEY || 'dummy_key_for_scripts')
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
+  admin: {
+    meta: {
+      titleSuffix: '- CHIRP Radio',
+      ogImage: '/images/chirp-logo.svg',
+      favicon: '/images/chirp-logo.svg',
+    },
+    components: {
+      graphics: {
+        Icon: '@/components/Logo#Logo',
+        Logo: '@/components/Logo#Logo',
+      },
+    },
+  },
   plugins: [
     redirectsPlugin({
       collections: ['pages', 'articles', 'events', 'podcasts'],

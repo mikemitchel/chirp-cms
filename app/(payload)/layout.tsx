@@ -1,5 +1,6 @@
 import config from '@payload-config'
 import '@payloadcms/next/css'
+import '../../src/styles/chirp-cms-theme.css'
 import '../../src/styles/global.css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
