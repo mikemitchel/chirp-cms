@@ -22,6 +22,7 @@ import { UploadFeatureClient as UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { HorizontalRuleFeatureClient as HorizontalRuleFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { InlineToolbarFeatureClient as InlineToolbarFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { TextureBackgroundField as TextureBackgroundField_9fc2d9452844560f3e5d5fe0e2318f37 } from '@/components/TextureBackgroundField'
+import { Logo as Logo_2b7e2e151f989fb419ce3009e56b903e } from '@/components/Logo'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -47,5 +48,6 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UploadFeatureClient": UploadFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#HorizontalRuleFeatureClient": HorizontalRuleFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#InlineToolbarFeatureClient": InlineToolbarFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
-  "@/components/TextureBackgroundField#TextureBackgroundField": TextureBackgroundField_9fc2d9452844560f3e5d5fe0e2318f37
+  "@/components/TextureBackgroundField#TextureBackgroundField": TextureBackgroundField_9fc2d9452844560f3e5d5fe0e2318f37,
+  "@/components/Logo#Logo": Logo_2b7e2e151f989fb419ce3009e56b903e
 }

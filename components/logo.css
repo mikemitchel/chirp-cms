@@ -1,0 +1,17 @@
+.chirp-logo-container {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chirp-logo {
+  width: 400px;
+  height: auto;
+  display: block;
+}
+
+/* Dark mode - make logo white */
+html[data-theme='dark'] .chirp-logo {
+  filter: brightness(0) invert(1);
+}
