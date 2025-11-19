@@ -1,0 +1,3700 @@
+{
+  "media": [
+    {
+      "id": 94,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-05T03:42:44.548Z",
+      "createdAt": "2025-11-05T03:42:44.548Z",
+      "url": "http://localhost:3000/api/media/file/marloes-hilckmann-40l3zKiOC8k-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/marloes-hilckmann-40l3zKiOC8k-unsplash-400x300.jpg",
+      "filename": "marloes-hilckmann-40l3zKiOC8k-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 790426,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/marloes-hilckmann-40l3zKiOC8k-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 27897,
+          "filename": "marloes-hilckmann-40l3zKiOC8k-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/marloes-hilckmann-40l3zKiOC8k-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 68776,
+          "filename": "marloes-hilckmann-40l3zKiOC8k-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/marloes-hilckmann-40l3zKiOC8k-unsplash-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 396071,
+          "filename": "marloes-hilckmann-40l3zKiOC8k-unsplash-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 93,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-05T03:42:06.305Z",
+      "createdAt": "2025-11-05T03:42:06.305Z",
+      "url": "http://localhost:3000/api/media/file/ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-400x300.jpg",
+      "filename": "ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 497227,
+      "width": 1600,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 29476,
+          "filename": "ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 56987,
+          "filename": "ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-1200x1800.jpg",
+          "width": 1200,
+          "height": 1800,
+          "mimeType": "image/jpeg",
+          "filesize": 309752,
+          "filename": "ehimetalor-akhere-unuabona-1SiLHYYmMrU-unsplash-1200x1800.jpg"
+        }
+      }
+    },
+    {
+      "id": 92,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-05T03:40:19.519Z",
+      "createdAt": "2025-11-05T03:40:19.519Z",
+      "url": "http://localhost:3000/api/media/file/venti-views-IUerQnW26-g-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/venti-views-IUerQnW26-g-unsplash-400x300.jpg",
+      "filename": "venti-views-IUerQnW26-g-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 279437,
+      "width": 1698,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/venti-views-IUerQnW26-g-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 14339,
+          "filename": "venti-views-IUerQnW26-g-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/venti-views-IUerQnW26-g-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 27382,
+          "filename": "venti-views-IUerQnW26-g-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/venti-views-IUerQnW26-g-unsplash-1200x1697.jpg",
+          "width": 1200,
+          "height": 1697,
+          "mimeType": "image/jpeg",
+          "filesize": 150493,
+          "filename": "venti-views-IUerQnW26-g-unsplash-1200x1697.jpg"
+        }
+      }
+    },
+    {
+      "id": 91,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-05T03:39:42.533Z",
+      "createdAt": "2025-11-05T03:39:42.533Z",
+      "url": "http://localhost:3000/api/media/file/rob-griffin-xKQr7RoOW44-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/rob-griffin-xKQr7RoOW44-unsplash-400x300.jpg",
+      "filename": "rob-griffin-xKQr7RoOW44-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 304993,
+      "width": 1664,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/rob-griffin-xKQr7RoOW44-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22649,
+          "filename": "rob-griffin-xKQr7RoOW44-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/rob-griffin-xKQr7RoOW44-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 50586,
+          "filename": "rob-griffin-xKQr7RoOW44-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/rob-griffin-xKQr7RoOW44-unsplash-1200x1731.jpg",
+          "width": 1200,
+          "height": 1731,
+          "mimeType": "image/jpeg",
+          "filesize": 180873,
+          "filename": "rob-griffin-xKQr7RoOW44-unsplash-1200x1731.jpg"
+        }
+      }
+    },
+    {
+      "id": 90,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-05T03:39:04.702Z",
+      "createdAt": "2025-11-05T03:39:04.701Z",
+      "url": "http://localhost:3000/api/media/file/ryan-zazueta-GEJ7tZoXnt0-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/ryan-zazueta-GEJ7tZoXnt0-unsplash-400x300.jpg",
+      "filename": "ryan-zazueta-GEJ7tZoXnt0-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 855157,
+      "width": 1600,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/ryan-zazueta-GEJ7tZoXnt0-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19040,
+          "filename": "ryan-zazueta-GEJ7tZoXnt0-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/ryan-zazueta-GEJ7tZoXnt0-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 49221,
+          "filename": "ryan-zazueta-GEJ7tZoXnt0-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/ryan-zazueta-GEJ7tZoXnt0-unsplash-1200x1800.jpg",
+          "width": 1200,
+          "height": 1800,
+          "mimeType": "image/jpeg",
+          "filesize": 398050,
+          "filename": "ryan-zazueta-GEJ7tZoXnt0-unsplash-1200x1800.jpg"
+        }
+      }
+    },
+    {
+      "id": 89,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-05T03:38:27.152Z",
+      "createdAt": "2025-11-05T03:38:27.152Z",
+      "url": "http://localhost:3000/api/media/file/bp-miller-M98DitdZi0Q-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/bp-miller-M98DitdZi0Q-unsplash-400x300.jpg",
+      "filename": "bp-miller-M98DitdZi0Q-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 257848,
+      "width": 1601,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/bp-miller-M98DitdZi0Q-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17772,
+          "filename": "bp-miller-M98DitdZi0Q-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/bp-miller-M98DitdZi0Q-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36675,
+          "filename": "bp-miller-M98DitdZi0Q-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/bp-miller-M98DitdZi0Q-unsplash-1200x1799.jpg",
+          "width": 1200,
+          "height": 1799,
+          "mimeType": "image/jpeg",
+          "filesize": 160664,
+          "filename": "bp-miller-M98DitdZi0Q-unsplash-1200x1799.jpg"
+        }
+      }
+    },
+    {
+      "id": 88,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-05T03:36:15.483Z",
+      "createdAt": "2025-11-05T03:36:15.483Z",
+      "url": "http://localhost:3000/api/media/file/jim-k.gif",
+      "thumbnailURL": null,
+      "filename": "jim-k.gif",
+      "mimeType": "image/gif",
+      "filesize": 251702,
+      "width": 150,
+      "height": 107,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 87,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-05T03:35:49.360Z",
+      "createdAt": "2025-11-05T03:34:57.950Z",
+      "url": "http://localhost:3000/api/media/file/tony-breed.gif",
+      "thumbnailURL": "http://localhost:3000/api/media/file/tony-breed-400x300.gif",
+      "filename": "tony-breed.gif",
+      "mimeType": "image/gif",
+      "filesize": 8707796,
+      "width": 600,
+      "height": 750,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/tony-breed-400x300.gif",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/gif",
+          "filesize": 3321886,
+          "filename": "tony-breed-400x300.gif"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/tony-breed-800x400.gif",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/gif",
+          "filesize": 7476187,
+          "filename": "tony-breed-800x400.gif"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 86,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-05T03:28:18.216Z",
+      "createdAt": "2025-11-05T03:28:18.216Z",
+      "url": "http://localhost:3000/api/media/file/sarah-spencer.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/sarah-spencer-400x300.jpg",
+      "filename": "sarah-spencer.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 491595,
+      "width": 1920,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/sarah-spencer-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22482,
+          "filename": "sarah-spencer-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/sarah-spencer-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46646,
+          "filename": "sarah-spencer-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/sarah-spencer-1200x1500.jpg",
+          "width": 1200,
+          "height": 1500,
+          "mimeType": "image/jpeg",
+          "filesize": 201975,
+          "filename": "sarah-spencer-1200x1500.jpg"
+        }
+      }
+    },
+    {
+      "id": 85,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-05T03:18:18.268Z",
+      "createdAt": "2025-11-05T03:18:18.267Z",
+      "url": "http://localhost:3000/api/media/file/robert-zunikoff-oK6VHjsnHys-unsplash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/robert-zunikoff-oK6VHjsnHys-unsplash-400x300.jpg",
+      "filename": "robert-zunikoff-oK6VHjsnHys-unsplash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 408945,
+      "width": 2400,
+      "height": 1663,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/robert-zunikoff-oK6VHjsnHys-unsplash-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17085,
+          "filename": "robert-zunikoff-oK6VHjsnHys-unsplash-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/robert-zunikoff-oK6VHjsnHys-unsplash-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 37909,
+          "filename": "robert-zunikoff-oK6VHjsnHys-unsplash-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/robert-zunikoff-oK6VHjsnHys-unsplash-1200x832.jpg",
+          "width": 1200,
+          "height": 832,
+          "mimeType": "image/jpeg",
+          "filesize": 93463,
+          "filename": "robert-zunikoff-oK6VHjsnHys-unsplash-1200x832.jpg"
+        }
+      }
+    },
+    {
+      "id": 84,
+      "alt": "Beatnik - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:37.321Z",
+      "createdAt": "2025-11-04T01:17:37.321Z",
+      "url": "http://localhost:3000/api/media/file/beatnik-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/beatnik-placeholder-400x300.png",
+      "filename": "beatnik-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 16842,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/beatnik-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 70744,
+          "filename": "beatnik-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/beatnik-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 179721,
+          "filename": "beatnik-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 83,
+      "alt": "Chesney - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:36.705Z",
+      "createdAt": "2025-11-04T01:17:36.705Z",
+      "url": "http://localhost:3000/api/media/file/chesney-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chesney-placeholder-400x300.png",
+      "filename": "chesney-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 18862,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chesney-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 76878,
+          "filename": "chesney-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chesney-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 172006,
+          "filename": "chesney-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 82,
+      "alt": "Caroline - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:35.763Z",
+      "createdAt": "2025-11-04T01:17:35.763Z",
+      "url": "http://localhost:3000/api/media/file/caroline-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/caroline-placeholder-400x300.png",
+      "filename": "caroline-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 13635,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/caroline-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 56562,
+          "filename": "caroline-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/caroline-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 159538,
+          "filename": "caroline-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 81,
+      "alt": "Kaleigh - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:34.722Z",
+      "createdAt": "2025-11-04T01:17:34.722Z",
+      "url": "http://localhost:3000/api/media/file/kaleigh-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/kaleigh-placeholder-400x300.png",
+      "filename": "kaleigh-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 12466,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/kaleigh-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 52166,
+          "filename": "kaleigh-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/kaleigh-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 148007,
+          "filename": "kaleigh-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 80,
+      "alt": "moimoi - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:34.086Z",
+      "createdAt": "2025-11-04T01:17:34.085Z",
+      "url": "http://localhost:3000/api/media/file/moimoi-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/moimoi-placeholder-400x300.png",
+      "filename": "moimoi-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 13492,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/moimoi-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 55129,
+          "filename": "moimoi-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/moimoi-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 132737,
+          "filename": "moimoi-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 79,
+      "alt": "Nik - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:33.625Z",
+      "createdAt": "2025-11-04T01:17:33.625Z",
+      "url": "http://localhost:3000/api/media/file/nik-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/nik-placeholder-400x300.png",
+      "filename": "nik-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 13451,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/nik-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 58683,
+          "filename": "nik-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/nik-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 164194,
+          "filename": "nik-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 78,
+      "alt": "ZuZu - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:33.211Z",
+      "createdAt": "2025-11-04T01:17:33.211Z",
+      "url": "http://localhost:3000/api/media/file/zuzu-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/zuzu-placeholder-400x300.png",
+      "filename": "zuzu-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 13612,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/zuzu-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 66799,
+          "filename": "zuzu-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/zuzu-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 173016,
+          "filename": "zuzu-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 77,
+      "alt": "Val Woj - Placeholder (Please replace with your photo!)",
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:17:32.663Z",
+      "createdAt": "2025-11-04T01:17:32.663Z",
+      "url": "http://localhost:3000/api/media/file/val-woj-placeholder.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/val-woj-placeholder-400x300.png",
+      "filename": "val-woj-placeholder.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 14741,
+      "width": 400,
+      "height": 400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/val-woj-placeholder-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 61702,
+          "filename": "val-woj-placeholder-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/val-woj-placeholder-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 128512,
+          "filename": "val-woj-placeholder-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 76,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:06:46.174Z",
+      "createdAt": "2025-11-04T01:06:46.174Z",
+      "url": "http://localhost:3000/api/media/file/kevin-shields.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/kevin-shields-400x300.jpg",
+      "filename": "kevin-shields.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 93021,
+      "width": 800,
+      "height": 450,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/kevin-shields-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 31218,
+          "filename": "kevin-shields-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/kevin-shields-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 72265,
+          "filename": "kevin-shields-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 75,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:38.058Z",
+      "createdAt": "2025-11-04T01:05:38.058Z",
+      "url": "http://localhost:3000/api/media/file/yang.jpg",
+      "thumbnailURL": null,
+      "filename": "yang.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 10836,
+      "width": 317,
+      "height": 237,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 74,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:38.042Z",
+      "createdAt": "2025-11-04T01:05:38.042Z",
+      "url": "http://localhost:3000/api/media/file/willie-mcdonagh.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/willie-mcdonagh-400x300.jpg",
+      "filename": "willie-mcdonagh.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 110574,
+      "width": 967,
+      "height": 917,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/willie-mcdonagh-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19535,
+          "filename": "willie-mcdonagh-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/willie-mcdonagh-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 39267,
+          "filename": "willie-mcdonagh-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 73,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:37.997Z",
+      "createdAt": "2025-11-04T01:05:37.997Z",
+      "url": "http://localhost:3000/api/media/file/wags.jpg",
+      "thumbnailURL": null,
+      "filename": "wags.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 18514,
+      "width": 250,
+      "height": 250,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 72,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:37.982Z",
+      "createdAt": "2025-11-04T01:05:37.982Z",
+      "url": "http://localhost:3000/api/media/file/tyler-clark.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/tyler-clark-400x300.jpg",
+      "filename": "tyler-clark.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 62843,
+      "width": 720,
+      "height": 480,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/tyler-clark-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 23099,
+          "filename": "tyler-clark-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/tyler-clark-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 50184,
+          "filename": "tyler-clark-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 70,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:21.741Z",
+      "createdAt": "2025-11-04T01:05:21.741Z",
+      "url": "http://localhost:3000/api/media/file/the-panda.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/the-panda-400x300.jpg",
+      "filename": "the-panda.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 78143,
+      "width": 544,
+      "height": 640,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/the-panda-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 29030,
+          "filename": "the-panda-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/the-panda-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 51592,
+          "filename": "the-panda-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 69,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:21.706Z",
+      "createdAt": "2025-11-04T01:05:21.706Z",
+      "url": "http://localhost:3000/api/media/file/the-candy-lady.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/the-candy-lady-400x300.jpg",
+      "filename": "the-candy-lady.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 511981,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/the-candy-lady-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 15558,
+          "filename": "the-candy-lady-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/the-candy-lady-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 33006,
+          "filename": "the-candy-lady-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/the-candy-lady-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 190883,
+          "filename": "the-candy-lady-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 68,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:21.554Z",
+      "createdAt": "2025-11-04T01:05:21.554Z",
+      "url": "http://localhost:3000/api/media/file/steven-grady.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/steven-grady-400x300.jpg",
+      "filename": "steven-grady.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 56838,
+      "width": 604,
+      "height": 402,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/steven-grady-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 27348,
+          "filename": "steven-grady-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/steven-grady-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 55071,
+          "filename": "steven-grady-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 67,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:21.517Z",
+      "createdAt": "2025-11-04T01:05:21.517Z",
+      "url": "http://localhost:3000/api/media/file/steve-o.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/steve-o-400x300.jpg",
+      "filename": "steve-o.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 94414,
+      "width": 960,
+      "height": 851,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/steve-o-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 20529,
+          "filename": "steve-o-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/steve-o-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 41124,
+          "filename": "steve-o-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 66,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:21.452Z",
+      "createdAt": "2025-11-04T01:05:21.452Z",
+      "url": "http://localhost:3000/api/media/file/Spenser.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Spenser-400x300.jpg",
+      "filename": "Spenser.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 491595,
+      "width": 1920,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Spenser-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22482,
+          "filename": "Spenser-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Spenser-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46646,
+          "filename": "Spenser-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/Spenser-1200x1500.jpg",
+          "width": 1200,
+          "height": 1500,
+          "mimeType": "image/jpeg",
+          "filesize": 201975,
+          "filename": "Spenser-1200x1500.jpg"
+        }
+      }
+    },
+    {
+      "id": 65,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:21.019Z",
+      "createdAt": "2025-11-04T01:05:21.019Z",
+      "url": "http://localhost:3000/api/media/file/sheriff-jackson.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/sheriff-jackson-400x300.jpg",
+      "filename": "sheriff-jackson.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 600799,
+      "width": 1350,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/sheriff-jackson-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 40319,
+          "filename": "sheriff-jackson-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/sheriff-jackson-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 97065,
+          "filename": "sheriff-jackson-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/sheriff-jackson-1200x2133.jpg",
+          "width": 1200,
+          "height": 2133,
+          "mimeType": "image/jpeg",
+          "filesize": 446273,
+          "filename": "sheriff-jackson-1200x2133.jpg"
+        }
+      }
+    },
+    {
+      "id": 64,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.747Z",
+      "createdAt": "2025-11-04T01:05:20.747Z",
+      "url": "http://localhost:3000/api/media/file/shelby.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/shelby-400x300.jpg",
+      "filename": "shelby.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 285574,
+      "width": 1440,
+      "height": 1084,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/shelby-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 32627,
+          "filename": "shelby-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/shelby-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 72180,
+          "filename": "shelby-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/shelby-1200x903.jpg",
+          "width": 1200,
+          "height": 903,
+          "mimeType": "image/jpeg",
+          "filesize": 191025,
+          "filename": "shelby-1200x903.jpg"
+        }
+      }
+    },
+    {
+      "id": 63,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.643Z",
+      "createdAt": "2025-11-04T01:05:20.643Z",
+      "url": "http://localhost:3000/api/media/file/shawn-campbell.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/shawn-campbell-400x300.jpg",
+      "filename": "shawn-campbell.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 32799,
+      "width": 552,
+      "height": 494,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/shawn-campbell-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 15092,
+          "filename": "shawn-campbell-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/shawn-campbell-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 26081,
+          "filename": "shawn-campbell-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 62,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.600Z",
+      "createdAt": "2025-11-04T01:05:20.600Z",
+      "url": "http://localhost:3000/api/media/file/shannon-duffy.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/shannon-duffy-400x300.jpg",
+      "filename": "shannon-duffy.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 638580,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/shannon-duffy-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 21737,
+          "filename": "shannon-duffy-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/shannon-duffy-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46253,
+          "filename": "shannon-duffy-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/shannon-duffy-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 243154,
+          "filename": "shannon-duffy-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 61,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.430Z",
+      "createdAt": "2025-11-04T01:05:20.430Z",
+      "url": "http://localhost:3000/api/media/file/sarah-a.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/sarah-a-400x300.jpg",
+      "filename": "sarah-a.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 107068,
+      "width": 900,
+      "height": 1200,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/sarah-a-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 18399,
+          "filename": "sarah-a-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/sarah-a-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 33747,
+          "filename": "sarah-a-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 60,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.372Z",
+      "createdAt": "2025-11-04T01:05:20.372Z",
+      "url": "http://localhost:3000/api/media/file/psychotic-distraction.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/psychotic-distraction-400x300.jpg",
+      "filename": "psychotic-distraction.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 314535,
+      "width": 2048,
+      "height": 1153,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/psychotic-distraction-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 30696,
+          "filename": "psychotic-distraction-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/psychotic-distraction-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 72677,
+          "filename": "psychotic-distraction-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/psychotic-distraction-1200x676.jpg",
+          "width": 1200,
+          "height": 676,
+          "mimeType": "image/jpeg",
+          "filesize": 157181,
+          "filename": "psychotic-distraction-1200x676.jpg"
+        }
+      }
+    },
+    {
+      "id": 59,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.248Z",
+      "createdAt": "2025-11-04T01:05:20.248Z",
+      "url": "http://localhost:3000/api/media/file/paul-anderson.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/paul-anderson-400x300.jpg",
+      "filename": "paul-anderson.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 112819,
+      "width": 1125,
+      "height": 851,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/paul-anderson-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19919,
+          "filename": "paul-anderson-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/paul-anderson-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 41969,
+          "filename": "paul-anderson-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 58,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.189Z",
+      "createdAt": "2025-11-04T01:05:20.189Z",
+      "url": "http://localhost:3000/api/media/file/ninja.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/ninja-400x300.jpg",
+      "filename": "ninja.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 218812,
+      "width": 853,
+      "height": 1295,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/ninja-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 24536,
+          "filename": "ninja-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/ninja-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 52884,
+          "filename": "ninja-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 57,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.115Z",
+      "createdAt": "2025-11-04T01:05:20.115Z",
+      "url": "http://localhost:3000/api/media/file/nicole-oppenheim.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/nicole-oppenheim-400x300.jpg",
+      "filename": "nicole-oppenheim.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 70913,
+      "width": 960,
+      "height": 720,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/nicole-oppenheim-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19186,
+          "filename": "nicole-oppenheim-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/nicole-oppenheim-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 40901,
+          "filename": "nicole-oppenheim-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 56,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:20.056Z",
+      "createdAt": "2025-11-04T01:05:20.056Z",
+      "url": "http://localhost:3000/api/media/file/mike-bennett.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/mike-bennett-400x300.jpg",
+      "filename": "mike-bennett.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 222609,
+      "width": 1280,
+      "height": 1198,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/mike-bennett-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 16439,
+          "filename": "mike-bennett-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/mike-bennett-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 31473,
+          "filename": "mike-bennett-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/mike-bennett-1200x1123.jpg",
+          "width": 1200,
+          "height": 1123,
+          "mimeType": "image/jpeg",
+          "filesize": 148742,
+          "filename": "mike-bennett-1200x1123.jpg"
+        }
+      }
+    },
+    {
+      "id": 55,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.989Z",
+      "createdAt": "2025-11-04T01:05:19.989Z",
+      "url": "http://localhost:3000/api/media/file/mick-rick.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/mick-rick-400x300.jpg",
+      "filename": "mick-rick.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 458230,
+      "width": 1615,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/mick-rick-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22041,
+          "filename": "mick-rick-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/mick-rick-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46830,
+          "filename": "mick-rick-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/mick-rick-1200x1783.jpg",
+          "width": 1200,
+          "height": 1783,
+          "mimeType": "image/jpeg",
+          "filesize": 248334,
+          "filename": "mick-rick-1200x1783.jpg"
+        }
+      }
+    },
+    {
+      "id": 54,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.846Z",
+      "createdAt": "2025-11-04T01:05:19.846Z",
+      "url": "http://localhost:3000/api/media/file/michael-griffith.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/michael-griffith-400x300.jpg",
+      "filename": "michael-griffith.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 183040,
+      "width": 733,
+      "height": 1117,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/michael-griffith-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 30930,
+          "filename": "michael-griffith-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/michael-griffith-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 62263,
+          "filename": "michael-griffith-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 53,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.784Z",
+      "createdAt": "2025-11-04T01:05:19.784Z",
+      "url": "http://localhost:3000/api/media/file/meilssa.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/meilssa-400x300.jpg",
+      "filename": "meilssa.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 72146,
+      "width": 500,
+      "height": 669,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/meilssa-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 24620,
+          "filename": "meilssa-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/meilssa-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46383,
+          "filename": "meilssa-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 52,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.748Z",
+      "createdAt": "2025-11-04T01:05:19.748Z",
+      "url": "http://localhost:3000/api/media/file/mauricio-reyes.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/mauricio-reyes-400x300.png",
+      "filename": "mauricio-reyes.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 57582,
+      "width": 478,
+      "height": 494,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/mauricio-reyes-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 286547,
+          "filename": "mauricio-reyes-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/mauricio-reyes-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 689027,
+          "filename": "mauricio-reyes-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 51,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.665Z",
+      "createdAt": "2025-11-04T01:05:19.665Z",
+      "url": "http://localhost:3000/api/media/file/matt-barr.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/matt-barr-400x300.jpg",
+      "filename": "matt-barr.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 599908,
+      "width": 2400,
+      "height": 1605,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/matt-barr-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 28105,
+          "filename": "matt-barr-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/matt-barr-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 59851,
+          "filename": "matt-barr-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/matt-barr-1200x803.jpg",
+          "width": 1200,
+          "height": 803,
+          "mimeType": "image/jpeg",
+          "filesize": 156189,
+          "filename": "matt-barr-1200x803.jpg"
+        }
+      }
+    },
+    {
+      "id": 50,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.279Z",
+      "createdAt": "2025-11-04T01:05:19.279Z",
+      "url": "http://localhost:3000/api/media/file/mary-nisi.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/mary-nisi-400x300.jpg",
+      "filename": "mary-nisi.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 332676,
+      "width": 1440,
+      "height": 1440,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/mary-nisi-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 24069,
+          "filename": "mary-nisi-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/mary-nisi-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 56914,
+          "filename": "mary-nisi-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/mary-nisi-1200x1200.jpg",
+          "width": 1200,
+          "height": 1200,
+          "mimeType": "image/jpeg",
+          "filesize": 269648,
+          "filename": "mary-nisi-1200x1200.jpg"
+        }
+      }
+    },
+    {
+      "id": 49,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:19.140Z",
+      "createdAt": "2025-11-04T01:05:19.140Z",
+      "url": "http://localhost:3000/api/media/file/marty-oconnell.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/marty-oconnell-400x300.jpg",
+      "filename": "marty-oconnell.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 920646,
+      "width": 2400,
+      "height": 1650,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/marty-oconnell-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22505,
+          "filename": "marty-oconnell-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/marty-oconnell-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 54514,
+          "filename": "marty-oconnell-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/marty-oconnell-1200x825.jpg",
+          "width": 1200,
+          "height": 825,
+          "mimeType": "image/jpeg",
+          "filesize": 164729,
+          "filename": "marty-oconnell-1200x825.jpg"
+        }
+      }
+    },
+    {
+      "id": 48,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.688Z",
+      "createdAt": "2025-11-04T01:05:18.688Z",
+      "url": "http://localhost:3000/api/media/file/m-dash.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/m-dash-400x300.png",
+      "filename": "m-dash.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 105781,
+      "width": 944,
+      "height": 944,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/m-dash-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 312330,
+          "filename": "m-dash-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/m-dash-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 840137,
+          "filename": "m-dash-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 47,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.553Z",
+      "createdAt": "2025-11-04T01:05:18.553Z",
+      "url": "http://localhost:3000/api/media/file/Liz_Mason_2_bw.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Liz_Mason_2_bw-400x300.jpg",
+      "filename": "Liz_Mason_2_bw.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 100561,
+      "width": 720,
+      "height": 960,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Liz_Mason_2_bw-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 23716,
+          "filename": "Liz_Mason_2_bw-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Liz_Mason_2_bw-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46546,
+          "filename": "Liz_Mason_2_bw-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 46,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.513Z",
+      "createdAt": "2025-11-04T01:05:18.513Z",
+      "url": "http://localhost:3000/api/media/file/kevin-swallow.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/kevin-swallow-400x300.jpg",
+      "filename": "kevin-swallow.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 302585,
+      "width": 1280,
+      "height": 960,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/kevin-swallow-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 39187,
+          "filename": "kevin-swallow-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/kevin-swallow-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 85372,
+          "filename": "kevin-swallow-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/kevin-swallow-1200x900.jpg",
+          "width": 1200,
+          "height": 900,
+          "mimeType": "image/jpeg",
+          "filesize": 244025,
+          "filename": "kevin-swallow-1200x900.jpg"
+        }
+      }
+    },
+    {
+      "id": 45,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.366Z",
+      "createdAt": "2025-11-04T01:05:18.366Z",
+      "url": "http://localhost:3000/api/media/file/k-tel.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/k-tel-400x300.jpg",
+      "filename": "k-tel.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 349630,
+      "width": 1256,
+      "height": 1790,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/k-tel-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 23836,
+          "filename": "k-tel-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/k-tel-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 47625,
+          "filename": "k-tel-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/k-tel-1200x1710.jpg",
+          "width": 1200,
+          "height": 1710,
+          "mimeType": "image/jpeg",
+          "filesize": 282325,
+          "filename": "k-tel-1200x1710.jpg"
+        }
+      }
+    },
+    {
+      "id": 44,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.219Z",
+      "createdAt": "2025-11-04T01:05:18.219Z",
+      "url": "http://localhost:3000/api/media/file/julie.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/julie-400x300.jpg",
+      "filename": "julie.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 29426,
+      "width": 375,
+      "height": 500,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/julie-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19646,
+          "filename": "julie-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/julie-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 34196,
+          "filename": "julie-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 43,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.179Z",
+      "createdAt": "2025-11-04T01:05:18.179Z",
+      "url": "http://localhost:3000/api/media/file/joe-held.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/joe-held-400x300.jpg",
+      "filename": "joe-held.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 96006,
+      "width": 508,
+      "height": 660,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/joe-held-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 41276,
+          "filename": "joe-held-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/joe-held-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 66312,
+          "filename": "joe-held-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 42,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:18.134Z",
+      "createdAt": "2025-11-04T01:05:18.134Z",
+      "url": "http://localhost:3000/api/media/file/joanna-bz.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/joanna-bz-400x300.jpg",
+      "filename": "joanna-bz.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 606439,
+      "width": 1920,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/joanna-bz-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 18849,
+          "filename": "joanna-bz-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/joanna-bz-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36199,
+          "filename": "joanna-bz-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/joanna-bz-1200x1500.jpg",
+          "width": 1200,
+          "height": 1500,
+          "mimeType": "image/jpeg",
+          "filesize": 201227,
+          "filename": "joanna-bz-1200x1500.jpg"
+        }
+      }
+    },
+    {
+      "id": 41,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:17.965Z",
+      "createdAt": "2025-11-04T01:05:17.965Z",
+      "url": "http://localhost:3000/api/media/file/jim-mulvaney.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/jim-mulvaney-400x300.jpg",
+      "filename": "jim-mulvaney.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 82580,
+      "width": 477,
+      "height": 678,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/jim-mulvaney-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 28394,
+          "filename": "jim-mulvaney-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/jim-mulvaney-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 53252,
+          "filename": "jim-mulvaney-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 39,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:17.767Z",
+      "createdAt": "2025-11-04T01:05:17.767Z",
+      "url": "http://localhost:3000/api/media/file/jessi-d.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/jessi-d-400x300.jpg",
+      "filename": "jessi-d.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 123368,
+      "width": 640,
+      "height": 640,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/jessi-d-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 33533,
+          "filename": "jessi-d-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/jessi-d-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 74064,
+          "filename": "jessi-d-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 38,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:17.713Z",
+      "createdAt": "2025-11-04T01:05:17.713Z",
+      "url": "http://localhost:3000/api/media/file/jenny-west.jpg",
+      "thumbnailURL": null,
+      "filename": "jenny-west.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 5684,
+      "width": 128,
+      "height": 128,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 37,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:17.690Z",
+      "createdAt": "2025-11-04T01:05:17.690Z",
+      "url": "http://localhost:3000/api/media/file/jenny-lizak.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/jenny-lizak-400x300.jpg",
+      "filename": "jenny-lizak.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 601238,
+      "width": 2400,
+      "height": 1672,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/jenny-lizak-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 35357,
+          "filename": "jenny-lizak-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/jenny-lizak-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 72699,
+          "filename": "jenny-lizak-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/jenny-lizak-1200x836.jpg",
+          "width": 1200,
+          "height": 836,
+          "mimeType": "image/jpeg",
+          "filesize": 177918,
+          "filename": "jenny-lizak-1200x836.jpg"
+        }
+      }
+    },
+    {
+      "id": 36,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:17.066Z",
+      "createdAt": "2025-11-04T01:05:17.066Z",
+      "url": "http://localhost:3000/api/media/file/jack-ryan.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/jack-ryan-400x300.jpg",
+      "filename": "jack-ryan.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 385269,
+      "width": 1536,
+      "height": 2048,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/jack-ryan-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 24116,
+          "filename": "jack-ryan-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/jack-ryan-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 45713,
+          "filename": "jack-ryan-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/jack-ryan-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 239756,
+          "filename": "jack-ryan-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 35,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:16.945Z",
+      "createdAt": "2025-11-04T01:05:16.945Z",
+      "url": "http://localhost:3000/api/media/file/eric-wiersema.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/eric-wiersema-400x300.jpg",
+      "filename": "eric-wiersema.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 232011,
+      "width": 1200,
+      "height": 1600,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/eric-wiersema-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 14520,
+          "filename": "eric-wiersema-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/eric-wiersema-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 31093,
+          "filename": "eric-wiersema-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/eric-wiersema-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 192233,
+          "filename": "eric-wiersema-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 34,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:16.867Z",
+      "createdAt": "2025-11-04T01:05:16.867Z",
+      "url": "http://localhost:3000/api/media/file/eddie.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/eddie-400x300.jpg",
+      "filename": "eddie.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 752325,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/eddie-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 29168,
+          "filename": "eddie-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/eddie-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 56774,
+          "filename": "eddie-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/eddie-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 315704,
+          "filename": "eddie-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:16.685Z",
+      "createdAt": "2025-11-04T01:05:16.685Z",
+      "url": "http://localhost:3000/api/media/file/drew.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/drew-400x300.jpg",
+      "filename": "drew.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 67413,
+      "width": 720,
+      "height": 720,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/drew-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 20304,
+          "filename": "drew-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/drew-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 42893,
+          "filename": "drew-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 32,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:16.642Z",
+      "createdAt": "2025-11-04T01:05:16.642Z",
+      "url": "http://localhost:3000/api/media/file/djrynk.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/djrynk-400x300.jpg",
+      "filename": "djrynk.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 514686,
+      "width": 2400,
+      "height": 1800,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/djrynk-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19196,
+          "filename": "djrynk-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/djrynk-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 37844,
+          "filename": "djrynk-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/djrynk-1200x900.jpg",
+          "width": 1200,
+          "height": 900,
+          "mimeType": "image/jpeg",
+          "filesize": 103204,
+          "filename": "djrynk-1200x900.jpg"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:16.103Z",
+      "createdAt": "2025-11-04T01:05:16.103Z",
+      "url": "http://localhost:3000/api/media/file/dj-rexi.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/dj-rexi-400x300.jpg",
+      "filename": "dj-rexi.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 133165,
+      "width": 1440,
+      "height": 959,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/dj-rexi-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 15794,
+          "filename": "dj-rexi-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/dj-rexi-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 38110,
+          "filename": "dj-rexi-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/dj-rexi-1200x799.jpg",
+          "width": 1200,
+          "height": 799,
+          "mimeType": "image/jpeg",
+          "filesize": 87870,
+          "filename": "dj-rexi-1200x799.jpg"
+        }
+      }
+    },
+    {
+      "id": 30,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:16.014Z",
+      "createdAt": "2025-11-04T01:05:16.014Z",
+      "url": "http://localhost:3000/api/media/file/dj-eco.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/dj-eco-400x300.jpg",
+      "filename": "dj-eco.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 261677,
+      "width": 768,
+      "height": 1024,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/dj-eco-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 44401,
+          "filename": "dj-eco-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/dj-eco-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 96744,
+          "filename": "dj-eco-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 29,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.867Z",
+      "createdAt": "2025-11-04T01:05:15.867Z",
+      "url": "http://localhost:3000/api/media/file/d-rock.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/d-rock-400x300.jpg",
+      "filename": "d-rock.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 57554,
+      "width": 480,
+      "height": 640,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/d-rock-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17641,
+          "filename": "d-rock-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/d-rock-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 34858,
+          "filename": "d-rock-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 28,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.818Z",
+      "createdAt": "2025-11-04T01:05:15.818Z",
+      "url": "http://localhost:3000/api/media/file/craig-reptile.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/craig-reptile-400x300.jpg",
+      "filename": "craig-reptile.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 59369,
+      "width": 720,
+      "height": 540,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/craig-reptile-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19572,
+          "filename": "craig-reptile-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/craig-reptile-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 42746,
+          "filename": "craig-reptile-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 27,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.736Z",
+      "createdAt": "2025-11-04T01:05:15.736Z",
+      "url": "http://localhost:3000/api/media/file/commodore-jones.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/commodore-jones-400x300.jpg",
+      "filename": "commodore-jones.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 316638,
+      "width": 1900,
+      "height": 1700,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/commodore-jones-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 19849,
+          "filename": "commodore-jones-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/commodore-jones-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 47401,
+          "filename": "commodore-jones-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/commodore-jones-1200x1074.jpg",
+          "width": 1200,
+          "height": 1074,
+          "mimeType": "image/jpeg",
+          "filesize": 120117,
+          "filename": "commodore-jones-1200x1074.jpg"
+        }
+      }
+    },
+    {
+      "id": 26,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.637Z",
+      "createdAt": "2025-11-04T01:05:15.637Z",
+      "url": "http://localhost:3000/api/media/file/chris-siuty.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chris-siuty-400x300.jpg",
+      "filename": "chris-siuty.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 36744,
+      "width": 600,
+      "height": 750,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chris-siuty-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17785,
+          "filename": "chris-siuty-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chris-siuty-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 34501,
+          "filename": "chris-siuty-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 25,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.586Z",
+      "createdAt": "2025-11-04T01:05:15.586Z",
+      "url": "http://localhost:3000/api/media/file/bobby-evers.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/bobby-evers-400x300.jpg",
+      "filename": "bobby-evers.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 41901,
+      "width": 604,
+      "height": 401,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/bobby-evers-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 21218,
+          "filename": "bobby-evers-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/bobby-evers-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 41412,
+          "filename": "bobby-evers-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 24,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.555Z",
+      "createdAt": "2025-11-04T01:05:15.555Z",
+      "url": "http://localhost:3000/api/media/file/bdc.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/bdc-400x300.jpg",
+      "filename": "bdc.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 294441,
+      "width": 818,
+      "height": 959,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/bdc-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 20788,
+          "filename": "bdc-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/bdc-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 96666,
+          "filename": "bdc-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 23,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.454Z",
+      "createdAt": "2025-11-04T01:05:15.454Z",
+      "url": "http://localhost:3000/api/media/file/audible-snail.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/audible-snail-400x300.jpg",
+      "filename": "audible-snail.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 243105,
+      "width": 1440,
+      "height": 1408,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/audible-snail-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 29921,
+          "filename": "audible-snail-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/audible-snail-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 55825,
+          "filename": "audible-snail-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/audible-snail-1200x1173.jpg",
+          "width": 1200,
+          "height": 1173,
+          "mimeType": "image/jpeg",
+          "filesize": 202057,
+          "filename": "audible-snail-1200x1173.jpg"
+        }
+      }
+    },
+    {
+      "id": 22,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.377Z",
+      "createdAt": "2025-11-04T01:05:15.377Z",
+      "url": "http://localhost:3000/api/media/file/andy-f.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/andy-f-400x300.jpg",
+      "filename": "andy-f.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 145192,
+      "width": 1000,
+      "height": 937,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/andy-f-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 32206,
+          "filename": "andy-f-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/andy-f-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 62357,
+          "filename": "andy-f-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 21,
+      "alt": null,
+      "category": "Member Profile Images",
+      "updatedAt": "2025-11-04T01:05:15.327Z",
+      "createdAt": "2025-11-04T01:05:15.326Z",
+      "url": "http://localhost:3000/api/media/file/alex-gilbert.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/alex-gilbert-400x300.jpg",
+      "filename": "alex-gilbert.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 336840,
+      "width": 1160,
+      "height": 1544,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/alex-gilbert-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 28922,
+          "filename": "alex-gilbert-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/alex-gilbert-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 55455,
+          "filename": "alex-gilbert-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 20,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T06:29:33.301Z",
+      "createdAt": "2025-11-02T06:03:54.686Z",
+      "url": "http://localhost:3000/api/media/file/black_chirp_shirt-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/black_chirp_shirt-1-400x300.jpg",
+      "filename": "black_chirp_shirt-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 55752,
+      "width": 496,
+      "height": 640,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/black_chirp_shirt-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 21254,
+          "filename": "black_chirp_shirt-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/black_chirp_shirt-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36289,
+          "filename": "black_chirp_shirt-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 19,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T06:03:35.800Z",
+      "createdAt": "2025-11-02T06:03:35.800Z",
+      "url": "http://localhost:3000/api/media/file/Red_CHIRP_shirt_3-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Red_CHIRP_shirt_3-1-400x300.jpg",
+      "filename": "Red_CHIRP_shirt_3-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 33409,
+      "width": 452,
+      "height": 603,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Red_CHIRP_shirt_3-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 15849,
+          "filename": "Red_CHIRP_shirt_3-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Red_CHIRP_shirt_3-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 25519,
+          "filename": "Red_CHIRP_shirt_3-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 18,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T06:03:11.372Z",
+      "createdAt": "2025-11-02T06:03:11.372Z",
+      "url": "http://localhost:3000/api/media/file/chirp_sandcastles01-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chirp_sandcastles01-1-400x300.jpg",
+      "filename": "chirp_sandcastles01-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 486422,
+      "width": 2186,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chirp_sandcastles01-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 37679,
+          "filename": "chirp_sandcastles01-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chirp_sandcastles01-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 79725,
+          "filename": "chirp_sandcastles01-1-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/chirp_sandcastles01-1-1200x1318.jpg",
+          "width": 1200,
+          "height": 1318,
+          "mimeType": "image/jpeg",
+          "filesize": 201533,
+          "filename": "chirp_sandcastles01-1-1200x1318.jpg"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T06:02:06.985Z",
+      "createdAt": "2025-11-02T06:02:06.985Z",
+      "url": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-2.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-2-400x300.jpg",
+      "filename": "20180227-CHIRP-RF-poster-2.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 197327,
+      "width": 750,
+      "height": 1000,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-2-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 36245,
+          "filename": "20180227-CHIRP-RF-poster-2-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/20180227-CHIRP-RF-poster-2-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 68224,
+          "filename": "20180227-CHIRP-RF-poster-2-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 16,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T06:00:05.877Z",
+      "createdAt": "2025-11-02T06:00:05.877Z",
+      "url": "http://localhost:3000/api/media/file/baby_onesie_1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/baby_onesie_1-400x300.jpg",
+      "filename": "baby_onesie_1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 1150192,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 16759,
+          "filename": "baby_onesie_1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 60888,
+          "filename": "baby_onesie_1-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_1-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 404464,
+          "filename": "baby_onesie_1-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T05:59:43.437Z",
+      "createdAt": "2025-11-02T05:59:43.437Z",
+      "url": "http://localhost:3000/api/media/file/baby_onesie_3.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/baby_onesie_3-400x300.jpg",
+      "filename": "baby_onesie_3.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 528562,
+      "width": 2103,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_3-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 22761,
+          "filename": "baby_onesie_3-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_3-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 46705,
+          "filename": "baby_onesie_3-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_3-1200x1369.jpg",
+          "width": 1200,
+          "height": 1369,
+          "mimeType": "image/jpeg",
+          "filesize": 200466,
+          "filename": "baby_onesie_3-1200x1369.jpg"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "alt": null,
+      "category": "General",
+      "updatedAt": "2025-11-02T05:59:31.933Z",
+      "createdAt": "2025-11-02T05:59:31.933Z",
+      "url": "http://localhost:3000/api/media/file/baby_onesie_2.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/baby_onesie_2-400x300.jpg",
+      "filename": "baby_onesie_2.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 20705,
+      "width": 240,
+      "height": 320,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/baby_onesie_2-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 20345,
+          "filename": "baby_onesie_2-400x300.jpg"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 12,
+      "alt": "CHIRP Sandcastle Toddler T-Shirt product image",
+      "category": "General",
+      "updatedAt": "2025-11-02T06:02:58.156Z",
+      "createdAt": "2025-11-02T05:53:25.574Z",
+      "url": "http://localhost:3000/api/media/file/chirp_sandcastles02.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chirp_sandcastles02-400x300.jpg",
+      "filename": "chirp_sandcastles02.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 433878,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chirp_sandcastles02-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 16186,
+          "filename": "chirp_sandcastles02-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chirp_sandcastles02-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 33582,
+          "filename": "chirp_sandcastles02-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/chirp_sandcastles02-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 171716,
+          "filename": "chirp_sandcastles02-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "alt": "CHIRP Record Fair 2017 Poster product image",
+      "category": "General",
+      "updatedAt": "2025-11-02T06:02:31.079Z",
+      "createdAt": "2025-11-02T05:53:24.791Z",
+      "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-2.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-2-400x300.jpg",
+      "filename": "RF_poster_2017_-_2-2.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 715323,
+      "width": 1800,
+      "height": 2400,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-2-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 43404,
+          "filename": "RF_poster_2017_-_2-2-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-2-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 96333,
+          "filename": "RF_poster_2017_-_2-2-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/RF_poster_2017_-_2-2-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 350481,
+          "filename": "RF_poster_2017_-_2-2-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "alt": "CHIRP Record Fair 2019 Poster product image",
+      "category": "General",
+      "updatedAt": "2025-11-02T06:01:37.679Z",
+      "createdAt": "2025-11-02T05:53:24.284Z",
+      "url": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-2.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-2-400x300.jpg",
+      "filename": "CHiRP2019_Poster_11x17-2.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 153266,
+      "width": 792,
+      "height": 1224,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-2-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 29061,
+          "filename": "CHiRP2019_Poster_11x17-2-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/CHiRP2019_Poster_11x17-2-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 42994,
+          "filename": "CHiRP2019_Poster_11x17-2-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 8,
+      "alt": "CHIRP Record Fair 2015 poster product image",
+      "category": "General",
+      "updatedAt": "2025-11-02T06:01:09.072Z",
+      "createdAt": "2025-11-02T05:53:24.097Z",
+      "url": "http://localhost:3000/api/media/file/Record_Fair_2015-2.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/Record_Fair_2015-2-400x300.jpg",
+      "filename": "Record_Fair_2015-2.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 319975,
+      "width": 1512,
+      "height": 2016,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/Record_Fair_2015-2-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 32373,
+          "filename": "Record_Fair_2015-2-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/Record_Fair_2015-2-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 72989,
+          "filename": "Record_Fair_2015-2-800x400.jpg"
+        },
+        "large": {
+          "url": "http://localhost:3000/api/media/file/Record_Fair_2015-2-1200x1600.jpg",
+          "width": 1200,
+          "height": 1600,
+          "mimeType": "image/jpeg",
+          "filesize": 257258,
+          "filename": "Record_Fair_2015-2-1200x1600.jpg"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "alt": "CHIRP 2013 Poster product image",
+      "category": "General",
+      "updatedAt": "2025-11-02T06:00:34.862Z",
+      "createdAt": "2025-11-02T05:53:23.856Z",
+      "url": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-2.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-2-400x300.jpg",
+      "filename": "CHIRP_spring_2013_design-2.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 75552,
+      "width": 540,
+      "height": 720,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-2-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 40261,
+          "filename": "CHIRP_spring_2013_design-2-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/CHIRP_spring_2013_design-2-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 75755,
+          "filename": "CHIRP_spring_2013_design-2-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 5,
+      "alt": "Logo for Chicago’s Department of Cultural Affairs and Special Events, showing a blue square, a red six-pointed star, and the text “DCASE” with the full department name below.",
+      "category": "General",
+      "updatedAt": "2025-11-02T05:45:17.975Z",
+      "createdAt": "2025-11-02T05:45:17.975Z",
+      "url": "http://localhost:3000/api/media/file/dcase.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/dcase-400x300.png",
+      "filename": "dcase.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 37071,
+      "width": 1100,
+      "height": 342,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/dcase-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 58934,
+          "filename": "dcase-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/dcase-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 112874,
+          "filename": "dcase-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 4,
+      "alt": "Logo with the words \"Illinois ARTS Council,\" with \"ARTS\" in large green letters and the other words in black.",
+      "category": "General",
+      "updatedAt": "2025-11-02T05:45:17.945Z",
+      "createdAt": "2025-11-02T05:45:17.945Z",
+      "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+      "filename": "NEW IAC LOGO_Black_Green.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 44094,
+      "width": 1024,
+      "height": 607,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 41388,
+          "filename": "NEW IAC LOGO_Black_Green-400x300.png"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/NEW%20IAC%20LOGO_Black_Green-800x400.png",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/png",
+          "filesize": 84448,
+          "filename": "NEW IAC LOGO_Black_Green-800x400.png"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 3,
+      "alt": "Dark background image with bold, distressed text reading \"THE FIRST TIME\" in large letters. The text evokes a mysterious and dramatic tone.",
+      "category": "General",
+      "updatedAt": "2025-11-02T05:45:17.913Z",
+      "createdAt": "2025-11-02T05:45:17.913Z",
+      "url": "http://localhost:3000/api/media/file/FirstTimeLogo.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+      "filename": "FirstTimeLogo.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 8134,
+      "width": 481,
+      "height": 246,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/FirstTimeLogo-400x300.png",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/png",
+          "filesize": 89116,
+          "filename": "FirstTimeLogo-400x300.png"
+        },
+        "card": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    },
+    {
+      "id": 1,
+      "alt": "Banner for the Chirp Music Film Festival. White text on a gray background with 'FILM' highlighted in red paint. Filmstrip border adds a cinematic feel.",
+      "category": "General",
+      "updatedAt": "2025-11-02T05:45:17.862Z",
+      "createdAt": "2025-11-02T05:45:17.862Z",
+      "url": "http://localhost:3000/api/media/file/chirp-film-fest-1.jpg",
+      "thumbnailURL": "http://localhost:3000/api/media/file/chirp-film-fest-1-400x300.jpg",
+      "filename": "chirp-film-fest-1.jpg",
+      "mimeType": "image/jpeg",
+      "filesize": 44154,
+      "width": 1080,
+      "height": 356,
+      "focalX": 50,
+      "focalY": 50,
+      "sizes": {
+        "thumbnail": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-1-400x300.jpg",
+          "width": 400,
+          "height": 300,
+          "mimeType": "image/jpeg",
+          "filesize": 17428,
+          "filename": "chirp-film-fest-1-400x300.jpg"
+        },
+        "card": {
+          "url": "http://localhost:3000/api/media/file/chirp-film-fest-1-800x400.jpg",
+          "width": 800,
+          "height": 400,
+          "mimeType": "image/jpeg",
+          "filesize": 36298,
+          "filename": "chirp-film-fest-1-800x400.jpg"
+        },
+        "large": {
+          "url": null,
+          "width": null,
+          "height": null,
+          "mimeType": null,
+          "filesize": null,
+          "filename": null
+        }
+      }
+    }
+  ]
+}
