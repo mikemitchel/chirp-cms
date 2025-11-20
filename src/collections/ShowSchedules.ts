@@ -55,7 +55,7 @@ export const ShowSchedules: CollectionConfig = {
                   id: data.dj,
                 })
                 djName = djDoc.djName || djDoc.firstName || 'DJ'
-              } catch (e) {
+              } catch {
                 // If fetch fails, use placeholder
                 djName = 'DJ'
               }
@@ -149,12 +149,16 @@ export const ShowSchedules: CollectionConfig = {
 
             // Build showTime string from all active schedules
             // Format: "Sun 12n - 2pm"
-            const showTimes = djSchedules.map((schedule) => {
-              const day = schedule.dayOfWeek.charAt(0).toUpperCase() + schedule.dayOfWeek.slice(1).substring(0, 3)
-              const startFormatted = formatTime(schedule.startTime)
-              const endFormatted = formatTime(schedule.endTime)
-              return `${day} ${startFormatted} - ${endFormatted}`
-            }).join(', ')
+            const showTimes = djSchedules
+              .map((schedule) => {
+                const day =
+                  schedule.dayOfWeek.charAt(0).toUpperCase() +
+                  schedule.dayOfWeek.slice(1).substring(0, 3)
+                const startFormatted = formatTime(schedule.startTime)
+                const endFormatted = formatTime(schedule.endTime)
+                return `${day} ${startFormatted} - ${endFormatted}`
+              })
+              .join(', ')
 
             // Update DJ's showTime field
             await req.payload.update({

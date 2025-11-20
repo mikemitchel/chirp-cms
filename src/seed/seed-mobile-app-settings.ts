@@ -6,7 +6,7 @@ export async function seedMobileAppSettings(payload: Payload, dataDir?: string) 
   console.log('📱 Seeding Mobile App Settings...')
 
   try {
-    let settingsData: any = {}
+    let settingsData: Record<string, unknown> = {}
 
     // Check if we have exported data
     if (dataDir && fs.existsSync(path.join(dataDir, 'mobile-app-settings.json'))) {
@@ -15,7 +15,13 @@ export async function seedMobileAppSettings(payload: Payload, dataDir?: string) 
       )
 
       // Remove system fields
-      const { id, createdAt, updatedAt, globalType, ...cleanData } = settingsData
+      const {
+        id: _id,
+        createdAt: _createdAt,
+        updatedAt: _updatedAt,
+        globalType: _globalType,
+        ...cleanData
+      } = settingsData
 
       await payload.updateGlobal({
         slug: 'mobileAppSettings',

@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { sendWebhook } from '../utils/webhook'
+import type { Listener } from '../payload-types'
 
 export const Members: CollectionConfig = {
   slug: 'listeners', // Keep DB table name as 'listeners' to preserve existing data
@@ -10,7 +11,7 @@ export const Members: CollectionConfig = {
   auth: {
     verify: {
       generateEmailSubject: () => 'Verify your CHIRP Radio account',
-      generateEmailHTML: ({ token, user }: any) => {
+      generateEmailHTML: ({ token, user }: { token: string; user: Listener }) => {
         const verifyURL = `${process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000'}/api/listeners/verify/${token}`
 
         return `
@@ -96,7 +97,7 @@ export const Members: CollectionConfig = {
     lockTime: 600 * 1000, // 10 minutes
     forgotPassword: {
       generateEmailSubject: () => 'Reset your CHIRP Radio password',
-      generateEmailHTML: ({ token, user }: any) => {
+      generateEmailHTML: ({ token, user }: { token: string; user: Listener }) => {
         const resetURL = `${process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'}/reset-password?token=${token}`
 
         return `
@@ -312,8 +313,8 @@ export const Members: CollectionConfig = {
                 { label: 'Board Member', value: 'Board Member' },
               ],
               admin: {
-                description: 'User roles - multiple roles can be selected'
-              }
+                description: 'User roles - multiple roles can be selected',
+              },
             },
             {
               name: 'profileImage',
@@ -321,8 +322,8 @@ export const Members: CollectionConfig = {
               type: 'upload',
               relationTo: 'media',
               admin: {
-                description: 'Profile image (use CrImageCropper to create avatar)'
-              }
+                description: 'Profile image (use CrImageCropper to create avatar)',
+              },
             },
             {
               name: 'profileImageOrientation',
@@ -350,15 +351,30 @@ export const Members: CollectionConfig = {
               name: 'preferences',
               type: 'group',
               fields: [
-                { name: 'emailNotifications', type: 'checkbox', defaultValue: true, label: 'Email Notifications' },
-                { name: 'showNotifications', type: 'checkbox', defaultValue: true, label: 'Show Notifications' },
-                { name: 'darkMode', type: 'select', label: 'Dark Mode', options: [
-                  { label: 'Light', value: 'light' },
-                  { label: 'Dark', value: 'dark' },
-                  { label: 'Device', value: 'device' },
-                ]},
+                {
+                  name: 'emailNotifications',
+                  type: 'checkbox',
+                  defaultValue: true,
+                  label: 'Email Notifications',
+                },
+                {
+                  name: 'showNotifications',
+                  type: 'checkbox',
+                  defaultValue: true,
+                  label: 'Show Notifications',
+                },
+                {
+                  name: 'darkMode',
+                  type: 'select',
+                  label: 'Dark Mode',
+                  options: [
+                    { label: 'Light', value: 'light' },
+                    { label: 'Dark', value: 'dark' },
+                    { label: 'Device', value: 'device' },
+                  ],
+                },
                 { name: 'autoPlay', type: 'checkbox', defaultValue: true, label: 'Auto Play' },
-              ]
+              ],
             },
             {
               name: 'onboardingCompleted',
@@ -366,8 +382,8 @@ export const Members: CollectionConfig = {
               defaultValue: false,
               label: 'Onboarding Completed',
               admin: {
-                description: 'Whether the user has completed the initial onboarding tour'
-              }
+                description: 'Whether the user has completed the initial onboarding tour',
+              },
             },
           ],
         },
@@ -394,8 +410,8 @@ export const Members: CollectionConfig = {
                 { name: 'dateAdded', type: 'date', required: true },
               ],
               admin: {
-                description: 'User\'s saved music collection'
-              }
+                description: "User's saved music collection",
+              },
             },
           ],
         },
@@ -418,9 +434,9 @@ export const Members: CollectionConfig = {
                 {
                   name: 'djId',
                   type: 'text',
-                  label: 'DJ ID'
-                }
-              ]
+                  label: 'DJ ID',
+                },
+              ],
             },
           ],
         },
@@ -430,7 +446,8 @@ export const Members: CollectionConfig = {
         // ==========================================
         {
           label: 'Donation History',
-          description: 'All donations made by this member. View and manage donations in the Donations collection.',
+          description:
+            'All donations made by this member. View and manage donations in the Donations collection.',
           fields: [
             {
               name: 'donorLevel',
@@ -447,14 +464,16 @@ export const Members: CollectionConfig = {
         // ==========================================
         {
           label: 'Purchase History',
-          description: 'All store purchases made by this member. View and manage purchases in the Purchases collection.',
+          description:
+            'All store purchases made by this member. View and manage purchases in the Purchases collection.',
           fields: [
             {
               name: '_purchaseNote',
               type: 'text',
               admin: {
                 readOnly: true,
-                description: 'Store purchases are managed in the Purchases collection. To view this member\'s purchase history, go to Collections > Purchases and filter by this member.',
+                description:
+                  "Store purchases are managed in the Purchases collection. To view this member's purchase history, go to Collections > Purchases and filter by this member.",
               },
             },
           ],
@@ -484,33 +503,25 @@ export const Members: CollectionConfig = {
               name: 'volunteerOrgs',
               type: 'array',
               label: 'Other Volunteer Organizations',
-              fields: [
-                { name: 'org', type: 'text', label: 'Organization' }
-              ]
+              fields: [{ name: 'org', type: 'text', label: 'Organization' }],
             },
             { name: 'hasRadioExperience', type: 'text', label: 'Has Radio Experience?' },
             { name: 'radioStations', type: 'text', label: 'Radio Stations Worked At' },
             {
               name: 'specialSkills',
               type: 'array',
-              fields: [
-                { name: 'skill', type: 'text' }
-              ]
+              fields: [{ name: 'skill', type: 'text' }],
             },
             {
               name: 'hearAboutChirp',
               type: 'array',
               label: 'How They Heard About CHIRP',
-              fields: [
-                { name: 'source', type: 'text' }
-              ]
+              fields: [{ name: 'source', type: 'text' }],
             },
             {
               name: 'interests',
               type: 'array',
-              fields: [
-                { name: 'interest', type: 'text' }
-              ]
+              fields: [{ name: 'interest', type: 'text' }],
             },
             { name: 'wantsToDJ', type: 'text', label: 'Wants To DJ' },
             {
@@ -521,9 +532,7 @@ export const Members: CollectionConfig = {
                 singular: 'Time Slot',
                 plural: 'Time Slots',
               },
-              fields: [
-                { name: 'time', type: 'text' }
-              ]
+              fields: [{ name: 'time', type: 'text' }],
             },
             {
               name: 'socialLinks',
@@ -536,7 +545,7 @@ export const Members: CollectionConfig = {
                 { name: 'tiktok', type: 'text', label: 'TikTok URL' },
                 { name: 'bluesky', type: 'text', label: 'Bluesky URL' },
                 { name: 'linkedin', type: 'text', label: 'LinkedIn URL' },
-              ]
+              ],
             },
           ],
         },
@@ -548,8 +557,7 @@ export const Members: CollectionConfig = {
           label: 'DJ',
           admin: {
             condition: (data) =>
-              data?.roles?.includes('Regular DJ') ||
-              data?.roles?.includes('Substitute DJ'),
+              data?.roles?.includes('Regular DJ') || data?.roles?.includes('Substitute DJ'),
           },
           fields: [
             { name: 'djName', label: 'DJ Name', type: 'text' },
@@ -560,32 +568,32 @@ export const Members: CollectionConfig = {
               type: 'text',
               admin: {
                 readOnly: true,
-                description: 'Auto-populated from Show Schedules assignments'
-              }
+                description: 'Auto-populated from Show Schedules assignments',
+              },
             },
             {
               name: 'djExcerpt',
               label: 'DJ Excerpt',
               type: 'textarea',
               admin: {
-                description: 'Short description for DJ cards and listings (1-2 sentences)'
-              }
+                description: 'Short description for DJ cards and listings (1-2 sentences)',
+              },
             },
             {
               name: 'djBio',
               label: 'DJ Bio',
               type: 'textarea',
               admin: {
-                description: 'Full DJ biography shown on detailed DJ profile page'
-              }
+                description: 'Full DJ biography shown on detailed DJ profile page',
+              },
             },
             {
               name: 'djDonationLink',
               label: 'DJ Donation Link',
               type: 'text',
               admin: {
-                description: 'Optional donation link for the DJ'
-              }
+                description: 'Optional donation link for the DJ',
+              },
             },
             {
               name: 'previousShows',
@@ -601,43 +609,44 @@ export const Members: CollectionConfig = {
                   type: 'text',
                   required: true,
                   admin: {
-                    description: 'Show title (e.g., "Morning Mix - March 15")'
-                  }
+                    description: 'Show title (e.g., "Morning Mix - March 15")',
+                  },
                 },
                 {
                   name: 'date',
                   type: 'date',
                   required: true,
                   admin: {
-                    description: 'Date the show aired'
-                  }
+                    description: 'Date the show aired',
+                  },
                 },
                 {
                   name: 'audioUrl',
                   type: 'text',
                   required: true,
                   admin: {
-                    description: 'Google Cloud Storage URL for the audio file'
-                  }
+                    description: 'Google Cloud Storage URL for the audio file',
+                  },
                 },
                 {
                   name: 'duration',
                   type: 'text',
                   admin: {
-                    description: 'Show duration (e.g., "2:00:00")'
-                  }
+                    description: 'Show duration (e.g., "2:00:00")',
+                  },
                 },
                 {
                   name: 'gcsFileName',
                   type: 'text',
                   admin: {
-                    description: 'Original GCS file name for reference'
-                  }
-                }
+                    description: 'Original GCS file name for reference',
+                  },
+                },
               ],
               admin: {
-                description: 'Auto-populated from Google Cloud Storage. Shows are automatically added when uploaded to GCS.'
-              }
+                description:
+                  'Auto-populated from Google Cloud Storage. Shows are automatically added when uploaded to GCS.',
+              },
             },
 
             // Substitute DJ specific fields (nested condition)
@@ -648,7 +657,7 @@ export const Members: CollectionConfig = {
               fields: [{ name: 'time', type: 'text' }],
               admin: {
                 condition: (data) => data?.roles?.includes('Substitute DJ'),
-                description: 'Only for Substitute DJs'
+                description: 'Only for Substitute DJs',
               },
             },
             {
@@ -659,12 +668,10 @@ export const Members: CollectionConfig = {
                 singular: 'DJ',
                 plural: 'DJs',
               },
-              fields: [
-                { name: 'djId', type: 'text', label: 'DJ ID' }
-              ],
+              fields: [{ name: 'djId', type: 'text', label: 'DJ ID' }],
               admin: {
                 condition: (data) => data?.roles?.includes('Substitute DJ'),
-                description: 'DJs this substitute can fill in for'
+                description: 'DJs this substitute can fill in for',
               },
             },
           ],
@@ -684,8 +691,8 @@ export const Members: CollectionConfig = {
               type: 'text',
               label: 'Board Position',
               admin: {
-                description: 'e.g., President, Treasurer, Secretary'
-              }
+                description: 'e.g., President, Treasurer, Secretary',
+              },
             },
             { name: 'boardSince', type: 'date', label: 'Board Member Since' },
             { name: 'boardTermEnd', type: 'date', label: 'Board Term Ends' },

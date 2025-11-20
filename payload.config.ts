@@ -32,6 +32,7 @@ import { Onboarding } from './src/collections/Onboarding'
 import { SiteSettings } from './src/globals/SiteSettings'
 import { MobileAppSettings } from './src/globals/MobileAppSettings'
 import { VolunteerFormSettings } from './src/globals/VolunteerFormSettings'
+import { migrations as _migrations } from './src/migrations'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -50,6 +51,9 @@ const databaseAdapter = () => {
       pool: {
         connectionString: dbUri,
       },
+      migrationDir: path.resolve(__dirname, 'src/migrations'),
+      // Enable push to auto-create/update schema
+      push: true,
     })
   }
 
@@ -153,7 +157,11 @@ export default buildConfig({
         console.log('  Subject:', subject)
 
         const result = await resend.emails.send({
-          from: from ? (typeof from === 'string' ? from : `${from.name || 'CHIRP Radio'} <${from.address}>`) : `${process.env.EMAIL_FROM_NAME || 'CHIRP Radio'} <${process.env.EMAIL_FROM || 'noreply@chirpradio.org'}>`,
+          from: from
+            ? typeof from === 'string'
+              ? from
+              : `${from.name || 'CHIRP Radio'} <${from.address}>`
+            : `${process.env.EMAIL_FROM_NAME || 'CHIRP Radio'} <${process.env.EMAIL_FROM || 'noreply@chirpradio.org'}>`,
           to: Array.isArray(to) ? to : [to],
           subject: subject || '',
           html: html || text || '',

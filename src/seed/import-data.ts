@@ -39,7 +39,9 @@ const importData = async () => {
           password: 'admin123',
         },
       })
-      console.log('✓ Default admin user created (email: admin@chirpradio.org, password: admin123)\n')
+      console.log(
+        '✓ Default admin user created (email: admin@chirpradio.org, password: admin123)\n'
+      )
     } else {
       console.log('✓ Admin user already exists, skipping creation\n')
     }
@@ -104,11 +106,17 @@ const importData = async () => {
     for (const podcast of existingPodcasts) {
       await payload.delete({ collection: 'podcasts', id: podcast.id })
     }
-    const { docs: existingAnnouncements } = await payload.find({ collection: 'announcements', limit: 1000 })
+    const { docs: existingAnnouncements } = await payload.find({
+      collection: 'announcements',
+      limit: 1000,
+    })
     for (const announcement of existingAnnouncements) {
       await payload.delete({ collection: 'announcements', id: announcement.id })
     }
-    const { docs: existingVolunteerCalendar } = await payload.find({ collection: 'volunteerCalendar', limit: 1000 })
+    const { docs: existingVolunteerCalendar } = await payload.find({
+      collection: 'volunteerCalendar',
+      limit: 1000,
+    })
     for (const volunteerEvent of existingVolunteerCalendar) {
       await payload.delete({ collection: 'volunteerCalendar', id: volunteerEvent.id })
     }
@@ -121,18 +129,10 @@ const importData = async () => {
 
     console.log(`Looking for data in: ${dataDir}`)
 
-    const articlesData = JSON.parse(
-      fs.readFileSync(path.join(dataDir, 'articles.json'), 'utf-8')
-    )
-    const eventsData = JSON.parse(
-      fs.readFileSync(path.join(dataDir, 'events.json'), 'utf-8')
-    )
-    const podcastsData = JSON.parse(
-      fs.readFileSync(path.join(dataDir, 'podcasts.json'), 'utf-8')
-    )
-    const shopItemsData = JSON.parse(
-      fs.readFileSync(path.join(dataDir, 'shopItems.json'), 'utf-8')
-    )
+    const articlesData = JSON.parse(fs.readFileSync(path.join(dataDir, 'articles.json'), 'utf-8'))
+    const eventsData = JSON.parse(fs.readFileSync(path.join(dataDir, 'events.json'), 'utf-8'))
+    const podcastsData = JSON.parse(fs.readFileSync(path.join(dataDir, 'podcasts.json'), 'utf-8'))
+    const shopItemsData = JSON.parse(fs.readFileSync(path.join(dataDir, 'shopItems.json'), 'utf-8'))
 
     // Import Articles
     console.log(`📰 Importing ${articlesData.articles.length} articles...`)
@@ -182,9 +182,10 @@ const importData = async () => {
     for (const event of eventsData.events) {
       if (event.ageRestriction) {
         // Handle both string and object formats
-        const ageValue = typeof event.ageRestriction === 'string'
-          ? event.ageRestriction
-          : event.ageRestriction.age || String(event.ageRestriction.id)
+        const ageValue =
+          typeof event.ageRestriction === 'string'
+            ? event.ageRestriction
+            : event.ageRestriction.age || String(event.ageRestriction.id)
 
         if (ageValue && !ageGateMap.has(ageValue)) {
           const ageGateDoc = await payload.create({
@@ -226,11 +227,11 @@ const importData = async () => {
 
     // Map event category strings to category IDs
     const eventCategoryMapping: Record<string, string> = {
-      'Fundraiser': 'Events',
+      Fundraiser: 'Events',
       'Community Event': 'Events',
-      'Concert': 'Music',
-      'Workshop': 'Events',
-      'Festival': 'Events',
+      Concert: 'Music',
+      Workshop: 'Events',
+      Festival: 'Events',
       'Live Session': 'Music',
     }
 
@@ -279,13 +280,13 @@ const importData = async () => {
       'Record Talk': 'Music',
       'Album Discussion': 'Music',
       'Tour Stories': 'Music',
-      'Experimental': 'Music',
+      Experimental: 'Music',
       'Hip-Hop': 'Music',
-      'Production': 'Music',
+      Production: 'Music',
       'Live Performance': 'Music',
       'Genre Exploration': 'Music',
       'Music Business': 'Music',
-      'Performance': 'Music',
+      Performance: 'Music',
     }
 
     for (const podcast of podcastsData.podcasts) {
@@ -314,7 +315,10 @@ const importData = async () => {
                   children: [
                     {
                       type: 'text',
-                      text: typeof podcast.content === 'string' ? podcast.content : JSON.stringify(podcast.content),
+                      text:
+                        typeof podcast.content === 'string'
+                          ? podcast.content
+                          : JSON.stringify(podcast.content),
                     },
                   ],
                 },
@@ -345,13 +349,13 @@ const importData = async () => {
 
     // Map shop item categories to valid select values
     const shopCategoryMapping: Record<string, string> = {
-      'Apparel': 'apparel',
-      'Poster': 'poster',
-      'Accessory': 'accessories',
+      Apparel: 'apparel',
+      Poster: 'poster',
+      Accessory: 'accessories',
     }
 
     for (const item of shopItemsData.shopItems) {
-      const { id, category, sizes, ...itemData } = item
+      const { id: _id, category: _category, sizes, ...itemData } = item
 
       // Check if shop item already exists by name
       const { docs: existing } = await payload.find({

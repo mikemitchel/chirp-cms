@@ -20,7 +20,7 @@ export async function seedMembers(payload: Payload, dataDir?: string) {
       )
 
       for (const member of membersData['listeners'] || []) {
-        const { id, createdAt, updatedAt, ...memberData } = member
+        const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, ...memberData } = member
         await payload.create({
           collection: 'listeners',
           data: memberData,
@@ -51,7 +51,11 @@ export async function seedMembers(payload: Payload, dataDir?: string) {
               collection: 'listeners',
               data: memberData,
             })
-            const displayName = user.djName || `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.username || user.email
+            const displayName =
+              user.djName ||
+              `${user.firstName || ''} ${user.lastName || ''}`.trim() ||
+              user.username ||
+              user.email
             console.log(`  ✓ ${displayName} (${user.email})`)
           } catch (error) {
             console.log(`  ⚠️  Skipped ${user.email}: ${(error as Error).message}`)
