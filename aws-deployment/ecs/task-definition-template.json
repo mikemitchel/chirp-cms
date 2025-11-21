@@ -1,0 +1,108 @@
+{
+  "family": "chirp-cms",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "${EXECUTION_ROLE_ARN}",
+  "taskRoleArn": "${TASK_ROLE_ARN}",
+  "containerDefinitions": [
+    {
+      "name": "chirp-cms",
+      "image": "${IMAGE_URI}",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "PORT",
+          "value": "3000"
+        },
+        {
+          "name": "HOSTNAME",
+          "value": "0.0.0.0"
+        },
+        {
+          "name": "PAYLOAD_PUBLIC_SERVER_URL",
+          "value": "${PAYLOAD_PUBLIC_SERVER_URL}"
+        },
+        {
+          "name": "DATABASE_URI",
+          "value": "${DATABASE_URI}"
+        },
+        {
+          "name": "PAYLOAD_SECRET",
+          "value": "${PAYLOAD_SECRET}"
+        },
+        {
+          "name": "EMAIL_FROM",
+          "value": "noreply@chirpradio.org"
+        },
+        {
+          "name": "EMAIL_FROM_NAME",
+          "value": "CHIRP Radio"
+        },
+        {
+          "name": "FRONTEND_URL",
+          "value": "${FRONTEND_URL}"
+        }
+      ],
+      "secrets": [
+        {
+          "name": "RESEND_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:${AWS_REGION}:${AWS_ACCOUNT_ID}:secret:${PROJECT_NAME}/resend-api-key"
+        },
+        {
+          "name": "OPENAI_API_KEY",
+          "valueFrom": "arn:aws:secretsmanager:${AWS_REGION}:${AWS_ACCOUNT_ID}:secret:${PROJECT_NAME}/openai-api-key"
+        }
+      ],
+      "mountPoints": [
+        {
+          "sourceVolume": "media-storage",
+          "containerPath": "/app/media",
+          "readOnly": false
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/chirp-cms",
+          "awslogs-region": "${AWS_REGION}",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "node -e \"require('http').get('http://localhost:3000/admin', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})\""
+        ],
+        "interval": 30,
+        "timeout": 10,
+        "retries": 3,
+        "startPeriod": 40
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "media-storage",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "${EFS_ID}",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "iam": "DISABLED"
+        }
+      }
+    }
+  ]
+}
