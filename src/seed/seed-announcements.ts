@@ -1,4 +1,6 @@
-export async function seedAnnouncements(payload: any) {
+import type { Payload } from 'payload'
+
+export async function seedAnnouncements(payload: Payload) {
   console.log('📣 Importing announcements...')
 
   const announcements = [

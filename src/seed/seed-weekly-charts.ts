@@ -21,7 +21,7 @@ export async function seedWeeklyCharts(payload: Payload) {
     const weeklyChartsData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'))
 
     for (const chart of weeklyChartsData['weeklyCharts'] || []) {
-      const { id, createdAt, updatedAt, ...chartData } = chart
+      const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, ...chartData } = chart
       await payload.create({
         collection: 'weeklyCharts',
         data: chartData,
@@ -29,7 +29,9 @@ export async function seedWeeklyCharts(payload: Payload) {
       console.log(`  ✓ ${chart.title || chart.slug}`)
     }
 
-    console.log(`✓ ${weeklyChartsData['weeklyCharts']?.length || 0} Weekly Charts seeded successfully`)
+    console.log(
+      `✓ ${weeklyChartsData['weeklyCharts']?.length || 0} Weekly Charts seeded successfully`
+    )
   } catch (error) {
     console.error('Error seeding Weekly Charts:', error)
   }

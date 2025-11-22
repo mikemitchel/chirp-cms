@@ -97,7 +97,7 @@ export const seedOnboardingSteps = async (payload: Payload): Promise<void> => {
               children: [
                 {
                   type: 'text',
-                  text: 'Check out our weekly charts, DJ profiles, and curated playlists. There\'s always something new to discover on CHIRP Radio.',
+                  text: "Check out our weekly charts, DJ profiles, and curated playlists. There's always something new to discover on CHIRP Radio.",
                 },
               ],
             },
@@ -150,8 +150,11 @@ export const seedOnboardingSteps = async (payload: Payload): Promise<void> => {
         data: step,
       })
       console.log(`✅ Created onboarding step: ${step.title}`)
-    } catch (error: any) {
-      console.error(`❌ Failed to create onboarding step "${step.title}":`, error.message)
+    } catch (error) {
+      console.error(
+        `❌ Failed to create onboarding step "${step.title}":`,
+        (error as Error).message
+      )
     }
   }
 

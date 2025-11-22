@@ -67,7 +67,7 @@ export async function seedShowSchedules(payload: Payload) {
       const blocks = isWeekend ? weekendBlocks : weekdayBlocks
 
       for (const block of blocks) {
-        const schedule: any = {
+        const schedule: Record<string, unknown> = {
           dayOfWeek: day,
           startTime: block.start,
           endTime: block.end,
@@ -113,7 +113,9 @@ export async function seedShowSchedules(payload: Payload) {
       }
     }
 
-    console.log(`✓ Created ${createdCount} show schedules (${days.length} days × ${weekdayBlocks.length} blocks)`)
+    console.log(
+      `✓ Created ${createdCount} show schedules (${days.length} days × ${weekdayBlocks.length} blocks)`
+    )
   } catch (error) {
     console.error('Error seeding show schedules:', error)
   }

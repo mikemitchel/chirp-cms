@@ -13,7 +13,7 @@ export async function seedShopItems(payload: Payload, dataDir?: string) {
       )
 
       for (const item of shopItemsData['shop-items'] || []) {
-        const { id, createdAt, updatedAt, ...itemData } = item
+        const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, ...itemData } = item
         await payload.create({
           collection: 'shopItems',
           data: itemData,
