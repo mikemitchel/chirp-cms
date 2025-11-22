@@ -13,7 +13,7 @@ export async function seedListeners(payload: Payload, dataDir?: string) {
       )
 
       for (const listener of listenersData['listeners'] || []) {
-        const { id, createdAt, updatedAt, ...listenerData } = listener
+        const { id: _id, createdAt: _createdAt, updatedAt: _updatedAt, ...listenerData } = listener
         await payload.create({
           collection: 'listeners',
           data: listenerData,

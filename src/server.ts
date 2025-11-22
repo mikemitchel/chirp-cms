@@ -37,7 +37,7 @@ const start = async () => {
         id: req.params.id,
       })
       res.json(article)
-    } catch (error) {
+    } catch {
       res.status(404).json({ error: 'Article not found' })
     }
   })
@@ -61,7 +61,7 @@ const start = async () => {
         id: req.params.id,
       })
       res.json(event)
-    } catch (error) {
+    } catch {
       res.status(404).json({ error: 'Event not found' })
     }
   })
@@ -151,9 +151,9 @@ const start = async () => {
         podcasts: '/api/podcasts',
         announcements: '/api/announcements',
         media: '/api/media',
-        venues: '/api/venues'
+        venues: '/api/venues',
       },
-      note: 'Payload v3 admin UI requires Next.js integration. Use REST API endpoints or Payload Local API.'
+      note: 'Payload v3 admin UI requires Next.js integration. Use REST API endpoints or Payload Local API.',
     })
   })
 

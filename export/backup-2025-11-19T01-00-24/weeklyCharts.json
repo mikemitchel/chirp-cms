@@ -1,0 +1,33 @@
+{
+  "weeklyCharts": [
+    {
+      "id": 1,
+      "preheader": "Oct 27, 2025",
+      "title": "This Week's Adds",
+      "slug": "this-week-s-adds",
+      "listType": null,
+      "csvFile": null,
+      "csvImport": null,
+      "tracks": [
+        {
+          "id": "6906f4dfb94bda755a6ca1da",
+          "songName": "Gee Angel",
+          "artistName": "Sugar",
+          "recordCompany": "Explosive Records"
+        },
+        {
+          "id": "6906f4e6b94bda755a6ca1dc",
+          "songName": "Booger",
+          "artistName": "Dr Jonny Fever",
+          "recordCompany": "WKRP"
+        }
+      ],
+      "isCurrentWeek": false,
+      "notes": null,
+      "featuredTrack": null,
+      "status": "draft",
+      "updatedAt": "2025-11-02T06:06:37.060Z",
+      "createdAt": "2025-11-02T06:06:37.060Z"
+    }
+  ]
+}

@@ -1,4 +1,6 @@
-export async function seedAdvertisements(payload: any) {
+import type { Payload } from 'payload'
+
+export async function seedAdvertisements(payload: Payload) {
   console.log('📢 Importing advertisements...')
 
   const advertisements = [
@@ -29,7 +31,8 @@ export async function seedAdvertisements(payload: any) {
       isActive: true,
       size: 'large-rectangle',
       contentType: 'video',
-      videoUrl: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      videoUrl:
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
       href: 'https://example.com/music-festival',
       target: '_blank',
       showLabel: false,
